@@ -2,7 +2,7 @@ package com.sistemagerenciamentoanimais;
 
 import java.util.Date;
 
-public class Pessoa {
+public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String telefone;
@@ -17,12 +17,25 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
+    public boolean validaCpf (String cpf) {
+
+        cpf = cpf.replaceAll("\\D", "");
+
+        if (cpf.length() != 11 || cpf.matches("(\\d)\\1{10}")) {
+            return false;
+        }
+
+        return true;
+    }
+
     public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if(validaCpf(cpf)) {
+            this.cpf = cpf;
+        }
     }
 
     public Date getDataNascimento() {
