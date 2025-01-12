@@ -1,6 +1,7 @@
 package com.sistemagerenciamentoanimais;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Funcionario extends Pessoa{
 
@@ -25,7 +26,11 @@ public class Funcionario extends Pessoa{
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public boolean setSenha(String senha1, String senha2) {
+        if (Objects.equals(senha1, senha2)){
+            this.senha = senha;
+            return true;
+        }
+        return false;
     }
 }
