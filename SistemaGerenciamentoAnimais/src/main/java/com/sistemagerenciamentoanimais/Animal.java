@@ -1,5 +1,7 @@
 package com.sistemagerenciamentoanimais;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 public class Animal {
@@ -7,13 +9,13 @@ public class Animal {
     private String especie;
     private String raca;
     private String genero;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private float peso;
     private String porte;
     private FichaMedica fichaMedica;
     private Adocao adocao;
 
-    public Animal(Date dataNascimento, String especie, String genero, String nome, float peso, String porte, String raca) {
+    public Animal(LocalDate dataNascimento, String especie, String genero, String nome, float peso, String porte, String raca) {
         this.dataNascimento = dataNascimento;
         this.especie = especie;
         this.genero = genero;
@@ -31,11 +33,11 @@ public class Animal {
         this.adocao = adocao;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -93,6 +95,10 @@ public class Animal {
 
     public void setFichaMedica(FichaMedica fichaMedica) {
         this.fichaMedica = fichaMedica;
+    }
+
+    public int calcularIdade() {
+        return Period.between(this.getDataNascimento(), LocalDate.now()).getYears();
     }
 }
 
