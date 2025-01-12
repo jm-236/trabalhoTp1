@@ -28,7 +28,7 @@ public class Funcionario extends Pessoa{
 
     public boolean setSenha(String senha1, String senha2) {
         if (Objects.equals(senha1, senha2)){
-            this.senha = senha;
+            this.senha = senha1;
             return true;
         }
         return false;
