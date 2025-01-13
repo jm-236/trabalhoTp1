@@ -14,15 +14,39 @@ public class Animal {
     private String porte;
     private FichaMedica fichaMedica;
     private Adocao adocao;
+    private int id;
+    private int idade;
+    private String local;
 
-    public Animal(LocalDate dataNascimento, String especie, String genero, String nome, float peso, String porte, String raca) {
+    public Animal(Adocao adocao, LocalDate dataNascimento, String especie, FichaMedica fichaMedica, String genero, int id, int idade, String local, String nome, float peso, String porte, String raca) {
+        this.adocao = adocao;
         this.dataNascimento = dataNascimento;
         this.especie = especie;
+        this.fichaMedica = fichaMedica;
         this.genero = genero;
+        this.id = id;
+        this.idade = idade;
+        this.local = local;
         this.nome = nome;
         this.peso = peso;
         this.porte = porte;
         this.raca = raca;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public Adocao getAdocao() {
@@ -99,6 +123,14 @@ public class Animal {
 
     public int calcularIdade() {
         return Period.between(this.getDataNascimento(), LocalDate.now()).getYears();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

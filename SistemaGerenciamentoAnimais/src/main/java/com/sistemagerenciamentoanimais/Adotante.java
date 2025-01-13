@@ -16,4 +16,16 @@ public class Adotante extends Pessoa{
     public ArrayList<Adocao> getAnimaisAdotados() {
         return animaisAdotados;
     }
+
+    public void setAnimaisAdotados(ArrayList<Adocao> animaisAdotados) {
+        this.animaisAdotados = animaisAdotados;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 }
