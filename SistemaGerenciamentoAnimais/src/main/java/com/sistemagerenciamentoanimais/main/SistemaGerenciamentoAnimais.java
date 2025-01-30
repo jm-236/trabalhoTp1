@@ -2,15 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.main;
+
+import com.sistemagerenciamentoanimais.swing.MainFrame;
 
 /**
  *
- * @author Cynthia
+ * @author João
  */
 public class SistemaGerenciamentoAnimais {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.setVisible(true);
     }
 }

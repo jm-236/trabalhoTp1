@@ -1,9 +1,9 @@
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Adotante extends Pessoa{
+public class Adotante extends Pessoa {
 
     private ArrayList<Adocao> animaisAdotados;
     private String endereco;

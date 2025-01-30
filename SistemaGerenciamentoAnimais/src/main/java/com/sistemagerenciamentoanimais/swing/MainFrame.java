@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.swing;
 
 /**
  *
@@ -88,10 +88,12 @@ public class MainFrame extends javax.swing.JFrame {
         jButton2.setText("<html><u>Cadastro</u></html> ");
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
+        jButton2.addActionListener(evt -> {
+            jButton2ActionPerformed(evt);
+            System.out.println("Clicou no botão");
+            CadastroFuncionario cadastroFuncionario = new CadastroFuncionario();
+            cadastroFuncionario.setVisible(true);
+            this.dispose();
         });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

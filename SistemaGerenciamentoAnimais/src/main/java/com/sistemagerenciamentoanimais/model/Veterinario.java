@@ -1,8 +1,8 @@
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.model;
 
 import java.util.Date;
 
-public class Veterinario extends Funcionario{
+public class Veterinario extends Funcionario {
 
     private int crmv;
 

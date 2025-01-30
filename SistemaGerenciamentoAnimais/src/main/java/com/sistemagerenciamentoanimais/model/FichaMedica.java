@@ -1,4 +1,4 @@
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.model;
 
 import java.time.LocalDateTime;
 

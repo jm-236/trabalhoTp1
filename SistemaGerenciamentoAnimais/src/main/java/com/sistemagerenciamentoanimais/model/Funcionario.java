@@ -1,9 +1,9 @@
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.model;
 
 import java.util.Date;
 import java.util.Objects;
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Pessoa {
 
     private int id;
     private String senha;

@@ -1,8 +1,7 @@
-package com.sistemagerenciamentoanimais;
+package com.sistemagerenciamentoanimais.model;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 
 public class Animal {
     private String nome;
@@ -33,8 +32,7 @@ public class Animal {
         this.raca = raca;
     }
 
-    public String getLocal() {
-        return local;
+    public String getLocal() {       return local;
     }
 
     public void setLocal(String local) {
