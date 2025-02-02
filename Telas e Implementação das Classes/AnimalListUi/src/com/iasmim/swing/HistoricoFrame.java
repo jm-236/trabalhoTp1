@@ -1,5 +1,7 @@
 package com.iasmim.swing;
 
+import com.arthur.main.Main;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -29,12 +31,6 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -56,6 +52,13 @@ public class HistoricoFrame extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jToolBar1 = new javax.swing.JToolBar();
+        botaoInicio = new javax.swing.JButton();
+        botaoAnimal = new javax.swing.JButton();
+        botaoAdocao = new javax.swing.JButton();
+        botaoHistorico = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        botaoSair = new javax.swing.JButton();
 
         jLabel6.setFont(new java.awt.Font("Lato Medium", 0, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(48, 63, 56));
@@ -65,70 +68,10 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(177, 251, 216));
 
-        jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
-        jToolBar1.setRollover(true);
-
-        jButton2.setBackground(new java.awt.Color(205, 255, 232));
-        jButton2.setForeground(new java.awt.Color(64, 86, 76));
-        jButton2.setText("Início");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
-        jButton5.setBackground(new java.awt.Color(205, 255, 232));
-        jButton5.setForeground(new java.awt.Color(64, 86, 76));
-        jButton5.setText("Novo Pet");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton5);
-
-        jButton7.setBackground(new java.awt.Color(205, 255, 232));
-        jButton7.setForeground(new java.awt.Color(64, 86, 76));
-        jButton7.setText("Adoção");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton7);
-        jToolBar1.add(filler1);
-
-        jButton4.setBackground(new java.awt.Color(205, 255, 232));
-        jButton4.setForeground(new java.awt.Color(64, 86, 76));
-        jButton4.setText("Sair");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton4);
-
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(48, 63, 56));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/pawIcon(6).jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/iasmim/image/pawIcon6.jpeg"))); // NOI18N
         jLabel1.setText("Histórico da ONG");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lato Semibold", 0, 20), new java.awt.Color(48, 63, 56))); // NOI18N
@@ -305,11 +248,90 @@ public class HistoricoFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
+        jToolBar1.setRollover(true);
+        jToolBar1.setFloatable(false);
+
+        botaoInicio.setBackground(new java.awt.Color(205, 255, 232));
+        botaoInicio.setForeground(new java.awt.Color(64, 86, 76));
+        botaoInicio.setText("Início");
+        botaoInicio.setFocusable(false);
+        botaoInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoInicio.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoInicio.setOpaque(true);
+        botaoInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoInicioActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoInicio);
+
+        botaoAnimal.setBackground(new java.awt.Color(205, 255, 232));
+        botaoAnimal.setForeground(new java.awt.Color(64, 86, 76));
+        botaoAnimal.setText("Novo Pet");
+        botaoAnimal.setFocusable(false);
+        botaoAnimal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoAnimal.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoAnimal.setOpaque(true);
+        botaoAnimal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAnimalActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoAnimal);
+
+        botaoAdocao.setBackground(new java.awt.Color(205, 255, 232));
+        botaoAdocao.setForeground(new java.awt.Color(64, 86, 76));
+        botaoAdocao.setText("Adoção");
+        botaoAdocao.setFocusable(false);
+        botaoAdocao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoAdocao.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoAdocao.setOpaque(true);
+        botaoAdocao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoAdocao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAdocaoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoAdocao);
+
+        botaoHistorico.setBackground(new java.awt.Color(205, 255, 232));
+        botaoHistorico.setForeground(new java.awt.Color(64, 86, 76));
+        botaoHistorico.setText("Histórico");
+        botaoHistorico.setFocusable(false);
+        botaoHistorico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoHistorico.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoHistorico.setOpaque(true);
+        botaoHistorico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoHistoricoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoHistorico);
+        jToolBar1.add(filler1);
+
+        botaoSair.setBackground(new java.awt.Color(205, 255, 232));
+        botaoSair.setForeground(new java.awt.Color(64, 86, 76));
+        botaoSair.setText("Sair");
+        botaoSair.setFocusable(false);
+        botaoSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoSair.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoSair.setOpaque(true);
+        botaoSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoSair);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1310, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,15 +342,16 @@ public class HistoricoFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,22 +377,6 @@ public class HistoricoFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -381,6 +388,32 @@ public class HistoricoFrame extends javax.swing.JFrame {
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
+        this.dispose();
+        Main mainScreen = new Main();
+        mainScreen.setVisible(true);
+    }//GEN-LAST:event_botaoInicioActionPerformed
+
+    private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
+
+    }//GEN-LAST:event_botaoAnimalActionPerformed
+
+    private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
+        this.dispose();
+        FichaAdocao adocaoScreen = new FichaAdocao();
+        adocaoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoAdocaoActionPerformed
+
+    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
+        
+    }//GEN-LAST:event_botaoHistoricoActionPerformed
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        this.dispose();
+        MainFrame n = new MainFrame();
+        n.setVisible(true);
+    }//GEN-LAST:event_botaoSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,14 +451,15 @@ public class HistoricoFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAdocao;
+    private javax.swing.JButton botaoAnimal;
+    private javax.swing.JButton botaoHistorico;
+    private javax.swing.JButton botaoInicio;
+    private javax.swing.JButton botaoSair;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;

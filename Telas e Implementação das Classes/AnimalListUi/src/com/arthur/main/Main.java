@@ -8,13 +8,12 @@ import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
 import com.joao.model.Veterinario;
 import com.iasmim.swing.FichaAdocao;
+import com.iasmim.swing.HistoricoFrame;
+import com.iasmim.swing.MainFrame;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -41,7 +40,7 @@ public class Main extends javax.swing.JFrame {
     
     public Main() {
         initComponents();
-        setBackground(new Color(0, 0, 0, 0));
+        //setBackground(new Color(0, 0, 0, 0));
         init();
         animator = PropertySetter.createAnimator(500,mainPanel,"imageLocation",animatePoint, mainPanel.getTargetLocation());
         animator.addTarget(new PropertySetter(mainPanel, "imageSize", new Dimension(180, 120), mainPanel.getTargetSize()));
@@ -58,7 +57,7 @@ public class Main extends javax.swing.JFrame {
     
     private void init(){
         home = new FormHome();
-        winButton.initEvent(this, background1);
+        //winButton.initEvent(this, background1);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(home);
         testData();
@@ -119,39 +118,37 @@ public class Main extends javax.swing.JFrame {
 
         background1 = new com.arthur.swing.Background();
         header = new javax.swing.JPanel();
-        CadastrarAnimalButton = new javax.swing.JButton();
         mainPanel = new com.arthur.swing.MainPanel();
         TopPanel = new javax.swing.JPanel();
-        winButton = new com.arthur.swing.win_button.WinButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        botaoInicio = new javax.swing.JButton();
+        botaoAnimal = new javax.swing.JButton();
+        botaoAdocao = new javax.swing.JButton();
+        botaoHistorico = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        botaoSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setBackground(new java.awt.Color(177, 251, 216));
 
-        header.setOpaque(false);
+        background1.setBackground(new java.awt.Color(177, 251, 216));
+        background1.setOpaque(true);
 
-        CadastrarAnimalButton.setText("Cadastrar um Animal");
-        CadastrarAnimalButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastrarAnimalButtonActionPerformed(evt);
-            }
-        });
+        header.setBackground(new java.awt.Color(177, 251, 216));
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CadastrarAnimalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(981, Short.MAX_VALUE))
+            .addGap(0, 1213, Short.MAX_VALUE)
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(0, 56, Short.MAX_VALUE)
-                .addComponent(CadastrarAnimalButton)
-                .addContainerGap())
+            .addGap(0, 85, Short.MAX_VALUE)
         );
+
+        mainPanel.setBackground(new java.awt.Color(177, 251, 216));
+        mainPanel.setOpaque(true);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -161,9 +158,10 @@ public class Main extends javax.swing.JFrame {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 539, Short.MAX_VALUE)
         );
 
+        TopPanel.setBackground(new java.awt.Color(177, 251, 216));
         TopPanel.setOpaque(false);
         TopPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -179,20 +177,97 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
+        jToolBar1.setRollover(true);
+        jToolBar1.setFloatable(false);
+
+        botaoInicio.setBackground(new java.awt.Color(205, 255, 232));
+        botaoInicio.setForeground(new java.awt.Color(64, 86, 76));
+        botaoInicio.setText("Início");
+        botaoInicio.setFocusable(false);
+        botaoInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoInicio.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoInicio.setOpaque(true);
+        botaoInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoInicioActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoInicio);
+
+        botaoAnimal.setBackground(new java.awt.Color(205, 255, 232));
+        botaoAnimal.setForeground(new java.awt.Color(64, 86, 76));
+        botaoAnimal.setText("Novo Pet");
+        botaoAnimal.setFocusable(false);
+        botaoAnimal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoAnimal.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoAnimal.setOpaque(true);
+        botaoAnimal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAnimalActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoAnimal);
+
+        botaoAdocao.setBackground(new java.awt.Color(205, 255, 232));
+        botaoAdocao.setForeground(new java.awt.Color(64, 86, 76));
+        botaoAdocao.setText("Adoção");
+        botaoAdocao.setFocusable(false);
+        botaoAdocao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoAdocao.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoAdocao.setOpaque(true);
+        botaoAdocao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoAdocao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAdocaoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoAdocao);
+
+        botaoHistorico.setBackground(new java.awt.Color(205, 255, 232));
+        botaoHistorico.setForeground(new java.awt.Color(64, 86, 76));
+        botaoHistorico.setText("Histórico");
+        botaoHistorico.setFocusable(false);
+        botaoHistorico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoHistorico.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoHistorico.setOpaque(true);
+        botaoHistorico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoHistoricoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoHistorico);
+        jToolBar1.add(filler1);
+
+        botaoSair.setBackground(new java.awt.Color(205, 255, 232));
+        botaoSair.setForeground(new java.awt.Color(64, 86, 76));
+        botaoSair.setText("Sair");
+        botaoSair.setFocusable(false);
+        botaoSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoSair.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoSair.setOpaque(true);
+        botaoSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botaoSair);
+
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(winButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(winButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(TopPanelLayout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
@@ -234,13 +309,6 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CadastrarAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarAnimalButtonActionPerformed
-        this.setVisible(false);
-        //close();
-        FichaAdocao adocaoScreen = new FichaAdocao(this);
-        adocaoScreen.setVisible(true);
-    }//GEN-LAST:event_CadastrarAnimalButtonActionPerformed
-
     private void TopPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TopPanelMousePressed
         compCoords = evt.getPoint();
     }//GEN-LAST:event_TopPanelMousePressed
@@ -254,14 +322,38 @@ public class Main extends javax.swing.JFrame {
         this.setLocation(currCoords.x - compCoords.x, currCoords.y - compCoords.y);
     }//GEN-LAST:event_TopPanelMouseDragged
 
+    private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
+        //this.setVisible(false);
+
+        //inicioForm.setVisible(true);
+    }//GEN-LAST:event_botaoInicioActionPerformed
+
+    private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
+
+    }//GEN-LAST:event_botaoAnimalActionPerformed
+
+    private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
+        this.dispose();
+        FichaAdocao adocaoScreen = new FichaAdocao();
+        adocaoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoAdocaoActionPerformed
+
+    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
+        this.dispose();
+        HistoricoFrame historicoScreen = new HistoricoFrame();
+        historicoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoHistoricoActionPerformed
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        this.dispose();
+        MainFrame n = new MainFrame();
+        n.setVisible(true);
+    }//GEN-LAST:event_botaoSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
-        
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
@@ -270,11 +362,16 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CadastrarAnimalButton;
     private javax.swing.JPanel TopPanel;
     private com.arthur.swing.Background background1;
+    private javax.swing.JButton botaoAdocao;
+    private javax.swing.JButton botaoAnimal;
+    private javax.swing.JButton botaoHistorico;
+    private javax.swing.JButton botaoInicio;
+    private javax.swing.JButton botaoSair;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JPanel header;
+    private javax.swing.JToolBar jToolBar1;
     private com.arthur.swing.MainPanel mainPanel;
-    private com.arthur.swing.win_button.WinButton winButton;
     // End of variables declaration//GEN-END:variables
 }

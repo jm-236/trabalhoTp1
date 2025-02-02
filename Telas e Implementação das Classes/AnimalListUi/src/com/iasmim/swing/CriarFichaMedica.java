@@ -91,6 +91,7 @@ public class CriarFichaMedica extends javax.swing.JFrame {
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
+        jToolBar1.setFloatable(false);
 
         jButton2.setBackground(new java.awt.Color(205, 255, 232));
         jButton2.setForeground(new java.awt.Color(64, 86, 76));

@@ -101,13 +101,15 @@ public class FormHome extends javax.swing.JPanel {
         lbRaca = new javax.swing.JLabel();
         lbNascimento = new javax.swing.JLabel();
 
-        setOpaque(false);
+        setBackground(new java.awt.Color(177, 251, 216));
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelItem.setBackground(new java.awt.Color(177, 251, 216));
         jScrollPane1.setViewportView(panelItem);
 
-        jPanel1.setOpaque(false);
+        jPanel1.setBackground(new java.awt.Color(177, 251, 216));
 
         lbAnimalName.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbAnimalName.setForeground(new java.awt.Color(76, 76, 76));

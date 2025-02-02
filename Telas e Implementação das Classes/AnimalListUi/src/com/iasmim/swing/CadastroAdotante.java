@@ -51,10 +51,10 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        botaoInicio = new javax.swing.JButton();
+        botaoAnimal = new javax.swing.JButton();
+        botaoAdocao = new javax.swing.JButton();
+        botaoHistorico = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jButton4 = new javax.swing.JButton();
 
@@ -176,62 +176,67 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
+        jToolBar1.setFloatable(false);
 
-        jButton2.setBackground(new java.awt.Color(205, 255, 232));
-        jButton2.setForeground(new java.awt.Color(64, 86, 76));
-        jButton2.setText("Início");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoInicio.setBackground(new java.awt.Color(205, 255, 232));
+        botaoInicio.setForeground(new java.awt.Color(64, 86, 76));
+        botaoInicio.setText("Início");
+        botaoInicio.setFocusable(false);
+        botaoInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoInicio.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoInicio.setOpaque(true);
+        botaoInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoInicioActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(botaoInicio);
 
-        jButton5.setBackground(new java.awt.Color(205, 255, 232));
-        jButton5.setForeground(new java.awt.Color(64, 86, 76));
-        jButton5.setText("Novo Pet");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botaoAnimal.setBackground(new java.awt.Color(205, 255, 232));
+        botaoAnimal.setForeground(new java.awt.Color(64, 86, 76));
+        botaoAnimal.setText("Novo Pet");
+        botaoAnimal.setFocusable(false);
+        botaoAnimal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoAnimal.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoAnimal.setOpaque(true);
+        botaoAnimal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botaoAnimalActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton5);
+        jToolBar1.add(botaoAnimal);
 
-        jButton9.setBackground(new java.awt.Color(205, 255, 232));
-        jButton9.setForeground(new java.awt.Color(64, 86, 76));
-        jButton9.setText("Adoção");
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        botaoAdocao.setBackground(new java.awt.Color(205, 255, 232));
+        botaoAdocao.setForeground(new java.awt.Color(64, 86, 76));
+        botaoAdocao.setText("Adoção");
+        botaoAdocao.setFocusable(false);
+        botaoAdocao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoAdocao.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoAdocao.setOpaque(true);
+        botaoAdocao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoAdocao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                botaoAdocaoActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton9);
+        jToolBar1.add(botaoAdocao);
 
-        jButton7.setBackground(new java.awt.Color(205, 255, 232));
-        jButton7.setForeground(new java.awt.Color(64, 86, 76));
-        jButton7.setText("Histórico");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        botaoHistorico.setBackground(new java.awt.Color(205, 255, 232));
+        botaoHistorico.setForeground(new java.awt.Color(64, 86, 76));
+        botaoHistorico.setText("Histórico");
+        botaoHistorico.setFocusable(false);
+        botaoHistorico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoHistorico.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoHistorico.setOpaque(true);
+        botaoHistorico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                botaoHistoricoActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton7);
+        jToolBar1.add(botaoHistorico);
         jToolBar1.add(filler1);
 
         jButton4.setBackground(new java.awt.Color(205, 255, 232));
@@ -240,6 +245,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        jButton4.setOpaque(true);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +258,6 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -289,12 +294,13 @@ public class CadastroAdotante extends javax.swing.JFrame {
                         .addGap(557, 557, 557)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -364,30 +370,32 @@ public class CadastroAdotante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        //close();
-        
-        inicioForm.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
+        //this.setVisible(false);
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        //inicioForm.setVisible(true);
+    }//GEN-LAST:event_botaoInicioActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        this.setVisible(false);
-        //close();
-        
-        telaadocao.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_botaoAnimalActionPerformed
+
+    private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
+        this.dispose();
+        FichaAdocao adocaoScreen = new FichaAdocao();
+        adocaoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoAdocaoActionPerformed
+
+    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
+        this.dispose();
+        HistoricoFrame historicoScreen = new HistoricoFrame();
+        historicoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoHistoricoActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        MainFrame n = new MainFrame();
+        n.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -426,13 +434,13 @@ public class CadastroAdotante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAdocao;
+    private javax.swing.JButton botaoAnimal;
+    private javax.swing.JButton botaoHistorico;
+    private javax.swing.JButton botaoInicio;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
