@@ -3,6 +3,10 @@ package com.arthur.main;
 
 import com.arthur.event.EventAnimal;
 import com.arthur.form.FormHome;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.fatboyindustrial.gsonjavatime.Converters;
+import com.google.gson.reflect.TypeToken;
 import com.joao.model.Adocao;
 import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
@@ -14,9 +18,16 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.event.DocumentEvent;
@@ -24,6 +35,22 @@ import javax.swing.event.DocumentListener;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 import org.jdesktop.animation.timing.interpolation.PropertySetter;
+
+
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+
+
 
 public class Main extends javax.swing.JFrame {
     
@@ -33,17 +60,30 @@ public class Main extends javax.swing.JFrame {
     
     
     
-    
+    //public static ArrayList<Animal> listaDeAnimais = gerenciador.listaDeAnimais;
     
     private FormHome home;
     private Animator animator;
     private Point animatePoint;
     private Animal animalSelected;
     
+    private Gson gson;
+    public ArrayList<Animal> listaDeAnimais = new ArrayList<Animal>();
+    private static final String CAMINHO_ARQUIVO = "animais.json";
+    
+    
     public Main() {
+        this.gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())  // Registrando LocalDateTime
+                .registerTypeAdapter(ImageIcon.class, new ImageIconAdapter())
+                .setPrettyPrinting()
+                .create();
         initComponents();
-        //setBackground(new Color(0, 0, 0, 0));
         init();
+        //setBackground(new Color(0, 0, 0, 0));
+        //listaDeAnimais = carregarAnimaisDoArquivo();
+        
         animator = PropertySetter.createAnimator(500,mainPanel,"imageLocation",animatePoint, mainPanel.getTargetLocation());
         animator.addTarget(new PropertySetter(mainPanel, "imageSize", new Dimension(180, 120), mainPanel.getTargetSize()));
         animator.addTarget(new TimingTargetAdapter() {
@@ -84,6 +124,7 @@ public class Main extends javax.swing.JFrame {
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(home);
         testData();
+        
     }
 
     private void testData() {
@@ -112,16 +153,34 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         });
+        this.listaDeAnimais = carregarAnimaisDoArquivo();
+        for (Animal a: listaDeAnimais){
+            home.addAnimal(a);
+        }
+        /*
         int ID=1;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         for(int i=0;i<=5;i++){
-            home.addAnimal(new Animal(ID++,LocalDate.parse("20/01/2004", formatter), "Brasília", "Princesa", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("19/02/2005", formatter), "Teresina", "Guto", "Macho","Cachorro",30.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet2.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("18/03/2006", formatter), "Belo Horizonte", "Joto", "Fêmea","Jabuti",67.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet3.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("17/04/2007", formatter), "Guarulhos", "Mingau", "Macho","Cachorro",12.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet4.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("16/05/2008", formatter), "São Paulo", "Luigi", "Fêmea","Cachorro",5.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet5.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("15/06/2009", formatter), "Parnaíba", "Fernando", "Macho","Gato",27.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet6.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-        }
+            Animal temp = new Animal(ID++,LocalDate.parse("20/01/2004", formatter), "Brasília", "Princesa", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            //listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            temp = new Animal(ID++,LocalDate.parse("19/02/2005", formatter), "Teresina", "Guto", "Macho","Cachorro",30.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet2.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            //listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            temp = new Animal(ID++,LocalDate.parse("18/03/2006", formatter), "Belo Horizonte", "Joto", "Fêmea","Jabuti",67.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet3.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            //listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            temp = new Animal(ID++,LocalDate.parse("17/04/2007", formatter), "Guarulhos", "Mingau", "Macho","Cachorro",12.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet4.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            //listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            temp = new Animal(ID++,LocalDate.parse("16/05/2008", formatter), "São Paulo", "Luigi", "Fêmea","Cachorro",5.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet5.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            //listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            temp = new Animal(ID++,LocalDate.parse("15/06/2009", formatter), "Parnaíba", "Fernando", "Macho","Gato",27.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet6.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            //listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            //salvarAnimaisNoArquivo();
+        }*/
     }
     
     private Point getLocationOf(Component com) {
@@ -134,6 +193,133 @@ public class Main extends javax.swing.JFrame {
         int top = 35;
         return new Point(x + itemX + left, y + itemY + top);
     }
+    
+    
+    
+    // Método para carregar a lista de animais do JSON
+    public ArrayList<Animal> carregarAnimaisDoArquivo() {
+        try (Reader reader = new FileReader(CAMINHO_ARQUIVO)) {
+            java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Animal>>() {}.getType();
+            ArrayList<Animal> animais = gson.fromJson(reader, tipoLista);
+            return (animais != null) ? animais : new ArrayList<>();
+        } catch (FileNotFoundException e) {
+            // Arquivo não encontrado, retorna lista vazia
+            return new ArrayList<Animal>();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<Animal>();
+        }
+    }
+
+    // Método para salvar a lista de animais no JSON
+    private void salvarAnimaisNoArquivo() {
+        try (Writer writer = new FileWriter(CAMINHO_ARQUIVO)) {
+            gson.toJson(listaDeAnimais, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
+        String linha;
+        System.out.println("Conteúdo do arquivo JSON:");
+        while ((linha = reader.readLine()) != null) {
+            System.out.println(linha);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+    
+    
+    public class LocalDateAdapter extends TypeAdapter<LocalDate> {
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+
+    @Override
+    public void write(JsonWriter out, LocalDate localDate) throws IOException {
+        if (localDate == null) {
+            out.nullValue();  // Permite null na serialização
+            return;
+        }
+        out.value(localDate.format(formatter));
+    }
+
+    @Override
+    public LocalDate read(JsonReader jsonReader) throws IOException {
+        return LocalDate.parse(jsonReader.nextString(), formatter);
+    }
+}
+    
+
+
+public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
+    @Override
+    public void write(JsonWriter jsonWriter, LocalDateTime localDateTime) throws IOException {
+        jsonWriter.value(localDateTime.format(formatter));
+    }
+
+    @Override
+    public LocalDateTime read(JsonReader jsonReader) throws IOException {
+        return LocalDateTime.parse(jsonReader.nextString(), formatter);
+    }
+}
+
+
+class ImageIconAdapter extends TypeAdapter<ImageIcon> {
+
+    @Override
+    public void write(JsonWriter out, ImageIcon icon) throws IOException {
+        if (icon == null) {
+            out.nullValue();
+            return;
+        }
+
+        // Convert ImageIcon to BufferedImage safely
+        BufferedImage bufferedImage = toBufferedImage(icon.getImage());
+
+        // Convert BufferedImage to Base64
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png", baos);
+        String base64 = Base64.getEncoder().encodeToString(baos.toByteArray());
+
+        out.value(base64);
+    }
+
+    @Override
+    public ImageIcon read(JsonReader in) throws IOException {
+        String base64 = in.nextString();
+        byte[] bytes = Base64.getDecoder().decode(base64);
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        BufferedImage bufferedImage = ImageIO.read(bais);
+        return new ImageIcon(bufferedImage);
+    }
+
+    // Helper method to convert Image to BufferedImage
+    private BufferedImage toBufferedImage(Image img) {
+        if (img instanceof BufferedImage) {
+            return (BufferedImage) img;
+        }
+
+        // Create a BufferedImage with the correct size and type
+        BufferedImage bufferedImage = new BufferedImage(
+            img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB
+        );
+
+        // Draw the image onto the BufferedImage
+        Graphics2D g2d = bufferedImage.createGraphics();
+        g2d.drawImage(img, 0, 0, null);
+        g2d.dispose();
+
+        return bufferedImage;
+    }
+}
+    
+    
+    
+    
+    
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -391,7 +577,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoInicioActionPerformed
 
     private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
-
+        
+        //TEMPORÁRIO
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Animal temp = new Animal(123,LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            listaDeAnimais.add(temp);
+            home.addAnimal(temp);
+            salvarAnimaisNoArquivo();
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed

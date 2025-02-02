@@ -6,6 +6,7 @@ package com.arthur.form;
 
 import com.arthur.component.Item;
 import com.arthur.event.EventAnimal;
+import com.arthur.main.Main;
 import com.joao.model.Animal;
 import com.arthur.swing.ScrollBar;
 import java.awt.Component;

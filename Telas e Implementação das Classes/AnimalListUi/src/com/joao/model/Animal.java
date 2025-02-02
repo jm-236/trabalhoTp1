@@ -6,6 +6,7 @@ import com.joao.model.FichaMedica;
 import java.time.LocalDate;
 import java.time.Period;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 
 public class Animal {
@@ -18,7 +19,7 @@ public class Animal {
     private String animalEspecie;
     private float animalPeso;
     private String animalPorte;
-    private Icon animalImage;
+    private ImageIcon animalImage;
     private String animalRaca;
     private LocalDate animalDataNascimento;
     private FichaMedica animalFichaMedica;
@@ -130,11 +131,11 @@ public class Animal {
         this.animalPorte = animalPorte;
     }
 
-    public Icon getAnimalImage() {
+    public ImageIcon getAnimalImage() {
         return animalImage;
     }
 
-    public Animal(int animalID, LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, Icon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
+    public Animal(int animalID, LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
         this.animalID = animalID;
         this.animalData = animalData;
         this.animalLocal = animalLocal;
@@ -153,7 +154,7 @@ public class Animal {
     public Animal() {
     }
     
-    public void setAnimalImage(Icon animalImage) {
+    public void setAnimalImage(ImageIcon animalImage) {
         this.animalImage = animalImage;
     }
     
