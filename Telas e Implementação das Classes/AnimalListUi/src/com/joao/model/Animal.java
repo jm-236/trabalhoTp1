@@ -1,0 +1,164 @@
+
+package com.joao.model;
+
+import com.joao.model.Adocao;
+import com.joao.model.FichaMedica;
+import java.time.LocalDate;
+import java.time.Period;
+import javax.swing.Icon;
+
+
+public class Animal {
+    private int animalID;
+    private LocalDate animalData;
+    private String animalLocal;
+    private String animalNome;
+    private String animalGenero;
+    //private String animalIdade;
+    private String animalEspecie;
+    private float animalPeso;
+    private String animalPorte;
+    private Icon animalImage;
+    private String animalRaca;
+    private LocalDate animalDataNascimento;
+    private FichaMedica animalFichaMedica;
+    private Adocao animalAdocao;
+
+    public String getAnimalRaca() {
+        return animalRaca;
+    }
+
+    public void setAnimalRaca(String animalRaca) {
+        this.animalRaca = animalRaca;
+    }
+
+    public LocalDate getAnimalDataNascimento() {
+        return animalDataNascimento;
+    }
+
+    public void setAnimalDataNascimento(LocalDate animalDataNascimento) {
+        this.animalDataNascimento = animalDataNascimento;
+    }
+
+    public FichaMedica getAnimalFichaMedica() {
+        return animalFichaMedica;
+    }
+
+    public void setAnimalFichaMedica(FichaMedica animalFichaMedica) {
+        this.animalFichaMedica = animalFichaMedica;
+    }
+
+    public Adocao getAnimalAdocao() {
+        return animalAdocao;
+    }
+
+    public void setAnimalAdocao(Adocao animalAdocao) {
+        this.animalAdocao = animalAdocao;
+    }
+    
+    
+    
+    public int getAnimalID() {
+        return animalID;
+    }
+
+    public void setAnimalID(int animalID) {
+        this.animalID = animalID;
+    }
+
+    public LocalDate getAnimalData() {
+        return animalData;
+    }
+
+    public void setAnimalData(LocalDate animalData) {
+        this.animalData = animalData;
+    }
+
+    public String getAnimalLocal() {
+        return animalLocal;
+    }
+
+    public void setAnimalLocal(String animalLocal) {
+        this.animalLocal = animalLocal;
+    }
+
+    public String getAnimalNome() {
+        return animalNome;
+    }
+
+    public void setAnimalNome(String animalNome) {
+        this.animalNome = animalNome;
+    }
+
+    public String getAnimalGenero() {
+        return animalGenero;
+    }
+
+    public void setAnimalGenero(String animalGenero) {
+        this.animalGenero = animalGenero;
+    }
+
+    //public String getAnimalIdade() {
+    //    return animalIdade;
+    //}
+
+    //public void setAnimalIdade(String animalIdade) {
+    //    this.animalIdade = animalIdade;
+    //}
+
+    public String getAnimalEspecie() {
+        return animalEspecie;
+    }
+
+    public void setAnimalEspecie(String animalEspecie) {
+        this.animalEspecie = animalEspecie;
+    }
+
+    public float getAnimalPeso() {
+        return animalPeso;
+    }
+
+    public void setAnimalPeso(float animalPeso) {
+        this.animalPeso = animalPeso;
+    }
+
+    public String getAnimalPorte() {
+        return animalPorte;
+    }
+
+    public void setAnimalPorte(String animalPorte) {
+        this.animalPorte = animalPorte;
+    }
+
+    public Icon getAnimalImage() {
+        return animalImage;
+    }
+
+    public Animal(int animalID, LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, Icon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
+        this.animalID = animalID;
+        this.animalData = animalData;
+        this.animalLocal = animalLocal;
+        this.animalNome = animalNome;
+        this.animalGenero = animalGenero;
+        this.animalEspecie = animalEspecie;
+        this.animalPeso = animalPeso;
+        this.animalPorte = animalPorte;
+        this.animalImage = animalImage;
+        this.animalRaca = animalRaca;
+        this.animalDataNascimento = animalDataNascimento;
+        this.animalFichaMedica = animalFichaMedica;
+        this.animalAdocao = animalAdocao;
+    }
+
+    public Animal() {
+    }
+    
+    public void setAnimalImage(Icon animalImage) {
+        this.animalImage = animalImage;
+    }
+    
+    public int calcularIdade() {
+        return Period.between(this.getAnimalDataNascimento(), LocalDate.now()).getYears();
+    }
+    
+}

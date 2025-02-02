@@ -11,6 +11,6 @@ package com.sistemagerenciamentoanimais;
 public class SistemaGerenciamentoAnimais {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        new TelaAnimal();
     }
 }
