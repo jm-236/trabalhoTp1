@@ -73,24 +73,27 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lbGenero" min="-2" pref="48" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                                  <Component id="lbPorte" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lbAnimalName" alignment="0" pref="197" max="32767" attributes="0"/>
-                                      <Component id="lbData" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lbGenero" min="-2" pref="48" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="lbPorte" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lbRaca" min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbAnimalName" alignment="0" pref="197" max="32767" attributes="0"/>
+                                          <Component id="lbData" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbRaca" min="-2" pref="48" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lbIdade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbLocal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbPeso" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lbIdade" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbLocal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbPeso" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -123,7 +126,9 @@
                   <Component id="lbPeso" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbNascimento" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="590" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="565" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -228,6 +233,17 @@
               <Color blue="4c" green="4c" red="4c" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data de Nascimento:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbEspecie">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="4c" green="4c" red="4c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Esp&#xe9;cie:"/>
           </Properties>
         </Component>
       </SubComponents>

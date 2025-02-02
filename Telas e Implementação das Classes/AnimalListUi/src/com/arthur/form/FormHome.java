@@ -52,6 +52,98 @@ public class FormHome extends javax.swing.JPanel {
         panelItem.revalidate();
     }
     
+    public void filterAnimals(String textfilter, String tipoSelecionado) {
+        if (tipoSelecionado.equals("Nome")){
+            if (!textfilter.equals("")){    
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        String itemName = ((Item)comp).getData().getAnimalNome();
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                            comp.setVisible(true);
+                        }
+                        else{
+                            comp.setVisible(false);
+                        }
+                    }
+                }
+            }
+            else {
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        comp.setVisible(true);
+                    }
+                }
+            }
+        }
+        else if (tipoSelecionado.equals("Espécie")){
+            if (!textfilter.equals("")){    
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        String itemName = ((Item)comp).getData().getAnimalEspecie();
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                            comp.setVisible(true);
+                        }
+                        else{
+                            comp.setVisible(false);
+                        }
+                    }
+                }
+            }
+            else {
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        comp.setVisible(true);
+                    }
+                }
+            }
+        }
+        else if (tipoSelecionado.equals("Raça")){
+            if (!textfilter.equals("")){    
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        String itemName = ((Item)comp).getData().getAnimalRaca();
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                            comp.setVisible(true);
+                        }
+                        else{
+                            comp.setVisible(false);
+                        }
+                    }
+                }
+            }
+            else {
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        comp.setVisible(true);
+                    }
+                }
+            }
+        }
+        else if (tipoSelecionado.equals("Gênero")){
+            if (!textfilter.equals("")){    
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        String itemName = ((Item)comp).getData().getAnimalGenero();
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                            comp.setVisible(true);
+                        }
+                        else{
+                            comp.setVisible(false);
+                        }
+                    }
+                }
+            }
+            else {
+                for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        comp.setVisible(true);
+                    }
+                }
+            }
+        }
+    }   
+    
+    
     public void setSelected(Component item){
         for(Component com:panelItem.getComponents()){
             Item i=(Item)com;
@@ -74,7 +166,7 @@ public class FormHome extends javax.swing.JPanel {
         lbLocal.setText("Local: "+data.getAnimalLocal());
         lbPeso.setText("Peso: "+data.getAnimalPeso());
         lbNascimento.setText("Data de Nascimento: "+data.getAnimalDataNascimento());
-        
+        lbEspecie.setText("Espécie: "+data.getAnimalEspecie());
     }
     
     
@@ -100,6 +192,7 @@ public class FormHome extends javax.swing.JPanel {
         lbPorte = new javax.swing.JLabel();
         lbRaca = new javax.swing.JLabel();
         lbNascimento = new javax.swing.JLabel();
+        lbEspecie = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(177, 251, 216));
 
@@ -147,6 +240,10 @@ public class FormHome extends javax.swing.JPanel {
         lbNascimento.setForeground(new java.awt.Color(76, 76, 76));
         lbNascimento.setText("Data de Nascimento:");
 
+        lbEspecie.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lbEspecie.setForeground(new java.awt.Color(76, 76, 76));
+        lbEspecie.setText("Espécie:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -158,21 +255,23 @@ public class FormHome extends javax.swing.JPanel {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(82, 82, 82)
-                                .addComponent(lbPorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbAnimalName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                                    .addComponent(lbData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbIdade)
-                            .addComponent(lbLocal)
-                            .addComponent(lbPeso)
-                            .addComponent(lbNascimento))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbEspecie)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(82, 82, 82)
+                                    .addComponent(lbPorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lbAnimalName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                        .addComponent(lbData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lbRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbIdade)
+                                .addComponent(lbLocal)
+                                .addComponent(lbPeso)
+                                .addComponent(lbNascimento)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,7 +297,9 @@ public class FormHome extends javax.swing.JPanel {
                 .addComponent(lbPeso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbNascimento)
-                .addContainerGap(590, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbEspecie)
+                .addContainerGap(565, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -224,6 +325,7 @@ public class FormHome extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbAnimalName;
     private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbEspecie;
     private javax.swing.JLabel lbGenero;
     private javax.swing.JLabel lbIdade;
     private javax.swing.JLabel lbLocal;

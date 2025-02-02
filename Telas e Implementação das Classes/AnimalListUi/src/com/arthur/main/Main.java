@@ -19,6 +19,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 import org.jdesktop.animation.timing.interpolation.PropertySetter;
@@ -53,6 +55,27 @@ public class Main extends javax.swing.JFrame {
         animator.setResolution(0);
         animator.setAcceleration(.5f);
         animator.setDeceleration(.5f);
+        filterTextField.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                String filterText = filterTextField.getText();
+                home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()));
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                String filterText = filterTextField.getText();
+                home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()));
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
     }
     
     private void init(){
@@ -92,12 +115,12 @@ public class Main extends javax.swing.JFrame {
         int ID=1;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         for(int i=0;i<=5;i++){
-            home.addAnimal(new Animal(ID++,LocalDate.parse("20/01/2004", formatter), "Brasília", "Princesa", "Fêmea","Especie",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("19/02/2005", formatter), "Teresina", "Guto", "Macho","Especie",30.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet2.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("18/03/2006", formatter), "Belo Horizonte", "Joto", "Fêmea","Especie",67.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet3.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("17/04/2007", formatter), "Guarulhos", "Mingau", "Macho","Especie",12.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet4.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("16/05/2008", formatter), "São Paulo", "Luigi", "Fêmea","Especie",5.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet5.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
-            home.addAnimal(new Animal(ID++,LocalDate.parse("15/06/2009", formatter), "Parnaíba", "Fernando", "Macho","Especie",27.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet6.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
+            home.addAnimal(new Animal(ID++,LocalDate.parse("20/01/2004", formatter), "Brasília", "Princesa", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
+            home.addAnimal(new Animal(ID++,LocalDate.parse("19/02/2005", formatter), "Teresina", "Guto", "Macho","Cachorro",30.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet2.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
+            home.addAnimal(new Animal(ID++,LocalDate.parse("18/03/2006", formatter), "Belo Horizonte", "Joto", "Fêmea","Jabuti",67.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet3.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
+            home.addAnimal(new Animal(ID++,LocalDate.parse("17/04/2007", formatter), "Guarulhos", "Mingau", "Macho","Cachorro",12.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet4.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
+            home.addAnimal(new Animal(ID++,LocalDate.parse("16/05/2008", formatter), "São Paulo", "Luigi", "Fêmea","Cachorro",5.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet5.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
+            home.addAnimal(new Animal(ID++,LocalDate.parse("15/06/2009", formatter), "Parnaíba", "Fernando", "Macho","Gato",27.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet6.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao()));
         }
     }
     
@@ -118,6 +141,10 @@ public class Main extends javax.swing.JFrame {
 
         background1 = new com.arthur.swing.Background();
         header = new javax.swing.JPanel();
+        filterTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        filtroDePesquisa = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         mainPanel = new com.arthur.swing.MainPanel();
         TopPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -136,15 +163,50 @@ public class Main extends javax.swing.JFrame {
 
         header.setBackground(new java.awt.Color(177, 251, 216));
 
+        filterTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Pesquisar:");
+
+        filtroDePesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Espécie", "Raça", "Gênero" }));
+        filtroDePesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroDePesquisaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Filtro:");
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1213, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(318, 318, 318)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(filterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(filtroDePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(461, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filtroDePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         mainPanel.setBackground(new java.awt.Color(177, 251, 216));
@@ -350,6 +412,14 @@ public class Main extends javax.swing.JFrame {
         n.setVisible(true);
     }//GEN-LAST:event_botaoSairActionPerformed
 
+    private void filterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTextFieldActionPerformed
+            
+    }//GEN-LAST:event_filterTextFieldActionPerformed
+
+    private void filtroDePesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroDePesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtroDePesquisaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,7 +440,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton botaoInicio;
     private javax.swing.JButton botaoSair;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JTextField filterTextField;
+    private javax.swing.JComboBox<String> filtroDePesquisa;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar jToolBar1;
     private com.arthur.swing.MainPanel mainPanel;
     // End of variables declaration//GEN-END:variables
