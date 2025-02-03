@@ -215,7 +215,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {
         // TODO add your handling code here:
-        if (passwordField.getPassword().toString().equals("*****")) {
+        if (passwordField.getPassword().toString().equals("Senha")) {
             passwordField.setText("");
         }
     }
