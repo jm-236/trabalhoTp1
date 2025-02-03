@@ -158,30 +158,31 @@ public class Main extends javax.swing.JFrame {
             home.addAnimal(a);
         }
         /*
-        int ID=1;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         for(int i=0;i<=5;i++){
-            Animal temp = new Animal(ID++,LocalDate.parse("20/01/2004", formatter), "Brasília", "Princesa", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            Animal temp = new Animal(LocalDate.parse("20/01/2004", formatter), "Brasília", "Princesa", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             //listaDeAnimais.add(temp);
             home.addAnimal(temp);
-            temp = new Animal(ID++,LocalDate.parse("19/02/2005", formatter), "Teresina", "Guto", "Macho","Cachorro",30.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet2.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            temp = new Animal(LocalDate.parse("19/02/2005", formatter), "Teresina", "Guto", "Macho","Cachorro",30.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet2.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             //listaDeAnimais.add(temp);
             home.addAnimal(temp);
-            temp = new Animal(ID++,LocalDate.parse("18/03/2006", formatter), "Belo Horizonte", "Joto", "Fêmea","Jabuti",67.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet3.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            temp = new Animal(LocalDate.parse("18/03/2006", formatter), "Belo Horizonte", "Joto", "Fêmea","Jabuti",67.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet3.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             //listaDeAnimais.add(temp);
             home.addAnimal(temp);
-            temp = new Animal(ID++,LocalDate.parse("17/04/2007", formatter), "Guarulhos", "Mingau", "Macho","Cachorro",12.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet4.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            temp = new Animal(LocalDate.parse("17/04/2007", formatter), "Guarulhos", "Mingau", "Macho","Cachorro",12.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet4.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             //listaDeAnimais.add(temp);
             home.addAnimal(temp);
-            temp = new Animal(ID++,LocalDate.parse("16/05/2008", formatter), "São Paulo", "Luigi", "Fêmea","Cachorro",5.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet5.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            temp = new Animal(LocalDate.parse("16/05/2008", formatter), "São Paulo", "Luigi", "Fêmea","Cachorro",5.5f,"Pequeno Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet5.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             //listaDeAnimais.add(temp);
             home.addAnimal(temp);
-            temp = new Animal(ID++,LocalDate.parse("15/06/2009", formatter), "Parnaíba", "Fernando", "Macho","Gato",27.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet6.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+            temp = new Animal(LocalDate.parse("15/06/2009", formatter), "Parnaíba", "Fernando", "Macho","Gato",27.5f,"Médio Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet6.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             //listaDeAnimais.add(temp);
             home.addAnimal(temp);
             //salvarAnimaisNoArquivo();
         }*/
     }
+    
+    
     
     private Point getLocationOf(Component com) {
         Point p = home.getPanelItemLocation();
@@ -331,6 +332,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         jLabel1 = new javax.swing.JLabel();
         filtroDePesquisa = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         mainPanel = new com.arthur.swing.MainPanel();
         TopPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -366,12 +368,21 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
 
         jLabel2.setText("Filtro:");
 
+        jButton1.setText("Excluir Animal");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(318, 318, 318)
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(187, 187, 187)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -391,7 +402,8 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(filterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(filtroDePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(filtroDePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -406,7 +418,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         TopPanel.setBackground(new java.awt.Color(177, 251, 216));
@@ -580,7 +592,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         
         //TEMPORÁRIO
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        Animal temp = new Animal(123,LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+        Animal temp = new Animal(LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             listaDeAnimais.add(temp);
             home.addAnimal(temp);
             salvarAnimaisNoArquivo();
@@ -612,6 +624,17 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         // TODO add your handling code here:
     }//GEN-LAST:event_filtroDePesquisaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String IDanimal= home.ExcluirAnimal();
+        listaDeAnimais.removeIf(animal -> animal.getAnimalID().equals(IDanimal));
+        salvarAnimaisNoArquivo();
+        home.resetShow();
+        mainPanel.setImage(null);
+        mainPanel.setImageOld(null);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -635,6 +658,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
     private javax.swing.JTextField filterTextField;
     private javax.swing.JComboBox<String> filtroDePesquisa;
     private javax.swing.JPanel header;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar jToolBar1;

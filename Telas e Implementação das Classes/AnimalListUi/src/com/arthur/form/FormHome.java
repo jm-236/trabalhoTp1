@@ -53,6 +53,21 @@ public class FormHome extends javax.swing.JPanel {
         panelItem.revalidate();
     }
     
+    public String ExcluirAnimal() {
+        for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        if (((Item) comp).isSelected()){
+                            panelItem.remove(comp);
+                            panelItem.repaint();
+                            panelItem.revalidate();
+                            return ((Item) comp).getData().getAnimalID();
+                        }
+                    }
+        }
+        return "";
+        
+    }
+    
     public void filterAnimals(String textfilter, String tipoSelecionado) {
         if (tipoSelecionado.equals("Nome")){
             if (!textfilter.equals("")){    
@@ -153,6 +168,23 @@ public class FormHome extends javax.swing.JPanel {
             }
         }
         ((Item)item).setSelected(true);
+    }
+    
+    public void resetShow(){
+        lbAnimalName.setText("Nome do Animal");
+        
+        
+        lbData.setText("Data");
+        lbGenero.setText("Gênero");
+        lbIdade.setText("Idade:");
+        lbRaca.setText("Raça");
+        lbPorte.setText("Porte");
+        lbLocal.setText("Local:");
+        lbPeso.setText("Peso:");
+        lbNascimento.setText("Data de Nascimento:");
+        lbEspecie.setText("Espécie:");
+    
+    
     }
     
     public void showAnimal(Animal data) {

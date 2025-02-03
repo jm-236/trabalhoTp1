@@ -5,12 +5,13 @@ import com.joao.model.Adocao;
 import com.joao.model.FichaMedica;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.UUID;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 
 public class Animal {
-    private int animalID;
+    private String animalID;
     private LocalDate animalData;
     private String animalLocal;
     private String animalNome;
@@ -59,11 +60,11 @@ public class Animal {
     
     
     
-    public int getAnimalID() {
+    public String getAnimalID() {
         return animalID;
     }
 
-    public void setAnimalID(int animalID) {
+    public void setAnimalID(String animalID) {
         this.animalID = animalID;
     }
 
@@ -135,8 +136,8 @@ public class Animal {
         return animalImage;
     }
 
-    public Animal(int animalID, LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
-        this.animalID = animalID;
+    public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
+        this.animalID = UUID.randomUUID().toString();
         this.animalData = animalData;
         this.animalLocal = animalLocal;
         this.animalNome = animalNome;
