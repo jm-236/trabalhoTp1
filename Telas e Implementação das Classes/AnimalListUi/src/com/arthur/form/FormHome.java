@@ -229,7 +229,7 @@ public class FormHome extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(177, 251, 216));
 
-        jScrollPane1.setBorder(null);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(64, 86, 76)));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         panelItem.setBackground(new java.awt.Color(177, 251, 216));

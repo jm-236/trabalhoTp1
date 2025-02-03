@@ -582,9 +582,9 @@ public class FichaAdocao extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //this.setVisible(false);
         
+        this.dispose();
         CadastroAdotante adotanteScreen = new CadastroAdotante();
         adotanteScreen.setVisible(true);
-        close();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

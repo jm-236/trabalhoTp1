@@ -3,6 +3,7 @@ package com.arthur.main;
 
 import com.arthur.event.EventAnimal;
 import com.arthur.form.FormHome;
+import com.arthur.jsonmanaging.HandleJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.fatboyindustrial.gsonjavatime.Converters;
@@ -37,48 +38,21 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import org.jdesktop.animation.timing.interpolation.PropertySetter;
 
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.Base64;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-
-
 
 public class Main extends javax.swing.JFrame {
     
     static Point compCoords;
     
-    //Mouse shenenigans
-    
-    
-    
-    //public static ArrayList<Animal> listaDeAnimais = gerenciador.listaDeAnimais;
-    
     private FormHome home;
     private Animator animator;
     private Point animatePoint;
     private Animal animalSelected;
+    private HandleJson jsonHandler = new HandleJson();
     
-    private Gson gson;
     public ArrayList<Animal> listaDeAnimais = new ArrayList<Animal>();
-    private static final String CAMINHO_ARQUIVO = "animais.json";
     
     
     public Main() {
-        this.gson = new GsonBuilder()
-                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())  // Registrando LocalDateTime
-                .registerTypeAdapter(ImageIcon.class, new ImageIconAdapter())
-                .setPrettyPrinting()
-                .create();
         initComponents();
         init();
         //setBackground(new Color(0, 0, 0, 0));
@@ -153,7 +127,7 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         });
-        this.listaDeAnimais = carregarAnimaisDoArquivo();
+        this.listaDeAnimais = jsonHandler.carregarAnimaisDoArquivo();
         for (Animal a: listaDeAnimais){
             home.addAnimal(a);
         }
@@ -182,8 +156,6 @@ public class Main extends javax.swing.JFrame {
         }*/
     }
     
-    
-    
     private Point getLocationOf(Component com) {
         Point p = home.getPanelItemLocation();
         int x = p.x;
@@ -194,129 +166,6 @@ public class Main extends javax.swing.JFrame {
         int top = 35;
         return new Point(x + itemX + left, y + itemY + top);
     }
-    
-    
-    
-    // Método para carregar a lista de animais do JSON
-    public ArrayList<Animal> carregarAnimaisDoArquivo() {
-        try (Reader reader = new FileReader(CAMINHO_ARQUIVO)) {
-            java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Animal>>() {}.getType();
-            ArrayList<Animal> animais = gson.fromJson(reader, tipoLista);
-            return (animais != null) ? animais : new ArrayList<>();
-        } catch (FileNotFoundException e) {
-            // Arquivo não encontrado, retorna lista vazia
-            return new ArrayList<Animal>();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<Animal>();
-        }
-    }
-
-    // Método para salvar a lista de animais no JSON
-    private void salvarAnimaisNoArquivo() {
-        try (Writer writer = new FileWriter(CAMINHO_ARQUIVO)) {
-            gson.toJson(listaDeAnimais, writer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try (BufferedReader reader = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
-        String linha;
-        System.out.println("Conteúdo do arquivo JSON:");
-        while ((linha = reader.readLine()) != null) {
-            System.out.println(linha);
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    }
-    
-    
-    public class LocalDateAdapter extends TypeAdapter<LocalDate> {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-
-    @Override
-    public void write(JsonWriter out, LocalDate localDate) throws IOException {
-        if (localDate == null) {
-            out.nullValue();  // Permite null na serialização
-            return;
-        }
-        out.value(localDate.format(formatter));
-    }
-
-    @Override
-    public LocalDate read(JsonReader jsonReader) throws IOException {
-        return LocalDate.parse(jsonReader.nextString(), formatter);
-    }
-}
-    
-
-
-public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-
-    @Override
-    public void write(JsonWriter jsonWriter, LocalDateTime localDateTime) throws IOException {
-        jsonWriter.value(localDateTime.format(formatter));
-    }
-
-    @Override
-    public LocalDateTime read(JsonReader jsonReader) throws IOException {
-        return LocalDateTime.parse(jsonReader.nextString(), formatter);
-    }
-}
-
-
-class ImageIconAdapter extends TypeAdapter<ImageIcon> {
-
-    @Override
-    public void write(JsonWriter out, ImageIcon icon) throws IOException {
-        if (icon == null) {
-            out.nullValue();
-            return;
-        }
-
-        // Convert ImageIcon to BufferedImage safely
-        BufferedImage bufferedImage = toBufferedImage(icon.getImage());
-
-        // Convert BufferedImage to Base64
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "png", baos);
-        String base64 = Base64.getEncoder().encodeToString(baos.toByteArray());
-
-        out.value(base64);
-    }
-
-    @Override
-    public ImageIcon read(JsonReader in) throws IOException {
-        String base64 = in.nextString();
-        byte[] bytes = Base64.getDecoder().decode(base64);
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        BufferedImage bufferedImage = ImageIO.read(bais);
-        return new ImageIcon(bufferedImage);
-    }
-
-    // Helper method to convert Image to BufferedImage
-    private BufferedImage toBufferedImage(Image img) {
-        if (img instanceof BufferedImage) {
-            return (BufferedImage) img;
-        }
-
-        // Create a BufferedImage with the correct size and type
-        BufferedImage bufferedImage = new BufferedImage(
-            img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB
-        );
-
-        // Draw the image onto the BufferedImage
-        Graphics2D g2d = bufferedImage.createGraphics();
-        g2d.drawImage(img, 0, 0, null);
-        g2d.dispose();
-
-        return bufferedImage;
-    }
-}
-    
-    
-    
     
     
     
@@ -595,7 +444,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         Animal temp = new Animal(LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
             listaDeAnimais.add(temp);
             home.addAnimal(temp);
-            salvarAnimaisNoArquivo();
+           jsonHandler.salvarAnimaisNoArquivo(listaDeAnimais);
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
@@ -627,7 +476,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String IDanimal= home.ExcluirAnimal();
         listaDeAnimais.removeIf(animal -> animal.getAnimalID().equals(IDanimal));
-        salvarAnimaisNoArquivo();
+        jsonHandler.salvarAnimaisNoArquivo(listaDeAnimais);
         home.resetShow();
         mainPanel.setImage(null);
         mainPanel.setImageOld(null);
@@ -635,9 +484,7 @@ class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         mainPanel.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
