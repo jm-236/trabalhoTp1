@@ -44,7 +44,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nomeFuncionarioField = new javax.swing.JTextField();
@@ -88,20 +87,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
         jToolBar1.setFloatable(false);
-
-        jButton2.setBackground(new java.awt.Color(205, 255, 232));
-        jButton2.setForeground(new java.awt.Color(64, 86, 76));
-        jButton2.setText("Início");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
 
         loginButton.setBackground(new java.awt.Color(205, 255, 232));
         loginButton.setForeground(new java.awt.Color(64, 86, 76));
@@ -339,8 +324,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
+                                .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(nascimentoField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -433,14 +418,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MainFrame mainframe = new MainFrame();
+        MainFrameIII mainframe = new MainFrameIII();
         mainframe.setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -508,7 +489,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
             
             this.setVisible(false);
-            MainFrame mainframe = new MainFrame();
+            MainFrameIII mainframe = new MainFrameIII();
             mainframe.setVisible(true);
         } catch (DateTimeParseException e){
             JOptionPane.showMessageDialog(null, "Data de nascimento inválida!\n"
@@ -656,7 +637,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField crmvField;
     private javax.swing.JTextField emailField;
     private javax.swing.JCheckBox isVeterinarioCheckbox;
-    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

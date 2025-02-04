@@ -647,7 +647,7 @@ public class FichaAdocao extends javax.swing.JFrame {
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         this.dispose();
-        MainFrame n = new MainFrame();
+        MainFrameIII n = new MainFrameIII();
         n.setVisible(true);
     }//GEN-LAST:event_botaoSairActionPerformed
 
