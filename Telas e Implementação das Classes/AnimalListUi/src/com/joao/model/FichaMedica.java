@@ -1,28 +1,29 @@
 package com.joao.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class FichaMedica {
 
-    private LocalDateTime dataHora;
+    private LocalDate dataHora;
     private String diagnostico;
     private String tratamento;
     private Veterinario veterinario;
     
     
     
-    public FichaMedica(LocalDateTime dataHora, String diagnostico, String tratamento, Veterinario veterinario) {
+    public FichaMedica(LocalDate dataHora, String diagnostico, String tratamento, Veterinario veterinario) {
         this.dataHora = dataHora;
         this.diagnostico = diagnostico;
         this.tratamento = tratamento;
         this.veterinario = veterinario;
     }
 
-    public LocalDateTime getDataHora() {
+    public LocalDate getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(LocalDateTime dataHora) {
+    public void setDataHora(LocalDate dataHora) {
         this.dataHora = dataHora;
     }
 

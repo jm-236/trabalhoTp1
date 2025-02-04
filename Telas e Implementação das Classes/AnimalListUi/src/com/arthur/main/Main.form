@@ -241,7 +241,6 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -262,7 +261,6 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -283,7 +281,6 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -304,7 +301,6 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -335,7 +331,6 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>

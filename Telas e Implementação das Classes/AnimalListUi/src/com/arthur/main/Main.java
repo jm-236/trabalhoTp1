@@ -441,7 +441,7 @@ public class Main extends javax.swing.JFrame {
         
         //TEMPORÁRIO
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        Animal temp = new Animal(LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDateTime.now(), "diagnostico", "tratamento", new Veterinario("cpf",new Date(),"email","nome","telefone",1,"senha",2)), new Adocao());
+        Animal temp = new Animal(LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDate.now(), "diagnostico", "tratamento", new Veterinario("cpf",LocalDate.now(),"email","nome","telefone","senha","crmv")), new Adocao());
             listaDeAnimais.add(temp);
             home.addAnimal(temp);
            jsonHandler.salvarAnimaisNoArquivo(listaDeAnimais);

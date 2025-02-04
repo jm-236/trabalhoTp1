@@ -36,7 +36,6 @@ public class HandleJson {
     public HandleJson() {
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new HandleJson.LocalDateAdapter())
-                .registerTypeAdapter(LocalDateTime.class, new HandleJson.LocalDateTimeAdapter())  // Registrando LocalDateTime
                 .registerTypeAdapter(ImageIcon.class, new HandleJson.ImageIconAdapter())
                 .setPrettyPrinting()
                 .create();
@@ -104,7 +103,7 @@ public class HandleJson {
 
 
     public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
     @Override
     public void write(JsonWriter jsonWriter, LocalDateTime localDateTime) throws IOException {
@@ -165,11 +164,5 @@ public class HandleJson {
 
         return bufferedImage;
     }
-}
-    
-    
-    
-    
-    
-    
+} 
 }

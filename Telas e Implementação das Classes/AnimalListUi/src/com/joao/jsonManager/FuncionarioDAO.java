@@ -26,7 +26,7 @@ import java.util.UUID;
 public class FuncionarioDAO {
     private static final String ARQUIVO_JSON = "funcionarios.json";
     Gson gson = new GsonBuilder()
-    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter2())
     .create();
 
     // Salva a lista de funcionários no arquivo JSON
