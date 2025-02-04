@@ -1,17 +1,25 @@
 package com.joao.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Veterinario extends Funcionario{
 
-    private int crmv;
+    private String crmv;
     
-    public Veterinario(String cpf, Date dataNascimento, String email, String nome, String telefone, int id, String senha, int crmv) {
-        super(cpf, dataNascimento, email, nome, telefone, id, senha);
+    public Veterinario(String cpf, LocalDate dataNascimento, String email, String nome, String telefone, String senha, String crmv) {
+        super(cpf, dataNascimento, email, nome, telefone, senha);
         this.crmv = crmv;
     }
 
-    public int getCrmv() {
+    public String getCrmv() {
         return crmv;
     }
+
+    @Override
+    public String toString() {
+        return "Veterinario{" + "crmv=" + crmv + '}';
+    }
+    
+    
 }

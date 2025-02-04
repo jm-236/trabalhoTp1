@@ -1,5 +1,6 @@
 package com.joao.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,9 +9,8 @@ public class Funcionario extends Pessoa{
     private String id;
     private String senha;
 
-    public Funcionario(String cpf, Date dataNascimento, String email, String nome, String telefone, String id, String senha) {
+    public Funcionario(String cpf, LocalDate dataNascimento, String email, String nome, String telefone, String senha) {
         super(cpf, dataNascimento, email, nome, telefone);
-        this.id = id;
         this.senha = senha;
     }
 
@@ -32,5 +32,5 @@ public class Funcionario extends Pessoa{
             return true;
         }
         return false;
-    }
+    }    
 }

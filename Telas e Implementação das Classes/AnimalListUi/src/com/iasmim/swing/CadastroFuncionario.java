@@ -4,9 +4,17 @@
  */
 package com.iasmim.swing;
 
+import com.joao.jsonManager.FuncionarioDAO;
+import com.joao.model.Funcionario;
+import com.joao.model.Veterinario;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -14,6 +22,8 @@ import javax.swing.JTextField;
  * @author iasmimqf
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
+    
+    private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     /**
      * Creates new form CadastroFuncionario
@@ -374,12 +384,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(nomeFuncionarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(nascimentoField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9)))
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,10 +472,48 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Botão de cadastrar funcionário clicado!");
-        String nome = nomeFuncionarioField.getText();
-        String cpf = cpfField.getText();
-        
+        try{
+            System.out.println("Botão de cadastrar funcionário clicado!");
+            String nome = nomeFuncionarioField.getText();
+            if (nome.equals("") || nome.equals("Nome Completo")){
+                JOptionPane.showMessageDialog(null, "O nome não pode ser vazio!");
+                return;
+            }
+            String cpf = cpfField.getText();
+            LocalDate dataNascimento = LocalDate.parse(nascimentoField.getText(), 
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            String telefone = telefoneField.getText();
+            String email = emailField.getText();
+            String senhaI = new String(senhaIField.getPassword());
+            String senhaII = new String(senhaIIField.getPassword());
+            System.out.println(senhaI + " " + senhaII);
+            if (!senhaI.equals(senhaII)){
+                JOptionPane.showMessageDialog(null, "As senhas devem ser iguais!");
+                return;
+            }
+
+            if (isVeterinarioCheckbox.isSelected()){
+                String crmv = crmvField.getText();
+                Veterinario veterinario = new Veterinario(cpf, dataNascimento, email
+                , nome, telefone, senhaI, crmv);
+                funcionarioDAO.adicionarFuncionario(veterinario);
+                JOptionPane.showConfirmDialog(null, "Novo veterinário cadastrado com sucesso!\n"
+                + veterinario);
+            } else {
+                Funcionario funcionario = new Funcionario(cpf, dataNascimento, email,
+                nome, telefone, senhaI);
+                funcionarioDAO.adicionarFuncionario(funcionario);
+                JOptionPane.showConfirmDialog(null, "Novo funcionário cadastrado com sucesso!\n"
+                + funcionario);     
+            }
+            
+            this.setVisible(false);
+            MainFrame mainframe = new MainFrame();
+            mainframe.setVisible(true);
+        } catch (DateTimeParseException e){
+            JOptionPane.showMessageDialog(null, "Data de nascimento inválida!\n"
+                    + "A data deve ser escrita no formato dd/MM/yyyy");
+        }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     private void nomeFuncionarioFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFuncionarioFieldFocusGained

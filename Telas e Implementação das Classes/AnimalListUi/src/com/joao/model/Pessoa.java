@@ -1,5 +1,6 @@
 package com.joao.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class Pessoa {
@@ -7,9 +8,9 @@ public abstract class Pessoa {
     private String cpf;
     private String telefone;
     private String email;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
-    public Pessoa(String cpf, Date dataNascimento, String email, String nome, String telefone) {
+    public Pessoa(String cpf, LocalDate dataNascimento, String email, String nome, String telefone) {
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.email = email;
@@ -38,11 +39,11 @@ public abstract class Pessoa {
         }
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -69,4 +70,11 @@ public abstract class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento + '}';
+    }
+    
+    
 }
