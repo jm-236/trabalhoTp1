@@ -1,10 +1,9 @@
 [
   {
-<<<<<<< HEAD
     "animalID": "d7b650ea-23d3-4eff-9f3d-2f41e5bfd249",
-=======
+
     "animalID": "0992ae84-4779-40a6-a5e9-05e13a49d5b0",
->>>>>>> 7981c34e8d199b40c037ad85190e1f737a7b521e
+
     "animalData": "2025-02-03",
     "animalLocal": "Brasília",
     "animalNome": "Culero",
@@ -16,11 +15,11 @@
     "animalRaca": "raça",
     "animalDataNascimento": "2004-01-20",
     "animalFichaMedica": {
-<<<<<<< HEAD
+
       "dataHora": "2025-02-03T07:35:21.9098979",
-=======
+
       "dataHora": "2025-02-03T13:46:39.9681449",
->>>>>>> 7981c34e8d199b40c037ad85190e1f737a7b521e
+
       "diagnostico": "diagnostico",
       "tratamento": "tratamento",
       "veterinario": {
@@ -31,21 +30,17 @@
         "cpf": "cpf",
         "telefone": "telefone",
         "email": "email",
-<<<<<<< HEAD
+
         "dataNascimento": "Feb 3, 2025, 7:35:21 AM"
-=======
-        "dataNascimento": "Feb 3, 2025, 1:46:39 PM"
->>>>>>> 7981c34e8d199b40c037ad85190e1f737a7b521e
+
       }
     },
     "animalAdocao": {}
   },
   {
-<<<<<<< HEAD
     "animalID": "4907163d-9c0e-46b6-8f69-6bc948ca2982",
-=======
+
     "animalID": "2ce47824-9b6a-4670-b253-fcf00d673e9d",
->>>>>>> 7981c34e8d199b40c037ad85190e1f737a7b521e
     "animalData": "2025-02-03",
     "animalLocal": "Brasília",
     "animalNome": "Culero",
@@ -57,11 +52,10 @@
     "animalRaca": "raça",
     "animalDataNascimento": "2004-01-20",
     "animalFichaMedica": {
-<<<<<<< HEAD
+
       "dataHora": "2025-02-03T07:35:24.3279215",
-=======
+
       "dataHora": "2025-02-03T13:46:40.1026205",
->>>>>>> 7981c34e8d199b40c037ad85190e1f737a7b521e
       "diagnostico": "diagnostico",
       "tratamento": "tratamento",
       "veterinario": {
@@ -72,10 +66,8 @@
         "cpf": "cpf",
         "telefone": "telefone",
         "email": "email",
-<<<<<<< HEAD
+                
         "dataNascimento": "Feb 3, 2025, 7:35:24 AM"
-=======
-        "dataNascimento": "Feb 3, 2025, 1:46:40 PM"
       }
     },
     "animalAdocao": {}
@@ -105,7 +97,6 @@
         "telefone": "telefone",
         "email": "email",
         "dataNascimento": "Feb 3, 2025, 1:46:40 PM"
->>>>>>> 7981c34e8d199b40c037ad85190e1f737a7b521e
       }
     },
     "animalAdocao": {}

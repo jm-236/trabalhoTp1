@@ -35,24 +35,27 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        nomeField = new javax.swing.JTextField();
+        nomeFuncionarioField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        cpfField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        telefoneField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jTextField5 = new javax.swing.JTextField();
+        senhaIIField = new javax.swing.JPasswordField();
+        senhaIField = new javax.swing.JPasswordField();
+        isVeterinarioCheckbox = new javax.swing.JCheckBox();
+        crmvField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        cadastrarButton = new javax.swing.JButton();
+        ocultarSenhaCheckbox = new javax.swing.JCheckBox();
+        nascimentoField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -90,19 +93,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton2);
 
-        jButton3.setBackground(new java.awt.Color(205, 255, 232));
-        jButton3.setForeground(new java.awt.Color(64, 86, 76));
-        jButton3.setText("Login");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setBackground(new java.awt.Color(205, 255, 232));
+        loginButton.setForeground(new java.awt.Color(64, 86, 76));
+        loginButton.setText("Login");
+        loginButton.setFocusable(false);
+        loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        loginButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        loginButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton3);
+        jToolBar1.add(loginButton);
 
         jLabel1.setBackground(new java.awt.Color(64, 86, 76));
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 32)); // NOI18N
@@ -112,26 +115,42 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setOpaque(true);
 
-        nomeField.setBackground(new java.awt.Color(217, 217, 217));
-        nomeField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        nomeField.setForeground(new java.awt.Color(32, 61, 74));
-        nomeField.setText("Nome Completo do Funcionário da Silva");
-        nomeField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        nomeField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        nomeFuncionarioField.setBackground(new java.awt.Color(217, 217, 217));
+        nomeFuncionarioField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        nomeFuncionarioField.setForeground(new java.awt.Color(32, 61, 74));
+        nomeFuncionarioField.setText("Nome Completo");
+        nomeFuncionarioField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        nomeFuncionarioField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        nomeFuncionarioField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeFuncionarioFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomeFuncionarioFieldFocusLost(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(48, 63, 56));
         jLabel2.setText("Nome : ");
 
-        jTextField2.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField2.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField2.setText("000.000.000-00");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField2.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        cpfField.setBackground(new java.awt.Color(217, 217, 217));
+        cpfField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        cpfField.setForeground(new java.awt.Color(32, 61, 74));
+        cpfField.setText("000.000.000-00");
+        cpfField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        cpfField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        cpfField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cpfFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cpfFieldFocusLost(evt);
+            }
+        });
+        cpfField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                cpfFieldActionPerformed(evt);
             }
         });
 
@@ -139,12 +158,20 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(48, 63, 56));
         jLabel3.setText("CPF :");
 
-        jTextField3.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField3.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField3.setText("(00) 99824 - 4353");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField3.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        telefoneField.setBackground(new java.awt.Color(217, 217, 217));
+        telefoneField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        telefoneField.setForeground(new java.awt.Color(32, 61, 74));
+        telefoneField.setText("(99) 99999-9999");
+        telefoneField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        telefoneField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        telefoneField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                telefoneFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                telefoneFieldFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(48, 63, 56));
@@ -154,15 +181,23 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(48, 63, 56));
         jLabel5.setText("E-mail :");
 
-        jTextField4.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField4.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField4.setText("exemplo@email.com");
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField4.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        emailField.setBackground(new java.awt.Color(217, 217, 217));
+        emailField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        emailField.setForeground(new java.awt.Color(32, 61, 74));
+        emailField.setText("exemplo@email.com");
+        emailField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        emailField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        emailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailFieldFocusLost(evt);
+            }
+        });
+        emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                emailFieldActionPerformed(evt);
             }
         });
 
@@ -174,43 +209,52 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(48, 63, 56));
         jLabel7.setText("Senha : ");
 
-        jPasswordField1.setBackground(new java.awt.Color(217, 217, 217));
-        jPasswordField1.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(32, 61, 74));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(115, 25));
+        senhaIIField.setBackground(new java.awt.Color(217, 217, 217));
+        senhaIIField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        senhaIIField.setForeground(new java.awt.Color(32, 61, 74));
+        senhaIIField.setText("Senha");
+        senhaIIField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        senhaIIField.setPreferredSize(new java.awt.Dimension(115, 25));
 
-        jPasswordField2.setBackground(new java.awt.Color(217, 217, 217));
-        jPasswordField2.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jPasswordField2.setForeground(new java.awt.Color(32, 61, 74));
-        jPasswordField2.setText("jPasswordField1");
-        jPasswordField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jPasswordField2.setPreferredSize(new java.awt.Dimension(115, 25));
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        senhaIField.setBackground(new java.awt.Color(217, 217, 217));
+        senhaIField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        senhaIField.setForeground(new java.awt.Color(32, 61, 74));
+        senhaIField.setText("Senha");
+        senhaIField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        senhaIField.setPreferredSize(new java.awt.Dimension(115, 25));
+        senhaIField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                senhaIFieldActionPerformed(evt);
             }
         });
 
-        jCheckBox1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(32, 61, 74));
-        jCheckBox1.setText("Veterinário");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        isVeterinarioCheckbox.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        isVeterinarioCheckbox.setForeground(new java.awt.Color(32, 61, 74));
+        isVeterinarioCheckbox.setText("Veterinário");
+        isVeterinarioCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                isVeterinarioCheckboxActionPerformed(evt);
             }
         });
 
-        jTextField5.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField5.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField5.setText("000.000.000-00");
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField5.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        crmvField.setBackground(new java.awt.Color(217, 217, 217));
+        crmvField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        crmvField.setForeground(new java.awt.Color(32, 61, 74));
+        crmvField.setText("000.000.000-00");
+        crmvField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        crmvField.setEnabled(false);
+        crmvField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        crmvField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                crmvFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                crmvFieldFocusLost(evt);
+            }
+        });
+        crmvField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                crmvFieldActionPerformed(evt);
             }
         });
 
@@ -218,18 +262,51 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(48, 63, 56));
         jLabel8.setText("CRMV :");
 
-        jButton1.setBackground(new java.awt.Color(21, 102, 64));
-        jButton1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cadastrar");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarButton.setBackground(new java.awt.Color(21, 102, 64));
+        cadastrarButton.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        cadastrarButton.setForeground(new java.awt.Color(255, 255, 255));
+        cadastrarButton.setText("Cadastrar");
+        cadastrarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cadastrarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cadastrarButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarButtonActionPerformed(evt);
             }
         });
+
+        ocultarSenhaCheckbox.setForeground(new java.awt.Color(32, 61, 74));
+        ocultarSenhaCheckbox.setSelected(true);
+        ocultarSenhaCheckbox.setText("Ocultar senha");
+        ocultarSenhaCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ocultarSenhaCheckboxActionPerformed(evt);
+            }
+        });
+
+        nascimentoField.setBackground(new java.awt.Color(217, 217, 217));
+        nascimentoField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        nascimentoField.setForeground(new java.awt.Color(32, 61, 74));
+        nascimentoField.setText("00/00/0000");
+        nascimentoField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        nascimentoField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        nascimentoField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nascimentoFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nascimentoFieldFocusLost(evt);
+            }
+        });
+        nascimentoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nascimentoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(48, 63, 56));
+        jLabel9.setText("Nascimento:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -244,15 +321,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nascimentoField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -262,23 +343,25 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox1)))
+                                    .addComponent(senhaIField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(senhaIIField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(isVeterinarioCheckbox)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(nomeFuncionarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(crmvField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ocultarSenhaCheckbox))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(545, 545, 545)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(404, Short.MAX_VALUE))
+                        .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,37 +371,41 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeFuncionarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nascimentoField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(senhaIField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(ocultarSenhaCheckbox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senhaIIField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(12, 12, 12)
-                .addComponent(jCheckBox1)
+                .addComponent(isVeterinarioCheckbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crmvField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(35, 35, 35)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -339,34 +426,145 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.setVisible(false);
+        MainFrame mainframe = new MainFrame();
+        mainframe.setVisible(true);
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void cpfFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_cpfFieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_emailFieldActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void senhaIFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaIFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_senhaIFieldActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void isVeterinarioCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isVeterinarioCheckboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        if (!isVeterinarioCheckbox.isSelected()) {
+            crmvField.setEnabled(false);
+            crmvField.setText("000.000.000-00");
+        } else {
+            crmvField.setEnabled(true); 
+        }
+    }//GEN-LAST:event_isVeterinarioCheckboxActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void crmvFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crmvFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_crmvFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("Botão de cadastrar funcionário clicado!");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String nome = nomeFuncionarioField.getText();
+        String cpf = cpfField.getText();
+        
+    }//GEN-LAST:event_cadastrarButtonActionPerformed
+
+    private void nomeFuncionarioFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFuncionarioFieldFocusGained
+        // TODO add your handling code here:
+        if (nomeFuncionarioField.getText().equals("Nome Completo")) {
+            nomeFuncionarioField.setText("");
+        }
+    }//GEN-LAST:event_nomeFuncionarioFieldFocusGained
+
+    private void nomeFuncionarioFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFuncionarioFieldFocusLost
+        // TODO add your handling code here:
+        if (nomeFuncionarioField.getText().isEmpty()) {
+            nomeFuncionarioField.setText("Nome Completo");
+        }
+    }//GEN-LAST:event_nomeFuncionarioFieldFocusLost
+
+    private void cpfFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpfFieldFocusGained
+        // TODO add your handling code here:
+        if (cpfField.getText().equals("000.000.000-00")) {
+            cpfField.setText("");
+        }
+    }//GEN-LAST:event_cpfFieldFocusGained
+
+    private void cpfFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpfFieldFocusLost
+        // TODO add your handling code here:
+        if (cpfField.getText().isEmpty()) {
+            cpfField.setText("000.000.000-00");
+        }
+    }//GEN-LAST:event_cpfFieldFocusLost
+
+    private void telefoneFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFieldFocusGained
+        // TODO add your handling code here:
+        if (telefoneField.getText().equals("(99) 99999-9999")) {
+            telefoneField.setText("");
+        }
+    }//GEN-LAST:event_telefoneFieldFocusGained
+
+    private void emailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusGained
+        // TODO add your handling code here:
+        if (emailField.getText().equals("exemplo@email.com")) {
+            emailField.setText("");
+        }
+    }//GEN-LAST:event_emailFieldFocusGained
+
+    private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
+        // TODO add your handling code here:
+        if (emailField.getText().isEmpty()) {
+            emailField.setText("exemplo@email.com");
+        }
+    }//GEN-LAST:event_emailFieldFocusLost
+
+    private void telefoneFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFieldFocusLost
+        // TODO add your handling code here:
+        if (telefoneField.getText().isEmpty()) {
+            telefoneField.setText("(99) 99999-9999");
+        }
+    }//GEN-LAST:event_telefoneFieldFocusLost
+
+    private void ocultarSenhaCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ocultarSenhaCheckboxActionPerformed
+        // TODO add your handling code here:
+         if (!ocultarSenhaCheckbox.isSelected()) {
+                    senhaIField.setEchoChar((char) 0); 
+                    senhaIIField.setEchoChar((char) 0); 
+                } else {
+                    senhaIField.setEchoChar('*'); 
+                    senhaIIField.setEchoChar('*');
+                }
+    }//GEN-LAST:event_ocultarSenhaCheckboxActionPerformed
+
+    private void crmvFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_crmvFieldFocusGained
+        // TODO add your handling code here:
+        if (crmvField.getText().equals("000.000.000-00") && isVeterinarioCheckbox.isSelected()) {
+            crmvField.setText("");
+        }
+    }//GEN-LAST:event_crmvFieldFocusGained
+
+    private void crmvFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_crmvFieldFocusLost
+        // TODO add your handling code here:
+        if (crmvField.getText().isEmpty()) {
+            crmvField.setText("000.000.000-00");
+        }
+    }//GEN-LAST:event_crmvFieldFocusLost
+
+    private void nascimentoFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nascimentoFieldFocusGained
+        // TODO add your handling code here:
+        if (nascimentoField.getText().equals("00/00/0000")) {
+            nascimentoField.setText("");
+        }
+    }//GEN-LAST:event_nascimentoFieldFocusGained
+
+    private void nascimentoFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nascimentoFieldFocusLost
+        // TODO add your handling code here:
+        if (nascimentoField.getText().isEmpty()) {
+            nascimentoField.setText("00/00/0000");
+        }
+    }//GEN-LAST:event_nascimentoFieldFocusLost
+
+    private void nascimentoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nascimentoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nascimentoFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,10 +602,12 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton cadastrarButton;
+    private javax.swing.JTextField cpfField;
+    private javax.swing.JTextField crmvField;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JCheckBox isVeterinarioCheckbox;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -417,15 +617,16 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTextField nomeField;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JTextField nascimentoField;
+    private javax.swing.JTextField nomeFuncionarioField;
+    private javax.swing.JCheckBox ocultarSenhaCheckbox;
+    private javax.swing.JPasswordField senhaIField;
+    private javax.swing.JPasswordField senhaIIField;
+    private javax.swing.JTextField telefoneField;
     // End of variables declaration//GEN-END:variables
 
 }

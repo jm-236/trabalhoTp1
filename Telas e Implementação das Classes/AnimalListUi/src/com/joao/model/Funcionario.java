@@ -5,20 +5,20 @@ import java.util.Objects;
 
 public class Funcionario extends Pessoa{
 
-    private int id;
+    private String id;
     private String senha;
 
-    public Funcionario(String cpf, Date dataNascimento, String email, String nome, String telefone, int id, String senha) {
+    public Funcionario(String cpf, Date dataNascimento, String email, String nome, String telefone, String id, String senha) {
         super(cpf, dataNascimento, email, nome, telefone);
         this.id = id;
         this.senha = senha;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
