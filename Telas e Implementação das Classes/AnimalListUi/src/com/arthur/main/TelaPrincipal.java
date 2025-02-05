@@ -14,7 +14,8 @@ import com.joao.model.FichaMedica;
 import com.joao.model.Veterinario;
 import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
-import com.iasmim.swing.MainFrame;
+import com.iasmim.swing.TelaLogin;
+import com.joao.model.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -39,7 +40,7 @@ import org.jdesktop.animation.timing.interpolation.PropertySetter;
 
 
 
-public class Main extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
     
     static Point compCoords;
     
@@ -48,11 +49,14 @@ public class Main extends javax.swing.JFrame {
     private Point animatePoint;
     private Animal animalSelected;
     private HandleJson jsonHandler = new HandleJson();
+    private Funcionario funcionarioLogado;
     
     public ArrayList<Animal> listaDeAnimais = new ArrayList<Animal>();
     
     
-    public Main() {
+    
+    public TelaPrincipal(Funcionario funcionario) {
+        funcionarioLogado = funcionario;
         initComponents();
         init();
         //setBackground(new Color(0, 0, 0, 0));
@@ -449,19 +453,19 @@ public class Main extends javax.swing.JFrame {
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         this.dispose();
-        MainFrame n = new MainFrame();
+        TelaLogin n = new TelaLogin();
         n.setVisible(true);
     }//GEN-LAST:event_botaoSairActionPerformed
 
@@ -488,7 +492,7 @@ public class Main extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new TelaPrincipal(new Funcionario()).setVisible(true);
             }
         });
     }

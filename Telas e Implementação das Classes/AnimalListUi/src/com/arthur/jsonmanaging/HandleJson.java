@@ -1,6 +1,6 @@
 package com.arthur.jsonmanaging;
 
-import com.arthur.main.Main;
+import com.arthur.main.TelaPrincipal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;

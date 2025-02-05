@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class FuncionarioDAO {
@@ -95,4 +96,9 @@ public class FuncionarioDAO {
         salvarFuncionarios(funcionarios);
     }
     
+    public Optional<Funcionario> buscarFuncionario(String cpf) {
+        List<Funcionario> funcionarios = carregarFuncionarios();
+        return funcionarios.stream().filter(funcionario -> funcionario.getCpf()
+                .equals(cpf)).findFirst();
+    }
 }

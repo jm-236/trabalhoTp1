@@ -1,6 +1,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
+import com.joao.model.Funcionario;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,10 +14,12 @@ import com.arthur.main.TelaPrincipal;
  */
 public class HistoricoFrame extends javax.swing.JFrame {
 
+    private Funcionario funcionarioLogado;
     /**
      * Creates new form HistoricoFrame
      */
-    public HistoricoFrame() {
+    public HistoricoFrame(Funcionario funcionario) {
+        funcionarioLogado = funcionario;
         initComponents();
     }
 
@@ -391,7 +394,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
         this.dispose();
-        TelaPrincipal mainScreen = new TelaPrincipal();
+        TelaPrincipal mainScreen = new TelaPrincipal(funcionarioLogado);
         mainScreen.setVisible(true);
     }//GEN-LAST:event_botaoInicioActionPerformed
 
@@ -401,7 +404,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 
@@ -445,7 +448,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HistoricoFrame().setVisible(true);
+                new HistoricoFrame(new Funcionario()).setVisible(true);
             }
         });
     }

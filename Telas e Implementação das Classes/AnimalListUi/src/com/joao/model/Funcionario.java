@@ -14,6 +14,12 @@ public class Funcionario extends Pessoa{
         this.senha = senha;
     }
 
+    public Funcionario() {
+        super(null, null, null, null, null);
+    }
+
+    
+    
     public String getId() {
         return id;
     }

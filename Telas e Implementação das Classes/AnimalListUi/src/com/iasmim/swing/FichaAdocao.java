@@ -5,6 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
+import com.joao.model.Funcionario;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
@@ -14,7 +15,7 @@ import java.awt.event.WindowEvent;
  */
 public class FichaAdocao extends javax.swing.JFrame {
     
-    
+    private Funcionario funcionarioLogado;
     
     //private final TelaPrincipal inicioForm;
     
@@ -22,7 +23,8 @@ public class FichaAdocao extends javax.swing.JFrame {
      * Creates new form FichaAdocao
      */
     
-    public FichaAdocao() {
+    public FichaAdocao(Funcionario funcionario) {
+        funcionarioLogado = funcionario;
         initComponents();
     }
 
@@ -625,7 +627,7 @@ public class FichaAdocao extends javax.swing.JFrame {
 
     private void botaoInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicio1ActionPerformed
         this.dispose();
-        TelaPrincipal mainScreen = new TelaPrincipal();
+        TelaPrincipal mainScreen = new TelaPrincipal(funcionarioLogado);
         mainScreen.setVisible(true);
     }//GEN-LAST:event_botaoInicio1ActionPerformed
 
@@ -641,7 +643,7 @@ public class FichaAdocao extends javax.swing.JFrame {
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
@@ -679,7 +681,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         // Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FichaAdocao().setVisible(true);
+                new FichaAdocao(new Funcionario()).setVisible(true);
             }
         });
     }

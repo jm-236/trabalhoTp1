@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ongalmosthome;
+package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
 import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
+import com.joao.model.Funcionario;
 
 /**
  *
@@ -14,6 +15,7 @@ import com.iasmim.swing.HistoricoFrame;
  */
 public class CadastroAnimal extends javax.swing.JFrame {
 
+    private Funcionario funcionarioLogado;
     /**
      * Creates new form CadastroAnimal
      */
@@ -421,19 +423,19 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private void incioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incioButtonActionPerformed
         this.dispose();
         //close();
-        TelaPrincipal listScreen = new TelaPrincipal();
+        TelaPrincipal listScreen = new TelaPrincipal(funcionarioLogado);
         listScreen.setVisible(true);
     }//GEN-LAST:event_incioButtonActionPerformed
 
     private void adocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adocaoButtonActionPerformed
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_adocaoButtonActionPerformed
 
     private void histButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_histButtonActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_histButtonActionPerformed
 

@@ -5,6 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
+import com.joao.model.Funcionario;
 
 /**
  *
@@ -14,6 +15,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
     private final TelaPrincipal inicioForm;
     private final FichaAdocao telaadocao;
+    private Funcionario funcionarioLogado;
     
     public CadastroAdotante(TelaPrincipal telainicial, FichaAdocao telaadocao) {
         this.inicioForm = telainicial;
@@ -382,13 +384,13 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
