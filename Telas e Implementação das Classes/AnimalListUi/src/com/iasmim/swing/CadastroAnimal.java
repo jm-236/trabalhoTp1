@@ -26,84 +26,84 @@ public class CadastroAnimal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        sairButton = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        incioButton = new javax.swing.JButton();
+        adocaoButton = new javax.swing.JButton();
+        histButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        nomeTextField = new javax.swing.JTextField();
+        especieTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        racaTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        porteComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
+        generoComboBox = new javax.swing.JComboBox<>();
+        pesoTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        dataNascTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        dataResgTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        localTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        imagemPanel = new javax.swing.JPanel();
+        carragarImgButton = new javax.swing.JButton();
+        cadastrarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(177, 251, 216));
+        sairButton.setBackground(new java.awt.Color(177, 251, 216));
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
 
-        jButton2.setBackground(new java.awt.Color(205, 255, 232));
-        jButton2.setForeground(new java.awt.Color(64, 86, 76));
-        jButton2.setText("Início");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        incioButton.setBackground(new java.awt.Color(205, 255, 232));
+        incioButton.setForeground(new java.awt.Color(64, 86, 76));
+        incioButton.setText("Início");
+        incioButton.setFocusable(false);
+        incioButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        incioButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        incioButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        incioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                incioButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(incioButton);
 
-        jButton9.setBackground(new java.awt.Color(205, 255, 232));
-        jButton9.setForeground(new java.awt.Color(64, 86, 76));
-        jButton9.setText("Adoção");
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        adocaoButton.setBackground(new java.awt.Color(205, 255, 232));
+        adocaoButton.setForeground(new java.awt.Color(64, 86, 76));
+        adocaoButton.setText("Adoção");
+        adocaoButton.setFocusable(false);
+        adocaoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        adocaoButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        adocaoButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        adocaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                adocaoButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton9);
+        jToolBar1.add(adocaoButton);
 
-        jButton7.setBackground(new java.awt.Color(205, 255, 232));
-        jButton7.setForeground(new java.awt.Color(64, 86, 76));
-        jButton7.setText("Histórico");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        histButton.setBackground(new java.awt.Color(205, 255, 232));
+        histButton.setForeground(new java.awt.Color(64, 86, 76));
+        histButton.setText("Histórico");
+        histButton.setFocusable(false);
+        histButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        histButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        histButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        histButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                histButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton7);
+        jToolBar1.add(histButton);
         jToolBar1.add(filler1);
 
         jButton4.setBackground(new java.awt.Color(205, 255, 232));
@@ -132,27 +132,27 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(48, 63, 56));
         jLabel2.setText("Nome : ");
 
-        jTextField1.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField1.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField1.setText("Rex Dino");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField1.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nomeTextField.setBackground(new java.awt.Color(217, 217, 217));
+        nomeTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        nomeTextField.setForeground(new java.awt.Color(32, 61, 74));
+        nomeTextField.setText("Rex Dino");
+        nomeTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        nomeTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nomeTextFieldtFieldActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField2.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField2.setText("Dragão");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField2.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        especieTextField.setBackground(new java.awt.Color(217, 217, 217));
+        especieTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        especieTextField.setForeground(new java.awt.Color(32, 61, 74));
+        especieTextField.setText("Dragão");
+        especieTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        especieTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        especieTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                especieTextFieldActionPerformed(evt);
             }
         });
 
@@ -160,15 +160,15 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(48, 63, 56));
         jLabel3.setText("Espécie :");
 
-        jTextField3.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField3.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField3.setText("Komodo");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField3.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        racaTextField.setBackground(new java.awt.Color(217, 217, 217));
+        racaTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        racaTextField.setForeground(new java.awt.Color(32, 61, 74));
+        racaTextField.setText("Komodo");
+        racaTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        racaTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        racaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                racaTextFieldActionPerformed(evt);
             }
         });
 
@@ -180,31 +180,31 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(48, 63, 56));
         jLabel5.setText("Porte : ");
 
-        jComboBox1.setBackground(new java.awt.Color(217, 217, 217));
-        jComboBox1.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(32, 61, 74));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Médio", "Grande" }));
-        jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        porteComboBox.setBackground(new java.awt.Color(217, 217, 217));
+        porteComboBox.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        porteComboBox.setForeground(new java.awt.Color(32, 61, 74));
+        porteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Médio", "Grande" }));
+        porteComboBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
 
         jLabel6.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(48, 63, 56));
         jLabel6.setText("Gênero :");
 
-        jComboBox2.setBackground(new java.awt.Color(217, 217, 217));
-        jComboBox2.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(32, 61, 74));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fêmea", "Macho" }));
-        jComboBox2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        generoComboBox.setBackground(new java.awt.Color(217, 217, 217));
+        generoComboBox.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        generoComboBox.setForeground(new java.awt.Color(32, 61, 74));
+        generoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fêmea", "Macho" }));
+        generoComboBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
 
-        jTextField4.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField4.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField4.setText("16078 Kg");
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField4.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        pesoTextField.setBackground(new java.awt.Color(217, 217, 217));
+        pesoTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        pesoTextField.setForeground(new java.awt.Color(32, 61, 74));
+        pesoTextField.setText("16078 Kg");
+        pesoTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        pesoTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        pesoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                pesoTextFieldActionPerformed(evt);
             }
         });
 
@@ -212,15 +212,15 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(48, 63, 56));
         jLabel7.setText("Peso :");
 
-        jTextField5.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField5.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField5.setText("10/10/1010");
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField5.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        dataNascTextField.setBackground(new java.awt.Color(217, 217, 217));
+        dataNascTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        dataNascTextField.setForeground(new java.awt.Color(32, 61, 74));
+        dataNascTextField.setText("10/10/1010");
+        dataNascTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        dataNascTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        dataNascTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                dataNascTextFieldActionPerformed(evt);
             }
         });
 
@@ -228,15 +228,15 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(48, 63, 56));
         jLabel8.setText("Data de Nascimento :");
 
-        jTextField6.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField6.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField6.setText("25/01/2025");
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField6.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        dataResgTextField.setBackground(new java.awt.Color(217, 217, 217));
+        dataResgTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        dataResgTextField.setForeground(new java.awt.Color(32, 61, 74));
+        dataResgTextField.setText("25/01/2025");
+        dataResgTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        dataResgTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        dataResgTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                dataResgTextFieldActionPerformed(evt);
             }
         });
 
@@ -244,15 +244,15 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(48, 63, 56));
         jLabel9.setText("Data de Resgate :");
 
-        jTextField7.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField7.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField7.setText("Brasília, DF");
-        jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField7.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        localTextField.setBackground(new java.awt.Color(217, 217, 217));
+        localTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        localTextField.setForeground(new java.awt.Color(32, 61, 74));
+        localTextField.setText("Brasília, DF");
+        localTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        localTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        localTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                localTextFieldActionPerformed(evt);
             }
         });
 
@@ -260,141 +260,141 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(48, 63, 56));
         jLabel10.setText("Local do Resgate :");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout imagemPanelLayout = new javax.swing.GroupLayout(imagemPanel);
+        imagemPanel.setLayout(imagemPanelLayout);
+        imagemPanelLayout.setHorizontalGroup(
+            imagemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 291, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        imagemPanelLayout.setVerticalGroup(
+            imagemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 344, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Carregar Imagem");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        carragarImgButton.setText("Carregar Imagem");
+        carragarImgButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                carragarImgButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(21, 102, 64));
-        jButton3.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cadastrar");
-        jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarButton.setBackground(new java.awt.Color(21, 102, 64));
+        cadastrarButton.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        cadastrarButton.setForeground(new java.awt.Color(255, 255, 255));
+        cadastrarButton.setText("Cadastrar");
+        cadastrarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cadastrarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cadastrarButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cadastrarButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout sairButtonLayout = new javax.swing.GroupLayout(sairButton);
+        sairButton.setLayout(sairButtonLayout);
+        sairButtonLayout.setHorizontalGroup(
+            sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1309, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sairButtonLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(sairButtonLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(dataResgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(generoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(porteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(racaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(especieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(174, 174, 174)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imagemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carragarImgButton)
+                    .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        sairButtonLayout.setVerticalGroup(
+            sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sairButtonLayout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sairButtonLayout.createSequentialGroup()
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(especieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(racaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(porteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(generoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sairButtonLayout.createSequentialGroup()
+                        .addComponent(imagemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(carragarImgButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataResgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 61, Short.MAX_VALUE))
         );
 
@@ -402,69 +402,69 @@ public class CadastroAnimal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sairButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sairButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void incioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_incioButtonActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void adocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adocaoButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_adocaoButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void histButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_histButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_histButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nomeTextFieldtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nomeTextFieldtFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void especieTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especieTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_especieTextFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void racaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_racaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_racaTextFieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void pesoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_pesoTextFieldActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void dataNascTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_dataNascTextFieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void dataResgTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataResgTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_dataResgTextFieldActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void localTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_localTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void carragarImgButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carragarImgButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_carragarImgButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,15 +502,18 @@ public class CadastroAnimal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adocaoButton;
+    private javax.swing.JButton cadastrarButton;
+    private javax.swing.JButton carragarImgButton;
+    private javax.swing.JTextField dataNascTextField;
+    private javax.swing.JTextField dataResgTextField;
+    private javax.swing.JTextField especieTextField;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> generoComboBox;
+    private javax.swing.JButton histButton;
+    private javax.swing.JPanel imagemPanel;
+    private javax.swing.JButton incioButton;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -521,15 +524,12 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextField localTextField;
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JTextField pesoTextField;
+    private javax.swing.JComboBox<String> porteComboBox;
+    private javax.swing.JTextField racaTextField;
+    private javax.swing.JPanel sairButton;
     // End of variables declaration//GEN-END:variables
 }
