@@ -4,6 +4,10 @@
  */
 package ongalmosthome;
 
+import com.arthur.main.Main;
+import com.iasmim.swing.FichaAdocao;
+import com.iasmim.swing.HistoricoFrame;
+
 /**
  *
  * @author iasmimqf
@@ -199,7 +203,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         pesoTextField.setBackground(new java.awt.Color(217, 217, 217));
         pesoTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         pesoTextField.setForeground(new java.awt.Color(32, 61, 74));
-        pesoTextField.setText("16078 Kg");
+        pesoTextField.setText("16078");
         pesoTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         pesoTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
         pesoTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +214,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(48, 63, 56));
-        jLabel7.setText("Peso :");
+        jLabel7.setText("Peso (Kg) :");
 
         dataNascTextField.setBackground(new java.awt.Color(217, 217, 217));
         dataNascTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
@@ -312,7 +316,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataResgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(sairButtonLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(sairButtonLayout.createSequentialGroup()
@@ -415,15 +419,22 @@ public class CadastroAnimal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void incioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incioButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        //close();
+        Main listScreen = new Main();
+        listScreen.setVisible(true);
     }//GEN-LAST:event_incioButtonActionPerformed
 
     private void adocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adocaoButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        FichaAdocao adocaoScreen = new FichaAdocao();
+        adocaoScreen.setVisible(true);
     }//GEN-LAST:event_adocaoButtonActionPerformed
 
     private void histButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_histButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        HistoricoFrame historicoScreen = new HistoricoFrame();
+        historicoScreen.setVisible(true);
     }//GEN-LAST:event_histButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
