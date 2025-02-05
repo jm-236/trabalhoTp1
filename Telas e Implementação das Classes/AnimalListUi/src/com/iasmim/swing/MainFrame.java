@@ -213,6 +213,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         String cpf = usernameField.getText();
+        String senha = new String(senhaField.getPassword());
+        
         if (cpf.length() != 11){
             JOptionPane.showMessageDialog(null, "Tamanho do CPF inválido.");
             return;
@@ -223,6 +225,18 @@ public class MainFrame extends javax.swing.JFrame {
         if (funcionarioOptional.isEmpty()){
             JOptionPane.showMessageDialog(null, "Nehum usuário encontrado com o cpf " + cpf + ".");
             return;
+        }
+        Funcionario funcionario = funcionarioOptional.get();
+        
+        if(funcionario.getSenha().equals(senha)){
+            //System.out.println("Senha correta! Entrando na tela principal");
+            this.setVisible(false);
+            Main main = new Main(funcionario);
+            main.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Login realizado com sucesso.");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta.");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -272,6 +286,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         // TODO add your handling code here:
+        //System.out.println("Encerrando a aplicação.");
         System.exit(0);
     }//GEN-LAST:event_sairButtonActionPerformed
 

@@ -5,6 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.Main;
+import com.joao.model.Funcionario;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
@@ -21,8 +22,11 @@ public class FichaAdocao extends javax.swing.JFrame {
     /**
      * Creates new form FichaAdocao
      */
+    private Funcionario funcionarioLogado;
     
-    public FichaAdocao() {
+    public FichaAdocao(Funcionario funcionario) {
+        funcionarioLogado = funcionario;
+        //System.out.println("Funcionário " + funcionario.getNome() + "acessou ficha de adoção.");
         initComponents();
     }
 
@@ -625,7 +629,9 @@ public class FichaAdocao extends javax.swing.JFrame {
 
     private void botaoInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicio1ActionPerformed
         this.dispose();
-        Main mainScreen = new Main();
+        //System.out.println("Funcionário" + funcionarioLogado.getNome() 
+        //        + "saindo da ficha de adoção para a main");
+        Main mainScreen = new Main(funcionarioLogado);
         mainScreen.setVisible(true);
     }//GEN-LAST:event_botaoInicio1ActionPerformed
 
@@ -634,14 +640,14 @@ public class FichaAdocao extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
-        //this.dispose();
-        //FichaAdocao adocaoScreen = new FichaAdocao();
-        //adocaoScreen.setVisible(true);
+        this.dispose();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
+        adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
@@ -679,7 +685,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         // Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FichaAdocao().setVisible(true);
+                new FichaAdocao(new Funcionario()).setVisible(true);
             }
         });
     }

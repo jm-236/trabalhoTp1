@@ -5,6 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.Main;
+import com.joao.model.Funcionario;
 
 /**
  *
@@ -14,6 +15,9 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
     private final Main inicioForm;
     private final FichaAdocao telaadocao;
+    
+    // implementado dps do login
+    private Funcionario funcionarioLogado;
     
     public CadastroAdotante(Main telainicial, FichaAdocao telaadocao) {
         this.inicioForm = telainicial;
@@ -25,6 +29,15 @@ public class CadastroAdotante extends javax.swing.JFrame {
         this.telaadocao = null;
         initComponents();
     }
+
+    public CadastroAdotante(Funcionario funcionario) {
+        this.funcionarioLogado = funcionarioLogado;
+        this.inicioForm = null;
+        this.telaadocao = null;
+        //System.out.println("Funcionário " + this.funcionarioLogado + "na tela de cadastro de adotante");
+        initComponents();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -382,13 +395,14 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
+        //System.out.println("Saindo da ficha de adoção " + funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 

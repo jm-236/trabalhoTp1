@@ -454,7 +454,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
         try{
-            System.out.println("Botão de cadastrar funcionário clicado!");
             String nome = nomeFuncionarioField.getText();
             if (nome.equals("") || nome.equals("Nome Completo")){
                 JOptionPane.showMessageDialog(null, "O nome não pode ser vazio!");
@@ -467,7 +466,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             String email = emailField.getText();
             String senhaI = new String(senhaIField.getPassword());
             String senhaII = new String(senhaIIField.getPassword());
-            System.out.println(senhaI + " " + senhaII);
             if (!senhaI.equals(senhaII)){
                 JOptionPane.showMessageDialog(null, "As senhas devem ser iguais!");
                 return;
@@ -478,13 +476,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 Veterinario veterinario = new Veterinario(cpf, dataNascimento, email
                 , nome, telefone, senhaI, crmv);
                 funcionarioDAO.adicionarFuncionario(veterinario);
-                JOptionPane.showConfirmDialog(null, "Novo veterinário cadastrado com sucesso!\n"
+                JOptionPane.showMessageDialog(null, "Novo veterinário cadastrado com sucesso!\n"
                 + veterinario);
             } else {
                 Funcionario funcionario = new Funcionario(cpf, dataNascimento, email,
                 nome, telefone, senhaI);
                 funcionarioDAO.adicionarFuncionario(funcionario);
-                JOptionPane.showConfirmDialog(null, "Novo funcionário cadastrado com sucesso!\n"
+                JOptionPane.showMessageDialog(null, "Novo funcionário cadastrado com sucesso!\n"
                 + funcionario);     
             }
             

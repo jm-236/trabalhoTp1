@@ -1,6 +1,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.Main;
+import com.joao.model.Funcionario;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,12 +14,21 @@ import com.arthur.main.Main;
  */
 public class HistoricoFrame extends javax.swing.JFrame {
 
+    private Funcionario funcionarioLogado;
     /**
      * Creates new form HistoricoFrame
      */
     public HistoricoFrame() {
         initComponents();
     }
+
+    public HistoricoFrame(Funcionario funcionario) {
+        this.funcionarioLogado = funcionario;
+        //System.out.println(funcionario + " entrou na tela de historico");
+        initComponents();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,6 +77,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(177, 251, 216));
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
 
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(48, 63, 56));
@@ -391,7 +402,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
         this.dispose();
-        Main mainScreen = new Main();
+        Main mainScreen = new Main(funcionarioLogado);
         mainScreen.setVisible(true);
     }//GEN-LAST:event_botaoInicioActionPerformed
 
@@ -401,7 +412,8 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        //System.out.println("SAindo do historico. Funcionario: " + funcionarioLogado);
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 

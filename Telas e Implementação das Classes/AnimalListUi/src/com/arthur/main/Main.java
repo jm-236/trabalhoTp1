@@ -15,6 +15,7 @@ import com.joao.model.Veterinario;
 import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
 import com.iasmim.swing.MainFrame;
+import com.joao.model.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -48,11 +49,17 @@ public class Main extends javax.swing.JFrame {
     private Point animatePoint;
     private Animal animalSelected;
     private HandleJson jsonHandler = new HandleJson();
+    private Funcionario funcionarioLogado;
+    
+    
     
     public ArrayList<Animal> listaDeAnimais = new ArrayList<Animal>();
     
     
-    public Main() {
+    public Main(Funcionario funcionario) {
+        funcionarioLogado = funcionario;
+        System.out.println("Tela main inicializada!");
+        System.out.println("Funcionario logado: " + funcionarioLogado);
         initComponents();
         init();
         //setBackground(new Color(0, 0, 0, 0));
@@ -448,14 +455,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
+        System.out.println("Saindo da Main e entrando na ficha de adoção");
         this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
         this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
@@ -488,7 +496,7 @@ public class Main extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Main(new Funcionario()).setVisible(true);
             }
         });
     }
