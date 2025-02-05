@@ -440,7 +440,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MainFrame mainframe = new MainFrame();
+        TelaLogin mainframe = new TelaLogin();
         mainframe.setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -508,7 +508,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
             
             this.setVisible(false);
-            MainFrame mainframe = new MainFrame();
+            TelaLogin mainframe = new TelaLogin();
             mainframe.setVisible(true);
         } catch (DateTimeParseException e){
             JOptionPane.showMessageDialog(null, "Data de nascimento inválida!\n"

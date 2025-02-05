@@ -1,6 +1,6 @@
 package com.iasmim.swing;
 
-import com.arthur.main.Main;
+import com.arthur.main.TelaPrincipal;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -391,7 +391,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
         this.dispose();
-        Main mainScreen = new Main();
+        TelaPrincipal mainScreen = new TelaPrincipal();
         mainScreen.setVisible(true);
     }//GEN-LAST:event_botaoInicioActionPerformed
 
@@ -411,7 +411,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         this.dispose();
-        MainFrame n = new MainFrame();
+        TelaLogin n = new TelaLogin();
         n.setVisible(true);
     }//GEN-LAST:event_botaoSairActionPerformed
 

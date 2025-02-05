@@ -4,7 +4,7 @@
  */
 package com.iasmim.swing;
 
-import com.arthur.main.Main;
+import com.arthur.main.TelaPrincipal;
 
 /**
  *
@@ -12,10 +12,10 @@ import com.arthur.main.Main;
  */
 public class CadastroAdotante extends javax.swing.JFrame {
 
-    private final Main inicioForm;
+    private final TelaPrincipal inicioForm;
     private final FichaAdocao telaadocao;
     
-    public CadastroAdotante(Main telainicial, FichaAdocao telaadocao) {
+    public CadastroAdotante(TelaPrincipal telainicial, FichaAdocao telaadocao) {
         this.inicioForm = telainicial;
         this.telaadocao = telaadocao;
         initComponents();
@@ -394,7 +394,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
-        MainFrame n = new MainFrame();
+        TelaLogin n = new TelaLogin();
         n.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 

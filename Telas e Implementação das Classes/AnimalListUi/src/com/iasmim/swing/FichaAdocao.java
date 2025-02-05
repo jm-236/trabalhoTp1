@@ -4,7 +4,7 @@
  */
 package com.iasmim.swing;
 
-import com.arthur.main.Main;
+import com.arthur.main.TelaPrincipal;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
@@ -16,7 +16,7 @@ public class FichaAdocao extends javax.swing.JFrame {
     
     
     
-    //private final Main inicioForm;
+    //private final TelaPrincipal inicioForm;
     
     /**
      * Creates new form FichaAdocao
@@ -625,7 +625,7 @@ public class FichaAdocao extends javax.swing.JFrame {
 
     private void botaoInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicio1ActionPerformed
         this.dispose();
-        Main mainScreen = new Main();
+        TelaPrincipal mainScreen = new TelaPrincipal();
         mainScreen.setVisible(true);
     }//GEN-LAST:event_botaoInicio1ActionPerformed
 
@@ -647,7 +647,7 @@ public class FichaAdocao extends javax.swing.JFrame {
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         this.dispose();
-        MainFrame n = new MainFrame();
+        TelaLogin n = new TelaLogin();
         n.setVisible(true);
     }//GEN-LAST:event_botaoSairActionPerformed
 

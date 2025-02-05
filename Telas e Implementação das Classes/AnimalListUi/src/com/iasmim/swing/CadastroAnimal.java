@@ -4,7 +4,7 @@
  */
 package ongalmosthome;
 
-import com.arthur.main.Main;
+import com.arthur.main.TelaPrincipal;
 import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
 
@@ -421,7 +421,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private void incioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incioButtonActionPerformed
         this.dispose();
         //close();
-        Main listScreen = new Main();
+        TelaPrincipal listScreen = new TelaPrincipal();
         listScreen.setVisible(true);
     }//GEN-LAST:event_incioButtonActionPerformed
 
