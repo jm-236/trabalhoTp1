@@ -25,6 +25,38 @@ public class Animal {
     private LocalDate animalDataNascimento;
     private FichaMedica animalFichaMedica;
     private Adocao animalAdocao;
+    
+    public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
+        this.animalID = UUID.randomUUID().toString();
+        this.animalData = animalData;
+        this.animalLocal = animalLocal;
+        this.animalNome = animalNome;
+        this.animalGenero = animalGenero;
+        this.animalEspecie = animalEspecie;
+        this.animalPeso = animalPeso;
+        this.animalPorte = animalPorte;
+        this.animalImage = animalImage;
+        this.animalRaca = animalRaca;
+        this.animalDataNascimento = animalDataNascimento;
+        this.animalFichaMedica = animalFichaMedica;
+        this.animalAdocao = animalAdocao;
+    }
+    
+    public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, String animalRaca, LocalDate animalData) {
+        this.animalID = UUID.randomUUID().toString();
+        this.animalData = animalData;
+        this.animalLocal = animalLocal;
+        this.animalNome = animalNome;
+        this.animalGenero = animalGenero;
+        this.animalEspecie = animalEspecie;
+        this.animalPeso = animalPeso;
+        this.animalPorte = animalPorte;
+        this.animalRaca = animalRaca;
+        this.animalDataNascimento = animalDataNascimento;
+    }
+
+    public Animal() {
+    }
 
     public String getAnimalRaca() {
         return animalRaca;
@@ -134,25 +166,6 @@ public class Animal {
 
     public ImageIcon getAnimalImage() {
         return animalImage;
-    }
-
-    public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
-        this.animalID = UUID.randomUUID().toString();
-        this.animalData = animalData;
-        this.animalLocal = animalLocal;
-        this.animalNome = animalNome;
-        this.animalGenero = animalGenero;
-        this.animalEspecie = animalEspecie;
-        this.animalPeso = animalPeso;
-        this.animalPorte = animalPorte;
-        this.animalImage = animalImage;
-        this.animalRaca = animalRaca;
-        this.animalDataNascimento = animalDataNascimento;
-        this.animalFichaMedica = animalFichaMedica;
-        this.animalAdocao = animalAdocao;
-    }
-
-    public Animal() {
     }
     
     public void setAnimalImage(ImageIcon animalImage) {

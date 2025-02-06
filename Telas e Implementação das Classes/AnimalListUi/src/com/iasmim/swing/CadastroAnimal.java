@@ -2,23 +2,96 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ongalmosthome;
+package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
 import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
+import com.iasmim.swing.Panell;
+import com.joao.model.Animal;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author iasmimqf
  */
 public class CadastroAnimal extends javax.swing.JFrame {
-
     /**
      * Creates new form CadastroAnimal
      */
+    
+    private ImageIcon animalImage;
+    
     public CadastroAnimal() {
         initComponents();
+    }
+    
+    public void newAnimal() throws IOException {
+        String nome = nomeTextField.getText();
+        String especie = especieTextField.getText();
+        String raca = racaTextField.getText();
+        String porte = (String) porteComboBox.getSelectedItem();
+        String genero = (String) generoComboBox.getSelectedItem();
+        String local = localTextField.getText();
+        String speso = pesoTextField.getText();
+        String sdataNasc = dataNascTextField.getText();
+        String sdataResg = dataResgTextField.getText();
+        float peso;
+        LocalDate dataNasc, dataResg;
+        
+        // Verifica se algum dos campos está vazio
+        if(nome.isEmpty() || especie.isEmpty() || raca.isEmpty() || porte.isEmpty() || genero.isEmpty() || local.isEmpty() || speso.isEmpty() || sdataNasc.isEmpty() || sdataResg.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Antes de cadastrar um novo animal preencha todos os dados!");
+            return;
+        }
+
+        if(animalImage == null){
+            JOptionPane.showMessageDialog(null, "Antes de cadastrar um novo animal adicione a imagem através do botão de Carregar Imagem!");
+            return;
+        }
+        
+        //Tentar converter para float
+        try {
+            peso = Float.parseFloat(speso);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Peso inválido! Use um valor float do peso em quilos.");
+            return;
+        }
+        // Tentar converter para LocalDate (dd/MM/yyyy)
+        try {
+            dataNasc = LocalDate.parse(sdataNasc, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            dataResg = LocalDate.parse(sdataResg, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        } catch (DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(null, "Data em formato inválido, utilize dd/mm/aaaa");
+            return;
+        }
+        Animal animal = new Animal(dataNasc, local, nome, genero, especie, peso, porte, raca, dataResg);
+        animal.setAnimalImage(animalImage);
+        HandleJson handleJson = new HandleJson();
+        if(handleJson.addAnimalNoArquivo(animal)){
+            JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
+            this.dispose();
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.setVisible(true);
+        }
+        
+
     }
 
     /**
@@ -30,7 +103,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sairButton = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         incioButton = new javax.swing.JButton();
         adocaoButton = new javax.swing.JButton();
@@ -62,7 +135,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sairButton.setBackground(new java.awt.Color(177, 251, 216));
+        mainPanel.setBackground(new java.awt.Color(177, 251, 216));
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
@@ -73,6 +146,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         incioButton.setFocusable(false);
         incioButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         incioButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        incioButton.setOpaque(true);
         incioButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         incioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +161,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         adocaoButton.setFocusable(false);
         adocaoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         adocaoButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        adocaoButton.setOpaque(true);
         adocaoButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         adocaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +176,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         histButton.setFocusable(false);
         histButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         histButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        histButton.setOpaque(true);
         histButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         histButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +192,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        jButton4.setOpaque(true);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +213,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(48, 63, 56));
         jLabel2.setText("Nome : ");
 
-        nomeTextField.setBackground(new java.awt.Color(217, 217, 217));
+        nomeTextField.setBackground(new java.awt.Color(242, 242, 242));
         nomeTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         nomeTextField.setForeground(new java.awt.Color(32, 61, 74));
         nomeTextField.setText("Rex Dino");
@@ -148,7 +225,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
             }
         });
 
-        especieTextField.setBackground(new java.awt.Color(217, 217, 217));
+        especieTextField.setBackground(new java.awt.Color(242, 242, 242));
         especieTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         especieTextField.setForeground(new java.awt.Color(32, 61, 74));
         especieTextField.setText("Dragão");
@@ -164,7 +241,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(48, 63, 56));
         jLabel3.setText("Espécie :");
 
-        racaTextField.setBackground(new java.awt.Color(217, 217, 217));
+        racaTextField.setBackground(new java.awt.Color(242, 242, 242));
         racaTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         racaTextField.setForeground(new java.awt.Color(32, 61, 74));
         racaTextField.setText("Komodo");
@@ -184,7 +261,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(48, 63, 56));
         jLabel5.setText("Porte : ");
 
-        porteComboBox.setBackground(new java.awt.Color(217, 217, 217));
+        porteComboBox.setBackground(new java.awt.Color(242, 242, 242));
         porteComboBox.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         porteComboBox.setForeground(new java.awt.Color(32, 61, 74));
         porteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Médio", "Grande" }));
@@ -194,13 +271,13 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(48, 63, 56));
         jLabel6.setText("Gênero :");
 
-        generoComboBox.setBackground(new java.awt.Color(217, 217, 217));
+        generoComboBox.setBackground(new java.awt.Color(242, 242, 242));
         generoComboBox.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         generoComboBox.setForeground(new java.awt.Color(32, 61, 74));
         generoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fêmea", "Macho" }));
         generoComboBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
 
-        pesoTextField.setBackground(new java.awt.Color(217, 217, 217));
+        pesoTextField.setBackground(new java.awt.Color(242, 242, 242));
         pesoTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         pesoTextField.setForeground(new java.awt.Color(32, 61, 74));
         pesoTextField.setText("16078");
@@ -216,7 +293,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(48, 63, 56));
         jLabel7.setText("Peso (Kg) :");
 
-        dataNascTextField.setBackground(new java.awt.Color(217, 217, 217));
+        dataNascTextField.setBackground(new java.awt.Color(242, 242, 242));
         dataNascTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         dataNascTextField.setForeground(new java.awt.Color(32, 61, 74));
         dataNascTextField.setText("10/10/1010");
@@ -232,7 +309,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(48, 63, 56));
         jLabel8.setText("Data de Nascimento :");
 
-        dataResgTextField.setBackground(new java.awt.Color(217, 217, 217));
+        dataResgTextField.setBackground(new java.awt.Color(242, 242, 242));
         dataResgTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         dataResgTextField.setForeground(new java.awt.Color(32, 61, 74));
         dataResgTextField.setText("25/01/2025");
@@ -248,7 +325,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(48, 63, 56));
         jLabel9.setText("Data de Resgate :");
 
-        localTextField.setBackground(new java.awt.Color(217, 217, 217));
+        localTextField.setBackground(new java.awt.Color(242, 242, 242));
         localTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         localTextField.setForeground(new java.awt.Color(32, 61, 74));
         localTextField.setText("Brasília, DF");
@@ -295,107 +372,107 @@ public class CadastroAnimal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout sairButtonLayout = new javax.swing.GroupLayout(sairButton);
-        sairButton.setLayout(sairButtonLayout);
-        sairButtonLayout.setHorizontalGroup(
-            sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1309, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sairButtonLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(sairButtonLayout.createSequentialGroup()
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataResgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(generoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(porteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(racaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(especieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(174, 174, 174)
-                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(imagemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(carragarImgButton)
                     .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        sairButtonLayout.setVerticalGroup(
-            sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sairButtonLayout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sairButtonLayout.createSequentialGroup()
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(especieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(racaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(porteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(generoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
-                    .addGroup(sairButtonLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(imagemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(carragarImgButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataResgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -406,12 +483,12 @@ public class CadastroAnimal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sairButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(sairButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -470,11 +547,64 @@ public class CadastroAnimal extends javax.swing.JFrame {
     }//GEN-LAST:event_localTextFieldActionPerformed
 
     private void carragarImgButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carragarImgButtonActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+    
+        fileChooser.setDialogTitle("Escolha um arquivo");
+
+        // Filtro de imagens
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+            @Override
+            public boolean accept(File file) {
+                return file.isDirectory() || file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg") || file.getName().endsWith(".png") || file.getName().endsWith(".gif");
+            }
+
+            @Override
+            public String getDescription() {
+                return "Arquivos de Imagem (*.jpg, *.jpeg, *.png, *.gif)";
+            }
+        });
+
+        // Exibe o FileChooser e verifica se o usuário selecionou um arquivo
+        int result = fileChooser.showOpenDialog(null);
+
+        // Se o usuário clicar em "Abrir"
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obter o arquivo selecionado
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Arquivo escolhido: " + selectedFile.getAbsolutePath());
+
+            try {
+                // Tentar carregar a imagem
+                BufferedImage loadedImage = ImageIO.read(selectedFile);
+
+                // Se a imagem for nula, significa que não é uma imagem válida
+                if (loadedImage == null) {
+                    JOptionPane.showMessageDialog(null, "O arquivo selecionado não é uma imagem válida!", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int width = loadedImage.getWidth();
+                    int height = loadedImage.getHeight();
+
+                    // Definindo um tamanho mínimo e máximo em pixels
+                    int minWidth = 150, minHeight = 100, maxWidth = 200, maxHeight = 150;
+
+                    if (width < minWidth || height < minHeight || width > maxWidth || height > maxHeight) {
+                        JOptionPane.showMessageDialog(null, "A imagem deve ter um tamanho entre " + minWidth + "x" + minHeight + " e " + maxWidth + "x" + maxHeight + " pixels.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    } 
+                    else animalImage = new ImageIcon(loadedImage);
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao ler a imagem!", "Erro", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_carragarImgButtonActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            newAnimal();
+        } catch (IOException ex) {
+            Logger.getLogger(CadastroAnimal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
@@ -511,7 +641,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adocaoButton;
     private javax.swing.JButton cadastrarButton;
@@ -537,10 +667,10 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField localTextField;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField pesoTextField;
     private javax.swing.JComboBox<String> porteComboBox;
     private javax.swing.JTextField racaTextField;
-    private javax.swing.JPanel sairButton;
     // End of variables declaration//GEN-END:variables
 }
