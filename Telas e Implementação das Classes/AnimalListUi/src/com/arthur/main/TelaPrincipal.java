@@ -438,13 +438,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoInicioActionPerformed
 
     private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
-        
-        //TEMPORÁRIO
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        Animal temp = new Animal(LocalDate.parse("20/01/2004", formatter), "Brasília", "Culero", "Fêmea","Cachorro",17.5f,"Grande Porte", new ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg")), "raça", LocalDate.now(),new FichaMedica(LocalDate.now(), "diagnostico", "tratamento", new Veterinario("cpf",LocalDate.now(),"email","nome","telefone","senha","crmv")), new Adocao());
-            listaDeAnimais.add(temp);
-            home.addAnimal(temp);
-           jsonHandler.salvarAnimaisNoArquivo(listaDeAnimais);
+        this.dispose();
+        //close();
+        CadastroAnimal cadastroAnimalScreen = new CadastroAnimal();
+        cadastroAnimalScreen.setVisible(true);
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
