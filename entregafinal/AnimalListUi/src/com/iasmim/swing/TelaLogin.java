@@ -241,11 +241,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
         if(funcionario.getSenha().equals(senha)){
             //System.out.println("Senha correta! Entrando na tela principal");
+            JOptionPane.showMessageDialog(null, "Login realizado com sucesso.");
             this.setVisible(false);
             TelaPrincipal main = new TelaPrincipal(funcionario);
             main.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Login realizado com sucesso.");
-
         } else {
             JOptionPane.showMessageDialog(null, "Senha incorreta.");
         }

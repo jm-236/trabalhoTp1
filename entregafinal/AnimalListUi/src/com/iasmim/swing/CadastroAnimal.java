@@ -34,6 +34,7 @@ import javax.swing.JPanel;
 public class CadastroAnimal extends javax.swing.JFrame {
 
     private Funcionario funcionarioLogado;
+    private BufferedImage loadedImage;
     /**
      * Creates new form CadastroAnimal
      */
@@ -43,6 +44,18 @@ public class CadastroAnimal extends javax.swing.JFrame {
     public CadastroAnimal(Funcionario funcionario) {
         funcionarioLogado = funcionario;
         initComponents();
+        
+        imagemPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (loadedImage != null) {
+                    // Redimensiona a imagem para caber no JPanel
+                    g.drawImage(loadedImage, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+        imagemPanel.setPreferredSize(new Dimension(200, 150)); // Define um tamanho preferencial
     }
     
     public void newAnimal() throws IOException {
@@ -112,7 +125,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         adocaoButton = new javax.swing.JButton();
         histButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jButton4 = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
@@ -133,6 +146,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         localTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         imagemPanel = new javax.swing.JPanel();
+        imagemEscolhidaLabel = new javax.swing.JLabel();
         carragarImgButton = new javax.swing.JButton();
         cadastrarButton = new javax.swing.JButton();
 
@@ -189,20 +203,20 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jToolBar1.add(histButton);
         jToolBar1.add(filler1);
 
-        jButton4.setBackground(new java.awt.Color(205, 255, 232));
-        jButton4.setForeground(new java.awt.Color(64, 86, 76));
-        jButton4.setText("Sair");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton4.setOpaque(true);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        sairButton.setBackground(new java.awt.Color(205, 255, 232));
+        sairButton.setForeground(new java.awt.Color(64, 86, 76));
+        sairButton.setText("Sair");
+        sairButton.setFocusable(false);
+        sairButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sairButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        sairButton.setOpaque(true);
+        sairButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                sairButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton4);
+        jToolBar1.add(sairButton);
 
         jLabel1.setBackground(new java.awt.Color(64, 86, 76));
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 32)); // NOI18N
@@ -219,9 +233,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         nomeTextField.setBackground(new java.awt.Color(242, 242, 242));
         nomeTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         nomeTextField.setForeground(new java.awt.Color(32, 61, 74));
-        nomeTextField.setText("Rex Dino");
+        nomeTextField.setText("Nome do animal");
         nomeTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         nomeTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        nomeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomeTextFieldFocusLost(evt);
+            }
+        });
         nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeTextFieldtFieldActionPerformed(evt);
@@ -231,9 +253,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         especieTextField.setBackground(new java.awt.Color(242, 242, 242));
         especieTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         especieTextField.setForeground(new java.awt.Color(32, 61, 74));
-        especieTextField.setText("Dragão");
+        especieTextField.setText("Espécie");
         especieTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         especieTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        especieTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                especieTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                especieTextFieldFocusLost(evt);
+            }
+        });
         especieTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 especieTextFieldActionPerformed(evt);
@@ -247,9 +277,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         racaTextField.setBackground(new java.awt.Color(242, 242, 242));
         racaTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         racaTextField.setForeground(new java.awt.Color(32, 61, 74));
-        racaTextField.setText("Komodo");
+        racaTextField.setText("Raça");
         racaTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         racaTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        racaTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                racaTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                racaTextFieldFocusLost(evt);
+            }
+        });
         racaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 racaTextFieldActionPerformed(evt);
@@ -283,9 +321,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         pesoTextField.setBackground(new java.awt.Color(242, 242, 242));
         pesoTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         pesoTextField.setForeground(new java.awt.Color(32, 61, 74));
-        pesoTextField.setText("16078");
+        pesoTextField.setText("Peso(em Kg)");
         pesoTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         pesoTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        pesoTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pesoTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pesoTextFieldFocusLost(evt);
+            }
+        });
         pesoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pesoTextFieldActionPerformed(evt);
@@ -299,9 +345,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         dataNascTextField.setBackground(new java.awt.Color(242, 242, 242));
         dataNascTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         dataNascTextField.setForeground(new java.awt.Color(32, 61, 74));
-        dataNascTextField.setText("10/10/1010");
+        dataNascTextField.setText("dd/MM/YYYY");
         dataNascTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         dataNascTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        dataNascTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                dataNascTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dataNascTextFieldFocusLost(evt);
+            }
+        });
         dataNascTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataNascTextFieldActionPerformed(evt);
@@ -315,9 +369,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         dataResgTextField.setBackground(new java.awt.Color(242, 242, 242));
         dataResgTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         dataResgTextField.setForeground(new java.awt.Color(32, 61, 74));
-        dataResgTextField.setText("25/01/2025");
+        dataResgTextField.setText("dd/MM/YYYY");
         dataResgTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         dataResgTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        dataResgTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                dataResgTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dataResgTextFieldFocusLost(evt);
+            }
+        });
         dataResgTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataResgTextFieldActionPerformed(evt);
@@ -331,9 +393,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
         localTextField.setBackground(new java.awt.Color(242, 242, 242));
         localTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         localTextField.setForeground(new java.awt.Color(32, 61, 74));
-        localTextField.setText("Brasília, DF");
+        localTextField.setText("Local");
         localTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         localTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        localTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                localTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                localTextFieldFocusLost(evt);
+            }
+        });
         localTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 localTextFieldActionPerformed(evt);
@@ -344,15 +414,23 @@ public class CadastroAnimal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(48, 63, 56));
         jLabel10.setText("Local do Resgate :");
 
+        imagemPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout imagemPanelLayout = new javax.swing.GroupLayout(imagemPanel);
         imagemPanel.setLayout(imagemPanelLayout);
         imagemPanelLayout.setHorizontalGroup(
             imagemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGroup(imagemPanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(imagemEscolhidaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         imagemPanelLayout.setVerticalGroup(
             imagemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
+            .addGroup(imagemPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(imagemEscolhidaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         carragarImgButton.setText("Carregar Imagem");
@@ -385,42 +463,43 @@ public class CadastroAnimal extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(25, 25, 25)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataResgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(generoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(porteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(especieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(racaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(porteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(especieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(174, 174, 174)
@@ -517,9 +596,12 @@ public class CadastroAnimal extends javax.swing.JFrame {
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_histButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        this.dispose();
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     private void nomeTextFieldtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldtFieldActionPerformed
         // TODO add your handling code here:
@@ -551,7 +633,6 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
     private void carragarImgButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carragarImgButtonActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-    
         fileChooser.setDialogTitle("Escolha um arquivo");
 
         // Filtro de imagens
@@ -578,7 +659,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
             try {
                 // Tentar carregar a imagem
-                BufferedImage loadedImage = ImageIO.read(selectedFile);
+                loadedImage = ImageIO.read(selectedFile);
 
                 // Se a imagem for nula, significa que não é uma imagem válida
                 if (loadedImage == null) {
@@ -592,8 +673,10 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
                     if (width < minWidth || height < minHeight || width > maxWidth || height > maxHeight) {
                         JOptionPane.showMessageDialog(null, "A imagem deve ter um tamanho entre " + minWidth + "x" + minHeight + " e " + maxWidth + "x" + maxHeight + " pixels.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    } 
-                    else animalImage = new ImageIcon(loadedImage);
+                    } else {
+                        animalImage = new ImageIcon(loadedImage);
+                        imagemEscolhidaLabel.setIcon(animalImage);
+                    }
                 }
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao ler a imagem!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -609,6 +692,104 @@ public class CadastroAnimal extends javax.swing.JFrame {
             Logger.getLogger(CadastroAnimal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
+
+    private void nomeTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeTextFieldFocusGained
+        // TODO add your handling code here:
+        if (nomeTextField.getText().equals("Nome do animal")) {
+            nomeTextField.setText("");
+        }
+    }//GEN-LAST:event_nomeTextFieldFocusGained
+
+    private void nomeTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeTextFieldFocusLost
+        // TODO add your handling code here:
+        if (nomeTextField.getText().isEmpty()) {
+            nomeTextField.setText("Nome do animal");
+        }
+    }//GEN-LAST:event_nomeTextFieldFocusLost
+
+    private void especieTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_especieTextFieldFocusGained
+        // TODO add your handling code here:
+        if (especieTextField.getText().equals("Espécie")) {
+            especieTextField.setText("");
+        }
+    }//GEN-LAST:event_especieTextFieldFocusGained
+
+    private void especieTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_especieTextFieldFocusLost
+        // TODO add your handling code here:
+        if (especieTextField.getText().isEmpty()) {
+            especieTextField.setText("Espécie");
+        }
+    }//GEN-LAST:event_especieTextFieldFocusLost
+
+    private void pesoTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pesoTextFieldFocusGained
+        // TODO add your handling code here:
+        if (pesoTextField.getText().equals("Peso(em Kg)")) {
+            pesoTextField.setText("");
+        }
+    }//GEN-LAST:event_pesoTextFieldFocusGained
+
+    private void pesoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pesoTextFieldFocusLost
+        // TODO add your handling code here:
+        if (pesoTextField.getText().isEmpty()) {
+            pesoTextField.setText("Peso(em Kg)");
+        }
+    }//GEN-LAST:event_pesoTextFieldFocusLost
+
+    private void dataNascTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataNascTextFieldFocusGained
+        // TODO add your handling code here:
+        if (dataNascTextField.getText().equals("dd/MM/YYYY")) {
+            dataNascTextField.setText("");
+        }
+    }//GEN-LAST:event_dataNascTextFieldFocusGained
+
+    private void dataNascTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataNascTextFieldFocusLost
+        // TODO add your handling code here:
+        if (dataNascTextField.getText().isEmpty()) {
+            dataNascTextField.setText("dd/MM/YYYY");
+        }
+    }//GEN-LAST:event_dataNascTextFieldFocusLost
+
+    private void dataResgTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataResgTextFieldFocusGained
+        // TODO add your handling code here:
+        if (dataResgTextField.getText().equals("dd/MM/YYYY")) {
+            dataResgTextField.setText("");
+        }
+    }//GEN-LAST:event_dataResgTextFieldFocusGained
+
+    private void dataResgTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataResgTextFieldFocusLost
+        // TODO add your handling code here:
+        if (dataResgTextField.getText().isEmpty()) {
+            dataResgTextField.setText("dd/MM/YYYY");
+        }
+    }//GEN-LAST:event_dataResgTextFieldFocusLost
+
+    private void localTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_localTextFieldFocusGained
+        // TODO add your handling code here:
+        if (localTextField.getText().equals("Local")) {
+            localTextField.setText("");
+        }
+    }//GEN-LAST:event_localTextFieldFocusGained
+
+    private void localTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_localTextFieldFocusLost
+        // TODO add your handling code here:
+        if (localTextField.getText().isEmpty()) {
+            localTextField.setText("Local");
+        }
+    }//GEN-LAST:event_localTextFieldFocusLost
+
+    private void racaTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_racaTextFieldFocusGained
+        // TODO add your handling code here:
+        if (racaTextField.getText().equals("Raça")) {
+            racaTextField.setText("");
+        }
+    }//GEN-LAST:event_racaTextFieldFocusGained
+
+    private void racaTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_racaTextFieldFocusLost
+        // TODO add your handling code here:
+        if (localTextField.getText().isEmpty()) {
+            localTextField.setText("Raça");
+        }
+    }//GEN-LAST:event_racaTextFieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -655,9 +836,9 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JComboBox<String> generoComboBox;
     private javax.swing.JButton histButton;
+    private javax.swing.JLabel imagemEscolhidaLabel;
     private javax.swing.JPanel imagemPanel;
     private javax.swing.JButton incioButton;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -675,5 +856,6 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JTextField pesoTextField;
     private javax.swing.JComboBox<String> porteComboBox;
     private javax.swing.JTextField racaTextField;
+    private javax.swing.JButton sairButton;
     // End of variables declaration//GEN-END:variables
 }
