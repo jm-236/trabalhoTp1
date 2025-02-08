@@ -19,6 +19,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import javax.swing.SwingUtilities;
+import com.joao.model.Veterinario;
+import com.joao.jsonManager.FuncionarioDAO;
 
 /**
  *
@@ -226,6 +228,7 @@ public class FormHome extends javax.swing.JPanel {
         lbRaca = new javax.swing.JLabel();
         lbNascimento = new javax.swing.JLabel();
         lbEspecie = new javax.swing.JLabel();
+        botaoFichaMedica = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(177, 251, 216));
 
@@ -277,6 +280,13 @@ public class FormHome extends javax.swing.JPanel {
         lbEspecie.setForeground(new java.awt.Color(76, 76, 76));
         lbEspecie.setText("Espécie:");
 
+        botaoFichaMedica.setText("Visualizar Ficha Médica");
+        botaoFichaMedica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFichaMedicaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -304,7 +314,10 @@ public class FormHome extends javax.swing.JPanel {
                                 .addComponent(lbIdade)
                                 .addComponent(lbLocal)
                                 .addComponent(lbPeso)
-                                .addComponent(lbNascimento)))))
+                                .addComponent(lbNascimento))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botaoFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -332,8 +345,18 @@ public class FormHome extends javax.swing.JPanel {
                 .addComponent(lbNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbEspecie)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(517, Short.MAX_VALUE))
         );
+
+        FuncionarioDAO testeVeterinario = new FuncionarioDAO();
+        if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){
+            botaoFichaMedica.setVisible(true);
+        }
+        else{
+            botaoFichaMedica.setVisible(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -351,8 +374,13 @@ public class FormHome extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoFichaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFichaMedicaActionPerformed
+        
+    }//GEN-LAST:event_botaoFichaMedicaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoFichaMedica;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
