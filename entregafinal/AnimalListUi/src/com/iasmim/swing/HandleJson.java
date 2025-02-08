@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.joao.model.Animal;
+import com.joao.model.Historico;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -89,6 +90,46 @@ public class HandleJson {
         ArrayList<Animal> animais = carregarAnimaisDoArquivo();
         animais.add(animal);
         return salvarAnimaisNoArquivo(animais);
+    }
+    
+    public ArrayList<Historico> carregarHistoricoDoArquivo() {
+        try (Reader reader = new FileReader(CAMINHO_ARQUIVO_HISTORICO)) {
+            java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Historico>>() {}.getType();
+            ArrayList<Historico> historico = gson.fromJson(reader, tipoLista);
+            return (historico != null) ? historico : new ArrayList<>();
+        } catch (FileNotFoundException e) {
+            // Arquivo não encontrado, retorna lista vazia
+            return new ArrayList<Historico>();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<Historico>();
+        }
+    }
+        
+    public boolean salvarHistoricoNoArquivo(ArrayList<Historico> listaHistorico) {
+        try (Writer writer = new FileWriter(CAMINHO_ARQUIVO_HISTORICO)) {
+            gson.toJson(listaHistorico, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(CAMINHO_ARQUIVO_HISTORICO))) {
+            String linha;
+            System.out.println("Conteúdo do arquivo JSON:");
+            while ((linha = reader.readLine()) != null) {
+                System.out.println(linha);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean HistoricoNoArquivo(Historico historico) throws IOException {
+        ArrayList<Historico> listaHistorico = carregarHistoricoDoArquivo();
+        listaHistorico.add(historico);
+        return salvarHistoricoNoArquivo(listaHistorico);
     }
         
     public class LocalDateAdapter extends TypeAdapter<LocalDate> {
