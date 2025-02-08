@@ -180,7 +180,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="510" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -201,6 +201,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="botaoPerfil" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
                   <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -208,12 +213,25 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jToolBar1" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="botaoPerfil" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JButton" name="botaoPerfil">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/iasmim/image/user.png"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoPerfilActionPerformed"/>
+              </Events>
+            </Component>
             <Container class="javax.swing.JToolBar" name="jToolBar1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -227,7 +245,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="botaoInicio">
+                <Component class="javax.swing.JButton" name="botaoInicio1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e8" green="ff" red="cd" type="rgb"/>
@@ -241,10 +259,11 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoInicioActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoInicio1ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="botaoAnimal">
@@ -261,6 +280,7 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -281,6 +301,7 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -301,6 +322,7 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -331,6 +353,7 @@
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[4, 14, 4, 14]"/>
                     </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
