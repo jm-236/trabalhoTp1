@@ -47,6 +47,7 @@ public class HandleJson {
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new HandleJson.LocalDateAdapter())
                 .registerTypeAdapter(ImageIcon.class, new HandleJson.ImageIconAdapter())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                 .setPrettyPrinting()
                 .create();
     }
@@ -126,7 +127,7 @@ public class HandleJson {
         return true;
     }
     
-    public boolean HistoricoNoArquivo(Historico historico) throws IOException {
+    public boolean AddHistoricoNoArquivo(Historico historico) throws IOException {
         ArrayList<Historico> listaHistorico = carregarHistoricoDoArquivo();
         listaHistorico.add(historico);
         return salvarHistoricoNoArquivo(listaHistorico);
@@ -149,9 +150,9 @@ public class HandleJson {
             return LocalDate.parse(jsonReader.nextString(), formatter);
         }
     }
-
+    
     public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
-        private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
         @Override
         public void write(JsonWriter jsonWriter, LocalDateTime localDateTime) throws IOException {
@@ -163,6 +164,20 @@ public class HandleJson {
             return LocalDateTime.parse(jsonReader.nextString(), formatter);
         }
     }
+
+//    public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
+//        private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+//
+//        @Override
+//        public void write(JsonWriter jsonWriter, LocalDateTime localDateTime) throws IOException {
+//            jsonWriter.value(localDateTime.format(formatter));
+//        }
+//
+//        @Override
+//        public LocalDateTime read(JsonReader jsonReader) throws IOException {
+//            return LocalDateTime.parse(jsonReader.nextString(), formatter);
+//        }
+//    }
 
 
     class ImageIconAdapter extends TypeAdapter<ImageIcon> {

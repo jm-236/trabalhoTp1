@@ -3,6 +3,7 @@ package com.joao.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Historico {
@@ -29,7 +30,7 @@ public class Historico {
         this.nomeAnimal = animal.getAnimalNome();
         this.dataHora = LocalDateTime.now();
         this.idEvento = ficha.getFichaId();
-        this.evento = "Fihca Médica";
+        this.evento = "Ficha Médica";
     }
     
     public Historico(Animal animal, Adocao adocao) {
@@ -66,4 +67,10 @@ public class Historico {
     public LocalDate getData(){
         return dataHora.toLocalDate();
     }
+
+    @Override
+    public String toString() {
+        return dataHora.toLocalDate() + " - " + dataHora.toLocalTime().format(DateTimeFormatter.ISO_DATE) + " :  { Nome do Animal = " + nomeAnimal + " , Evento = " + evento + ", Id do Animal = " + idAnimal + " , Id do Evento = " + idEvento + "}\n";
+    }
+    
 }
