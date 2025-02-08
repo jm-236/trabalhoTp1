@@ -112,7 +112,7 @@ public class FuncionarioDAO {
 
     // Adiciona um novo funcionário
     public void adicionarFuncionario(Funcionario funcionario) {
-        List<Funcionario> funcionarios = carregarFuncionarios();
+        List<Funcionario> funcionarios = carregarFuncionariosDiferencial();
         funcionario.setId(UUID.randomUUID().toString());
         funcionarios.add(funcionario);
         salvarFuncionarios(funcionarios);
@@ -137,7 +137,7 @@ public class FuncionarioDAO {
 
     // Remove um funcionário pelo CPF
     public void removerFuncionario(String cpf) {
-        List<Funcionario> funcionarios = carregarFuncionarios();
+        List<Funcionario> funcionarios = carregarFuncionariosDiferencial();
         funcionarios.removeIf(funcionario -> funcionario.getCpf().equals(cpf));
         salvarFuncionarios(funcionarios);
     }
