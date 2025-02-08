@@ -2,6 +2,7 @@ package com.joao.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Historico {
@@ -27,8 +28,42 @@ public class Historico {
         this.idAnimal = animal.getAnimalID();
         this.nomeAnimal = animal.getAnimalNome();
         this.dataHora = LocalDateTime.now();
-        //this.idEvento = ficha.getId();
+        this.idEvento = ficha.getFichaId();
+        this.evento = "Fihca Médica";
     }
     
+    public Historico(Animal animal, Adocao adocao) {
+        this.idAnimal = animal.getAnimalID();
+        this.nomeAnimal = animal.getAnimalNome();
+        this.dataHora = LocalDateTime.now();
+        this.evento = "Adoção";
+    }
+
+    public String getIdAnimal() {
+        return idAnimal;
+    }
+
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    public String getNomeAnimal() {
+        return nomeAnimal;
+    }
+
+    public String getEvento() {
+        return evento;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
     
+    public LocalTime getHora() {
+        return dataHora.toLocalTime();
+    }
+    
+    public LocalDate getData(){
+        return dataHora.toLocalDate();
+    }
 }
