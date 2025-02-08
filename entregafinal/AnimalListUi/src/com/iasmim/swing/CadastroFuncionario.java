@@ -491,7 +491,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "As senhas devem ser iguais!");
                 return;
             }
-
+            if (funcionarioDAO.buscarFuncionario(cpf).orElse(null) != null){
+                JOptionPane.showMessageDialog(null, "Já existe um usuário com este CPF!");
+                return;
+            }
             if (isVeterinarioCheckbox.isSelected()){
                 String crmv = crmvField.getText();
                 Veterinario veterinario = new Veterinario(cpf, dataNascimento, email
