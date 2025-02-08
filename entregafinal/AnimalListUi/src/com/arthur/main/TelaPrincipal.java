@@ -17,6 +17,7 @@ import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
 import com.iasmim.swing.TelaLogin;
 import com.joao.model.Funcionario;
+import com.joao.model.Historico;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -32,6 +33,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -477,7 +480,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String IDanimal= home.ExcluirAnimal();
-        listaDeAnimais.removeIf(animal -> animal.getAnimalID().equals(IDanimal));
+        for(Animal animal : listaDeAnimais){
+            if(animal.getAnimalID().equals(IDanimal)){
+                Historico historico = new Historico(animal, false);
+                try {
+                    jsonHandler.AddHistoricoNoArquivo(historico);
+                } catch (IOException ex) {
+                    System.out.println("Erro ao tentar adicionar a exclusão ao histórico.");
+                }
+                listaDeAnimais.remove(animal);
+            }
+        }
         jsonHandler.salvarAnimaisNoArquivo(listaDeAnimais);
         home.resetShow();
         mainPanel.setImage(null);
