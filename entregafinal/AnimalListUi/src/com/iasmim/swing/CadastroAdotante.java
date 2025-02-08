@@ -5,7 +5,11 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
+import com.joao.jsonManager.AdotanteDAO;
+import com.joao.model.Adotante;
+import com.joao.model.CepInfo;
 import com.joao.model.Funcionario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +20,8 @@ public class CadastroAdotante extends javax.swing.JFrame {
     private final TelaPrincipal inicioForm;
     private final FichaAdocao telaadocao;
     private Funcionario funcionarioLogado;
+    private static AdotanteDAO adotanteDAO = new AdotanteDAO();
+    private static CepInfo cepInfo;
     
     public CadastroAdotante(TelaPrincipal telainicial, FichaAdocao telaadocao) {
         this.inicioForm = telainicial;
@@ -39,18 +45,18 @@ public class CadastroAdotante extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nomeTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        cpfTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        telefoneField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        cadastrarButton = new javax.swing.JButton();
+        cepTextField = new javax.swing.JTextField();
+        enderecoField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         botaoInicio = new javax.swing.JButton();
@@ -59,6 +65,8 @@ public class CadastroAdotante extends javax.swing.JFrame {
         botaoHistorico = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jButton4 = new javax.swing.JButton();
+        dataNascimentoField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,15 +80,23 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setOpaque(true);
 
-        jTextField1.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField1.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField1.setText("Nome Completo do Adotante da Silva");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField1.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nomeTextField.setBackground(new java.awt.Color(217, 217, 217));
+        nomeTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        nomeTextField.setForeground(new java.awt.Color(32, 61, 74));
+        nomeTextField.setText("Nome Completo");
+        nomeTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        nomeTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        nomeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomeTextFieldFocusLost(evt);
+            }
+        });
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nomeTextFieldActionPerformed(evt);
             }
         });
 
@@ -88,15 +104,23 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(48, 63, 56));
         jLabel2.setText("Nome : ");
 
-        jTextField2.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField2.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField2.setText("000.000.000-00");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField2.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        cpfTextField.setBackground(new java.awt.Color(217, 217, 217));
+        cpfTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        cpfTextField.setForeground(new java.awt.Color(32, 61, 74));
+        cpfTextField.setText("000.000.000-00");
+        cpfTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        cpfTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        cpfTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cpfTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cpfTextFieldFocusLost(evt);
+            }
+        });
+        cpfTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                cpfTextFieldActionPerformed(evt);
             }
         });
 
@@ -104,12 +128,20 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(48, 63, 56));
         jLabel3.setText("CPF :");
 
-        jTextField3.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField3.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField3.setText("(00) 99824 - 4353");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField3.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        telefoneField.setBackground(new java.awt.Color(217, 217, 217));
+        telefoneField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        telefoneField.setForeground(new java.awt.Color(32, 61, 74));
+        telefoneField.setText("(99) 99999-9999");
+        telefoneField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        telefoneField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        telefoneField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                telefoneFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                telefoneFieldFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(48, 63, 56));
@@ -119,15 +151,23 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(48, 63, 56));
         jLabel5.setText("E-mail :");
 
-        jTextField4.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField4.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField4.setText("exemplo@email.com");
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField4.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.setBackground(new java.awt.Color(217, 217, 217));
+        emailTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        emailTextField.setForeground(new java.awt.Color(32, 61, 74));
+        emailTextField.setText("exemplo@email.com");
+        emailTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        emailTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTextFieldFocusLost(evt);
+            }
+        });
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
 
@@ -135,40 +175,56 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(48, 63, 56));
         jLabel7.setText("CEP :");
 
-        jButton1.setBackground(new java.awt.Color(21, 102, 64));
-        jButton1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cadastrar");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarButton.setBackground(new java.awt.Color(21, 102, 64));
+        cadastrarButton.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        cadastrarButton.setForeground(new java.awt.Color(255, 255, 255));
+        cadastrarButton.setText("Cadastrar");
+        cadastrarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cadastrarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cadastrarButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarButtonActionPerformed(evt);
             }
         });
 
-        jTextField5.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField5.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField5.setText("00000-00");
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField5.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        cepTextField.setBackground(new java.awt.Color(217, 217, 217));
+        cepTextField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        cepTextField.setForeground(new java.awt.Color(32, 61, 74));
+        cepTextField.setText("00000-00");
+        cepTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        cepTextField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        cepTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cepTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cepTextFieldFocusLost(evt);
+            }
+        });
+        cepTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                cepTextFieldActionPerformed(evt);
             }
         });
 
-        jTextField6.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField6.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(32, 61, 74));
-        jTextField6.setText("Digite o endereço completo...");
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
-        jTextField6.setMargin(new java.awt.Insets(4, 15, 4, 15));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        enderecoField.setBackground(new java.awt.Color(217, 217, 217));
+        enderecoField.setFont(new java.awt.Font("Lato", 3, 14)); // NOI18N
+        enderecoField.setForeground(new java.awt.Color(32, 61, 74));
+        enderecoField.setText("Endereço Completo");
+        enderecoField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        enderecoField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        enderecoField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                enderecoFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                enderecoFieldFocusLost(evt);
+            }
+        });
+        enderecoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                enderecoFieldActionPerformed(evt);
             }
         });
 
@@ -256,10 +312,35 @@ public class CadastroAdotante extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton4);
 
+        dataNascimentoField.setBackground(new java.awt.Color(217, 217, 217));
+        dataNascimentoField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
+        dataNascimentoField.setForeground(new java.awt.Color(32, 61, 74));
+        dataNascimentoField.setText("Data de nascimento (formato: dd/MM/yyyy)");
+        dataNascimentoField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
+        dataNascimentoField.setMargin(new java.awt.Insets(4, 15, 4, 15));
+        dataNascimentoField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                dataNascimentoFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dataNascimentoFieldFocusLost(evt);
+            }
+        });
+        dataNascimentoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataNascimentoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(48, 63, 56));
+        jLabel9.setText("Nascimento :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -269,34 +350,37 @@ public class CadastroAdotante extends javax.swing.JFrame {
                         .addGap(320, 320, 320)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(23, 23, 23)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cepTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(23, 23, 23)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(enderecoField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(23, 23, 23)
+                                .addComponent(dataNascimentoField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(557, 557, 557)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(392, Short.MAX_VALUE))
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(558, 558, 558)
+                        .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,31 +390,35 @@ public class CadastroAdotante extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cepTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enderecoField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(59, 59, 59)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataNascimentoField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -341,36 +429,90 @@ public class CadastroAdotante extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void cpfTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_cpfTextFieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Adotante adotante = new Adotante();
+        
+        String nome = nomeTextField.getText();
+        if (!adotante.isNomeValido(nome)) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return;
+        } 
+        
+        
+        String cpf = cpfTextField.getText();
+        
+        if(!adotante.validaCpf(cpf)){
+            JOptionPane.showMessageDialog(null, "CPF inválido!");
+            return;
+        }
+        
+        String cep = cepTextField.getText();
+        
+        if (!cepInfo.validaCep(cep)) {
+            JOptionPane.showMessageDialog(null, "CEP inválido!");
+            return;
+        }
+        if (adotanteDAO.buscarAdotante(cpf).isPresent()){
+            JOptionPane.showMessageDialog(null, "Adotante com esse CPF já existe!");
+            return;
+        }
+        
+        String email = emailTextField.getText();
+        String telefone = telefoneField.getText();
+        String endereco = enderecoField.getText();
+        String dataNascimento = dataNascimentoField.getText();
+        String validacaoDataNascimento = adotante.validarDataNascimento(dataNascimento);
+        
+        if (validacaoDataNascimento.equals("Data de nascimento no futuro.") ||
+            validacaoDataNascimento.equals("A pessoa tem menos de 18 anos.") ||
+            validacaoDataNascimento.equals("Formato de data inválido. Use o formato dd/MM/yyyy.")){
+            
+            JOptionPane.showMessageDialog(null, validacaoDataNascimento);
+            return;
+        }
+        
+        adotante.setNome(nome);
+        adotante.setCpf(cpf);
+        adotante.setCep(cep);
+        adotante.setEmail(email);
+        adotante.setTelefone(telefone);
+        adotante.setEndereco(endereco);
+        
+        adotanteDAO.adicionarAdotante(adotante);
+        JOptionPane.showMessageDialog(null, "Adotante cadastrado com sucesso!");
+        this.dispose();
+        telaadocao.setVisible(true);
+    }//GEN-LAST:event_cadastrarButtonActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void cepTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_cepTextFieldActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void enderecoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_enderecoFieldActionPerformed
 
     private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
         //this.setVisible(false);
@@ -399,6 +541,113 @@ public class CadastroAdotante extends javax.swing.JFrame {
         TelaLogin n = new TelaLogin();
         n.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void dataNascimentoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascimentoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataNascimentoFieldActionPerformed
+
+    private void nomeTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeTextFieldFocusGained
+        // TODO add your handling code here:
+        if (nomeTextField.getText().equals("Nome Completo")) {
+            nomeTextField.setText("");
+        }
+    }//GEN-LAST:event_nomeTextFieldFocusGained
+
+    private void nomeTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeTextFieldFocusLost
+        // TODO add your handling code here:
+        if (nomeTextField.getText().isEmpty()) {
+            nomeTextField.setText("Nome Completo");
+        }
+    }//GEN-LAST:event_nomeTextFieldFocusLost
+
+    private void cpfTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpfTextFieldFocusGained
+        // TODO add your handling code here:
+        if (cpfTextField.getText().equals("000.000.000-00")) {
+            cpfTextField.setText("");
+        }
+    }//GEN-LAST:event_cpfTextFieldFocusGained
+
+    private void cpfTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpfTextFieldFocusLost
+        // TODO add your handling code here:
+        if (cpfTextField.getText().isEmpty()) {
+            cpfTextField.setText("000.000.000-00");
+        }
+    }//GEN-LAST:event_cpfTextFieldFocusLost
+
+    private void telefoneFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFieldFocusGained
+        // TODO add your handling code here:
+        if (telefoneField.getText().equals("(99) 99999-9999")) {
+            telefoneField.setText("");
+        }
+    }//GEN-LAST:event_telefoneFieldFocusGained
+
+    private void telefoneFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFieldFocusLost
+        // TODO add your handling code here:
+        if (telefoneField.getText().isEmpty()) {
+            telefoneField.setText("(99) 99999-9999");
+        }
+    }//GEN-LAST:event_telefoneFieldFocusLost
+
+    private void emailTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFieldFocusGained
+        // TODO add your handling code here:
+        if (emailTextField.getText().equals("exemplo@email.com")) {
+            emailTextField.setText("");
+        }
+    }//GEN-LAST:event_emailTextFieldFocusGained
+
+    private void emailTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFieldFocusLost
+        // TODO add your handling code here:
+        if (emailTextField.getText().isEmpty()) {
+            emailTextField.setText("exemplo@email.com");
+        }
+    }//GEN-LAST:event_emailTextFieldFocusLost
+
+    private void cepTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cepTextFieldFocusGained
+        // TODO add your handling code here:
+        if (cepTextField.getText().equals("00000-00")) {
+            cepTextField.setText("");
+        }
+    }//GEN-LAST:event_cepTextFieldFocusGained
+
+    private void cepTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cepTextFieldFocusLost
+        // TODO add your handling code here:
+        if (cepTextField.getText().isEmpty()) {
+            cepTextField.setText("00000-00");
+        }
+        String cep = cepTextField.getText();
+        if (cepInfo.validaCep(cep) && !cepInfo.consultaCep(cep).equals("Erro ao buscar o CEP!")
+                && !cepInfo.consultaCep(cep).equals("Erro ao consultar o CEP!")){
+            enderecoField.setText(cepInfo.consultaCep(cep));
+        }
+    }//GEN-LAST:event_cepTextFieldFocusLost
+
+    private void enderecoFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_enderecoFieldFocusGained
+        // TODO add your handling code here:
+        if (enderecoField.getText().equals("Endereço Completo")) {
+            enderecoField.setText("");
+        }
+    }//GEN-LAST:event_enderecoFieldFocusGained
+
+    private void enderecoFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_enderecoFieldFocusLost
+        // TODO add your handling code here:
+        if (enderecoField.getText().isEmpty()) {
+            enderecoField.setText("Endereço Completo");
+        }
+    }//GEN-LAST:event_enderecoFieldFocusLost
+
+    private void dataNascimentoFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataNascimentoFieldFocusGained
+        // TODO add your handling code here:
+        if (dataNascimentoField.getText().equals("Data de nascimento (formato: dd/MM/yyyy)")) {
+            dataNascimentoField.setText("");
+        }
+    }//GEN-LAST:event_dataNascimentoFieldFocusGained
+
+    private void dataNascimentoFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataNascimentoFieldFocusLost
+        // TODO add your handling code here:
+        if (dataNascimentoField.getText().isEmpty()) {
+            dataNascimentoField.setText("Data de nascimento (formato: dd/MM/yyyy)");
+        }
+    }//GEN-LAST:event_dataNascimentoFieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -440,8 +689,13 @@ public class CadastroAdotante extends javax.swing.JFrame {
     private javax.swing.JButton botaoAnimal;
     private javax.swing.JButton botaoHistorico;
     private javax.swing.JButton botaoInicio;
+    private javax.swing.JButton cadastrarButton;
+    private javax.swing.JTextField cepTextField;
+    private javax.swing.JTextField cpfTextField;
+    private javax.swing.JTextField dataNascimentoField;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JTextField enderecoField;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -450,13 +704,10 @@ public class CadastroAdotante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JTextField telefoneField;
     // End of variables declaration//GEN-END:variables
 }
