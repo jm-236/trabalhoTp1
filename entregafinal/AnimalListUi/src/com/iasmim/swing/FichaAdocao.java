@@ -585,7 +585,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         //this.setVisible(false);
         
         this.dispose();
-        CadastroAdotante adotanteScreen = new CadastroAdotante();
+        CadastroAdotante adotanteScreen = new CadastroAdotante(this);
         adotanteScreen.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 

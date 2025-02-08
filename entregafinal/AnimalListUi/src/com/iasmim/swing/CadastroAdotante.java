@@ -17,19 +17,19 @@ import javax.swing.JOptionPane;
  */
 public class CadastroAdotante extends javax.swing.JFrame {
 
-    private final TelaPrincipal inicioForm;
+    // private final TelaPrincipal inicioForm;
     private final FichaAdocao telaadocao;
     private Funcionario funcionarioLogado;
     private static AdotanteDAO adotanteDAO = new AdotanteDAO();
     private static CepInfo cepInfo;
     
-    public CadastroAdotante(TelaPrincipal telainicial, FichaAdocao telaadocao) {
-        this.inicioForm = telainicial;
+    public CadastroAdotante(FichaAdocao telaadocao) {
+        // this.inicioForm = telainicial;
         this.telaadocao = telaadocao;
         initComponents();
     }
     public CadastroAdotante() {
-        this.inicioForm = null;
+        // this.inicioForm = null;
         this.telaadocao = null;
         initComponents();
     }
@@ -64,7 +64,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
         botaoAdocao = new javax.swing.JButton();
         botaoHistorico = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jButton4 = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         dataNascimentoField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
@@ -297,20 +297,20 @@ public class CadastroAdotante extends javax.swing.JFrame {
         jToolBar1.add(botaoHistorico);
         jToolBar1.add(filler1);
 
-        jButton4.setBackground(new java.awt.Color(205, 255, 232));
-        jButton4.setForeground(new java.awt.Color(64, 86, 76));
-        jButton4.setText("Sair");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton4.setOpaque(true);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        sairButton.setBackground(new java.awt.Color(205, 255, 232));
+        sairButton.setForeground(new java.awt.Color(64, 86, 76));
+        sairButton.setText("Sair");
+        sairButton.setFocusable(false);
+        sairButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sairButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        sairButton.setOpaque(true);
+        sairButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                sairButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton4);
+        jToolBar1.add(sairButton);
 
         dataNascimentoField.setBackground(new java.awt.Color(217, 217, 217));
         dataNascimentoField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
@@ -515,9 +515,9 @@ public class CadastroAdotante extends javax.swing.JFrame {
     }//GEN-LAST:event_enderecoFieldActionPerformed
 
     private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
-        //this.setVisible(false);
-
-        //inicioForm.setVisible(true);
+        this.setVisible(false);
+        TelaPrincipal telaPrincipal = new TelaPrincipal(funcionarioLogado);
+        telaPrincipal.setVisible(true);
     }//GEN-LAST:event_botaoInicioActionPerformed
 
     private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
@@ -536,11 +536,11 @@ public class CadastroAdotante extends javax.swing.JFrame {
         historicoScreen.setVisible(true);
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         this.dispose();
         TelaLogin n = new TelaLogin();
         n.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     private void dataNascimentoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascimentoFieldActionPerformed
         // TODO add your handling code here:
@@ -696,7 +696,6 @@ public class CadastroAdotante extends javax.swing.JFrame {
     private javax.swing.JTextField emailTextField;
     private javax.swing.JTextField enderecoField;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -708,6 +707,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField nomeTextField;
+    private javax.swing.JButton sairButton;
     private javax.swing.JTextField telefoneField;
     // End of variables declaration//GEN-END:variables
 }
