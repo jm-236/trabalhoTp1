@@ -7,6 +7,7 @@ package com.iasmim.swing;
 import com.arthur.main.TelaPrincipal;
 import com.joao.jsonManager.FuncionarioDAO;
 import com.joao.model.Funcionario;
+import com.joao.model.Veterinario;
 import java.util.Optional;
 import javax.swing.JOptionPane;
 
@@ -241,6 +242,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
         if(funcionario.getSenha().equals(senha)){
             //System.out.println("Senha correta! Entrando na tela principal");
+            if (funcionario instanceof Veterinario) {
+                Veterinario veterinario = (Veterinario) funcionario;
+                funcionarioDAO.SalvarFuncionarioLogado(veterinario);
+                System.out.println("Este é um veterinário. CRMV: " + veterinario.getCrmv());
+            } else {
+                funcionarioDAO.SalvarFuncionarioLogado(funcionario);
+            }
             JOptionPane.showMessageDialog(null, "Login realizado com sucesso.");
             this.setVisible(false);
             TelaPrincipal main = new TelaPrincipal(funcionario);
