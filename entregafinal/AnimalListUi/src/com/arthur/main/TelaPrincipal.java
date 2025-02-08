@@ -101,7 +101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void init(){
-        home = new FormHome();
+        home = new FormHome(funcionarioLogado);
         //winButton.initEvent(this, background1);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(home);

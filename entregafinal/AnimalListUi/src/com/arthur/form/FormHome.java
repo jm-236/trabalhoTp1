@@ -9,6 +9,7 @@ import com.arthur.event.EventAnimal;
 import com.arthur.main.TelaPrincipal;
 import com.joao.model.Animal;
 import com.arthur.swing.ScrollBar;
+import com.iasmim.swing.CriarFichaMedica;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -21,6 +22,8 @@ import java.util.Set;
 import javax.swing.SwingUtilities;
 import com.joao.model.Veterinario;
 import com.joao.jsonManager.FuncionarioDAO;
+import com.joao.model.Funcionario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,11 +32,14 @@ import com.joao.jsonManager.FuncionarioDAO;
 public class FormHome extends javax.swing.JPanel {
 
     private EventAnimal event;
+    private Animal animal;
+    private final Funcionario funcionarioLogado;
 
     public void setEvent(EventAnimal event) {
         this.event = event;
     }
-    public FormHome() {
+    public FormHome(Funcionario funcionario) {
+        funcionarioLogado = funcionario;
         initComponents();
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
     }
@@ -190,6 +196,7 @@ public class FormHome extends javax.swing.JPanel {
     }
     
     public void showAnimal(Animal data) {
+        animal = data;
         lbAnimalName.setText(data.getAnimalNome());
         //txtDescription.setText(data.getDescription());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -375,7 +382,13 @@ public class FormHome extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoFichaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFichaMedicaActionPerformed
-        
+        if(!(animal == null)){
+            CriarFichaMedica fichaVetScreen = new CriarFichaMedica(animal, funcionarioLogado);
+            fichaVetScreen.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Selecione um animal antes de criar uma ficha médica.");
+        }
     }//GEN-LAST:event_botaoFichaMedicaActionPerformed
 
 

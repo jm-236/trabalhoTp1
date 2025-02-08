@@ -165,21 +165,6 @@ public class HandleJson {
         }
     }
 
-//    public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
-//        private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-//
-//        @Override
-//        public void write(JsonWriter jsonWriter, LocalDateTime localDateTime) throws IOException {
-//            jsonWriter.value(localDateTime.format(formatter));
-//        }
-//
-//        @Override
-//        public LocalDateTime read(JsonReader jsonReader) throws IOException {
-//            return LocalDateTime.parse(jsonReader.nextString(), formatter);
-//        }
-//    }
-
-
     class ImageIconAdapter extends TypeAdapter<ImageIcon> {
 
         @Override
