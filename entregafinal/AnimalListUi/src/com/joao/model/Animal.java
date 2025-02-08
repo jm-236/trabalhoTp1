@@ -5,6 +5,7 @@ import com.joao.model.Adocao;
 import com.joao.model.FichaMedica;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -23,10 +24,10 @@ public class Animal {
     private ImageIcon animalImage;
     private String animalRaca;
     private LocalDate animalDataNascimento;
-    private FichaMedica animalFichaMedica;
+    private ArrayList<FichaMedica> histFichaMedica;
     private Adocao animalAdocao;
     
-    public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, FichaMedica animalFichaMedica, Adocao animalAdocao) {
+    public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, Adocao animalAdocao) {
         this.animalID = UUID.randomUUID().toString();
         this.animalData = animalData;
         this.animalLocal = animalLocal;
@@ -38,7 +39,7 @@ public class Animal {
         this.animalImage = animalImage;
         this.animalRaca = animalRaca;
         this.animalDataNascimento = animalDataNascimento;
-        this.animalFichaMedica = animalFichaMedica;
+        this.histFichaMedica = new ArrayList();
         this.animalAdocao = animalAdocao;
     }
     
@@ -53,6 +54,7 @@ public class Animal {
         this.animalPorte = animalPorte;
         this.animalRaca = animalRaca;
         this.animalDataNascimento = animalDataNascimento;
+        this.histFichaMedica = new ArrayList();
     }
 
     public Animal() {
@@ -74,12 +76,12 @@ public class Animal {
         this.animalDataNascimento = animalDataNascimento;
     }
 
-    public FichaMedica getAnimalFichaMedica() {
-        return animalFichaMedica;
+    public ArrayList<FichaMedica> getAnimalFichasMedicas() {
+        return histFichaMedica;
     }
 
-    public void setAnimalFichaMedica(FichaMedica animalFichaMedica) {
-        this.animalFichaMedica = animalFichaMedica;
+    public void addAnimalFichaMedica(FichaMedica animalFichaMedica) {
+        histFichaMedica.add(animalFichaMedica);
     }
 
     public Adocao getAnimalAdocao() {

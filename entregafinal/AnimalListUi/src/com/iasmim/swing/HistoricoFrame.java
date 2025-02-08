@@ -2,6 +2,11 @@ package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
 import com.joao.model.Funcionario;
+import com.joao.model.Historico;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,7 +17,10 @@ import com.joao.model.Funcionario;
  *
  * @author iasmimqf
  */
-public class HistoricoFrame extends javax.swing.JFrame {
+public class HistoricoFrame extends javax.swing.JFrame {        
+    private final ArrayList<Historico> listaHistoricoOriginal;
+    private ArrayList<Historico> listaHistorico;
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     private Funcionario funcionarioLogado;
     /**
@@ -20,7 +28,51 @@ public class HistoricoFrame extends javax.swing.JFrame {
      */
     public HistoricoFrame(Funcionario funcionario) {
         funcionarioLogado = funcionario;
+        HandleJson handleJson = new HandleJson();
+        listaHistorico = handleJson.carregarHistoricoDoArquivo();
+        listaHistoricoOriginal = listaHistorico;
+        // Ordenando a lista pelo atributo LocalDateTime de forma decrescente
+        listaHistorico.sort(Comparator.comparing(Historico::getDataHora).reversed());
         initComponents();
+        atualizarTabela();
+    }
+    
+    public void filtrarEventoLista(boolean novoPet, boolean adocao, boolean fichaVet, boolean exclusoes, int dia, int mes, int ano, String nome){
+        if(!novoPet && !adocao && !fichaVet && !exclusoes){
+            novoPet = true;
+            adocao = true;
+            fichaVet = true;
+            exclusoes = true;
+        }
+        listaHistorico = new ArrayList();
+        for(Historico historico : listaHistoricoOriginal){
+            if((historico.getEvento().equals("Novo Pet") && novoPet) ||
+            (historico.getEvento().equals("Adoção") && adocao) ||
+            (historico.getEvento().equals("Ficha Médica") && fichaVet) ||
+            (historico.getEvento().equals("Exclusão de Pet") && !exclusoes)){
+                if(dia <= 0 || historico.getDataHora().getDayOfMonth() == dia)
+                    if (mes <= 0 || historico.getDataHora().getMonthValue() == mes)
+                        if (ano < 0 || historico.getDataHora().getYear() == ano)
+                            if(nome.isEmpty() || nome.equals(historico.getNomeAnimal().subSequence(0, nome.length())))
+                                listaHistorico.add(historico);
+            }
+        }
+    }
+    
+    public void atualizarTabela(){
+        String[] colunas = {"Data", "Hora", "Evento", "Nome do Animal", "Id do Animal", "Id do Evento"}; 
+        Object[][] dadosTabela = new Object[listaHistorico.size()][6];
+        for (int i = 0; i < listaHistorico.size(); i++) {
+            Historico historico = listaHistorico.get(i);
+            dadosTabela[i][0] = historico.getData();
+            dadosTabela[i][1] = historico.getHora().format(TIME_FORMATTER);
+            dadosTabela[i][2] = historico.getEvento();
+            dadosTabela[i][3] = historico.getNomeAnimal();
+            dadosTabela[i][4] = historico.getIdAnimal();
+            dadosTabela[i][5] = historico.getIdEvento();
+        }
+        DefaultTableModel model = new DefaultTableModel(dadosTabela, colunas);
+        tabelaHist.setModel(model);
     }
 
     /**
@@ -55,12 +107,11 @@ public class HistoricoFrame extends javax.swing.JFrame {
         nomeTextField = new javax.swing.JTextField();
         gerarPDFButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaHist = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         botaoInicio = new javax.swing.JButton();
         botaoAnimal = new javax.swing.JButton();
         botaoAdocao = new javax.swing.JButton();
-        botaoHistorico = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         botaoSair = new javax.swing.JButton();
 
@@ -147,6 +198,11 @@ public class HistoricoFrame extends javax.swing.JFrame {
         pesquisaButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         pesquisaButton.setForeground(new java.awt.Color(255, 255, 255));
         pesquisaButton.setText("Pesquisar");
+        pesquisaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisaButtonActionPerformed(evt);
+            }
+        });
 
         limparButton.setBackground(new java.awt.Color(21, 102, 64));
         limparButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
@@ -267,14 +323,16 @@ public class HistoricoFrame extends javax.swing.JFrame {
         gerarPDFButton.setForeground(new java.awt.Color(255, 255, 255));
         gerarPDFButton.setText("Gerar PDF");
         gerarPDFButton.setPreferredSize(new java.awt.Dimension(108, 36));
+        gerarPDFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerarPDFButtonActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaHist.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        tabelaHist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Data", "Hora", "Evento", "Nome do Animal", "Id do Animal", "Id do Evento"
@@ -288,7 +346,8 @@ public class HistoricoFrame extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabelaHist.setEnabled(false);
+        jScrollPane1.setViewportView(tabelaHist);
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
@@ -338,21 +397,6 @@ public class HistoricoFrame extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(botaoAdocao);
-
-        botaoHistorico.setBackground(new java.awt.Color(205, 255, 232));
-        botaoHistorico.setForeground(new java.awt.Color(64, 86, 76));
-        botaoHistorico.setText("Histórico");
-        botaoHistorico.setFocusable(false);
-        botaoHistorico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botaoHistorico.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        botaoHistorico.setOpaque(true);
-        botaoHistorico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botaoHistorico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoHistoricoActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botaoHistorico);
         jToolBar1.add(filler1);
 
         botaoSair.setBackground(new java.awt.Color(205, 255, 232));
@@ -376,20 +420,16 @@ public class HistoricoFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 81, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(gerarPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1))))
-                .addContainerGap())
+                            .addComponent(gerarPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1204, Short.MAX_VALUE))))
+                .addGap(6, 6, 6))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,25 +439,24 @@ public class HistoricoFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(gerarPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jScrollPane1))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
         );
 
         pack();
@@ -438,7 +477,9 @@ public class HistoricoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoInicioActionPerformed
 
     private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
-
+        this.dispose();
+        CadastroAnimal cadastroScreen = new CadastroAnimal(funcionarioLogado);
+        cadastroScreen.setVisible(true);
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
@@ -446,10 +487,6 @@ public class HistoricoFrame extends javax.swing.JFrame {
         FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
         adocaoScreen.setVisible(true);
     }//GEN-LAST:event_botaoAdocaoActionPerformed
-
-    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
-        
-    }//GEN-LAST:event_botaoHistoricoActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         this.dispose();
@@ -466,8 +503,43 @@ public class HistoricoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeTextFieldActionPerformed
 
     private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
-        // TODO add your handling code here:
+        listaHistorico = listaHistoricoOriginal;
+        newPetCheckBox.setSelected(false);
+        adocoesCheckBox.setSelected(false);
+        fichaVetCheckBox.setSelected(false);
+        exclusoesCheckBox.setSelected(false);
+        nomeTextField.setText("");
+        diaComboBox.setSelectedIndex(0);
+        mesComboBox.setSelectedIndex(0);
+        anoComboBox.setSelectedIndex(0);
+        atualizarTabela();
     }//GEN-LAST:event_limparButtonActionPerformed
+
+    private void pesquisaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaButtonActionPerformed
+        boolean newPet = newPetCheckBox.isSelected();
+        boolean adocao = adocoesCheckBox.isSelected();
+        boolean fichaVet = fichaVetCheckBox.isSelected();
+        boolean exclusoes = exclusoesCheckBox.isSelected();
+        
+        String nome = nomeTextField.getText();
+        
+        int dia = diaComboBox.getSelectedIndex();
+        int mes = mesComboBox.getSelectedIndex();
+        String anoS = anoComboBox.getSelectedItem().toString();
+        int ano;
+        try {
+            ano = Integer.parseInt(anoS);
+        } catch (NumberFormatException e) {
+            ano = -1;
+        }
+        
+        filtrarEventoLista(newPet, adocao, fichaVet, exclusoes, dia, mes, ano, nome);
+        atualizarTabela();
+    }//GEN-LAST:event_pesquisaButtonActionPerformed
+
+    private void gerarPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDFButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gerarPDFButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -509,7 +581,6 @@ public class HistoricoFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> anoComboBox;
     private javax.swing.JButton botaoAdocao;
     private javax.swing.JButton botaoAnimal;
-    private javax.swing.JButton botaoHistorico;
     private javax.swing.JButton botaoInicio;
     private javax.swing.JButton botaoSair;
     private javax.swing.JComboBox<String> diaComboBox;
@@ -529,12 +600,12 @@ public class HistoricoFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton limparButton;
     private javax.swing.JComboBox<String> mesComboBox;
     private javax.swing.JCheckBox newPetCheckBox;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JButton pesquisaButton;
+    private javax.swing.JTable tabelaHist;
     // End of variables declaration//GEN-END:variables
 }

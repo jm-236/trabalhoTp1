@@ -9,6 +9,7 @@ import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
 import com.joao.model.Funcionario;
 import com.joao.model.Animal;
+import com.joao.model.Historico;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -102,6 +103,8 @@ public class CadastroAnimal extends javax.swing.JFrame {
         HandleJson handleJson = new HandleJson();
         if(handleJson.addAnimalNoArquivo(animal)){
             JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
+            Historico historico = new Historico(animal, true);
+            handleJson.AddHistoricoNoArquivo(historico);
             this.dispose();
             TelaPrincipal telaPrincipal = new TelaPrincipal(funcionarioLogado);
             telaPrincipal.setVisible(true);
