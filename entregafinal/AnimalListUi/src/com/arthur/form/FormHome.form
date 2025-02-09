@@ -79,32 +79,30 @@
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lbGenero" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                      <Component id="lbPorte" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lbAnimalName" alignment="0" pref="197" max="32767" attributes="0"/>
-                                          <Component id="lbData" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lbRaca" min="-2" pref="48" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lbIdade" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbLocal" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbPeso" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="lbGenero" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="lbPorte" min="-2" pref="121" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lbAnimalName" alignment="0" pref="197" max="32767" attributes="0"/>
+                                      <Component id="lbData" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbRaca" min="-2" pref="83" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lbIdade" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbLocal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbPeso" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="botaoCriarFichaVet" alignment="0" max="32767" attributes="0"/>
-                              <Component id="botaoListFichaVet" alignment="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="botaoCriarFichaVet" min="-2" pref="197" max="-2" attributes="0"/>
+                              <Component id="botaoListFichaVet" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -139,11 +137,11 @@
                   <Component id="lbNascimento" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="botaoListFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="botaoCriarFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace pref="475" max="32767" attributes="0"/>
+                  <EmptySpace pref="463" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -267,8 +267,8 @@ public class PerfilFuncionario extends javax.swing.JFrame {
         telefoneField.setLayout(telefoneFieldLayout);
         telefoneFieldLayout.setHorizontalGroup(
             telefoneFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telefoneFieldLayout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
+            .addGroup(telefoneFieldLayout.createSequentialGroup()
+                .addGap(295, 295, 295)
                 .addGroup(telefoneFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telefoneFieldLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
