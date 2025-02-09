@@ -21,6 +21,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
     private final ArrayList<Historico> listaHistoricoOriginal;
     private ArrayList<Historico> listaHistorico;
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private Funcionario funcionarioLogado;
     /**
@@ -50,7 +51,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
             if((historico.getEvento().equals("Novo Pet") && novoPet) ||
             (historico.getEvento().equals("Adoção") && adocao) ||
             (historico.getEvento().equals("Ficha Médica") && fichaVet) ||
-            (historico.getEvento().equals("Exclusão de Pet") && !exclusoes)){
+            (historico.getEvento().equals("Exclusão de Pet") && exclusoes)){
                 if(dia <= 0 || historico.getDataHora().getDayOfMonth() == dia)
                     if (mes <= 0 || historico.getDataHora().getMonthValue() == mes)
                         if (ano < 0 || historico.getDataHora().getYear() == ano)
@@ -65,7 +66,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         Object[][] dadosTabela = new Object[listaHistorico.size()][6];
         for (int i = 0; i < listaHistorico.size(); i++) {
             Historico historico = listaHistorico.get(i);
-            dadosTabela[i][0] = historico.getData();
+            dadosTabela[i][0] = historico.getData().format(DATE_FORMATTER);
             dadosTabela[i][1] = historico.getHora().format(TIME_FORMATTER);
             dadosTabela[i][2] = historico.getEvento();
             dadosTabela[i][3] = historico.getNomeAnimal();
