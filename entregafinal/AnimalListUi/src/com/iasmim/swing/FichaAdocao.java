@@ -710,7 +710,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         
         handleJson.atualizarAnimal(animal.getAnimalID(), animal);
         adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
-        Historico historico = new Historico(animal, adocao, false);
+        Historico historico = new Historico(animal, adocao, false, false);
         try {
             handleJson.AddHistoricoNoArquivo(historico);
         } catch (IOException ex) {

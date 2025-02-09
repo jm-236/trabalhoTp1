@@ -694,7 +694,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         for( AbstractButton button : Collections.list(conscienciaButtonGroup.getElements())){
             if(button.isSelected()){
                 conscienciaPreenchida = true;
-                consciencia = button.getText().equals("Sim") ? true : false;
+                consciencia = button.getText().equals("Sim");
                 break;
             }
         }
@@ -705,9 +705,10 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         for( AbstractButton button : Collections.list(entregouPraAdocaoButtonGroup.getElements())){
             if(button.isSelected()){
                 jaEntregouPreenchida = true;
-                jaEntregouParaAdocao = button.getText().equals("Sim") ? true : false;
+                jaEntregouParaAdocao = button.getText().equals("Sim");
                 break;
             }
+            
             
         Termo termoResponsabilidade = new Termo(temOutrosAnimais,outrosAnimais,
         podeLevarAoVet, ambiente, localDuranteViagem, oqueFaraSeMudar, consciencia,
@@ -735,15 +736,16 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         
         handleJson.atualizarAnimal(animal.getAnimalID(), animal);
         adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
-        Historico historico = new Historico(animal, adocao, true);
+        System.out.println("Adoção alterada com sucesso");
+        Historico historico = new Historico(animal, adocao, true, false);
         try {
             handleJson.AddHistoricoNoArquivo(historico);
         } catch (IOException ex) {
             System.out.println("Erro ao tentar adicionar a modificação da adoção ao histórico.");
         }
         
-        System.out.println("Adoção cadastrada com sucesso!");
-        
+        System.out.println("Adoção alterada com sucesso!");
+        JOptionPane.showMessageDialog(null, "Adoção alterada com sucesso!");
         this.dispose();
     }
     }//GEN-LAST:event_salvarAdocaoButtonActionPerformed
@@ -854,6 +856,20 @@ public class VisualizarAdocao extends javax.swing.JFrame {
 
     private void excluirAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAdocaoButtonActionPerformed
         // TODO add your handling code here:
+        animal.setAnimalAdocao(new Adocao());
+        Adotante adotante = adocaoOriginal.getAdotante();
+        
+        ArrayList<Adocao> animaisAdotados = adotante.getAnimaisAdotados();
+        animaisAdotados.remove(adocaoOriginal);
+        adotante.setAnimaisAdotados(animaisAdotados);
+        
+        Historico historico = new Historico(animal, adocaoOriginal, false, true);
+        try {
+            handleJson.AddHistoricoNoArquivo(historico);
+        } catch (IOException ex) {
+            System.out.println("Erro ao tentar adicionar a adoção ao histórico.");
+        }
+        this.dispose();
     }//GEN-LAST:event_excluirAdocaoButtonActionPerformed
 
     /**

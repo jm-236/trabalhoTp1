@@ -43,15 +43,18 @@ public class Historico {
         this.evento = "Ficha Médica";
     }
     
-    public Historico(Animal animal, Adocao adocao, boolean edicao) {
+    public Historico(Animal animal, Adocao adocao, boolean edicao, boolean exclusao) {
         this.idAnimal = animal.getAnimalID();
         this.nomeAnimal = animal.getAnimalNome();
         this.dataHora = LocalDateTime.now();
         if (edicao){
             this.evento = "Alteração de adoção";
         }
-        else{
-            this.evento = "Adoção";
+        else if (exclusao){
+            this.evento = "Exclusão de adoção";
+        }
+        else {
+           this.evento = "Nova adoção"; 
         }
     }
     
