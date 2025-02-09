@@ -1,0 +1,745 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Adocao {
+  + Adocao(LocalDate, Termo, Adotante, Animal): 
+  + Adocao(Termo, Adotante, Animal): 
+  + Adocao(): 
+  - termoResponsabilidade: Termo
+  - animal: Animal
+  - adotante: Adotante
+  - dataAdocao: LocalDate
+  + toString(): String
+  + validarData(String): String
+  + adocaoNaoExiste(): boolean
+   adotante: Adotante
+   termoResponsabilidade: Termo
+   dataAdocao: LocalDate
+   animal: Animal
+}
+class Adotante {
+  + Adotante(String, LocalDate, String, String, String, String): 
+  + Adotante(): 
+  - id: String
+  - animaisAdotados: ArrayList<Adocao>
+  - cep: String
+  - endereco: String
+  + toString(): String
+   endereco: String
+   cep: String
+   animaisAdotados: ArrayList<Adocao>
+   id: String
+}
+class AdotanteDAO {
+  + AdotanteDAO(): 
+  - salvarAdotantes(List<Adotante>): void
+  + atualizarAdotante(String, Adotante): void
+  + adicionarAdotante(Adotante): void
+  + listarAdotantes(): List<Adotante>
+  + removerAdotante(String): void
+  + buscarAdotante(String): Optional<Adotante>
+  - carregarAdotantes(): List<Adotante>
+}
+class Animal {
+  + Animal(LocalDate, String, String, String, String, float, String, ImageIcon, String, LocalDate, Adocao): 
+  + Animal(): 
+  + Animal(LocalDate, String, String, String, String, float, String, String, LocalDate): 
+  - animalLocal: String
+  - animalEspecie: String
+  - animalPeso: float
+  - animalDataNascimento: LocalDate
+  - animalData: LocalDate
+  - animalImage: ImageIcon
+  - animalNome: String
+  - animalID: String
+  - animalPorte: String
+  - animalGenero: String
+  - animalAdocao: Adocao
+  - animalRaca: String
+  + calcularIdade(): int
+  + setAnimalDataNascimento(String): boolean
+  + toString(): String
+  + addAnimalFichaMedica(FichaMedica): void
+  + setAnimalData(String): boolean
+  + convertStringToDate(String): LocalDate
+   animalPeso: float
+   animalData: LocalDate
+   animalGenero: String
+   animalDataNascimento: LocalDate
+   animalImage: ImageIcon
+   animalEspecie: String
+   animalPorte: String
+   animalRaca: String
+   animalFichasMedicas: ArrayList<FichaMedica>
+   animalNome: String
+   animalAdocao: Adocao
+   animalID: String
+   animalLocal: String
+}
+class Background {
+  + Background(): 
+  - round: int
+  + paint(Graphics): void
+   round: int
+}
+class BackgroundPanel {
+  + BackgroundPanel(String): 
+  # paintComponent(Graphics): void
+}
+class Button {
+  + Button(): 
+  + paint(Graphics): void
+}
+class CadastroAdotante {
+  + CadastroAdotante(FichaAdocao): 
+  + CadastroAdotante(): 
+  - botaoHistoricoActionPerformed(ActionEvent): void
+  - emailTextFieldFocusLost(FocusEvent): void
+  - enderecoFieldFocusGained(FocusEvent): void
+  - dataNascimentoFieldActionPerformed(ActionEvent): void
+  - dataNascimentoFieldFocusGained(FocusEvent): void
+  - initComponents(): void
+  - botaoAdocaoActionPerformed(ActionEvent): void
+  - emailTextFieldFocusGained(FocusEvent): void
+  - emailTextFieldActionPerformed(ActionEvent): void
+  - telefoneFieldFocusLost(FocusEvent): void
+  - cadastrarButtonActionPerformed(ActionEvent): void
+  - sairButtonActionPerformed(ActionEvent): void
+  - cepTextFieldActionPerformed(ActionEvent): void
+  - dataNascimentoFieldFocusLost(FocusEvent): void
+  - cpfTextFieldActionPerformed(ActionEvent): void
+  - nomeTextFieldActionPerformed(ActionEvent): void
+  - cepTextFieldFocusGained(FocusEvent): void
+  - cepTextFieldFocusLost(FocusEvent): void
+  - nomeTextFieldFocusGained(FocusEvent): void
+  + main(String[]): void
+  - enderecoFieldActionPerformed(ActionEvent): void
+  - nomeTextFieldFocusLost(FocusEvent): void
+  - telefoneFieldFocusGained(FocusEvent): void
+  - cpfTextFieldFocusLost(FocusEvent): void
+  - botaoInicioActionPerformed(ActionEvent): void
+  - botaoAnimalActionPerformed(ActionEvent): void
+  - cpfTextFieldFocusGained(FocusEvent): void
+  - enderecoFieldFocusLost(FocusEvent): void
+}
+class CadastroAnimal {
+  + CadastroAnimal(Funcionario): 
+  - pesoTextFieldFocusLost(FocusEvent): void
+  - racaTextFieldFocusGained(FocusEvent): void
+  + newAnimal(): void
+  - localTextFieldActionPerformed(ActionEvent): void
+  - nomeTextFieldtFieldActionPerformed(ActionEvent): void
+  - racaTextFieldActionPerformed(ActionEvent): void
+  - cadastrarButtonActionPerformed(ActionEvent): void
+  - especieTextFieldActionPerformed(ActionEvent): void
+  - incioButtonActionPerformed(ActionEvent): void
+  - dataNascTextFieldActionPerformed(ActionEvent): void
+  - especieTextFieldFocusGained(FocusEvent): void
+  - dataResgTextFieldFocusGained(FocusEvent): void
+  - histButtonActionPerformed(ActionEvent): void
+  - pesoTextFieldFocusGained(FocusEvent): void
+  - localTextFieldFocusGained(FocusEvent): void
+  - dataResgTextFieldFocusLost(FocusEvent): void
+  - localTextFieldFocusLost(FocusEvent): void
+  - pesoTextFieldActionPerformed(ActionEvent): void
+  - dataResgTextFieldActionPerformed(ActionEvent): void
+  - racaTextFieldFocusLost(FocusEvent): void
+  - sairButtonActionPerformed(ActionEvent): void
+  - nomeTextFieldFocusGained(FocusEvent): void
+  - nomeTextFieldFocusLost(FocusEvent): void
+  - especieTextFieldFocusLost(FocusEvent): void
+  - adocaoButtonActionPerformed(ActionEvent): void
+  - dataNascTextFieldFocusLost(FocusEvent): void
+  - initComponents(): void
+  - dataNascTextFieldFocusGained(FocusEvent): void
+  - carragarImgButtonActionPerformed(ActionEvent): void
+  + main(String[]): void
+}
+class CadastroFuncionario {
+  + CadastroFuncionario(): 
+  - loginButtonActionPerformed(ActionEvent): void
+  - isVeterinarioCheckboxActionPerformed(ActionEvent): void
+  - ocultarSenhaCheckboxActionPerformed(ActionEvent): void
+  - cadastrarButtonActionPerformed(ActionEvent): void
+  - jButton2ActionPerformed(ActionEvent): void
+  - crmvFieldFocusLost(FocusEvent): void
+  - emailFieldFocusLost(FocusEvent): void
+  + main(String[]): void
+  - cpfFieldActionPerformed(ActionEvent): void
+  - nomeFuncionarioFieldFocusGained(FocusEvent): void
+  - telefoneFieldFocusLost(FocusEvent): void
+  - senhaIFieldActionPerformed(ActionEvent): void
+  - nomeFuncionarioFieldFocusLost(FocusEvent): void
+  - initComponents(): void
+  - cpfFieldFocusLost(FocusEvent): void
+  - emailFieldFocusGained(FocusEvent): void
+  - telefoneFieldFocusGained(FocusEvent): void
+  - crmvFieldActionPerformed(ActionEvent): void
+  - emailFieldActionPerformed(ActionEvent): void
+  - crmvFieldFocusGained(FocusEvent): void
+  - cpfFieldFocusGained(FocusEvent): void
+  - nascimentoFieldFocusGained(FocusEvent): void
+  - nascimentoFieldActionPerformed(ActionEvent): void
+  - nascimentoFieldFocusLost(FocusEvent): void
+}
+class CepInfo {
+  + CepInfo(): 
+  - erro: Boolean
+  + toString(): String
+  + consultaCep(String): String
+  + validaCep(String): boolean
+   erro: boolean
+}
+class CriarFichaMedica {
+  + CriarFichaMedica(Animal, Funcionario): 
+  - initComponents(): void
+  + main(String[]): void
+  + medicacao(): String
+  - simMedActionPerformed(ActionEvent): void
+  - simExamesButtonActionPerformed(ActionEvent): void
+  + fezExames(): String
+  + atendimento(): String
+  - simAlergiaButtonActionPerformed(ActionEvent): void
+  - simCirurgiasButtonActionPerformed(ActionEvent): void
+  - rotinaButtonActionPerformed(ActionEvent): void
+  + novaFichaMedica(): boolean
+  - sairButtonActionPerformed(ActionEvent): void
+  + suplemento(): String
+  + fezCirurgias(): String
+  + alergiaMedicamentos(): String
+  - urgenciaButtonActionPerformed(ActionEvent): void
+  - saveButtonActionPerformed(ActionEvent): void
+  - simSuplementoActionPerformed(ActionEvent): void
+}
+class CustomTableModel {
+  ~ CustomTableModel(String[]): 
+  + isCellEditable(int, int): boolean
+}
+class EditarAnimal {
+  + EditarAnimal(Animal, Funcionario): 
+  - nomeTextFieldtFieldActionPerformed(ActionEvent): void
+  - sairButtonActionPerformed(ActionEvent): void
+  - especieTextFieldActionPerformed(ActionEvent): void
+  - dataResgTextFieldActionPerformed(ActionEvent): void
+  - especieTextFieldFocusGained(FocusEvent): void
+  - localTextFieldFocusLost(FocusEvent): void
+  - dataNascTextFieldActionPerformed(ActionEvent): void
+  - racaTextFieldFocusLost(FocusEvent): void
+  - dataNascTextFieldFocusGained(FocusEvent): void
+  - carragarImgButtonActionPerformed(ActionEvent): void
+  - dataNascTextFieldFocusLost(FocusEvent): void
+  - pesoTextFieldActionPerformed(ActionEvent): void
+  - pesoTextFieldFocusGained(FocusEvent): void
+  - nomeTextFieldFocusGained(FocusEvent): void
+  - racaTextFieldFocusGained(FocusEvent): void
+  - pesoTextFieldFocusLost(FocusEvent): void
+  - localTextFieldFocusGained(FocusEvent): void
+  - dataResgTextFieldFocusLost(FocusEvent): void
+  - nomeTextFieldFocusLost(FocusEvent): void
+  + editAnimal(): void
+  - especieTextFieldFocusLost(FocusEvent): void
+  - localTextFieldActionPerformed(ActionEvent): void
+  - salvarButtonActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - initComponents(): void
+  - racaTextFieldActionPerformed(ActionEvent): void
+  - dataResgTextFieldFocusGained(FocusEvent): void
+}
+class EditarFichaMedica {
+  + EditarFichaMedica(Animal, Funcionario, FichaMedica): 
+  - naoCirurgiasButtonActionPerformed(ActionEvent): void
+  - medTextFieldActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - sairButtonActionPerformed(ActionEvent): void
+  - rotinaButtonActionPerformed(ActionEvent): void
+  - simAlergiaButtonActionPerformed(ActionEvent): void
+  - naoMedActionPerformed(ActionEvent): void
+  + suplemento(): String
+  + fezExames(): String
+  - naoAlergiaButtonActionPerformed(ActionEvent): void
+  + novaFichaMedica(): boolean
+  - naoExamesButtonActionPerformed(ActionEvent): void
+  + medicacao(): String
+  - simSuplementoActionPerformed(ActionEvent): void
+  - simExamesButtonActionPerformed(ActionEvent): void
+  - saveButtonActionPerformed(ActionEvent): void
+  - naoSuplementoActionPerformed(ActionEvent): void
+  - simMedActionPerformed(ActionEvent): void
+  - urgenciaButtonActionPerformed(ActionEvent): void
+  + alergiaMedicamentos(): String
+  + fezCirurgias(): String
+  + atendimento(): String
+  - initComponents(): void
+  - simCirurgiasButtonActionPerformed(ActionEvent): void
+}
+class EditarPerfilFunc {
+  + EditarPerfilFunc(): 
+  - emailFieldActionPerformed(ActionEvent): void
+  - cpfFieldActionPerformed(ActionEvent): void
+  - botaoSairActionPerformed(ActionEvent): void
+  - initComponents(): void
+  - botaoInicio1ActionPerformed(ActionEvent): void
+  - botaoAnimalActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - salvarMudancasActionPerformed(ActionEvent): void
+  - botaoHistoricoActionPerformed(ActionEvent): void
+  - botaoAdocaoActionPerformed(ActionEvent): void
+  + MostrarDados(): void
+  - voltarPerfilActionPerformed(ActionEvent): void
+  + ConfirmarSenha(): boolean
+  - senhaField1ActionPerformed(ActionEvent): void
+}
+interface EventAnimal << interface >> {
+  + animalClick(Component, Animal): void
+}
+class FichaAdocao {
+  + FichaAdocao(Funcionario): 
+  - dataAdocaoFieldActionPerformed(ActionEvent): void
+  - simMed2ActionPerformed(ActionEvent): void
+  - naoOutrosAnimaisButtonActionPerformed(ActionEvent): void
+  - initComponents(): void
+  - simMed1ActionPerformed(ActionEvent): void
+  - entregoPessoButtonActionPerformed(ActionEvent): void
+  + close(): void
+  - salvarAdocaoButtonActionPerformed(ActionEvent): void
+  - botaoAnimalActionPerformed(ActionEvent): void
+  - recebeuAnimalButtonActionPerformed(ActionEvent): void
+  - quintalButtonActionPerformed(ActionEvent): void
+  - apartamentoButtonActionPerformed(ActionEvent): void
+  - levoComigoButtonActionPerformed(ActionEvent): void
+  - botaoInicio1ActionPerformed(ActionEvent): void
+  - botaoSairActionPerformed(ActionEvent): void
+  - jButton6ActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - adotanteBoxActionPerformed(ActionEvent): void
+  - simOutrosAnimaisButtonActionPerformed(ActionEvent): void
+  - botaoHistoricoActionPerformed(ActionEvent): void
+}
+class FichaMedica {
+  + FichaMedica(String, Veterinario): 
+  + FichaMedica(String, String, Veterinario): 
+  + FichaMedica(): 
+  - dataHora: LocalDateTime
+  - medicacaoContinua: String
+  - suplementacao: String
+  - fichaId: String
+  - tipoAtendimento: String
+  - veterinario: Veterinario
+  - examesRecentes: String
+  - alergiaMed: String
+  - cirurgia: String
+  - diagnosticoTratamento: String
+   alergiaMed: String
+   medicacaoContinua: String
+   fichaId: String
+   hora: LocalTime
+   cirurgia: String
+   data: LocalDate
+   veterinario: Veterinario
+   examesRecentes: String
+   dataHora: LocalDateTime
+   historicoClinico: String
+   diagnosticoTratamento: String
+   suplementacao: String
+   tipoAtendimento: String
+}
+class FormHome {
+  + FormHome(Funcionario): 
+  - animal: Animal
+  - event: EventAnimal
+  - botaoVisualizarAdocaoActionPerformed(ActionEvent): void
+  - botaoListFichaVetActionPerformed(ActionEvent): void
+  + resetShow(): void
+  + showAnimal(Animal): void
+  - botaoCriarFichaVetActionPerformed(ActionEvent): void
+  + ExcluirAnimal(): String
+  + filterAnimals(String, String): void
+  - initComponents(): void
+  + addAnimal(Animal): void
+   panelItemLocation: Point
+   event: EventAnimal
+   selected: Component
+   animal: Animal
+}
+class Funcionario {
+  + Funcionario(): 
+  + Funcionario(String, LocalDate, String, String, String, String): 
+  - senha: String
+  - id: String
+  + assinatura(): String
+  + setSenha(String, String): boolean
+   id: String
+   senha: String
+}
+class FuncionarioDAO {
+  + FuncionarioDAO(): 
+  - salvarFuncionarios(List<Funcionario>): void
+  - carregarFuncionarios(): List<Funcionario>
+  + removerFuncionario(String): void
+  + listarFuncionarios(): List<Funcionario>
+  + GetFuncionarioLogado(): Funcionario
+  + buscarFuncionario(String): Optional<Funcionario>
+  + carregarFuncionariosDiferencial(): List<Funcionario>
+  + SalvarFuncionarioLogado(Funcionario): void
+  + adicionarFuncionario(Funcionario): void
+  + limparDadosAoEncerrar(): void
+  + atualizarFuncionario(String, Funcionario): void
+}
+class HandleJson {
+  + HandleJson(): 
+  + buscarAnimalPeloId(String): Animal
+  + addAnimalNoArquivo(Animal): boolean
+  + atualizarAnimal(String, Animal): void
+  + salvarHistoricoNoArquivo(ArrayList<Historico>): boolean
+  + AddHistoricoNoArquivo(Historico): boolean
+  + carregarAnimaisDoArquivo(): ArrayList<Animal>
+  + salvarAnimaisNoArquivo(ArrayList<Animal>): boolean
+  + carregarHistoricoDoArquivo(): ArrayList<Historico>
+}
+class HandleJson {
+  + HandleJson(): 
+  + carregarAnimaisDoArquivo(): ArrayList<Animal>
+  + carregarHistoricoDoArquivo(): ArrayList<Historico>
+  + AddHistoricoNoArquivo(Historico): boolean
+  + salvarHistoricoNoArquivo(ArrayList<Historico>): boolean
+  + buscarAnimalPeloId(String): Animal
+  + salvarAnimaisNoArquivo(ArrayList<Animal>): void
+  + atualizarAnimal(String, Animal): void
+}
+class Historico {
+  + Historico(Animal, boolean): 
+  + Historico(Animal, boolean, boolean): 
+  + Historico(Animal, FichaMedica): 
+  + Historico(Animal, FichaMedica, boolean): 
+  + Historico(Animal, Adocao, boolean, boolean): 
+  - idEvento: String
+  - dataHora: LocalDateTime
+  - idAnimal: String
+  - evento: String
+  - nomeAnimal: String
+  + toString(): String
+   dataHora: LocalDateTime
+   evento: String
+   nomeAnimal: String
+   hora: LocalTime
+   idAnimal: String
+   data: LocalDate
+   idEvento: String
+}
+class HistoricoFrame {
+  + HistoricoFrame(Funcionario): 
+  - botaoSairActionPerformed(ActionEvent): void
+  - limparButtonActionPerformed(ActionEvent): void
+  - botaoAnimalActionPerformed(ActionEvent): void
+  + filtrarEventoLista(boolean, boolean, boolean, boolean, boolean, int, int, int, String): void
+  - exclusoesCheckBoxActionPerformed(ActionEvent): void
+  - edicoesCheckBoxActionPerformed(ActionEvent): void
+  - pesquisaButtonActionPerformed(ActionEvent): void
+  + atualizarTabela(): void
+  - newPetCheckBoxActionPerformed(ActionEvent): void
+  - nomeTextFieldActionPerformed(ActionEvent): void
+  - botaoInicioActionPerformed(ActionEvent): void
+  - initComponents(): void
+  - gerarPDFButtonActionPerformed(ActionEvent): void
+  - botaoAdocaoActionPerformed(ActionEvent): void
+  - fichaVetCheckBoxActionPerformed(ActionEvent): void
+  + main(String[]): void
+}
+class ImageIconAdapter {
+  + ImageIconAdapter(): 
+  + write(JsonWriter, ImageIcon): void
+  + read(JsonReader): ImageIcon
+  - toBufferedImage(Image): BufferedImage
+}
+class ImageIconAdapter {
+  + ImageIconAdapter(): 
+  - toBufferedImage(Image): BufferedImage
+  + write(JsonWriter, ImageIcon): void
+  + read(JsonReader): ImageIcon
+}
+class ImageIconAdapter {
+  + ImageIconAdapter(): 
+  - toBufferedImage(Image): BufferedImage
+  + write(JsonWriter, ImageIcon): void
+  + read(JsonReader): ImageIcon
+}
+class InvisibleScrollBarButton {
+  - InvisibleScrollBarButton(): 
+}
+class Item {
+  + Item(): 
+  - data: Animal
+  - lbData: JLabel
+  - lbIdade: JLabel
+  - selected: boolean
+  - lbAnimalName: JLabel
+  - lbGenero: JLabel
+  + paint(Graphics): void
+  - initComponents(): void
+   lbAnimalName: JLabel
+   lbData: JLabel
+   data: Animal
+   lbGenero: JLabel
+   lbIdade: JLabel
+   selected: boolean
+}
+class ListaFichaVeterinarias {
+  + ListaFichaVeterinarias(Funcionario, Animal): 
+  + main(String[]): void
+}
+class LocalDateAdapter {
+  + LocalDateAdapter(): 
+  + write(JsonWriter, LocalDate): void
+  + read(JsonReader): LocalDate
+}
+class LocalDateAdapter {
+  + LocalDateAdapter(): 
+  + read(JsonReader): LocalDate
+  + write(JsonWriter, LocalDate): void
+}
+class LocalDateAdapter2 {
+  + LocalDateAdapter2(): 
+  + serialize(LocalDate, Type, JsonSerializationContext): JsonElement
+  + deserialize(JsonElement, Type, JsonDeserializationContext): LocalDate
+}
+class LocalDateTimeAdapter {
+  + LocalDateTimeAdapter(): 
+  + read(JsonReader): LocalDateTime
+  + write(JsonWriter, LocalDateTime): void
+}
+class LocalDateTimeAdapter {
+  + LocalDateTimeAdapter(): 
+  + read(JsonReader): LocalDateTime
+  + write(JsonWriter, LocalDateTime): void
+}
+class MainPanel {
+  + MainPanel(): 
+  - image: Icon
+  - imageOld: Icon
+  - imageLocation: Point
+  - targetSize: Dimension
+  - targetLocation: Point
+  - imageSize: Dimension
+  - toImage(Icon): Image
+  - getAutoSize(Icon, Dimension): Rectangle
+  + paint(Graphics): void
+   imageLocation: Point
+   targetLocation: Point
+   imageSize: Dimension
+   image: Icon
+   targetSize: Dimension
+   imageOld: Icon
+}
+class ModernScrollBarUI {
+  + ModernScrollBarUI(): 
+  # createDecreaseButton(int): JButton
+  # createIncreaseButton(int): JButton
+  # paintThumb(Graphics, JComponent, Rectangle): void
+  # paintTrack(Graphics, JComponent, Rectangle): void
+}
+class PDFCreator {
+  + PDFCreator(String): 
+  + definirTitulo(String): void
+  + exportarEPdf(): void
+  + definirCabecalho(Funcionario): void
+  + adicionarSubTitulo(String): void
+  + adicionarImagemCentralizada(ImageIcon): void
+  + main(String[]): void
+  + adicionarParagrafo(String): void
+}
+class PanelItem {
+  + PanelItem(): 
+}
+class PdfWriter {
+  + PdfWriter(): 
+}
+class PerfilFuncionario {
+  + PerfilFuncionario(): 
+  - cpfFieldActionPerformed(ActionEvent): void
+  - initComponents(): void
+  - nomeFieldActionPerformed(ActionEvent): void
+  - botaoHistoricoActionPerformed(ActionEvent): void
+  - emailFieldActionPerformed(ActionEvent): void
+  - botaoInicio1ActionPerformed(ActionEvent): void
+  - botaoAdocaoActionPerformed(ActionEvent): void
+  - botaoSairActionPerformed(ActionEvent): void
+  + main(String[]): void
+  + MostrarDados(): void
+  - excluirContaActionPerformed(ActionEvent): void
+  - crmvFieldActionPerformed(ActionEvent): void
+  - botaoAnimalActionPerformed(ActionEvent): void
+  - editarPerfilActionPerformed(ActionEvent): void
+}
+class Pessoa {
+  + Pessoa(String, LocalDate, String, String, String): 
+  + Pessoa(): 
+  - cpf: String
+  - email: String
+  - dataNascimento: LocalDate
+  - nome: String
+  - telefone: String
+  + isNomeValido(String): boolean
+  - calcularDigitoVerificador(String, int): int
+  + validaCpf(String): boolean
+  + toString(): String
+  + validarData(String): String
+   telefone: String
+   cpf: String
+   nome: String
+   dataNascimento: LocalDate
+   email: String
+}
+class PictureBox {
+  + PictureBox(): 
+  - image: Icon
+  - toImage(Icon): Image
+  - getAutoSize(Icon): Rectangle
+  # paintComponent(Graphics): void
+   image: Icon
+}
+class ScrollBar {
+  + ScrollBar(): 
+}
+class TelaLogin {
+  + TelaLogin(): 
+  - senhaFieldFocusGained(FocusEvent): void
+  - usernameFieldFocusGained(FocusEvent): void
+  - ocultarSenhaBoxActionPerformed(ActionEvent): void
+  - sairButtonActionPerformed(ActionEvent): void
+  - cadastrarButtonActionPerformed(ActionEvent): void
+  - usernameFieldActionPerformed(ActionEvent): void
+  - senhaFieldFocusLost(FocusEvent): void
+  - usernameFieldFocusLost(FocusEvent): void
+  - loginButtonActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - initComponents(): void
+}
+class TelaPrincipal {
+  + TelaPrincipal(Funcionario): 
+  - init(): void
+  - botaoPerfilActionPerformed(ActionEvent): void
+  - jButton1ActionPerformed(ActionEvent): void
+  - filterTextFieldActionPerformed(ActionEvent): void
+  - botaoSairActionPerformed(ActionEvent): void
+  - getLocationOf(Component): Point
+  - botaoAdocaoActionPerformed(ActionEvent): void
+  - filtroDePesquisaActionPerformed(ActionEvent): void
+  - botaoAnimalActionPerformed(ActionEvent): void
+  - TopPanelMouseReleased(MouseEvent): void
+  - initComponents(): void
+  - TopPanelMousePressed(MouseEvent): void
+  - testData(): void
+  + main(String[]): void
+  - botaoHistoricoActionPerformed(ActionEvent): void
+  - botaoInicio1ActionPerformed(ActionEvent): void
+  - jButton2ActionPerformed(ActionEvent): void
+  - TopPanelMouseDragged(MouseEvent): void
+}
+class Termo {
+  + Termo(): 
+  + Termo(boolean, String, boolean, String, String, String, boolean, boolean): 
+  - consciencia: boolean
+  - acaoSeFizerMudanca: String
+  - temOutrosAnimais: boolean
+  - outrosAnimais: String
+  - localDuranteViagem: String
+  - ambiente: String
+  - podeLevarAoVet: boolean
+  - jaEntregouParaAdocao: boolean
+  + toString(): String
+   podeLevarAoVet: boolean
+   jaEntregouParaAdocao: boolean
+   outrosAnimais: String
+   localDuranteViagem: String
+   consciencia: boolean
+   acaoSeFizerMudanca: String
+   temOutrosAnimais: boolean
+   ambiente: String
+}
+class TermoAdapter {
+  + TermoAdapter(): 
+  + read(JsonReader): Termo
+  + write(JsonWriter, Termo): void
+}
+class Veterinario {
+  + Veterinario(String, LocalDate, String, String, String, String, String): 
+  - crmv: String
+  + isValidCRMV(String): boolean
+  + assinatura(): String
+  + toString(): String
+   crmv: String
+}
+class VisualizarAdocao {
+  + VisualizarAdocao(Animal, Funcionario): 
+  + VisualizarAdocao(): 
+  - quintalButtonActionPerformed(ActionEvent): void
+  - entregouAnimalButtonActionPerformed(ActionEvent): void
+  - naoOutrosAnimaisButtonActionPerformed(ActionEvent): void
+  - levoComigoButtonActionPerformed(ActionEvent): void
+  - initComponents(): void
+  - simOutrosAnimaisButtonActionPerformed(ActionEvent): void
+  - salvarAdocaoButtonActionPerformed(ActionEvent): void
+  - adotanteBoxActionPerformed(ActionEvent): void
+  - entregoPessoButtonActionPerformed(ActionEvent): void
+  - excluirAdocaoButtonActionPerformed(ActionEvent): void
+  - editarCheckBoxActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - simConscienciaButtonActionPerformed(ActionEvent): void
+  - simCondicoesActionPerformed(ActionEvent): void
+  - apartamentoButtonActionPerformed(ActionEvent): void
+  - botaoFecharActionPerformed(ActionEvent): void
+  - dataAdocaoFieldActionPerformed(ActionEvent): void
+}
+class VisualizarFichaMedica {
+  + VisualizarFichaMedica(Funcionario, FichaMedica, Animal): 
+  - medTextFieldActionPerformed(ActionEvent): void
+  - saveButtonActionPerformed(ActionEvent): void
+  + main(String[]): void
+  - initComponents(): void
+  - simSuplementoActionPerformed(ActionEvent): void
+  - simMedActionPerformed(ActionEvent): void
+  - simExamesButtonActionPerformed(ActionEvent): void
+  - saveButton1ActionPerformed(ActionEvent): void
+  - simCirurgiasButtonActionPerformed(ActionEvent): void
+  - rotinaButtonActionPerformed(ActionEvent): void
+  - sairButtonActionPerformed(ActionEvent): void
+  - formWindowClosing(WindowEvent): void
+  - urgenciaButtonActionPerformed(ActionEvent): void
+  - simAlergiaButtonActionPerformed(ActionEvent): void
+}
+class WinButton {
+  + WinButton(): 
+  - initComponents(): void
+  + initEvent(JFrame, Background): void
+}
+class WrapLayout {
+  + WrapLayout(): 
+  + WrapLayout(int): 
+  + WrapLayout(int, int, int): 
+  - layoutSize(Container, boolean): Dimension
+  - addRow(Dimension, int, int): void
+  + preferredLayoutSize(Container): Dimension
+  + minimumLayoutSize(Container): Dimension
+}
+interface validaData << interface >> {
+  + validarData(String): String
+}
+
+Adocao                    -[#008200,dashed]-^  validaData               
+Adotante                  -[#000082,plain]-^  Pessoa                   
+CustomTableModel          +-[#820000,plain]-  ListaFichaVeterinarias   
+Funcionario               -[#000082,plain]-^  Pessoa                   
+ImageIconAdapter          +-[#820000,plain]-  AdotanteDAO              
+ImageIconAdapter          +-[#820000,plain]-  HandleJson               
+ImageIconAdapter          +-[#820000,plain]-  HandleJson               
+InvisibleScrollBarButton  +-[#820000,plain]-  ModernScrollBarUI        
+LocalDateAdapter          +-[#820000,plain]-  HandleJson               
+LocalDateAdapter          +-[#820000,plain]-  HandleJson               
+LocalDateTimeAdapter      +-[#820000,plain]-  HandleJson               
+LocalDateTimeAdapter      +-[#820000,plain]-  HandleJson               
+Pessoa                    -[#008200,dashed]-^  validaData               
+Veterinario               -[#000082,plain]-^  Funcionario              
+@enduml

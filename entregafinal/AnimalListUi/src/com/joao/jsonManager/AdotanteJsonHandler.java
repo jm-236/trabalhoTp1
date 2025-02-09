@@ -41,16 +41,16 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class AdotanteDAO {
+public class AdotanteJsonHandler {
     private static final String ARQUIVO_JSON = "adotantes.json";
     Gson gson = new GsonBuilder()
-    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter2())
+    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
     .registerTypeAdapter(ImageIcon.class, new ImageIconAdapter())
     .registerTypeAdapter(Termo.class, new TermoAdapter())
     .create();
     
     
-    public AdotanteDAO() {
+    public AdotanteJsonHandler() {
     }
     
     

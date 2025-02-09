@@ -1,5 +1,6 @@
 package com.iasmim.swing;
 
+import com.iasmim.pdfManager.PDFCreator;
 import com.arthur.main.TelaPrincipal;
 import com.joao.model.Funcionario;
 import com.joao.model.Historico;

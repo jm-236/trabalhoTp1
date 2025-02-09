@@ -29,15 +29,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class FuncionarioDAO {
+public class FuncionarioJsonHandler {
     private static final String ARQUIVO_JSON = "funcionarios.json";
     private static final String ARQUIVO_JSON_USER = "funcionarioLogado.json";
     Gson gson = new GsonBuilder()
-    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter2())
+    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
     .create();
     
     
-    public FuncionarioDAO() {
+    public FuncionarioJsonHandler() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             limparDadosAoEncerrar();
             System.out.println("Dados do funcionário logado foram apagados ao encerrar o programa.");

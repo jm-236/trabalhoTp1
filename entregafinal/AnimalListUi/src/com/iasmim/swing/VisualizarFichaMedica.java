@@ -4,7 +4,8 @@
  */
 package com.iasmim.swing;
 
-import com.joao.jsonManager.FuncionarioDAO;
+import com.iasmim.pdfManager.PDFCreator;
+import com.joao.jsonManager.FuncionarioJsonHandler;
 import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
 import com.joao.model.Funcionario;
@@ -523,7 +524,7 @@ public class VisualizarFichaMedica extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        FuncionarioDAO testeVeterinario = new FuncionarioDAO();
+        FuncionarioJsonHandler testeVeterinario = new FuncionarioJsonHandler();
         if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){
             saveButton1.setVisible(true);
         }

@@ -5,9 +5,9 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
-import com.joao.jsonManager.AdotanteDAO;
+import com.joao.jsonManager.AdotanteJsonHandler;
 import com.joao.model.Adotante;
-import com.joao.model.CepInfo;
+import com.joao.cepManager.CepInfo;
 import com.joao.model.Funcionario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +22,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
     // private final TelaPrincipal inicioForm;
     // private final FichaAdocao telaadocao;
     private Funcionario funcionarioLogado;
-    private static AdotanteDAO adotanteDAO = new AdotanteDAO();
+    private static AdotanteJsonHandler adotanteDAO = new AdotanteJsonHandler();
     private static CepInfo cepInfo;
     
     public CadastroAdotante(FichaAdocao telaadocao) {

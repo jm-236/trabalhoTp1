@@ -5,7 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
-import com.joao.jsonManager.FuncionarioDAO;
+import com.joao.jsonManager.FuncionarioJsonHandler;
 import com.joao.model.Funcionario;
 import com.joao.model.Veterinario;
 import java.util.Optional;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
     
-    private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+    private FuncionarioJsonHandler funcionarioDAO = new FuncionarioJsonHandler();
 
     /**
      * Creates new form TelaLoginII

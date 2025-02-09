@@ -287,7 +287,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCriarFichaVetActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="FuncionarioDAO testeVeterinario = new FuncionarioDAO();&#xa;if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){&#xa;    botaoCriarFichaVet.setVisible(true);&#xa;}&#xa;else{&#xa;    botaoCriarFichaVet.setVisible(false);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="com.joao.jsonManager.FuncionarioJsonHandler testeVeterinario = new com.joao.jsonManager.FuncionarioJsonHandler();&#xa;if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){&#xa;    botaoCriarFichaVet.setVisible(true);&#xa;}&#xa;else{&#xa;    botaoCriarFichaVet.setVisible(false);&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="botaoVisualizarAdocao">

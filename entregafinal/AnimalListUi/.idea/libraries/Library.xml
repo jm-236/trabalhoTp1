@@ -1,0 +1,43 @@
+<component name="libraryTable">
+  <library name="Library">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Library/svg-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/forms-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/sign-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/forms-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/pdftest-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/sign-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/kernel-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/pdftest-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/kernel-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/pdfa-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/io-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/svg-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/svg-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/styled-xml-parser-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/pdfa-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/layout-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/barcodes-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/logback-classic-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/hyph-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/layout-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/pdftest-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/logback-core-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/font-asian-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/barcodes-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/pdfa-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/io-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/barcodes-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/styled-xml-parser-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/layout-7.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/io-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/styled-xml-parser-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/forms-7.1.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/kernel-7.1.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/slf4j-api-1.7.32.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/sign-7.1.3-javadoc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

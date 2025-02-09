@@ -5,7 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
-import com.joao.jsonManager.FuncionarioDAO;
+import com.joao.jsonManager.FuncionarioJsonHandler;
 import com.joao.model.Funcionario;
 import com.joao.model.Veterinario;
 import java.time.LocalDate;
@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
 public class EditarPerfilFunc extends javax.swing.JFrame {
 
     private Funcionario funcionarioDoPerfil;
-    private FuncionarioDAO funcionarioManager;
+    private FuncionarioJsonHandler funcionarioManager;
     
     public EditarPerfilFunc() {
         initComponents();
         setLocationRelativeTo(null);
-        this.funcionarioManager = new FuncionarioDAO();
+        this.funcionarioManager = new FuncionarioJsonHandler();
         this.funcionarioDoPerfil = funcionarioManager.GetFuncionarioLogado();
         //this.oldFuncionario = funcionarioManager.GetFuncionarioLogado();
         MostrarDados();

@@ -5,7 +5,7 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
-import com.joao.jsonManager.AdotanteDAO;
+import com.joao.jsonManager.AdotanteJsonHandler;
 import com.joao.model.Adocao;
 import com.joao.model.Adotante;
 import com.joao.model.Animal;
@@ -29,7 +29,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
     private Funcionario funcionarioLogado;
     private Animal animal;
     private Adocao adocaoOriginal;
-    private AdotanteDAO adotanteDAO = new AdotanteDAO();
+    private AdotanteJsonHandler adotanteDAO = new AdotanteJsonHandler();
     private HandleJson handleJson = new HandleJson();
     
     /**

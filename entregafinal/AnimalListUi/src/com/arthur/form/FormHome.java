@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import javax.swing.SwingUtilities;
 import com.joao.model.Veterinario;
-import com.joao.jsonManager.FuncionarioDAO;
+import com.joao.jsonManager.FuncionarioJsonHandler;
 import com.joao.model.Funcionario;
 import javax.swing.JOptionPane;
 
@@ -398,7 +398,7 @@ public class FormHome extends javax.swing.JPanel {
         );
 
         botaoListFichaVet.setVisible(true);
-        FuncionarioDAO testeVeterinario = new FuncionarioDAO();
+        FuncionarioJsonHandler testeVeterinario = new FuncionarioJsonHandler();
         if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){
             botaoCriarFichaVet.setVisible(true);
         }

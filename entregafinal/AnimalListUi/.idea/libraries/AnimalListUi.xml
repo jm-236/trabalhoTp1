@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="AnimalListUi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/gson-javatime-serialisers-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/gson-2.12.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TimingFramework-0.55.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
