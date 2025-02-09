@@ -160,7 +160,9 @@ public class CadastroAnimal extends javax.swing.JFrame {
         mainPanel.setBackground(new java.awt.Color(177, 251, 216));
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
-        jToolBar1.setRollover(true);
+        jToolBar1.setBorderPainted(false);
+        jToolBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jToolBar1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
 
         incioButton.setBackground(new java.awt.Color(205, 255, 232));
         incioButton.setForeground(new java.awt.Color(64, 86, 76));

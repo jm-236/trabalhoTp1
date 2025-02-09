@@ -45,7 +45,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nomeFuncionarioField = new javax.swing.JTextField();
@@ -90,26 +89,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
         jToolBar1.setFloatable(false);
 
-        jButton2.setBackground(new java.awt.Color(205, 255, 232));
-        jButton2.setForeground(new java.awt.Color(64, 86, 76));
-        jButton2.setText("Início");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
         loginButton.setBackground(new java.awt.Color(205, 255, 232));
         loginButton.setForeground(new java.awt.Color(64, 86, 76));
-        loginButton.setText("Login");
+        loginButton.setText("Voltar");
         loginButton.setFocusable(false);
         loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         loginButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        loginButton.setOpaque(true);
         loginButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,10 +420,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -681,7 +663,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField crmvField;
     private javax.swing.JTextField emailField;
     private javax.swing.JCheckBox isVeterinarioCheckbox;
-    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

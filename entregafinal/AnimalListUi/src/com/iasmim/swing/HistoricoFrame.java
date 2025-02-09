@@ -120,6 +120,8 @@ public class HistoricoFrame extends javax.swing.JFrame {
         botaoAdocao = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         botaoSair = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel6.setFont(new java.awt.Font("Lato Medium", 0, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(48, 63, 56));
@@ -223,7 +225,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Lato Medium", 0, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(48, 63, 56));
-        jLabel8.setText("Nome");
+        jLabel8.setText("Nome do Animal");
 
         nomeTextField.setToolTipText("");
         nomeTextField.setPreferredSize(new java.awt.Dimension(131, 29));
@@ -271,7 +273,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
                                         .addComponent(mesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(anoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,6 +429,17 @@ public class HistoricoFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(botaoSair);
 
+        jComboBox1.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Data (decrescente)", "Data (crescente)", "Nome (decrescente)", "Nome (crescente)", "Evento" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        jLabel7.setText("Odernar por :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -435,12 +448,15 @@ public class HistoricoFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1198, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(gerarPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -459,8 +475,14 @@ public class HistoricoFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(gerarPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gerarPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1))))
         );
 
@@ -554,6 +576,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         }
         
         filtrarEventoLista(newPet, adocao, fichaVet, exclusoes, edicoes, dia, mes, ano, nome);
+        jComboBox1.setSelectedIndex(0);
         atualizarTabela();
     }//GEN-LAST:event_pesquisaButtonActionPerformed
 
@@ -569,6 +592,35 @@ public class HistoricoFrame extends javax.swing.JFrame {
     private void edicoesCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicoesCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edicoesCheckBoxActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        switch (jComboBox1.getSelectedIndex()) {
+        //ordenar data decrescente
+            case 0:
+                listaHistorico.sort(Comparator.comparing(Historico::getDataHora).reversed());
+                break;
+        //ordenar data crescente
+            case 1:
+                listaHistorico.sort(Comparator.comparing(Historico::getDataHora));
+                break;
+        //ordenar nome decrescente
+            case 2:
+                listaHistorico.sort(Comparator.comparing(Historico::getNomeAnimal).reversed());
+                break;
+        //ordenar nome crescente
+            case 3:
+                listaHistorico.sort(Comparator.comparing(Historico::getNomeAnimal));
+                break;
+        //ordenar por tipo de evento
+            case 4:
+                listaHistorico.sort(Comparator.comparing(Historico::getEvento));
+                break;
+            default:
+                listaHistorico.sort(Comparator.comparing(Historico::getDataHora).reversed());
+                break;
+        }
+        atualizarTabela();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,12 +670,14 @@ public class HistoricoFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox fichaVetCheckBox;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton gerarPDFButton;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
