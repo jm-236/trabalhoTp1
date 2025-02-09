@@ -94,7 +94,7 @@ public class Adocao implements validaData {
 
     @Override
     public String toString() {
-        return "Adocao{" + "dataAdocao=" + dataAdocao + ", termoResponsabilidade=" + termoResponsabilidade + ", adotante=" + adotante + ", animal=" + animal + '}';
+        return "Adocao{" + "dataAdocao=" + dataAdocao + ", termoResponsabilidade=" + termoResponsabilidade + ", adotante=" + adotante.getNome() + ", animal=" + animal.getAnimalNome() + '}';
     }
     
     
