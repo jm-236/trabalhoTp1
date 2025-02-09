@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Historico {
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String idAnimal;
     private String idEvento;
     private String nomeAnimal;
@@ -78,7 +80,7 @@ public class Historico {
 
     @Override
     public String toString() {
-        return dataHora.toLocalDate() + " - " + dataHora.toLocalTime().format(DateTimeFormatter.ISO_DATE) + " :  { Nome do Animal = " + nomeAnimal + " , Evento = " + evento + ", Id do Animal = " + idAnimal + " , Id do Evento = " + idEvento + "}\n";
+        return dataHora.toLocalDate().format(DATE_FORMATTER) + " - " + dataHora.toLocalTime().format(TIME_FORMATTER) + " :  { Nome do Animal = " + nomeAnimal + " , Evento = " + evento + ", Id do Animal = " + idAnimal + " , Id do Evento = " + idEvento + "}\n";
     }
     
 }
