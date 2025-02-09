@@ -10,6 +10,7 @@ import com.arthur.main.TelaPrincipal;
 import com.joao.model.Animal;
 import com.arthur.swing.ScrollBar;
 import com.iasmim.swing.CriarFichaMedica;
+import com.iasmim.swing.HandleJson;
 import com.iasmim.swing.ListaFichaVeterinarias;
 import java.awt.Component;
 import java.awt.Point;
@@ -399,12 +400,17 @@ public class FormHome extends javax.swing.JPanel {
 
     private void botaoListFichaVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListFichaVetActionPerformed
         if(!(animal == null)){
-            if(!(animal.getAnimalFichasMedicas().isEmpty())){
-                ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(animal);
-                fichaScreen.setVisible(true);
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Este animal ainda não possui ficha médica.");
+            HandleJson jsonHandler = new HandleJson();
+            for(Animal animalL : jsonHandler.carregarAnimaisDoArquivo()){
+                if(animalL.getAnimalID().equals(animal.getAnimalID())){
+                    if(!(animal.getAnimalFichasMedicas().isEmpty())){
+                        ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(animal);
+                        fichaScreen.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Este animal ainda não possui ficha médica.");
+                    }
+                }
             }
         }
         else{
