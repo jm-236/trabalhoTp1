@@ -769,7 +769,9 @@ public class FichaAdocao extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoInicio1ActionPerformed
 
     private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
-
+        this.dispose();
+        CadastroAnimal newPetScreen = new CadastroAnimal(funcionarioLogado);
+        newPetScreen.setVisible(true);
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed

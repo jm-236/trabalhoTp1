@@ -402,8 +402,8 @@ public class FormHome extends javax.swing.JPanel {
             HandleJson jsonHandler = new HandleJson();
             for(Animal animalL : jsonHandler.carregarAnimaisDoArquivo()){
                 if(animalL.getAnimalID().equals(animal.getAnimalID())){
-                    if(!(animal.getAnimalFichasMedicas().isEmpty())){
-                        ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(animal);
+                    if(!(animalL.getAnimalFichasMedicas().isEmpty())){
+                        ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(animalL);
                         fichaScreen.setVisible(true);
                     }
                     else{
