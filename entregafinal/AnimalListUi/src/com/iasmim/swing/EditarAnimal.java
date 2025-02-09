@@ -104,6 +104,8 @@ public class EditarAnimal extends javax.swing.JFrame {
         HandleJson handleJson = new HandleJson();
         handleJson.atualizarAnimal(animal.getAnimalID(), animal);
         JOptionPane.showMessageDialog(null, "Animal atualizado com sucesso!");
+        Historico historico = new Historico(animal, false, true);
+        handleJson.AddHistoricoNoArquivo(historico);
         this.dispose();
         TelaPrincipal telaPrincipal = new TelaPrincipal(funcionarioLogado);
         telaPrincipal.setVisible(true);

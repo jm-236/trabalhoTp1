@@ -25,6 +25,14 @@ public class Historico {
             this.evento = "Exclusão de Pet";
         }
     }
+    public Historico(Animal animal, boolean novo, boolean edicao) {
+        this.idAnimal = animal.getAnimalID();
+        this.nomeAnimal = animal.getAnimalNome();
+        this.dataHora = LocalDateTime.now();
+        if(edicao)
+            this.evento = "Edição de Pet";
+    }
+    
     public Historico(Animal animal, FichaMedica ficha) {
         this.idAnimal = animal.getAnimalID();
         this.nomeAnimal = animal.getAnimalNome();
