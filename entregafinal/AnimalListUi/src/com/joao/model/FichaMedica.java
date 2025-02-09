@@ -2,6 +2,7 @@ package com.joao.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.UUID;
 
 public class FichaMedica {
@@ -85,6 +86,14 @@ public class FichaMedica {
 
     public String getCirurgia() {
         return cirurgia;
+    }
+    
+    public LocalTime getHora() {
+        return dataHora.toLocalTime();
+    }
+    
+    public LocalDate getData(){
+        return dataHora.toLocalDate();
     }
 
     public void setCirurgia(String cirurgia) {

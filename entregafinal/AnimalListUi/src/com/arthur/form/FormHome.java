@@ -10,6 +10,7 @@ import com.arthur.main.TelaPrincipal;
 import com.joao.model.Animal;
 import com.arthur.swing.ScrollBar;
 import com.iasmim.swing.CriarFichaMedica;
+import com.iasmim.swing.ListaFichaVeterinarias;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -235,7 +236,8 @@ public class FormHome extends javax.swing.JPanel {
         lbRaca = new javax.swing.JLabel();
         lbNascimento = new javax.swing.JLabel();
         lbEspecie = new javax.swing.JLabel();
-        botaoFichaMedica = new javax.swing.JButton();
+        botaoListFichaVet = new javax.swing.JButton();
+        botaoCriarFichaVet = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(177, 251, 216));
 
@@ -287,10 +289,19 @@ public class FormHome extends javax.swing.JPanel {
         lbEspecie.setForeground(new java.awt.Color(76, 76, 76));
         lbEspecie.setText("Espécie:");
 
-        botaoFichaMedica.setText("Visualizar Ficha Médica");
-        botaoFichaMedica.addActionListener(new java.awt.event.ActionListener() {
+        botaoListFichaVet.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        botaoListFichaVet.setText("Visualizar Fichas Médicas");
+        botaoListFichaVet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoFichaMedicaActionPerformed(evt);
+                botaoListFichaVetActionPerformed(evt);
+            }
+        });
+
+        botaoCriarFichaVet.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        botaoCriarFichaVet.setText("Criar Ficha Médica");
+        botaoCriarFichaVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCriarFichaVetActionPerformed(evt);
             }
         });
 
@@ -309,8 +320,8 @@ public class FormHome extends javax.swing.JPanel {
                             .addComponent(lbEspecie)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(82, 82, 82)
+                                    .addComponent(lbGenero)
+                                    .addGap(78, 78, 78)
                                     .addComponent(lbPorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -324,7 +335,9 @@ public class FormHome extends javax.swing.JPanel {
                                 .addComponent(lbNascimento))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(botaoFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoListFichaVet, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -353,16 +366,19 @@ public class FormHome extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbEspecie)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(517, Short.MAX_VALUE))
+                .addComponent(botaoListFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(475, Short.MAX_VALUE))
         );
 
+        botaoListFichaVet.setVisible(true);
         FuncionarioDAO testeVeterinario = new FuncionarioDAO();
         if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){
-            botaoFichaMedica.setVisible(true);
+            botaoCriarFichaVet.setVisible(true);
         }
         else{
-            botaoFichaMedica.setVisible(false);
+            botaoCriarFichaVet.setVisible(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -381,7 +397,22 @@ public class FormHome extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoFichaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFichaMedicaActionPerformed
+    private void botaoListFichaVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListFichaVetActionPerformed
+        if(!(animal == null)){
+            if(!(animal.getAnimalFichasMedicas().isEmpty())){
+                ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(animal);
+                fichaScreen.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Este animal ainda não possui ficha médica.");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Selecione um animal antes de pesquisar fichas médicas.");
+        }
+    }//GEN-LAST:event_botaoListFichaVetActionPerformed
+
+    private void botaoCriarFichaVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCriarFichaVetActionPerformed
         if(!(animal == null)){
             CriarFichaMedica fichaVetScreen = new CriarFichaMedica(animal, funcionarioLogado);
             fichaVetScreen.setVisible(true);
@@ -389,11 +420,12 @@ public class FormHome extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(null, "Selecione um animal antes de criar uma ficha médica.");
         }
-    }//GEN-LAST:event_botaoFichaMedicaActionPerformed
+    }//GEN-LAST:event_botaoCriarFichaVetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoFichaMedica;
+    private javax.swing.JButton botaoCriarFichaVet;
+    private javax.swing.JButton botaoListFichaVet;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
