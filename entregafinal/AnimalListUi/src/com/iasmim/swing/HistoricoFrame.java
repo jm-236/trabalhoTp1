@@ -57,7 +57,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
                 if(dia <= 0 || historico.getDataHora().getDayOfMonth() == dia)
                     if (mes <= 0 || historico.getDataHora().getMonthValue() == mes)
                         if (ano < 0 || historico.getDataHora().getYear() == ano)
-                            if(nome.isEmpty() || nome.equals(historico.getNomeAnimal().subSequence(0, nome.length())))
+                            if(nome.isEmpty() || (historico.getNomeAnimal().length() >= nome.length() && nome.equals(historico.getNomeAnimal().subSequence(0, nome.length()))))
                                 listaHistorico.add(historico);
             }
         }
