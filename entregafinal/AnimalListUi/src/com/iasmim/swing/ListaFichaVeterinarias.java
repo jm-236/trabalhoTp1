@@ -70,8 +70,7 @@ public class ListaFichaVeterinarias extends JFrame {
                 if (e.getClickCount() == 2 && tabelaHistorico.getSelectedRow() != -1) {
                     int row = tabelaHistorico.getSelectedRow();
                     FichaMedica ficha = animal.getAnimalFichasMedicas().get(row);
-                    JOptionPane.showMessageDialog(null, "Abriu!");
-                    // new DetalhesFichaMedica(ficha).setVisible(true);
+                    new VisualizarFichaMedica(ficha).setVisible(true);
                 }
             }
         });
