@@ -15,6 +15,7 @@ public class PerfilAdotante extends javax.swing.JFrame {
      */
     public PerfilAdotante() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

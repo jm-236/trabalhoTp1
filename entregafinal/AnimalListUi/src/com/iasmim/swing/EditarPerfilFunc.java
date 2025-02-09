@@ -19,6 +19,7 @@ public class EditarPerfilFunc extends javax.swing.JFrame {
     
     public EditarPerfilFunc() {
         initComponents();
+        setLocationRelativeTo(null);
         this.funcionarioManager = new FuncionarioDAO();
         this.funcionarioDoPerfil = funcionarioManager.GetFuncionarioLogado();
         //this.oldFuncionario = funcionarioManager.GetFuncionarioLogado();

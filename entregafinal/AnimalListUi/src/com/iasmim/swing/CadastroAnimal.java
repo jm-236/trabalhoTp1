@@ -45,6 +45,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
     public CadastroAnimal(Funcionario funcionario) {
         funcionarioLogado = funcionario;
         initComponents();
+        setLocationRelativeTo(null);
         
         imagemPanel = new JPanel() {
             @Override
@@ -154,6 +155,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
         cadastrarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
 
         mainPanel.setBackground(new java.awt.Color(177, 251, 216));
 

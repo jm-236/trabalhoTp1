@@ -32,6 +32,7 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         funcionarioLogado = funcionario;
         this.animal = animal;
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public String atendimento(){

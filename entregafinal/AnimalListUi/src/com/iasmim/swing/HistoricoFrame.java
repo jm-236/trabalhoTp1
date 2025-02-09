@@ -34,6 +34,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         // Ordenando a lista pelo atributo LocalDateTime de forma decrescente
         listaHistorico.sort(Comparator.comparing(Historico::getDataHora).reversed());
         initComponents();
+        setLocationRelativeTo(null);
         atualizarTabela();
     }
     

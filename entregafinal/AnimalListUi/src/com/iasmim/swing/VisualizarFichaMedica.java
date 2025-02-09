@@ -21,6 +21,7 @@ public class VisualizarFichaMedica extends javax.swing.JFrame {
     public VisualizarFichaMedica(FichaMedica fichaVet) {
         this.fichaVet = fichaVet;
         initComponents();
+        setLocationRelativeTo(null);
         medTextField.setText(fichaVet.getMedicacaoContinua());
         sumplementTextField.setText(fichaVet.getSuplementacao());
         examesTextField.setText(fichaVet.getExamesRecentes());

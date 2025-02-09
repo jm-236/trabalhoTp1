@@ -15,6 +15,7 @@ public class EditarAdotante extends javax.swing.JFrame {
      */
     public EditarAdotante() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

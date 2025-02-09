@@ -30,6 +30,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
      */
     public CadastroFuncionario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

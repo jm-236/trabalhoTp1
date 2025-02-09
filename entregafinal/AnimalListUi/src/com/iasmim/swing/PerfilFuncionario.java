@@ -21,6 +21,7 @@ public class PerfilFuncionario extends javax.swing.JFrame {
     
     public PerfilFuncionario() {
         initComponents();
+        setLocationRelativeTo(null);
         this.funcionarioManager = new FuncionarioDAO();
         this.funcionarioDoPerfil = funcionarioManager.GetFuncionarioLogado();
         MostrarDados();

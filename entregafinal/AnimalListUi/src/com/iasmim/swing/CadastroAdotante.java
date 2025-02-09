@@ -29,6 +29,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
         // this.inicioForm = telainicial;
         //this.telaadocao = telaadocao;
         initComponents();
+        setLocationRelativeTo(null);
     }
     public CadastroAdotante() {
         // this.inicioForm = null;

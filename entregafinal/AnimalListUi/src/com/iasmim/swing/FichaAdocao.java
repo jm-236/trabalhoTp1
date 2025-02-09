@@ -44,6 +44,7 @@ public class FichaAdocao extends javax.swing.JFrame {
     public FichaAdocao(Funcionario funcionario) {
         funcionarioLogado = funcionario;
         initComponents();
+        setLocationRelativeTo(null);
         for (Adotante adotante : adotantes) {
             adotanteBox.addItem(adotante.getNome() + ", CPF: " + adotante.getCpf());
         }    
