@@ -10,12 +10,16 @@ import com.joao.model.Adocao;
 import com.joao.model.Adotante;
 import com.joao.model.Animal;
 import com.joao.model.Funcionario;
+import com.joao.model.Historico;
 import com.joao.model.Termo;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 
@@ -705,6 +709,12 @@ public class FichaAdocao extends javax.swing.JFrame {
         
         handleJson.atualizarAnimal(animal.getAnimalID(), animal);
         adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
+        Historico historico = new Historico(animal, adocao);
+        try {
+            handleJson.AddHistoricoNoArquivo(historico);
+        } catch (IOException ex) {
+            System.out.println("Erro ao tentar adicionar a adoção ao histórico.");
+        }
         
         System.out.println("Adoção cadastrada com sucesso!");
         

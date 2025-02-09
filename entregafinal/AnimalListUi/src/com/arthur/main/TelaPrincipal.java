@@ -34,6 +34,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -476,17 +477,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String IDanimal= home.ExcluirAnimal();
-        for(Animal animal : listaDeAnimais){
-            if(animal.getAnimalID().equals(IDanimal)){
+        
+        Iterator<Animal> iterator = listaDeAnimais.iterator();
+    
+        while (iterator.hasNext()) {
+            Animal animal = iterator.next(); // Obtém o próximo elemento
+            if (animal.getAnimalID().equals(IDanimal)) {
                 Historico historico = new Historico(animal, false);
+                iterator.remove(); // Remove o animal da lista
                 try {
                     jsonHandler.AddHistoricoNoArquivo(historico);
                 } catch (IOException ex) {
                     System.out.println("Erro ao tentar adicionar a exclusão ao histórico.");
                 }
-                listaDeAnimais.remove(animal);
             }
         }
+//        for(Animal animal : listaDeAnimais){
+//            if(animal.getAnimalID().equals(IDanimal)){
+//                Historico historico = new Historico(animal, false);
+//                listaDeAnimais.remove(animal);
+//                try {
+//                    jsonHandler.AddHistoricoNoArquivo(historico);
+//                } catch (IOException ex) {
+//                    System.out.println("Erro ao tentar adicionar a exclusão ao histórico.");
+//                }
+//            }
+//        }
+        System.out.println(listaDeAnimais.size());
         jsonHandler.salvarAnimaisNoArquivo(listaDeAnimais);
         home.resetShow();
         mainPanel.setImage(null);

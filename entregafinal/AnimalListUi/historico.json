@@ -41,13 +41,6 @@
     "dataHora": "2025-02-08T20:44:07.396654643"
   },
   {
-    "idAnimal": "77beb057-1874-4d44-8f44-c0c83c163918",
-    "idEvento": "db1339a9-3dd8-449a-8b15-f76bc5852949",
-    "nomeAnimal": "Rex Dino",
-    "evento": "Ficha Médica",
-    "dataHora": "2025-02-08T20:47:51.348926144"
-  },
-  {
     "idAnimal": "80f0b79d-5000-4dbe-98e5-34cb7431fdd1",
     "idEvento": "34589935-3347-4e85-84e9-98638eb5c5d7",
     "nomeAnimal": "Mel",
@@ -95,5 +88,149 @@
     "nomeAnimal": "Rosa",
     "evento": "Ficha Médica",
     "dataHora": "2025-02-08T23:55:44.061912143"
+  },
+  {
+    "idAnimal": "debe579c-b6cd-463e-9d3d-737448c1f6e9",
+    "idEvento": "debe579c-b6cd-463e-9d3d-737448c1f6e9",
+    "nomeAnimal": "Luna",
+    "evento": "Novo Pet",
+    "dataHora": "2025-02-09T01:48:49.97268126"
+  },
+  {
+    "idAnimal": "2725ae81-e98e-451d-a18b-fb42058cdf60",
+    "idEvento": "286ab637-720d-4300-89ad-34a1a4b0e20c",
+    "nomeAnimal": "Gigi",
+    "evento": "Ficha Médica",
+    "dataHora": "2025-02-09T01:51:09.359642039"
+  },
+  {
+    "idAnimal": "c4645dad-0bec-443a-b724-e77f9bc3e16b",
+    "nomeAnimal": "pet",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:01:38.382774851"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:01:45.258823664"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "idEvento": "e8c451fa-0dbb-4926-a636-3002ba2dccee",
+    "nomeAnimal": "Culero",
+    "evento": "Ficha Médica",
+    "dataHora": "2025-02-09T02:29:59.320428293"
+  },
+  {
+    "idAnimal": "9b01666f-8cf1-49e8-a060-4e3740ba7d16",
+    "idEvento": "4dcba67a-a8c3-4efa-9a1d-04c26f09120d",
+    "nomeAnimal": "Culero",
+    "evento": "Ficha Médica",
+    "dataHora": "2025-02-09T02:32:06.433165009"
+  },
+  {
+    "idAnimal": "c3bb8551-b070-44d2-b07e-3b14f0c7d2e9",
+    "idEvento": "c3bb8551-b070-44d2-b07e-3b14f0c7d2e9",
+    "nomeAnimal": "Rosa",
+    "evento": "Novo Pet",
+    "dataHora": "2025-02-09T02:44:46.219421769"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:45:20.264933542"
+  },
+  {
+    "idAnimal": "9b01666f-8cf1-49e8-a060-4e3740ba7d16",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:45:26.308323727"
+  },
+  {
+    "idAnimal": "9b01666f-8cf1-49e8-a060-4e3740ba7d16",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:47:36.717158631"
+  },
+  {
+    "idAnimal": "9b01666f-8cf1-49e8-a060-4e3740ba7d16",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:47:48.111551683"
+  },
+  {
+    "idAnimal": "03c518b6-95e9-490b-8039-356e19218f60",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:47:51.17901326"
+  },
+  {
+    "idAnimal": "d7684391-6128-4691-8113-8dc18e96685f",
+    "idEvento": "d7684391-6128-4691-8113-8dc18e96685f",
+    "nomeAnimal": "Belinha",
+    "evento": "Novo Pet",
+    "dataHora": "2025-02-09T02:49:25.383716983"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:56:07.639328331"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:57:47.947022233"
+  },
+  {
+    "idAnimal": "debe579c-b6cd-463e-9d3d-737448c1f6e9",
+    "nomeAnimal": "Luna",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T02:58:06.454130691"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T03:02:13.491822826"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T03:06:47.213805435"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T03:07:34.757068994"
+  },
+  {
+    "idAnimal": "9b01666f-8cf1-49e8-a060-4e3740ba7d16",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T03:07:37.965061598"
+  },
+  {
+    "idAnimal": "9b01666f-8cf1-49e8-a060-4e3740ba7d16",
+    "nomeAnimal": "Culero",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T03:22:35.18926691"
+  },
+  {
+    "idAnimal": "c4645dad-0bec-443a-b724-e77f9bc3e16b",
+    "nomeAnimal": "pet",
+    "evento": "Exclusão de Pet",
+    "dataHora": "2025-02-09T03:22:58.459024045"
+  },
+  {
+    "idAnimal": "80f0b79d-5000-4dbe-98e5-34cb7431fdd1",
+    "nomeAnimal": "Mel",
+    "evento": "Adoção",
+    "dataHora": "2025-02-09T03:29:24.290204349"
   }
 ]
