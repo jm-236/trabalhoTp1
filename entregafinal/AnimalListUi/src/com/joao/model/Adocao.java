@@ -29,9 +29,6 @@ public class Adocao implements validaData {
     public Adocao() {
     }
     
-    
-    
-
     public String validarData(String dataAdocaoStr) {
         // Define o formato esperado da data
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -56,6 +53,11 @@ public class Adocao implements validaData {
             
             return "Formato de data inválido. Use o formato dd/MM/yyyy.";
         }
+    }
+    
+    public boolean adocaoNaoExiste() {
+        return this.adotante == null && this.dataAdocao == null && 
+                this.termoResponsabilidade == null;
     }
     
     public LocalDate getDataAdocao() {
@@ -89,6 +91,12 @@ public class Adocao implements validaData {
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
+
+    @Override
+    public String toString() {
+        return "Adocao{" + "dataAdocao=" + dataAdocao + ", termoResponsabilidade=" + termoResponsabilidade + ", adotante=" + adotante.getNome() + ", animal=" + animal.getAnimalNome() + '}';
+    }
+    
     
 
 }

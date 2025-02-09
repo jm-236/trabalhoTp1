@@ -51,13 +51,21 @@ public class Historico {
         this.evento = "Ficha Médica (edição)";
     }
     
-    public Historico(Animal animal, Adocao adocao) {
+    public Historico(Animal animal, Adocao adocao, boolean edicao, boolean exclusao) {
         this.idAnimal = animal.getAnimalID();
         this.nomeAnimal = animal.getAnimalNome();
         this.dataHora = LocalDateTime.now();
-        this.evento = "Adoção";
+        if (edicao){
+            this.evento = "Alteração de adoção";
+        }
+        else if (exclusao){
+            this.evento = "Exclusão de adoção";
+        }
+        else {
+           this.evento = "Nova adoção"; 
+        }
     }
-
+    
     public String getIdAnimal() {
         return idAnimal;
     }
