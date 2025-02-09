@@ -11,5 +11,4 @@ package com.joao.interfaces;
 public interface validaData {
     
     String validarData(String data);
-    
 }

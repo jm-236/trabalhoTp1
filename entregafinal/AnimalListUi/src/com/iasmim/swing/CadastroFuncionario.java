@@ -250,7 +250,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         crmvField.setBackground(new java.awt.Color(217, 217, 217));
         crmvField.setFont(new java.awt.Font("Lato", 2, 18)); // NOI18N
         crmvField.setForeground(new java.awt.Color(32, 61, 74));
-        crmvField.setText("000.000.000-00");
+        crmvField.setText("00000-XX");
         crmvField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(64, 86, 76), 1, true));
         crmvField.setEnabled(false);
         crmvField.setMargin(new java.awt.Insets(4, 15, 4, 15));
@@ -473,40 +473,61 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
         try{
-            System.out.println("Botão de cadastrar funcionário clicado!");
             String nome = nomeFuncionarioField.getText();
             if (nome.equals("") || nome.equals("Nome Completo")){
                 JOptionPane.showMessageDialog(null, "O nome não pode ser vazio!");
                 return;
             }
+            
             String cpf = cpfField.getText();
+            if(!Funcionario.validaCpf(cpf)){
+                JOptionPane.showMessageDialog(null, "CPF inválido!");
+                return;
+            }
+            
+            if (funcionarioDAO.buscarFuncionario(cpf).orElse(null) != null){
+                JOptionPane.showMessageDialog(null, "Já existe um usuário com este CPF!");
+                return;
+            }
+            
+            String validacaoDataNascimento = new Funcionario().validarData(nascimentoField.getText());
+            
+            if (validacaoDataNascimento.equals("Data de nascimento no futuro.") ||
+                validacaoDataNascimento.equals("A pessoa tem menos de 18 anos.") ||
+                validacaoDataNascimento.equals("Formato de data inválido. Use o formato dd/MM/yyyy.")){
+
+                JOptionPane.showMessageDialog(null, validacaoDataNascimento);
+                return;
+            }
+            
             LocalDate dataNascimento = LocalDate.parse(nascimentoField.getText(), 
                     DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String telefone = telefoneField.getText();
             String email = emailField.getText();
             String senhaI = new String(senhaIField.getPassword());
             String senhaII = new String(senhaIIField.getPassword());
-            System.out.println(senhaI + " " + senhaII);
+            
             if (!senhaI.equals(senhaII)){
                 JOptionPane.showMessageDialog(null, "As senhas devem ser iguais!");
                 return;
             }
-            if (funcionarioDAO.buscarFuncionario(cpf).orElse(null) != null){
-                JOptionPane.showMessageDialog(null, "Já existe um usuário com este CPF!");
-                return;
-            }
+            
             if (isVeterinarioCheckbox.isSelected()){
                 String crmv = crmvField.getText();
+                if (!Veterinario.isValidCRMV(crmv)){
+                    JOptionPane.showMessageDialog(null, "CRMV inválido!");
+                    return;
+                }
                 Veterinario veterinario = new Veterinario(cpf, dataNascimento, email
                 , nome, telefone, senhaI, crmv);
                 funcionarioDAO.adicionarFuncionario(veterinario);
-                JOptionPane.showConfirmDialog(null, "Novo veterinário cadastrado com sucesso!\n"
+                JOptionPane.showMessageDialog(null, "Novo veterinário cadastrado com sucesso!\n"
                 + veterinario);
             } else {
                 Funcionario funcionario = new Funcionario(cpf, dataNascimento, email,
                 nome, telefone, senhaI);
                 funcionarioDAO.adicionarFuncionario(funcionario);
-                JOptionPane.showConfirmDialog(null, "Novo funcionário cadastrado com sucesso!\n"
+                JOptionPane.showMessageDialog(null, "Novo funcionário cadastrado com sucesso!\n"
                 + funcionario);     
             }
             
@@ -588,7 +609,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void crmvFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_crmvFieldFocusGained
         // TODO add your handling code here:
-        if (crmvField.getText().equals("000.000.000-00") && isVeterinarioCheckbox.isSelected()) {
+        if (crmvField.getText().equals("00000-XX") && isVeterinarioCheckbox.isSelected()) {
             crmvField.setText("");
         }
     }//GEN-LAST:event_crmvFieldFocusGained
@@ -596,7 +617,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void crmvFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_crmvFieldFocusLost
         // TODO add your handling code here:
         if (crmvField.getText().isEmpty()) {
-            crmvField.setText("000.000.000-00");
+            crmvField.setText("00000-XX");
         }
     }//GEN-LAST:event_crmvFieldFocusLost
 

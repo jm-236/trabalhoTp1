@@ -9,6 +9,8 @@ import com.joao.jsonManager.AdotanteDAO;
 import com.joao.model.Adotante;
 import com.joao.model.CepInfo;
 import com.joao.model.Funcionario;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -495,6 +497,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
         adotante.setEmail(email);
         adotante.setTelefone(telefone);
         adotante.setEndereco(endereco);
+        adotante.setDataNascimento(LocalDate.parse(dataNascimento, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         
         adotanteDAO.adicionarAdotante(adotante);
         JOptionPane.showMessageDialog(null, "Adotante cadastrado com sucesso!");

@@ -25,7 +25,7 @@ public abstract class Pessoa implements validaData {
     public Pessoa() {
     }
     
-    public boolean isNomeValido(String nome) {
+    public static boolean isNomeValido(String nome) {
         if (nome.isEmpty() || nome.equals("Nome")){
             return false;
         }
@@ -63,7 +63,7 @@ public abstract class Pessoa implements validaData {
         return (resto < 2) ? 0 : 11 - resto;
     }
     
-    public String validarData(String dataNascimentoStr) {
+    public final String validarData(String dataNascimentoStr) {
         // Define o formato esperado da data
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
