@@ -148,9 +148,8 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         HandleJson handleJson = new HandleJson();
         ArrayList<Animal> listaAnimais = handleJson.carregarAnimaisDoArquivo();
         for(Animal animalNaLista : listaAnimais){
-            if(animalNaLista.getAnimalID().equals(animal.getAnimalID())){ animalNaLista.addAnimalFichaMedica(fichaVet);
-                System.out.println("Yes");
-            }
+            if(animalNaLista.getAnimalID().equals(animal.getAnimalID()))
+                animalNaLista.addAnimalFichaMedica(fichaVet);
         }
         //animal.addAnimalFichaMedica(fichaVet);
         Historico historico = new Historico(animal, fichaVet);

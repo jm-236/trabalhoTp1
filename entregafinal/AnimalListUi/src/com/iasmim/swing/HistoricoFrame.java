@@ -51,7 +51,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         for(Historico historico : listaHistoricoOriginal){
             if((historico.getEvento().equals("Novo Pet") && novoPet) ||
             (historico.getEvento().equals("Adoção") && adocao) ||
-            (historico.getEvento().equals("Ficha Médica") && fichaVet) ||
+            (historico.getEvento().substring(0, 12).equals("Ficha Médica") && fichaVet) ||
             (historico.getEvento().equals("Exclusão de Pet") && exclusoes) ||
             (historico.getEvento().equals("Edição de Pet") && edicoes)){
                 if(dia <= 0 || historico.getDataHora().getDayOfMonth() == dia)
@@ -558,7 +558,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
     private void gerarPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDFButtonActionPerformed
         PDFCreator pdf = new PDFCreator("Historico");
-        pdf.definirCabecalho(funcionarioLogado.getNome(), funcionarioLogado.getId());
+        pdf.definirCabecalho(funcionarioLogado);
         pdf.definirTitulo("Histórico");
         int i=1;
         for(Historico historico : listaHistorico) pdf.adicionarParagrafo(i++ + " : " + historico.toString());

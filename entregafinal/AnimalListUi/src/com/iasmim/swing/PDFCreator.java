@@ -15,6 +15,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
+import com.joao.model.Funcionario;
 
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
@@ -67,11 +68,11 @@ public class PDFCreator {
         }
     }
 
-    public void definirCabecalho(String nomeFuncionario, String idFuncionario) {
+    public void definirCabecalho(Funcionario funcionario) {
         LocalDateTime dataHoraAtual = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String dataFormatada = dataHoraAtual.format(formatter);
-        String cabecalho = dataFormatada + " | Emitido por " + nomeFuncionario + " ( " + idFuncionario + " )";
+        String cabecalho = dataFormatada + " | Emitido por " + funcionario.assinatura();
         Paragraph cabecalhoParagrafo = new Paragraph(cabecalho)
                 .setFontSize(10)
                 .setMarginTop(10);

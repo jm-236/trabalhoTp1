@@ -43,6 +43,14 @@ public class Historico {
         this.evento = "Ficha Médica";
     }
     
+    public Historico(Animal animal, FichaMedica ficha, boolean edicao) {
+        this.idAnimal = animal.getAnimalID();
+        this.nomeAnimal = animal.getAnimalNome();
+        this.dataHora = LocalDateTime.now();
+        this.idEvento = ficha.getFichaId();
+        this.evento = "Ficha Médica (edição)";
+    }
+    
     public Historico(Animal animal, Adocao adocao) {
         this.idAnimal = animal.getAnimalID();
         this.nomeAnimal = animal.getAnimalNome();

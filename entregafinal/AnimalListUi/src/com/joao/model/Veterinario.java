@@ -45,4 +45,9 @@ public class Veterinario extends Funcionario{
 
         return estadosValidos.contains(uf); // Retorna true se a UF for válida, senão false
     }
+    
+    @Override
+    public String assinatura(){
+        return String.format("%s (%s) CRMV: %s", super.getNome(), super.getId(), crmv);
+    }
 }

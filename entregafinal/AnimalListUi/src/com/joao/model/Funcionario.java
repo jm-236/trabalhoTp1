@@ -18,8 +18,6 @@ public class Funcionario extends Pessoa{
         super(null, null, null, null, null);
     }
 
-    
-    
     public String getId() {
         return id;
     }
@@ -39,4 +37,8 @@ public class Funcionario extends Pessoa{
         }
         return false;
     }    
+    
+    public String assinatura(){
+        return String.format("%s (%s)", super.getNome(), id);
+    }
 }

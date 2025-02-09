@@ -83,16 +83,16 @@ public class EditarAnimal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Peso inválido! Use um valor float do peso em quilos.");
             return;
         }
+        
         // Tentar converter para LocalDate (dd/MM/yyyy)
-        try {
-            dataNasc = LocalDate.parse(sdataNasc, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            dataResg = LocalDate.parse(sdataResg, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        } catch (DateTimeParseException ex) {
-            JOptionPane.showMessageDialog(null, "Data em formato inválido, utilize dd/mm/aaaa");
+        if(!animal.setAnimalDataNascimento(sdataNasc)){
+            JOptionPane.showMessageDialog(null, "Data de resgate em formato inválido, utilize dd/mm/aaaa");
             return;
         }
-        animal.setAnimalData(dataResg);
-        animal.setAnimalDataNascimento(dataNasc);
+        if(!animal.setAnimalData(sdataResg)){
+            JOptionPane.showMessageDialog(null, "Data de resgate em formato inválido, utilize dd/mm/aaaa");
+            return;
+        }
         animal.setAnimalLocal(local);
         animal.setAnimalNome(nome);
         animal.setAnimalEspecie(especie);

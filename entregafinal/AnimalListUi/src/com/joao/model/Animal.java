@@ -6,10 +6,12 @@ import com.joao.model.FichaMedica;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 public class Animal {
@@ -61,6 +63,16 @@ public class Animal {
 
     public Animal() {
     }
+    
+    
+    public LocalDate convertStringToDate(String sdata){
+        try {
+            LocalDate data = LocalDate.parse(sdata, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            return data;
+        } catch (DateTimeParseException ex) {
+            return null;
+        }
+    }
 
     public String getAnimalRaca() {
         return animalRaca;
@@ -76,6 +88,14 @@ public class Animal {
 
     public void setAnimalDataNascimento(LocalDate animalDataNascimento) {
         this.animalDataNascimento = animalDataNascimento;
+    }
+    
+    //Overloading
+    public boolean setAnimalDataNascimento(String animalDataNascimento) {
+        LocalDate data = convertStringToDate(animalDataNascimento);
+        if(data == null) return false;
+        this.animalData = data;
+        return true;
     }
 
     public ArrayList<FichaMedica> getAnimalFichasMedicas() {
@@ -94,8 +114,6 @@ public class Animal {
         this.animalAdocao = animalAdocao;
     }
     
-    
-    
     public String getAnimalID() {
         return animalID;
     }
@@ -106,6 +124,14 @@ public class Animal {
 
     public void setAnimalData(LocalDate animalData) {
         this.animalData = animalData;
+    }
+    
+    //Overloading
+    public boolean setAnimalData(String animalData) {
+        LocalDate data = convertStringToDate(animalData);
+        if(data == null) return false;
+        this.animalData = data;
+        return true;
     }
 
     public String getAnimalLocal() {

@@ -72,6 +72,7 @@ public class ListaFichaVeterinarias extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2 && tabelaHistorico.getSelectedRow() != -1) {
                     int row = tabelaHistorico.getSelectedRow();
+                    dispose();
                     FichaMedica ficha = animal.getAnimalFichasMedicas().get(row);
                     new VisualizarFichaMedica(funcionario, ficha, animal).setVisible(true);
                 }
