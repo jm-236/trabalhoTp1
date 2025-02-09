@@ -11,7 +11,7 @@ public class Adocao implements validaData {
     private LocalDate dataAdocao;
     private Termo termoResponsabilidade;
     private Adotante adotante;
-    private Animal animal;
+    private transient Animal animal;
 
     public Adocao(LocalDate dataAdocao, Termo termoResponsabilidade, Adotante adotante, Animal animal) {
         this.dataAdocao = dataAdocao;

@@ -609,7 +609,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         Adotante adotante = adotanteDAO.buscarAdotante(cpf).get();
         
         String id = animaisBox.getSelectedItem().toString().substring(animaisBox.getSelectedItem().toString().indexOf("id: ") + 4).trim();
-        Animal animal = handleJson.buscarAnimalPeloId(id).get();
+        Animal animal = handleJson.buscarAnimalPeloId(id);
         
         boolean temOutrosAnimais = false;
         String outrosAnimais = "";
@@ -718,7 +718,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         animaisAdotados.add(adocao);
         adotante.setAnimaisAdotados(animaisAdotados);
         
-        handleJson.editarAnimal(animal.getAnimalID(), animal);
+        handleJson.atualizarAnimal(animal.getAnimalID(), animal);
         adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
         
         System.out.println("Adoção cadastrada com sucesso!");

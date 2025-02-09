@@ -10,8 +10,10 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.joao.jsonManager.TermoAdapter;
 import com.joao.model.Animal;
 import com.joao.model.Historico;
+import com.joao.model.Termo;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -48,6 +50,7 @@ public class HandleJson {
                 .registerTypeAdapter(LocalDate.class, new HandleJson.LocalDateAdapter())
                 .registerTypeAdapter(ImageIcon.class, new HandleJson.ImageIconAdapter())
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+                .registerTypeAdapter(Termo.class, new TermoAdapter())
                 .setPrettyPrinting()
                 .create();
     }
@@ -65,6 +68,26 @@ public class HandleJson {
             e.printStackTrace();
             return new ArrayList<Animal>();
         }
+    }
+    
+    public Animal buscarAnimalPeloId(String id) {
+        ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
+    
+        return animais.stream()
+                .filter(animal -> animal.getAnimalID()
+                .equals(id)).findFirst().get();
+    }
+    
+    public void atualizarAnimal(String id, Animal novoAnimal) {
+        ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
+        
+        for (Animal animal : animais) {
+            if (animal.getAnimalID().equals(id)){
+                animais.set(animais.indexOf(animal), novoAnimal);
+                break;
+            }
+        }
+        this.salvarAnimaisNoArquivo(animais);
     }
         
     public boolean salvarAnimaisNoArquivo(ArrayList<Animal> listaDeAnimais) {

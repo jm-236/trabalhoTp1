@@ -11,7 +11,7 @@ import java.util.Date;
 public class Adotante extends Pessoa{
 
     private String id;
-    private ArrayList<Adocao> animaisAdotados;
+    private transient ArrayList<Adocao> animaisAdotados;
     private String endereco;
     private String cep;
 

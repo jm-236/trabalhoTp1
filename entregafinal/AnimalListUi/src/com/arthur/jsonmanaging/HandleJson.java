@@ -7,8 +7,10 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.joao.jsonManager.TermoAdapter;
 import com.joao.model.Animal;
 import com.joao.model.Historico;
+import com.joao.model.Termo;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -39,30 +41,45 @@ public class HandleJson {
                 .registerTypeAdapter(LocalDate.class, new HandleJson.LocalDateAdapter())
                 .registerTypeAdapter(ImageIcon.class, new HandleJson.ImageIconAdapter())
                 .registerTypeAdapter(LocalDateTime.class, new HandleJson.LocalDateTimeAdapter())
+                .registerTypeAdapter(Termo.class, new TermoAdapter())
                 .setPrettyPrinting()
                 .create();
     }
         
-        
-        
-        
-        
-        
-        
-    
         public ArrayList<Animal> carregarAnimaisDoArquivo() {
             try (Reader reader = new FileReader(CAMINHO_ARQUIVO_ANIMAIS)) {
                 java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Animal>>() {}.getType();
                 ArrayList<Animal> animais = gson.fromJson(reader, tipoLista);
                 return (animais != null) ? animais : new ArrayList<>();
-        } catch (FileNotFoundException e) {
-            // Arquivo não encontrado, retorna lista vazia
-            return new ArrayList<Animal>();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<Animal>();
+            } catch (FileNotFoundException e) {
+                // Arquivo não encontrado, retorna lista vazia
+                return new ArrayList<Animal>();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return new ArrayList<Animal>();
+            }
         }
-    }
+        
+        public Animal buscarAnimalPeloId(String id) {
+            ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
+
+            return animais.stream()
+                    .filter(animal -> animal.getAnimalID()
+                    .equals(id)).findFirst().get();
+        }
+
+        public void atualizarAnimal(String id, Animal novoAnimal) {
+            ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
+
+            for (Animal animal : animais) {
+                if (animal.getAnimalID().equals(id)){
+                    animais.set(animais.indexOf(animal), novoAnimal);
+                    break;
+                }
+            }
+            this.salvarAnimaisNoArquivo(animais);
+        }
+        
         
         public void salvarAnimaisNoArquivo(ArrayList<Animal> listaDeAnimais) {
         try (Writer writer = new FileWriter(CAMINHO_ARQUIVO_ANIMAIS)) {

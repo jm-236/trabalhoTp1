@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.joao.model.Adotante;
+import com.joao.model.Termo;
 import com.joao.model.Veterinario;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -45,6 +46,7 @@ public class AdotanteDAO {
     Gson gson = new GsonBuilder()
     .registerTypeAdapter(LocalDate.class, new LocalDateAdapter2())
     .registerTypeAdapter(ImageIcon.class, new ImageIconAdapter())
+    .registerTypeAdapter(Termo.class, new TermoAdapter())
     .create();
     
     
