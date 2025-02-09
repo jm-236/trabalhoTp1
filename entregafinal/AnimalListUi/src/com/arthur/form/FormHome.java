@@ -12,6 +12,7 @@ import com.arthur.swing.ScrollBar;
 import com.iasmim.swing.CriarFichaMedica;
 import com.iasmim.swing.HandleJson;
 import com.iasmim.swing.ListaFichaVeterinarias;
+import com.iasmim.swing.VisualizarAdocao;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -453,6 +454,19 @@ public class FormHome extends javax.swing.JPanel {
 
     private void botaoVisualizarAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVisualizarAdocaoActionPerformed
         // TODO add your handling code here:
+        if(!(animal == null)){
+            System.out.println(animal.getAnimalAdocao());
+            if (animal.getAnimalAdocao().adocaoNaoExiste()) {
+                JOptionPane.showMessageDialog(null, "Animal selecionado não possui adoção.");
+                return;
+            }
+            
+            VisualizarAdocao visualizarAdocao = new VisualizarAdocao(animal, funcionarioLogado);
+            visualizarAdocao.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Selecione um animal antes de visualizar adoção.");
+        }
     }//GEN-LAST:event_botaoVisualizarAdocaoActionPerformed
 
 

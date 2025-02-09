@@ -96,6 +96,12 @@ public class Termo {
     public void setJaEntregouParaAdocao(boolean jaEntregouParaAdocao) {
         this.jaEntregouParaAdocao = jaEntregouParaAdocao;
     }
+
+    @Override
+    public String toString() {
+        return "Termo{" + "temOutrosAnimais=" + temOutrosAnimais + ", outrosAnimais=" + outrosAnimais + ", podeLevarAoVet=" + podeLevarAoVet + ", ambiente=" + ambiente + ", localDuranteViagem=" + localDuranteViagem + ", acaoSeFizerMudanca=" + acaoSeFizerMudanca + ", consciencia=" + consciencia + ", jaEntregouParaAdocao=" + jaEntregouParaAdocao + '}';
+    }
+    
     
     
 }
