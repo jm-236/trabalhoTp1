@@ -100,9 +100,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="botaoCriarFichaVet" min="-2" pref="197" max="-2" attributes="0"/>
-                              <Component id="botaoListFichaVet" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="botaoListFichaVet" max="32767" attributes="0"/>
+                              <Component id="botaoCriarFichaVet" max="32767" attributes="0"/>
+                              <Component id="botaoVisualizarAdocao" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -141,7 +142,9 @@
                   <Component id="botaoListFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="botaoCriarFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace pref="463" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="botaoVisualizarAdocao" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace pref="415" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -286,6 +289,17 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="FuncionarioDAO testeVeterinario = new FuncionarioDAO();&#xa;if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){&#xa;    botaoCriarFichaVet.setVisible(true);&#xa;}&#xa;else{&#xa;    botaoCriarFichaVet.setVisible(false);&#xa;}"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="botaoVisualizarAdocao">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="15" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Visualizar ado&#xe7;&#xe3;o"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoVisualizarAdocaoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

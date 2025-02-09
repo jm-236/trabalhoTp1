@@ -239,6 +239,7 @@ public class FormHome extends javax.swing.JPanel {
         lbEspecie = new javax.swing.JLabel();
         botaoListFichaVet = new javax.swing.JButton();
         botaoCriarFichaVet = new javax.swing.JButton();
+        botaoVisualizarAdocao = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(177, 251, 216));
 
@@ -306,6 +307,14 @@ public class FormHome extends javax.swing.JPanel {
             }
         });
 
+        botaoVisualizarAdocao.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        botaoVisualizarAdocao.setText("Visualizar adoção");
+        botaoVisualizarAdocao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVisualizarAdocaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -335,9 +344,10 @@ public class FormHome extends javax.swing.JPanel {
                             .addComponent(lbNascimento)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoListFichaVet))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botaoListFichaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoVisualizarAdocao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -369,7 +379,9 @@ public class FormHome extends javax.swing.JPanel {
                 .addComponent(botaoListFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoVisualizarAdocao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(415, Short.MAX_VALUE))
         );
 
         botaoListFichaVet.setVisible(true);
@@ -427,10 +439,15 @@ public class FormHome extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botaoCriarFichaVetActionPerformed
 
+    private void botaoVisualizarAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVisualizarAdocaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoVisualizarAdocaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCriarFichaVet;
     private javax.swing.JButton botaoListFichaVet;
+    private javax.swing.JButton botaoVisualizarAdocao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
