@@ -18,19 +18,19 @@ import javax.swing.JOptionPane;
 public class CadastroAdotante extends javax.swing.JFrame {
 
     // private final TelaPrincipal inicioForm;
-    private final FichaAdocao telaadocao;
+    // private final FichaAdocao telaadocao;
     private Funcionario funcionarioLogado;
     private static AdotanteDAO adotanteDAO = new AdotanteDAO();
     private static CepInfo cepInfo;
     
     public CadastroAdotante(FichaAdocao telaadocao) {
         // this.inicioForm = telainicial;
-        this.telaadocao = telaadocao;
+        //this.telaadocao = telaadocao;
         initComponents();
     }
     public CadastroAdotante() {
         // this.inicioForm = null;
-        this.telaadocao = null;
+        //this.telaadocao = null;
         initComponents();
     }
 
@@ -479,7 +479,7 @@ public class CadastroAdotante extends javax.swing.JFrame {
         String telefone = telefoneField.getText();
         String endereco = enderecoField.getText();
         String dataNascimento = dataNascimentoField.getText();
-        String validacaoDataNascimento = adotante.validarDataNascimento(dataNascimento);
+        String validacaoDataNascimento = adotante.validarData(dataNascimento);
         
         if (validacaoDataNascimento.equals("Data de nascimento no futuro.") ||
             validacaoDataNascimento.equals("A pessoa tem menos de 18 anos.") ||
@@ -499,7 +499,8 @@ public class CadastroAdotante extends javax.swing.JFrame {
         adotanteDAO.adicionarAdotante(adotante);
         JOptionPane.showMessageDialog(null, "Adotante cadastrado com sucesso!");
         this.dispose();
-        telaadocao.setVisible(true);
+        FichaAdocao telaAdocao = new FichaAdocao(funcionarioLogado);
+        telaAdocao.setVisible(true);
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     private void cepTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepTextFieldActionPerformed

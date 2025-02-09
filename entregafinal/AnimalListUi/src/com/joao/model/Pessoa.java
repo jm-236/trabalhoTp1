@@ -1,12 +1,13 @@
 package com.joao.model;
 
+import com.joao.interfaces.validaData;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements validaData {
     private String nome;
     private String cpf;
     private String telefone;
@@ -62,7 +63,7 @@ public abstract class Pessoa {
         return (resto < 2) ? 0 : 11 - resto;
     }
     
-    public static String validarDataNascimento(String dataNascimentoStr) {
+    public String validarData(String dataNascimentoStr) {
         // Define o formato esperado da data
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
