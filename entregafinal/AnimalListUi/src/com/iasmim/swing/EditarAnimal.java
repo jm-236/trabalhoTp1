@@ -538,6 +538,8 @@ public class EditarAnimal extends javax.swing.JFrame {
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        TelaPrincipal mainScreen = new TelaPrincipal(funcionarioLogado);
+        mainScreen.setVisible(true);
     }//GEN-LAST:event_sairButtonActionPerformed
 
     private void nomeTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeTextFieldFocusGained
