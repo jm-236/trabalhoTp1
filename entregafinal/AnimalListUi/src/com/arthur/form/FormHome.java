@@ -63,6 +63,18 @@ public class FormHome extends javax.swing.JPanel {
         panelItem.revalidate();
     }
     
+    public Animal getAnimal() {
+        for (Component comp : panelItem.getComponents()){
+                    if (comp instanceof Item){
+                        if (((Item) comp).isSelected()){
+                            return ((Item) comp).getData();
+                        }
+                    }
+        }
+        return null;
+        
+    }
+    
     public String ExcluirAnimal() {
         for (Component comp : panelItem.getComponents()){
                     if (comp instanceof Item){

@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 import com.fatboyindustrial.gsonjavatime.Converters;
 import com.google.gson.reflect.TypeToken;
 import com.iasmim.swing.CadastroAnimal;
+import com.iasmim.swing.EditarAnimal;
 import com.joao.model.Adocao;
 import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
@@ -38,6 +39,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import org.jdesktop.animation.timing.Animator;
@@ -550,7 +552,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSairActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Animal animal = home.getAnimal();
+        if(animal == null){
+            JOptionPane.showMessageDialog(null, "Nenhum animal foi selecionado.");
+        }
+        else{
+            this.dispose();
+            EditarAnimal editPetScreen = new EditarAnimal(animal, funcionarioLogado);
+            editPetScreen.setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -98,10 +98,6 @@ public class Animal {
         return animalID;
     }
 
-    public void setAnimalID(String animalID) {
-        this.animalID = animalID;
-    }
-
     public LocalDate getAnimalData() {
         return animalData;
     }
