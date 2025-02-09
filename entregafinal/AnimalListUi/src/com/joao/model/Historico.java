@@ -56,13 +56,13 @@ public class Historico {
         this.nomeAnimal = animal.getAnimalNome();
         this.dataHora = LocalDateTime.now();
         if (edicao){
-            this.evento = "Alteração de adoção";
+            this.evento = "Adoção (alteração)";
         }
         else if (exclusao){
-            this.evento = "Exclusão de adoção";
+            this.evento = "Adoção (exclusão)";
         }
         else {
-           this.evento = "Nova adoção"; 
+           this.evento = "Adoção (cadastro)"; 
         }
     }
     

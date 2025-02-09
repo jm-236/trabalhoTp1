@@ -50,8 +50,8 @@ public class HistoricoFrame extends javax.swing.JFrame {
         listaHistorico = new ArrayList();
         for(Historico historico : listaHistoricoOriginal){
             if((historico.getEvento().equals("Novo Pet") && novoPet) ||
-            (historico.getEvento().equals("Adoção") && adocao) ||
-            (historico.getEvento().substring(0, 12).equals("Ficha Médica") && fichaVet) ||
+            (historico.getEvento().length() > 5 && historico.getEvento().substring(0, 6).equals("Adoção") && adocao) ||
+            (historico.getEvento().length() > 11 && historico.getEvento().substring(0, 12).equals("Ficha Médica") && fichaVet) ||
             (historico.getEvento().equals("Exclusão de Pet") && exclusoes) ||
             (historico.getEvento().equals("Edição de Pet") && edicoes)){
                 if(dia <= 0 || historico.getDataHora().getDayOfMonth() == dia)

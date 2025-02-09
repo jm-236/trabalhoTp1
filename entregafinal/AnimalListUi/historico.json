@@ -230,7 +230,7 @@
   {
     "idAnimal": "80f0b79d-5000-4dbe-98e5-34cb7431fdd1",
     "nomeAnimal": "Mel",
-    "evento": "Adoção",
+    "evento": "Adoção (cadastro)",
     "dataHora": "2025-02-09T03:29:24.290204349"
   },
   {
@@ -255,13 +255,13 @@
   {
     "idAnimal": "80f0b79d-5000-4dbe-98e5-34cb7431fdd1",
     "nomeAnimal": "Mel",
-    "evento": "Alteração de adoção",
+    "evento": "Adoção (alteração)",
     "dataHora": "2025-02-09T18:05:05.919306805"
   },
   {
     "idAnimal": "c3bb8551-b070-44d2-b07e-3b14f0c7d2e9",
     "nomeAnimal": "Branca",
-    "evento": "Adoção",
+    "evento": "Adoção (cadastro)",
     "dataHora": "2025-02-09T16:52:02.235063437"
   },
   {
@@ -281,31 +281,38 @@
   {
     "idAnimal": "80f0b79d-5000-4dbe-98e5-34cb7431fdd1",
     "nomeAnimal": "Mel",
-    "evento": "Exclusão de adoção",
+    "evento": "Adoção (exclusão)",
     "dataHora": "2025-02-09T18:25:42.117481331"
   },
   {
     "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
     "nomeAnimal": "Culero",
-    "evento": "Nova adoção",
+    "evento": "Adoção (cadastro)",
     "dataHora": "2025-02-09T18:27:18.28357504"
   },
   {
     "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
     "nomeAnimal": "Culero",
-    "evento": "Alteração de adoção",
+    "evento": "Adoção (alteração)",
     "dataHora": "2025-02-09T18:39:55.916242781"
   },
   {
     "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
     "nomeAnimal": "Culero",
-    "evento": "Alteração de adoção",
+    "evento": "Adoção (alteração)",
     "dataHora": "2025-02-09T18:40:13.382347284"
   },
   {
     "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
     "nomeAnimal": "Culero",
-    "evento": "Alteração de adoção",
+    "evento": "Adoção (alteração)",
     "dataHora": "2025-02-09T18:41:35.401154643"
+  },
+  {
+    "idAnimal": "c3bb8551-b070-44d2-b07e-3b14f0c7d2e9",
+    "idEvento": "3da9f609-defe-4f4a-a87a-cf5d62c4a01f",
+    "nomeAnimal": "Branca",
+    "evento": "Ficha Médica (edição)",
+    "dataHora": "2025-02-09T19:32:09.339063748"
   }
 ]
