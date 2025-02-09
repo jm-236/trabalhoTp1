@@ -1,5 +1,17 @@
 package com.iasmim.swing;
 
+import com.arthur.main.TelaPrincipal;
+import com.joao.model.Animal;
+import com.joao.model.FichaMedica;
+import com.joao.model.Funcionario;
+import com.joao.model.Historico;
+import com.joao.model.Veterinario;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +22,141 @@ package com.iasmim.swing;
  * @author iasmimqf
  */
 public class CriarFichaMedica extends javax.swing.JFrame {
-
     /**
      * Creates new form CriarFichaMedica
      */
-    public CriarFichaMedica() {
+    private final Funcionario funcionarioLogado;
+    private final Animal animal;
+    
+    public CriarFichaMedica(Animal animal, Funcionario funcionario) {
+        funcionarioLogado = funcionario;
+        this.animal = animal;
         initComponents();
+    }
+    
+    public String atendimento(){
+        if(urgenciaButton.isSelected()){
+            return "Urgência";
+        }
+        if(emergenciaButton.isSelected()){
+            return "Emergência";
+        }
+        if(rotinaButton.isSelected()){
+            return "Rotina";
+        }
+        return "";
+    }
+    
+    public String medicacao(){
+        if(simMed.isSelected()){
+            if(medTextField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Antes de salvar, escreva o tipo de medicação contínua que está sendo utilizada, na caixa abaixo da pergunta.");
+                return "vazio";
+            }
+            return medTextField.getText();
+        }
+        if(naoMed.isSelected())
+            return "Não";
+        return "";
+    }
+    
+    public String suplemento(){
+        if(simSuplemento.isSelected()){
+            if(sumplementTextField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Antes de salvar, escreva o tipo de suplementação que está sendo feita, na caixa abaixo da pergunta.");
+                return "vazio";
+            }
+            return sumplementTextField.getText();
+        }
+        if(naoSuplemento.isSelected())
+            return "Não";
+        return "";
+    }
+    
+    public String fezExames(){
+        if(simExamesButton.isSelected()){
+            if(examesTextField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Antes de salvar, escreva os exames que foram feitos recentemente, na caixa abaixo da pergunta.");
+                return "vazio";
+            }
+            return examesTextField.getText();
+        }
+        if(naoExamesButton.isSelected())
+            return "Não";
+        return "";
+    }
+    
+    public String fezCirurgias(){
+        if(simCirurgiasButton.isSelected()){
+            if(cirurgiasTextField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Antes de salvar, escreva as cirurgias que o animal já foi submetido, na caixa abaixo da pergunta.");
+                return "vazio";
+            }
+            return cirurgiasTextField.getText();
+        }
+        if(naoCirurgiasButton.isSelected())
+            return "Não";
+        return "";
+    }
+    
+    public String alergiaMedicamentos(){
+        if(simAlergiaButton.isSelected()){
+            if(alergiaMedTextField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Antes de salvar, escreva as alergias medicamentosas do animal, na caixa abaixo da pergunta.");
+                return "vazio";
+            }
+            return alergiaMedTextField.getText();
+        }
+        if(naoAlergiaButton.isSelected())
+            return "Não";
+        return "";
+    }
+    
+    public boolean novaFichaMedica() throws IOException{
+        String tipoAtendimento = atendimento();
+        if(tipoAtendimento.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Selecione o tipo de atendimento.antes de salvar a ficha médica.");
+            return false;
+        }
+        String medicacaoContinua = medicacao();
+        if(medicacaoContinua.equals("vazio")) return false;
+        String suplementacao = suplemento();
+        if(suplementacao.equals("vazio")) return false;
+        String exames = fezExames();
+        if(exames.equals("vazio")) return false;
+        String cirurgias = fezCirurgias();
+        if(cirurgias.equals("vazio")) return false;
+        String alergiaMeds = alergiaMedicamentos();
+        if(alergiaMeds.equals("vazio")) return false;
+        if(medicacaoContinua.isEmpty() || suplementacao.isEmpty() || exames.isEmpty() || cirurgias.isEmpty() || alergiaMeds.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Selecione o todas as opções do histórico antes de salvar a ficha médica.");
+            return false;
+        }
+        String historicoQueixa = queixasTextArea.getText();
+        if(historicoQueixa.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Descreva as queixas, histórico e ou tratamento do animal antes de salvar a ficha médica.");
+            return false;
+        }
+        FichaMedica fichaVet = new FichaMedica(historicoQueixa, tipoAtendimento, (Veterinario)funcionarioLogado);
+        if(!medicacaoContinua.equals("Não")) fichaVet.setMedicacaoContinua(medicacaoContinua);
+        if(!suplementacao.equals("Não")) fichaVet.setSuplementacao(suplementacao);
+        if(!exames.equals("Não")) fichaVet.setExamesRecentes(exames);
+        if(!cirurgias.equals("Não")) fichaVet.setCirurgia(cirurgias);
+        if(!alergiaMeds.equals("Não")) fichaVet.setAlergiaMed(alergiaMeds);
+        
+        HandleJson handleJson = new HandleJson();
+        ArrayList<Animal> listaAnimais = handleJson.carregarAnimaisDoArquivo();
+        for(Animal animalNaLista : listaAnimais){
+            if(animalNaLista.getAnimalID().equals(animal.getAnimalID())){ animalNaLista.addAnimalFichaMedica(fichaVet);
+                System.out.println("Yes");
+            }
+        }
+        //animal.addAnimalFichaMedica(fichaVet);
+        Historico historico = new Historico(animal, fichaVet);
+        handleJson.salvarAnimaisNoArquivo(listaAnimais);
+        handleJson.AddHistoricoNoArquivo(historico);
+        
+        return true;
     }
 
     /**
@@ -27,20 +168,16 @@ public class CriarFichaMedica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton8 = new javax.swing.JButton();
         medicacaoContGroup = new javax.swing.ButtonGroup();
         tipoAtendimentoGroup = new javax.swing.ButtonGroup();
         alergiaMedicamentosGroup = new javax.swing.ButtonGroup();
         cirurgiaGroup = new javax.swing.ButtonGroup();
         examesGroup = new javax.swing.ButtonGroup();
+        sumplementGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jButton4 = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         medLabel = new javax.swing.JLabel();
@@ -48,9 +185,9 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         naoMed = new javax.swing.JRadioButton();
         medTextField = new javax.swing.JTextField();
         sumplementTextField = new javax.swing.JTextField();
-        simSuplementLabel = new javax.swing.JRadioButton();
+        simSuplemento = new javax.swing.JRadioButton();
         suplementLabel = new javax.swing.JLabel();
-        naoSuplementButton = new javax.swing.JRadioButton();
+        naoSuplemento = new javax.swing.JRadioButton();
         examesTextField = new javax.swing.JTextField();
         naoExamesButton = new javax.swing.JRadioButton();
         simExamesButton = new javax.swing.JRadioButton();
@@ -72,19 +209,6 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         emergenciaButton = new javax.swing.JRadioButton();
         rotinaButton = new javax.swing.JRadioButton();
 
-        jButton8.setBackground(new java.awt.Color(205, 255, 232));
-        jButton8.setForeground(new java.awt.Color(64, 86, 76));
-        jButton8.setText("Adoção");
-        jButton8.setFocusable(false);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(177, 251, 216));
@@ -92,82 +216,27 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
         jToolBar1.setFloatable(false);
-
-        jButton2.setBackground(new java.awt.Color(205, 255, 232));
-        jButton2.setForeground(new java.awt.Color(64, 86, 76));
-        jButton2.setText("Início");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
-        jButton5.setBackground(new java.awt.Color(205, 255, 232));
-        jButton5.setForeground(new java.awt.Color(64, 86, 76));
-        jButton5.setText("Novo Pet");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton5);
-
-        jButton9.setBackground(new java.awt.Color(205, 255, 232));
-        jButton9.setForeground(new java.awt.Color(64, 86, 76));
-        jButton9.setText("Adoção");
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton9);
-
-        jButton7.setBackground(new java.awt.Color(205, 255, 232));
-        jButton7.setForeground(new java.awt.Color(64, 86, 76));
-        jButton7.setText("Histórico");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton7);
         jToolBar1.add(filler1);
 
-        jButton4.setBackground(new java.awt.Color(205, 255, 232));
-        jButton4.setForeground(new java.awt.Color(64, 86, 76));
-        jButton4.setText("Sair");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        sairButton.setBackground(new java.awt.Color(205, 255, 232));
+        sairButton.setForeground(new java.awt.Color(64, 86, 76));
+        sairButton.setText("Fechar");
+        sairButton.setFocusable(false);
+        sairButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sairButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        sairButton.setOpaque(true);
+        sairButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                sairButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton4);
+        jToolBar1.add(sairButton);
 
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(48, 63, 56));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/veterinarioIcoon.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/iasmim/image/veterinarioIcoon.png"))); // NOI18N
         jLabel1.setText("Ficha Veterinária");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Histórico Clínico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lato Semibold", 0, 20), new java.awt.Color(48, 63, 56))); // NOI18N
@@ -194,17 +263,18 @@ public class CriarFichaMedica extends javax.swing.JFrame {
 
         medTextField.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         medTextField.setForeground(new java.awt.Color(48, 63, 56));
+        medTextField.setToolTipText("");
 
         sumplementTextField.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         sumplementTextField.setForeground(new java.awt.Color(48, 63, 56));
 
-        medicacaoContGroup.add(simSuplementLabel);
-        simSuplementLabel.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        simSuplementLabel.setForeground(new java.awt.Color(48, 63, 56));
-        simSuplementLabel.setText("Sim");
-        simSuplementLabel.addActionListener(new java.awt.event.ActionListener() {
+        sumplementGroup.add(simSuplemento);
+        simSuplemento.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        simSuplemento.setForeground(new java.awt.Color(48, 63, 56));
+        simSuplemento.setText("Sim");
+        simSuplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simSuplementLabelActionPerformed(evt);
+                simSuplementoActionPerformed(evt);
             }
         });
 
@@ -212,10 +282,10 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         suplementLabel.setForeground(new java.awt.Color(48, 63, 56));
         suplementLabel.setText("Uso de suplementação?");
 
-        medicacaoContGroup.add(naoSuplementButton);
-        naoSuplementButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        naoSuplementButton.setForeground(new java.awt.Color(48, 63, 56));
-        naoSuplementButton.setText("Não");
+        sumplementGroup.add(naoSuplemento);
+        naoSuplemento.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        naoSuplemento.setForeground(new java.awt.Color(48, 63, 56));
+        naoSuplemento.setText("Não");
 
         examesTextField.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         examesTextField.setForeground(new java.awt.Color(48, 63, 56));
@@ -290,45 +360,49 @@ public class CriarFichaMedica extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(medTextField)
-                    .addComponent(sumplementTextField)
-                    .addComponent(examesTextField)
-                    .addComponent(cirurgiasTextField)
-                    .addComponent(alergiaMedTextField)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(medTextField)
+                            .addComponent(sumplementTextField)
+                            .addComponent(examesTextField)
+                            .addComponent(cirurgiasTextField)
+                            .addComponent(alergiaMedTextField)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(medLabel)
                                 .addGap(51, 51, 51)
                                 .addComponent(simMed)
                                 .addGap(27, 27, 27)
-                                .addComponent(naoMed))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(suplementLabel)
-                                .addGap(51, 51, 51)
-                                .addComponent(simSuplementLabel)
-                                .addGap(27, 27, 27)
-                                .addComponent(naoSuplementButton))
+                                .addComponent(naoMed)
+                                .addGap(0, 70, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(exameslabel)
-                                .addGap(51, 51, 51)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(simExamesButton)
                                 .addGap(27, 27, 27)
-                                .addComponent(naoExamesButton))
+                                .addComponent(naoExamesButton)
+                                .addGap(72, 72, 72))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cirurgiasLabel)
-                                .addGap(51, 51, 51)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(simCirurgiasButton)
                                 .addGap(27, 27, 27)
-                                .addComponent(naoCirurgiasButton))
+                                .addComponent(naoCirurgiasButton)
+                                .addGap(72, 72, 72))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(alergiaLabel)
-                                .addGap(51, 51, 51)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(simAlergiaButton)
                                 .addGap(27, 27, 27)
-                                .addComponent(naoAlergiaButton)))
-                        .addGap(0, 70, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(naoAlergiaButton)
+                                .addGap(71, 71, 71)))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(suplementLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(simSuplemento)
+                        .addGap(27, 27, 27)
+                        .addComponent(naoSuplemento)
+                        .addGap(77, 77, 77))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,8 +417,8 @@ public class CriarFichaMedica extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(suplementLabel)
-                    .addComponent(simSuplementLabel)
-                    .addComponent(naoSuplementButton))
+                    .addComponent(simSuplemento)
+                    .addComponent(naoSuplemento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sumplementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -390,8 +464,8 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
         );
 
         saveButton.setBackground(new java.awt.Color(21, 102, 64));
@@ -479,10 +553,10 @@ public class CriarFichaMedica extends javax.swing.JFrame {
                         .addComponent(emergenciaButton)
                         .addComponent(rotinaButton)))
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -499,10 +573,6 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void simAlergiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simAlergiaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_simAlergiaButtonActionPerformed
@@ -515,36 +585,27 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_simExamesButtonActionPerformed
 
-    private void simSuplementLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simSuplementLabelActionPerformed
+    private void simSuplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simSuplementoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_simSuplementLabelActionPerformed
+    }//GEN-LAST:event_simSuplementoActionPerformed
 
     private void simMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simMedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_simMedActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            if(novaFichaMedica()){
+                JOptionPane.showMessageDialog(null, "Ficha Médica cadastrada com sucesso!");
+                this.dispose();
+            }
+        } catch (IOException ex) {
+            System.out.println("Erro ao tentar cadastrar nova ficha médica!");
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void urgenciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgenciaButtonActionPerformed
@@ -585,7 +646,7 @@ public class CriarFichaMedica extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CriarFichaMedica().setVisible(true);
+                new CriarFichaMedica(new Animal(), new Funcionario()).setVisible(true);
             }
         });
     }
@@ -602,12 +663,6 @@ public class CriarFichaMedica extends javax.swing.JFrame {
     private javax.swing.JTextField examesTextField;
     private javax.swing.JLabel exameslabel;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -621,15 +676,17 @@ public class CriarFichaMedica extends javax.swing.JFrame {
     private javax.swing.JRadioButton naoCirurgiasButton;
     private javax.swing.JRadioButton naoExamesButton;
     private javax.swing.JRadioButton naoMed;
-    private javax.swing.JRadioButton naoSuplementButton;
+    private javax.swing.JRadioButton naoSuplemento;
     private javax.swing.JTextArea queixasTextArea;
     private javax.swing.JRadioButton rotinaButton;
+    private javax.swing.JButton sairButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JRadioButton simAlergiaButton;
     private javax.swing.JRadioButton simCirurgiasButton;
     private javax.swing.JRadioButton simExamesButton;
     private javax.swing.JRadioButton simMed;
-    private javax.swing.JRadioButton simSuplementLabel;
+    private javax.swing.JRadioButton simSuplemento;
+    private javax.swing.ButtonGroup sumplementGroup;
     private javax.swing.JTextField sumplementTextField;
     private javax.swing.JLabel suplementLabel;
     private javax.swing.ButtonGroup tipoAtendimentoGroup;

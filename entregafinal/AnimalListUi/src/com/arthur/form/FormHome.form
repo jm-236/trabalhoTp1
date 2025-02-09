@@ -81,8 +81,8 @@
                               <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="lbGenero" min="-2" pref="48" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="lbGenero" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                       <Component id="lbPorte" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -102,7 +102,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botaoFichaMedica" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="botaoCriarFichaVet" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botaoListFichaVet" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -137,8 +140,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="botaoFichaMedica" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace pref="517" max="32767" attributes="0"/>
+                  <Component id="botaoListFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="botaoCriarFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace pref="475" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -256,15 +261,32 @@
             <Property name="text" type="java.lang.String" value="Esp&#xe9;cie:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botaoFichaMedica">
+        <Component class="javax.swing.JButton" name="botaoListFichaVet">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Visualizar Ficha M&#xe9;dica"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="15" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Visualizar Fichas M&#xe9;dicas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoFichaMedicaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoListFichaVetActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="FuncionarioDAO testeVeterinario = new FuncionarioDAO();&#xa;if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){&#xa;    botaoFichaMedica.setVisible(true);&#xa;}&#xa;else{&#xa;    botaoFichaMedica.setVisible(false);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botaoListFichaVet.setVisible(true);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="botaoCriarFichaVet">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="15" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Criar Ficha M&#xe9;dica"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCriarFichaVetActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="FuncionarioDAO testeVeterinario = new FuncionarioDAO();&#xa;if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){&#xa;    botaoCriarFichaVet.setVisible(true);&#xa;}&#xa;else{&#xa;    botaoCriarFichaVet.setVisible(false);&#xa;}"/>
           </AuxValues>
         </Component>
       </SubComponents>

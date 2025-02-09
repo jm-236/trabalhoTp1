@@ -15,6 +15,7 @@ import com.joao.model.FichaMedica;
 import com.joao.model.Veterinario;
 import com.iasmim.swing.FichaAdocao;
 import com.iasmim.swing.HistoricoFrame;
+import com.iasmim.swing.PerfilFuncionario;
 import com.iasmim.swing.TelaLogin;
 import com.joao.model.Funcionario;
 import com.joao.model.Historico;
@@ -101,7 +102,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void init(){
-        home = new FormHome();
+        home = new FormHome(funcionarioLogado);
         //winButton.initEvent(this, background1);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(home);
@@ -192,8 +193,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         mainPanel = new com.arthur.swing.MainPanel();
         TopPanel = new javax.swing.JPanel();
+        botaoPerfil = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
-        botaoInicio = new javax.swing.JButton();
+        botaoInicio1 = new javax.swing.JButton();
         botaoAnimal = new javax.swing.JButton();
         botaoAdocao = new javax.swing.JButton();
         botaoHistorico = new javax.swing.JButton();
@@ -275,7 +277,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
 
         TopPanel.setBackground(new java.awt.Color(177, 251, 216));
@@ -294,24 +296,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botaoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/iasmim/image/user.png"))); // NOI18N
+        botaoPerfil.setOpaque(true);
+        botaoPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPerfilActionPerformed(evt);
+            }
+        });
+
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
         jToolBar1.setFloatable(false);
 
-        botaoInicio.setBackground(new java.awt.Color(205, 255, 232));
-        botaoInicio.setForeground(new java.awt.Color(64, 86, 76));
-        botaoInicio.setText("Início");
-        botaoInicio.setFocusable(false);
-        botaoInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botaoInicio.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        botaoInicio.setOpaque(true);
-        botaoInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botaoInicio.addActionListener(new java.awt.event.ActionListener() {
+        botaoInicio1.setBackground(new java.awt.Color(205, 255, 232));
+        botaoInicio1.setForeground(new java.awt.Color(64, 86, 76));
+        botaoInicio1.setText("Início");
+        botaoInicio1.setFocusable(false);
+        botaoInicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoInicio1.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        botaoInicio1.setOpaque(true);
+        botaoInicio1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoInicioActionPerformed(evt);
+                botaoInicio1ActionPerformed(evt);
             }
         });
-        jToolBar1.add(botaoInicio);
+        jToolBar1.add(botaoInicio1);
 
         botaoAnimal.setBackground(new java.awt.Color(205, 255, 232));
         botaoAnimal.setForeground(new java.awt.Color(64, 86, 76));
@@ -378,13 +388,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TopPanelLayout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
@@ -439,37 +455,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setLocation(currCoords.x - compCoords.x, currCoords.y - compCoords.y);
     }//GEN-LAST:event_TopPanelMouseDragged
 
-    private void botaoInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicioActionPerformed
-        //this.setVisible(false);
-
-        //inicioForm.setVisible(true);
-    }//GEN-LAST:event_botaoInicioActionPerformed
-
-    private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
-        this.dispose();
-        //close();
-        CadastroAnimal cadastroAnimalScreen = new CadastroAnimal(funcionarioLogado);
-        cadastroAnimalScreen.setVisible(true);
-    }//GEN-LAST:event_botaoAnimalActionPerformed
-
-    private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
-        this.dispose();
-        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
-        adocaoScreen.setVisible(true);
-    }//GEN-LAST:event_botaoAdocaoActionPerformed
-
-    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
-        this.dispose();
-        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
-        historicoScreen.setVisible(true);
-    }//GEN-LAST:event_botaoHistoricoActionPerformed
-
-    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
-        this.dispose();
-        TelaLogin n = new TelaLogin();
-        n.setVisible(true);
-    }//GEN-LAST:event_botaoSairActionPerformed
-
     private void filterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTextFieldActionPerformed
             
     }//GEN-LAST:event_filterTextFieldActionPerformed
@@ -499,6 +484,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mainPanel.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void botaoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPerfilActionPerformed
+        this.dispose();
+        //close();
+        PerfilFuncionario perfilFuncionarioScreen = new PerfilFuncionario();
+        perfilFuncionarioScreen.setVisible(true);
+    }//GEN-LAST:event_botaoPerfilActionPerformed
+
+    private void botaoInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicio1ActionPerformed
+        //this.dispose();
+        //TelaPrincipal mainScreen = new TelaPrincipal(funcionarioLogado);
+        //mainScreen.setVisible(true);
+    }//GEN-LAST:event_botaoInicio1ActionPerformed
+
+    private void botaoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAnimalActionPerformed
+        this.dispose();
+        CadastroAnimal animalScreen = new CadastroAnimal(funcionarioLogado);
+        animalScreen.setVisible(true);
+    }//GEN-LAST:event_botaoAnimalActionPerformed
+
+    private void botaoAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdocaoActionPerformed
+        this.dispose();
+        FichaAdocao adocaoScreen = new FichaAdocao(funcionarioLogado);
+        adocaoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoAdocaoActionPerformed
+
+    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
+        this.dispose();
+        HistoricoFrame historicoScreen = new HistoricoFrame(funcionarioLogado);
+        historicoScreen.setVisible(true);
+    }//GEN-LAST:event_botaoHistoricoActionPerformed
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        this.dispose();
+        TelaLogin n = new TelaLogin();
+        n.setVisible(true);
+    }//GEN-LAST:event_botaoSairActionPerformed
+
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -514,7 +536,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdocao;
     private javax.swing.JButton botaoAnimal;
     private javax.swing.JButton botaoHistorico;
-    private javax.swing.JButton botaoInicio;
+    private javax.swing.JButton botaoInicio1;
+    private javax.swing.JButton botaoPerfil;
     private javax.swing.JButton botaoSair;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JTextField filterTextField;
