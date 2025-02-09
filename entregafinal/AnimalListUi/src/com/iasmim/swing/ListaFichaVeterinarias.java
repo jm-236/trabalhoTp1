@@ -2,6 +2,7 @@ package com.iasmim.swing;
 
 import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
+import com.joao.model.Funcionario;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -18,12 +19,14 @@ public class ListaFichaVeterinarias extends JFrame {
     private JLabel fotoLabel;
     private JTable tabelaHistorico;
     private Animal animal;
+    private Funcionario funcionario;
     private CustomTableModel tabelaModel;
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public ListaFichaVeterinarias(Animal animal) {
+    public ListaFichaVeterinarias(Funcionario funcionario,Animal animal) {
         this.animal = animal;
+        this.funcionario = funcionario;
         setTitle("Histórico de Fichas Médicas");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Fechar apenas esta janela
@@ -70,7 +73,7 @@ public class ListaFichaVeterinarias extends JFrame {
                 if (e.getClickCount() == 2 && tabelaHistorico.getSelectedRow() != -1) {
                     int row = tabelaHistorico.getSelectedRow();
                     FichaMedica ficha = animal.getAnimalFichasMedicas().get(row);
-                    new VisualizarFichaMedica(ficha).setVisible(true);
+                    new VisualizarFichaMedica(funcionario, ficha, animal).setVisible(true);
                 }
             }
         });
@@ -92,7 +95,7 @@ public class ListaFichaVeterinarias extends JFrame {
 
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
-            new ListaFichaVeterinarias(new Animal()).setVisible(true);
+            new ListaFichaVeterinarias(new Funcionario(), new Animal()).setVisible(true);
         });
     }
 }

@@ -4,7 +4,9 @@
  */
 package com.iasmim.swing;
 
+import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
+import com.joao.model.Funcionario;
 import javax.swing.JFrame;
 
 /**
@@ -17,9 +19,13 @@ public class VisualizarFichaMedica extends javax.swing.JFrame {
      * Creates new form VisualizarFichaMedica
      */
     private FichaMedica fichaVet;
+    private Animal animal;
+    private Funcionario funcionario;
     
-    public VisualizarFichaMedica(FichaMedica fichaVet) {
+    public VisualizarFichaMedica(Funcionario funcionario, FichaMedica fichaVet, Animal animal) {
         this.fichaVet = fichaVet;
+        this.animal = animal;
+        this.funcionario = funcionario;
         initComponents();
         setLocationRelativeTo(null);
         medTextField.setText(fichaVet.getMedicacaoContinua());
@@ -531,7 +537,20 @@ public class VisualizarFichaMedica extends javax.swing.JFrame {
     }//GEN-LAST:event_simAlergiaButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        //gerar pdf
+        PDFCreator pdf = new PDFCreator("FichaVeterinaria-"+ animal.getAnimalNome());
+        pdf.definirCabecalho(funcionario.getNome(), funcionario.getId());
+        pdf.definirTitulo("Ficha Médica");
+        pdf.adicionarImagemCentralizada(animal.getAnimalImage());
+        pdf.adicionarSubTitulo("Dados do Animal");
+        pdf.adicionarParagrafo(animal.toString());
+        pdf.adicionarSubTitulo("Histórico Clínico");
+        pdf.adicionarParagrafo(fichaVet.getHistoricoClinico());
+        pdf.adicionarSubTitulo("Queixa principal e histórico recente");
+        pdf.adicionarParagrafo(fichaVet.getDiagnosticoTratamento());
+        pdf.adicionarParagrafo("\n");
+        pdf.adicionarParagrafo(fichaVet.getVeterinario().getNome() + "\n CRMV : " + fichaVet.getVeterinario().getCrmv());
+        pdf.exportarEPdf();
+  
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void urgenciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgenciaButtonActionPerformed
@@ -577,7 +596,7 @@ public class VisualizarFichaMedica extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisualizarFichaMedica(new FichaMedica()).setVisible(true);
+                new VisualizarFichaMedica(new Funcionario(), new FichaMedica(), new Animal()).setVisible(true);
             }
         });
     }

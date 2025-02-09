@@ -428,7 +428,7 @@ public class FormHome extends javax.swing.JPanel {
             for(Animal animalL : jsonHandler.carregarAnimaisDoArquivo()){
                 if(animalL.getAnimalID().equals(animal.getAnimalID())){
                     if(!(animalL.getAnimalFichasMedicas().isEmpty())){
-                        ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(animalL);
+                        ListaFichaVeterinarias fichaScreen = new ListaFichaVeterinarias(funcionarioLogado, animalL);
                         fichaScreen.setVisible(true);
                     }
                     else{
