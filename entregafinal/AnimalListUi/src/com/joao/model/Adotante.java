@@ -18,9 +18,11 @@ public class Adotante extends Pessoa{
     public Adotante(String cpf, LocalDate dataNascimento, String email, String nome, String telefone, String endereco) {
         super(cpf, dataNascimento, email, nome, telefone);
         this.endereco = endereco;
+        this.animaisAdotados = new ArrayList<Adocao>();
     }
 
     public Adotante() {
+        this.animaisAdotados = new ArrayList<Adocao>();
     }
 
     public String getId() {
@@ -34,7 +36,7 @@ public class Adotante extends Pessoa{
     
 
     public ArrayList<Adocao> getAnimaisAdotados() {
-        return animaisAdotados;
+        return this.animaisAdotados;
     }
 
     public void setAnimaisAdotados(ArrayList<Adocao> animaisAdotados) {

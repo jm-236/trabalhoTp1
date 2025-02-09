@@ -5,9 +5,19 @@
 package com.iasmim.swing;
 
 import com.arthur.main.TelaPrincipal;
+import com.joao.jsonManager.AdotanteDAO;
+import com.joao.model.Adocao;
+import com.joao.model.Adotante;
+import com.joao.model.Animal;
 import com.joao.model.Funcionario;
+import com.joao.model.Termo;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +26,10 @@ import java.awt.event.WindowEvent;
 public class FichaAdocao extends javax.swing.JFrame {
     
     private Funcionario funcionarioLogado;
+    private AdotanteDAO adotanteDAO = new AdotanteDAO();
+    private HandleJson handleJson = new HandleJson();
+    private List<Animal> animais = handleJson.carregarAnimaisDoArquivo();
+    private List<Adotante> adotantes = adotanteDAO.listarAdotantes();
     
     //private final TelaPrincipal inicioForm;
     
@@ -26,6 +40,12 @@ public class FichaAdocao extends javax.swing.JFrame {
     public FichaAdocao(Funcionario funcionario) {
         funcionarioLogado = funcionario;
         initComponents();
+        for (Adotante adotante : adotantes) {
+            adotanteBox.addItem(adotante.getNome() + ", CPF: " + adotante.getCpf());
+        }    
+        for (Animal animal : animais){
+            animaisBox.addItem(animal.getAnimalNome() + ", id: " + animal.getAnimalID());
+        }
     }
 
     public void close(){
@@ -43,9 +63,11 @@ public class FichaAdocao extends javax.swing.JFrame {
     private void initComponents() {
 
         ambienteButtonGroup = new javax.swing.ButtonGroup();
-        condicoesFinancButtonGroup = new javax.swing.ButtonGroup();
+        recebeuAnimalButtonGroup = new javax.swing.ButtonGroup();
         outrosAnimaisButtonGroup = new javax.swing.ButtonGroup();
         mudancaResidenciaButtonGroup = new javax.swing.ButtonGroup();
+        conscienciaButtonGroup = new javax.swing.ButtonGroup();
+        condicoesFinanceirasButtonGroup = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,12 +78,12 @@ public class FichaAdocao extends javax.swing.JFrame {
         botaoHistorico = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         botaoSair = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        salvarAdocaoButton = new javax.swing.JButton();
+        adotanteBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        dataAdocaoField = new javax.swing.JFormattedTextField();
+        animaisBox = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
@@ -78,7 +100,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         casaButton = new javax.swing.JRadioButton();
         quintalButton = new javax.swing.JRadioButton();
         simCondicoesFinancButton1 = new javax.swing.JLabel();
-        outrosAnimaisTextField1 = new javax.swing.JTextField();
+        localDuranteViagemTextField = new javax.swing.JTextField();
         medLabel4 = new javax.swing.JLabel();
         levoComigoButton = new javax.swing.JRadioButton();
         devolvoAdocaoButton = new javax.swing.JRadioButton();
@@ -87,8 +109,8 @@ public class FichaAdocao extends javax.swing.JFrame {
         simMed2 = new javax.swing.JRadioButton();
         naoCondicoesFinancButton1 = new javax.swing.JRadioButton();
         medLabel6 = new javax.swing.JLabel();
-        simMed3 = new javax.swing.JRadioButton();
-        naoCondicoesFinancButton2 = new javax.swing.JRadioButton();
+        recebeuAnimalButton = new javax.swing.JRadioButton();
+        naoRecebeuAnimalButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,25 +208,24 @@ public class FichaAdocao extends javax.swing.JFrame {
         });
         jToolBar1.add(botaoSair);
 
-        jButton1.setBackground(new java.awt.Color(21, 102, 64));
-        jButton1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Salvar");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        salvarAdocaoButton.setBackground(new java.awt.Color(21, 102, 64));
+        salvarAdocaoButton.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        salvarAdocaoButton.setForeground(new java.awt.Color(255, 255, 255));
+        salvarAdocaoButton.setText("Salvar");
+        salvarAdocaoButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        salvarAdocaoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salvarAdocaoButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        salvarAdocaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                salvarAdocaoButtonActionPerformed(evt);
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ana Carolina da Silva", "Matheus Rodrigues", "Robert W. Floyd", "Maria Salomea Skłodowska-Curie", "Robson de Souza", "Esther Bron Kerbosch", "Leonhard Euler", "Stephen Warshall" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(64, 24));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        adotanteBox.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
+        adotanteBox.setPreferredSize(new java.awt.Dimension(64, 24));
+        adotanteBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                adotanteBoxActionPerformed(evt);
             }
         });
 
@@ -216,18 +237,17 @@ public class FichaAdocao extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(48, 63, 56));
         jLabel4.setText("Animal :");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFormattedTextField1.setToolTipText("20/02/2002");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        dataAdocaoField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        dataAdocaoField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        dataAdocaoField.setToolTipText("20/02/2002");
+        dataAdocaoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                dataAdocaoFieldActionPerformed(evt);
             }
         });
 
-        jComboBox2.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gigi (girafa)", "Bob (cachorro)", "Pote de Ouro (unicórnio)", "Rawrrr (dinossaro)", "Mimosa (gato)" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(64, 24));
+        animaisBox.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
+        animaisBox.setPreferredSize(new java.awt.Dimension(64, 24));
 
         jButton6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(32, 61, 74));
@@ -261,6 +281,11 @@ public class FichaAdocao extends javax.swing.JFrame {
         naoOutrosAnimaisButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         naoOutrosAnimaisButton.setForeground(new java.awt.Color(48, 63, 56));
         naoOutrosAnimaisButton.setText("Não");
+        naoOutrosAnimaisButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                naoOutrosAnimaisButtonActionPerformed(evt);
+            }
+        });
 
         outrosAnimaisTextField.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         outrosAnimaisTextField.setForeground(new java.awt.Color(48, 63, 56));
@@ -269,12 +294,12 @@ public class FichaAdocao extends javax.swing.JFrame {
         simCondicoesFinancButton.setForeground(new java.awt.Color(48, 63, 56));
         simCondicoesFinancButton.setText("Quais ?");
 
-        condicoesFinancButtonGroup.add(naoCondicoesFinancButton);
+        condicoesFinanceirasButtonGroup.add(naoCondicoesFinancButton);
         naoCondicoesFinancButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         naoCondicoesFinancButton.setForeground(new java.awt.Color(48, 63, 56));
         naoCondicoesFinancButton.setText("Não");
 
-        condicoesFinancButtonGroup.add(simMed1);
+        condicoesFinanceirasButtonGroup.add(simMed1);
         simMed1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         simMed1.setForeground(new java.awt.Color(48, 63, 56));
         simMed1.setText("Sim");
@@ -321,8 +346,8 @@ public class FichaAdocao extends javax.swing.JFrame {
         simCondicoesFinancButton1.setForeground(new java.awt.Color(48, 63, 56));
         simCondicoesFinancButton1.setText("Quando viajar aonde pensa em deixar o animal?");
 
-        outrosAnimaisTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        outrosAnimaisTextField1.setForeground(new java.awt.Color(48, 63, 56));
+        localDuranteViagemTextField.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        localDuranteViagemTextField.setForeground(new java.awt.Color(48, 63, 56));
 
         medLabel4.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         medLabel4.setForeground(new java.awt.Color(48, 63, 56));
@@ -357,7 +382,7 @@ public class FichaAdocao extends javax.swing.JFrame {
         medLabel5.setForeground(new java.awt.Color(48, 63, 56));
         medLabel5.setText("Tem consciência de que um animal pode viver até 10, 15, 18 anos? E que se torna responsável por ele durante toda a sua vida?");
 
-        condicoesFinancButtonGroup.add(simMed2);
+        conscienciaButtonGroup.add(simMed2);
         simMed2.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         simMed2.setForeground(new java.awt.Color(48, 63, 56));
         simMed2.setText("Sim");
@@ -367,7 +392,7 @@ public class FichaAdocao extends javax.swing.JFrame {
             }
         });
 
-        condicoesFinancButtonGroup.add(naoCondicoesFinancButton1);
+        conscienciaButtonGroup.add(naoCondicoesFinancButton1);
         naoCondicoesFinancButton1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         naoCondicoesFinancButton1.setForeground(new java.awt.Color(48, 63, 56));
         naoCondicoesFinancButton1.setText("Não");
@@ -376,20 +401,20 @@ public class FichaAdocao extends javax.swing.JFrame {
         medLabel6.setForeground(new java.awt.Color(48, 63, 56));
         medLabel6.setText("Já entregou algum animal para adoção/abrigo");
 
-        condicoesFinancButtonGroup.add(simMed3);
-        simMed3.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        simMed3.setForeground(new java.awt.Color(48, 63, 56));
-        simMed3.setText("Sim");
-        simMed3.addActionListener(new java.awt.event.ActionListener() {
+        recebeuAnimalButtonGroup.add(recebeuAnimalButton);
+        recebeuAnimalButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        recebeuAnimalButton.setForeground(new java.awt.Color(48, 63, 56));
+        recebeuAnimalButton.setText("Sim");
+        recebeuAnimalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simMed3ActionPerformed(evt);
+                recebeuAnimalButtonActionPerformed(evt);
             }
         });
 
-        condicoesFinancButtonGroup.add(naoCondicoesFinancButton2);
-        naoCondicoesFinancButton2.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        naoCondicoesFinancButton2.setForeground(new java.awt.Color(48, 63, 56));
-        naoCondicoesFinancButton2.setText("Não");
+        recebeuAnimalButtonGroup.add(naoRecebeuAnimalButton);
+        naoRecebeuAnimalButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        naoRecebeuAnimalButton.setForeground(new java.awt.Color(48, 63, 56));
+        naoRecebeuAnimalButton.setText("Não");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -427,7 +452,7 @@ public class FichaAdocao extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(simCondicoesFinancButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(outrosAnimaisTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(localDuranteViagemTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(medLabel4)
                         .addGap(51, 51, 51)
@@ -445,9 +470,9 @@ public class FichaAdocao extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(medLabel6)
                         .addGap(51, 51, 51)
-                        .addComponent(simMed3)
+                        .addComponent(recebeuAnimalButton)
                         .addGap(27, 27, 27)
-                        .addComponent(naoCondicoesFinancButton2)))
+                        .addComponent(naoRecebeuAnimalButton)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -475,7 +500,7 @@ public class FichaAdocao extends javax.swing.JFrame {
                     .addComponent(quintalButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(outrosAnimaisTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(localDuranteViagemTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(simCondicoesFinancButton1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -491,8 +516,8 @@ public class FichaAdocao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medLabel6)
-                    .addComponent(simMed3)
-                    .addComponent(naoCondicoesFinancButton2))
+                    .addComponent(recebeuAnimalButton)
+                    .addComponent(naoRecebeuAnimalButton))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -507,26 +532,28 @@ public class FichaAdocao extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(dataAdocaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(animaisBox, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(adotanteBox, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salvarAdocaoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(592, 592, 592))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -540,22 +567,25 @@ public class FichaAdocao extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(dataAdocaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(animaisBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(adotanteBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addComponent(salvarAdocaoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -573,28 +603,150 @@ public class FichaAdocao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void salvarAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarAdocaoButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String cpf = adotanteBox.getSelectedItem().toString().substring(adotanteBox.getSelectedItem().toString().length() - 11);
+        Adotante adotante = adotanteDAO.buscarAdotante(cpf).get();
+        
+        String id = animaisBox.getSelectedItem().toString().substring(animaisBox.getSelectedItem().toString().indexOf("id: ") + 4).trim();
+        Animal animal = handleJson.buscarAnimalPeloId(id).get();
+        
+        boolean temOutrosAnimais = false;
+        String outrosAnimais = "";
+        boolean temOutrosAnimaisSelecionado = false;
+        for(AbstractButton button : Collections.list(outrosAnimaisButtonGroup.getElements())){
+            if (button.isSelected()) {
+                temOutrosAnimaisSelecionado = true;
+                if (button.getText().equals("Sim")){
+                    temOutrosAnimais = true;
+                    outrosAnimais = outrosAnimaisTextField.getText();
+                    if (outrosAnimais.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Insira os outros animais.");
+                        return;
+                    }
+                }
+                else {
+                    temOutrosAnimais = false;
+                }
+                break;
+            }
+        }
+        
+        boolean podeLevarAoVet = false;
+        boolean podeLevarAoVetSelecionado = false;
+        for( AbstractButton button : Collections.list(condicoesFinanceirasButtonGroup.getElements())){
+            if(button.isSelected()){
+                podeLevarAoVetSelecionado = true;
+                podeLevarAoVet = button.getText().equals("Sim") ? true : false;
+                break;
+            }
+        }
+        
+        String ambiente = null;
+        boolean ambienteSelecionado = false;
+        for( AbstractButton button : Collections.list(ambienteButtonGroup.getElements())){
+            if(button.isSelected()){
+                ambienteSelecionado = true;
+                ambiente = button.getText();
+                break;
+            }
+        }
+        
+        String localDuranteViagem = localDuranteViagemTextField.getText();
+        if (localDuranteViagem.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todo o formulário!");
+            return;
+        }
+        
+        String oqueFaraSeMudar = null;
+        boolean oqueFaraPreenchido = false;
+        for( AbstractButton button : Collections.list(mudancaResidenciaButtonGroup.getElements())){
+            if(button.isSelected()){
+                oqueFaraPreenchido = true;
+                oqueFaraSeMudar = button.getText();
+                break;
+            }
+        }
+        
+        boolean consciencia = false;
+        boolean conscienciaPreenchida = false;
+        for( AbstractButton button : Collections.list(conscienciaButtonGroup.getElements())){
+            if(button.isSelected()){
+                conscienciaPreenchida = true;
+                consciencia = button.getText().equals("Sim") ? true : false;
+                break;
+            }
+        }
+        
+        
+        boolean jaEntregouParaAdocao = false;
+        boolean jaEntregouPreenchida = false;
+        for( AbstractButton button : Collections.list(recebeuAnimalButtonGroup.getElements())){
+            if(button.isSelected()){
+                jaEntregouPreenchida = true;
+                jaEntregouParaAdocao = button.getText().equals("Sim") ? true : false;
+                break;
+            }
+        }
+        
+        boolean formularioPreenchido = jaEntregouPreenchida && conscienciaPreenchida
+                && oqueFaraPreenchido && ambienteSelecionado && podeLevarAoVetSelecionado
+                && temOutrosAnimaisSelecionado;
+        
+        if (!formularioPreenchido) {
+            JOptionPane.showMessageDialog(null, "Preencha todo o formulário!");
+        }
+        
+        Termo termoResponsabilidade = new Termo(temOutrosAnimais,outrosAnimais,
+        podeLevarAoVet, ambiente, localDuranteViagem, oqueFaraSeMudar, consciencia,
+        jaEntregouParaAdocao);
+        
+        Adocao adocao = new Adocao(termoResponsabilidade, adotante, animal);
+        
+        String dataAdocao = dataAdocaoField.getText();
+        
+        if (!adocao.validarData(dataAdocao).equals("true")){
+            JOptionPane.showMessageDialog(null, adocao.validarData(dataAdocao));
+            return;
+        }
+        
+        adocao.setDataAdocao(LocalDate.parse(dataAdocao, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        
+        System.out.println("Adoção sendo cadastrada no sistema...");
+        animal.setAnimalAdocao(adocao);
+        ArrayList <Adocao> animaisAdotados = adotante.getAnimaisAdotados();
+        animaisAdotados.add(adocao);
+        adotante.setAnimaisAdotados(animaisAdotados);
+        
+        handleJson.editarAnimal(animal.getAnimalID(), animal);
+        adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
+        
+        System.out.println("Adoção cadastrada com sucesso!");
+        
+        this.dispose();
+        TelaPrincipal telaPrincipal = new TelaPrincipal(funcionarioLogado);
+        telaPrincipal.setVisible(true);
+    }//GEN-LAST:event_salvarAdocaoButtonActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void dataAdocaoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAdocaoFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_dataAdocaoFieldActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //this.setVisible(false);
         
         this.dispose();
-        CadastroAdotante adotanteScreen = new CadastroAdotante(this);
+        CadastroAdotante adotanteScreen = new CadastroAdotante();
         adotanteScreen.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void adotanteBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adotanteBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_adotanteBoxActionPerformed
 
     private void simOutrosAnimaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simOutrosAnimaisButtonActionPerformed
         // TODO add your handling code here:
+        outrosAnimaisTextField.setEnabled(true);
     }//GEN-LAST:event_simOutrosAnimaisButtonActionPerformed
 
     private void simMed1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simMed1ActionPerformed
@@ -621,9 +773,9 @@ public class FichaAdocao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_simMed2ActionPerformed
 
-    private void simMed3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simMed3ActionPerformed
+    private void recebeuAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recebeuAnimalButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_simMed3ActionPerformed
+    }//GEN-LAST:event_recebeuAnimalButtonActionPerformed
 
     private void botaoInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicio1ActionPerformed
         this.dispose();
@@ -652,6 +804,12 @@ public class FichaAdocao extends javax.swing.JFrame {
         TelaLogin n = new TelaLogin();
         n.setVisible(true);
     }//GEN-LAST:event_botaoSairActionPerformed
+
+    private void naoOutrosAnimaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoOutrosAnimaisButtonActionPerformed
+        // TODO add your handling code here:
+        outrosAnimaisTextField.setEnabled(false);
+        outrosAnimaisTextField.setText("");
+    }//GEN-LAST:event_naoOutrosAnimaisButtonActionPerformed
 
     
     public static void main(String args[]) {
@@ -687,24 +845,23 @@ public class FichaAdocao extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> adotanteBox;
     private javax.swing.ButtonGroup ambienteButtonGroup;
+    private javax.swing.JComboBox<String> animaisBox;
     private javax.swing.JRadioButton apartamentoButton;
     private javax.swing.JButton botaoAdocao;
     private javax.swing.JButton botaoAnimal;
     private javax.swing.JButton botaoHistorico;
-    private javax.swing.JButton botaoInicio;
     private javax.swing.JButton botaoInicio1;
     private javax.swing.JButton botaoSair;
     private javax.swing.JRadioButton casaButton;
-    private javax.swing.ButtonGroup condicoesFinancButtonGroup;
+    private javax.swing.ButtonGroup condicoesFinanceirasButtonGroup;
+    private javax.swing.ButtonGroup conscienciaButtonGroup;
+    private javax.swing.JFormattedTextField dataAdocaoField;
     private javax.swing.JRadioButton devolvoAdocaoButton;
     private javax.swing.JRadioButton entregoPessoButton;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -713,8 +870,8 @@ public class FichaAdocao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JRadioButton levoComigoButton;
+    private javax.swing.JTextField localDuranteViagemTextField;
     private javax.swing.JLabel medLabel;
     private javax.swing.JLabel medLabel2;
     private javax.swing.JLabel medLabel3;
@@ -724,17 +881,18 @@ public class FichaAdocao extends javax.swing.JFrame {
     private javax.swing.ButtonGroup mudancaResidenciaButtonGroup;
     private javax.swing.JRadioButton naoCondicoesFinancButton;
     private javax.swing.JRadioButton naoCondicoesFinancButton1;
-    private javax.swing.JRadioButton naoCondicoesFinancButton2;
     private javax.swing.JRadioButton naoOutrosAnimaisButton;
+    private javax.swing.JRadioButton naoRecebeuAnimalButton;
     private javax.swing.ButtonGroup outrosAnimaisButtonGroup;
     private javax.swing.JTextField outrosAnimaisTextField;
-    private javax.swing.JTextField outrosAnimaisTextField1;
     private javax.swing.JRadioButton quintalButton;
+    private javax.swing.JRadioButton recebeuAnimalButton;
+    private javax.swing.ButtonGroup recebeuAnimalButtonGroup;
+    private javax.swing.JButton salvarAdocaoButton;
     private javax.swing.JLabel simCondicoesFinancButton;
     private javax.swing.JLabel simCondicoesFinancButton1;
     private javax.swing.JRadioButton simMed1;
     private javax.swing.JRadioButton simMed2;
-    private javax.swing.JRadioButton simMed3;
     private javax.swing.JRadioButton simOutrosAnimaisButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,15 +1,63 @@
 package com.joao.model;
 
+import com.joao.interfaces.validaData;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
-public class Adocao {
+public class Adocao implements validaData {
 
     private LocalDate dataAdocao;
-    private String termoResponsabilidade;
-    private String observacoes;
+    private Termo termoResponsabilidade;
     private Adotante adotante;
     private Animal animal;
 
+    public Adocao(LocalDate dataAdocao, Termo termoResponsabilidade, Adotante adotante, Animal animal) {
+        this.dataAdocao = dataAdocao;
+        this.termoResponsabilidade = termoResponsabilidade;
+        this.adotante = adotante;
+        this.animal = animal;
+    }
+
+    public Adocao(Termo termoResponsabilidade, Adotante adotante, Animal animal) {
+        this.termoResponsabilidade = termoResponsabilidade;
+        this.adotante = adotante;
+        this.animal = animal;
+    }
+
+    public Adocao() {
+    }
+    
+    
+    
+
+    public String validarData(String dataAdocaoStr) {
+        // Define o formato esperado da data
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            // Converte a String para LocalDate
+            LocalDate dataAdocao = LocalDate.parse(dataAdocaoStr, formatter);
+
+            // Obtém a data atual
+            LocalDate dataAtual = LocalDate.now();
+
+            // Verifica se a data de nascimento é anterior à data atual
+            if (dataAdocao.isAfter(dataAtual)) {
+                System.out.println();
+                return "Data de nascimento no futuro.";
+            }
+
+            // Se passou por todas as verificações, a data é válida
+            return "true";
+
+        } catch (DateTimeParseException e) {
+            
+            return "Formato de data inválido. Use o formato dd/MM/yyyy.";
+        }
+    }
+    
     public LocalDate getDataAdocao() {
         return dataAdocao;
     }
@@ -18,20 +66,12 @@ public class Adocao {
         this.dataAdocao = dataAdocao;
     }
 
-    public String getTermoResponsabilidade() {
+    public Termo getTermoResponsabilidade() {
         return termoResponsabilidade;
     }
 
-    public void setTermoResponsabilidade(String termoResponsabilidade) {
+    public void setTermoResponsabilidade(Termo termoResponsabilidade) {
         this.termoResponsabilidade = termoResponsabilidade;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
     }
 
     public Adotante getAdotante() {
