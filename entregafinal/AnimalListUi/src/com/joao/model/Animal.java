@@ -5,6 +5,7 @@ import com.joao.model.Adocao;
 import com.joao.model.FichaMedica;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.Icon;
@@ -26,6 +27,7 @@ public class Animal {
     private LocalDate animalDataNascimento;
     private ArrayList<FichaMedica> histFichaMedica;
     private Adocao animalAdocao;
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
     public Animal(LocalDate animalDataNascimento, String animalLocal, String animalNome, String animalGenero, String animalEspecie, float animalPeso, String animalPorte, ImageIcon animalImage, String animalRaca, LocalDate animalData, Adocao animalAdocao) {
         this.animalID = UUID.randomUUID().toString();
@@ -173,5 +175,13 @@ public class Animal {
     public int calcularIdade() {
         return Period.between(this.getAnimalDataNascimento(), LocalDate.now()).getYears();
     }
+
+    @Override
+    public String toString() {
+        String sanimal =  String.format("Nome : %s\nId : %s\nEspécie : %s\nRaça : %s\nGênero : %s\nPorte : %s\nPeso : %.2f\nData de Nascimento : %s\nIdade : %d anos\n", animalNome, animalID, animalEspecie, animalRaca, animalGenero, animalPorte, animalPeso, animalDataNascimento.format(DATE_FORMATTER), this.calcularIdade());
+        return sanimal;
+    }
+    
+    
     
 }

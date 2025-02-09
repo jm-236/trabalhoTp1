@@ -4,20 +4,28 @@
  */
 package com.iasmim.swing;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 
 import java.awt.Desktop;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,7 +38,6 @@ public class PDFCreator {
     private Document document;
     private String downloadsPath;
 
-    // Construtor que inicializa o PDF vazio
     public PDFCreator(String nomepdf) {
         try {
             // Obtém o caminho para a pasta Downloads do diretório home do usuário
@@ -47,7 +54,6 @@ public class PDFCreator {
         }
     }
 
-    // Método para definir o título
     public void definirTitulo(String titulo) {
         try {
             PdfFont font = PdfFontFactory.createFont(com.itextpdf.io.font.constants.StandardFonts.HELVETICA_BOLD);
@@ -61,27 +67,61 @@ public class PDFCreator {
         }
     }
 
-    // Método para definir o cabeçalho
     public void definirCabecalho(String nomeFuncionario, String idFuncionario) {
         LocalDateTime dataHoraAtual = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String dataFormatada = dataHoraAtual.format(formatter);
-        String cabecalho = dataFormatada + " | Funcionário: " + nomeFuncionario + " ( " + idFuncionario + " )";
+        String cabecalho = dataFormatada + " | Emitido por " + nomeFuncionario + " ( " + idFuncionario + " )";
         Paragraph cabecalhoParagrafo = new Paragraph(cabecalho)
                 .setFontSize(10)
                 .setMarginTop(10);
         document.add(cabecalhoParagrafo);
     }
+    
+    
+    public void adicionarImagemCentralizada(ImageIcon imageIcon) {
+        try {
+            // Converte ImageIcon para BufferedImage
+            BufferedImage bufferedImage = new BufferedImage(
+                    imageIcon.getIconWidth(),
+                    imageIcon.getIconHeight(),
+                    BufferedImage.TYPE_INT_RGB);
+            imageIcon.paintIcon(null, bufferedImage.getGraphics(), 0, 0);
 
-    // Método para adicionar um parágrafo ao PDF
+            // Converte BufferedImage para ImageData
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "jpg", baos);
+            ImageData data = ImageDataFactory.create(baos.toByteArray());
+
+            // Cria a imagem iText e a centraliza
+            Image imagem = new Image(data);
+            imagem.setHorizontalAlignment(HorizontalAlignment.CENTER);
+            document.add(imagem);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+    public void adicionarSubTitulo(String titulo) {
+        try {
+            PdfFont font = PdfFontFactory.createFont(com.itextpdf.io.font.constants.StandardFonts.HELVETICA_BOLD);
+            Paragraph subtituloParagrafo = new Paragraph(titulo)
+                    .setFont(font)
+                    .setFontSize(14)
+                    .setTextAlignment(TextAlignment.LEFT);
+            document.add(subtituloParagrafo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void adicionarParagrafo(String texto) {
         document.add(new Paragraph(texto));
     }
 
-    // Método para exportar e abrir o PDF
     public void exportarEPdf() {
         try {
-            // Fecha o documento
             document.close();
 
             // Abre o arquivo PDF
