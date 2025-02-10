@@ -26,6 +26,7 @@ import javax.swing.SwingUtilities;
 import com.joao.model.Veterinario;
 import com.joao.jsonManager.FuncionarioJsonHandler;
 import com.joao.model.Funcionario;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -197,6 +198,8 @@ public class FormHome extends javax.swing.JPanel {
         lbPeso.setText("Peso:");
         lbNascimento.setText("Data de Nascimento:");
         lbEspecie.setText("Espécie:");
+        lbAdoptionStatus.setText("Status da Adoção");
+        lbAdoptionStatus.setForeground(new Color(76,76,76));
     
     
     }
@@ -215,6 +218,14 @@ public class FormHome extends javax.swing.JPanel {
         lbPeso.setText("Peso: "+data.getAnimalPeso());
         lbNascimento.setText("Data de Nascimento: "+data.getAnimalDataNascimento());
         lbEspecie.setText("Espécie: "+data.getAnimalEspecie());
+        if (data.isAdotado()){
+            lbAdoptionStatus.setText("O animal foi adotado por: "+ ((data.getAnimalAdocao()).getAdotante()).getNome());
+            lbAdoptionStatus.setForeground(Color.red);
+        }
+        else{
+            lbAdoptionStatus.setText("O animal está disponível para adoção");
+            lbAdoptionStatus.setForeground(new Color(87, 54, 247));
+        }
     }
     
     
@@ -244,6 +255,7 @@ public class FormHome extends javax.swing.JPanel {
         botaoListFichaVet = new javax.swing.JButton();
         botaoCriarFichaVet = new javax.swing.JButton();
         botaoVisualizarAdocao = new javax.swing.JButton();
+        lbAdoptionStatus = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(177, 251, 216));
 
@@ -319,6 +331,11 @@ public class FormHome extends javax.swing.JPanel {
             }
         });
 
+        lbAdoptionStatus.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lbAdoptionStatus.setForeground(new java.awt.Color(76, 76, 76));
+        lbAdoptionStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbAdoptionStatus.setText("Status da Adoção");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -330,12 +347,8 @@ public class FormHome extends javax.swing.JPanel {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbEspecie)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbGenero)
-                                .addGap(78, 78, 78)
-                                .addComponent(lbPorte, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbAnimalName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
@@ -345,13 +358,17 @@ public class FormHome extends javax.swing.JPanel {
                             .addComponent(lbIdade)
                             .addComponent(lbLocal)
                             .addComponent(lbPeso)
-                            .addComponent(lbNascimento)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoListFichaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoVisualizarAdocao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lbNascimento)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botaoListFichaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botaoVisualizarAdocao, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lbGenero)
+                                    .addGap(78, 78, 78)
+                                    .addComponent(lbPorte, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbAdoptionStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -379,17 +396,19 @@ public class FormHome extends javax.swing.JPanel {
                 .addComponent(lbNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbEspecie)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbAdoptionStatus)
+                .addGap(21, 21, 21)
                 .addComponent(botaoListFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoVisualizarAdocao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
 
         botaoListFichaVet.setVisible(true);
-        FuncionarioJsonHandler testeVeterinario = new FuncionarioJsonHandler();
+        com.joao.jsonManager.FuncionarioJsonHandler testeVeterinario = new com.joao.jsonManager.FuncionarioJsonHandler();
         if ((testeVeterinario.GetFuncionarioLogado()) instanceof Veterinario){
             botaoCriarFichaVet.setVisible(true);
         }
@@ -471,6 +490,7 @@ public class FormHome extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbAdoptionStatus;
     private javax.swing.JLabel lbAnimalName;
     private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbEspecie;
