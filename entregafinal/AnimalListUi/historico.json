@@ -540,5 +540,12 @@
     "nomeAnimal": "Caramelo Patriota",
     "evento": "Novo Pet",
     "dataHora": "2025-02-10T19:29:47.54941351"
+  },
+  {
+    "idAnimal": "67f4daae-0342-434d-bc18-1211643fab45",
+    "idEvento": "67f4daae-0342-434d-bc18-1211643fab45",
+    "nomeAnimal": "Duna Dois Sushi Orsi Lange Muad’Dib Atreides Usul Lisan Al Gaib",
+    "evento": "Novo Pet",
+    "dataHora": "2025-02-10T19:39:10.7826617"
   }
 ]
