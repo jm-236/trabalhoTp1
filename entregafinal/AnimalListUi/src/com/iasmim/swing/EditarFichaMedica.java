@@ -192,13 +192,17 @@ public class EditarFichaMedica extends javax.swing.JFrame {
         
         HandleJson handleJson = new HandleJson();
         ArrayList<Animal> listaAnimais = handleJson.carregarAnimaisDoArquivo();
-        for(Animal animalNaLista : listaAnimais){
-            if(animalNaLista.getAnimalID().equals(animal.getAnimalID())){ 
-                for(FichaMedica fichaMed : animalNaLista.getAnimalFichasMedicas()){
-                    if(fichaMed.getFichaId().equals(fichaVet.getFichaId())) fichaMed = fichaVet;
+        for (Animal animalNaLista : listaAnimais) {
+            if (animalNaLista.getAnimalID().equals(animal.getAnimalID())) {
+                ArrayList<FichaMedica> fichas = animalNaLista.getAnimalFichasMedicas();
+                for (int i = 0; i < fichas.size(); i++) {
+                    if (fichas.get(i).getFichaId().equals(fichaVet.getFichaId())) {
+                        fichas.set(i, fichaVet); // Substitui diretamente na lista
+                    }
                 }
             }
         }
+
         //animal.addAnimalFichaMedica(fichaVet);
         Historico historico = new Historico(animal, fichaVet, true);
         handleJson.salvarAnimaisNoArquivo(listaAnimais);

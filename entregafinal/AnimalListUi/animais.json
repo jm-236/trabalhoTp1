@@ -61,9 +61,14 @@
     "histFichaMedica": [
       {
         "dataHora": "2025-02-10T16:42:46.803993621",
-        "diagnosticoTratamento": "aaaaaaaa",
+        "diagnosticoTratamento": "aaaaaaaabbbbbbbbbbbb",
         "fichaId": "1f1c5799-a2ec-4741-b945-28f0cb3220e7",
-        "tipoAtendimento": "Rotina",
+        "medicacaoContinua": "bjkjbbjkbjk",
+        "suplementacao": "",
+        "examesRecentes": "",
+        "cirurgia": "",
+        "alergiaMed": "",
+        "tipoAtendimento": "Emergência",
         "veterinario": {
           "crmv": "000000000",
           "id": "c6413db5-7309-4d19-9c5e-22f8c9b78f65",
