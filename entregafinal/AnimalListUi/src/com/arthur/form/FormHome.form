@@ -77,13 +77,8 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbGenero" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="lbPorte" min="-2" pref="121" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="lbAnimalName" alignment="0" pref="197" max="32767" attributes="0"/>
@@ -96,14 +91,19 @@
                               <Component id="lbLocal" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbPeso" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="botaoListFichaVet" max="32767" attributes="0"/>
-                              <Component id="botaoCriarFichaVet" max="32767" attributes="0"/>
-                              <Component id="botaoVisualizarAdocao" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="botaoListFichaVet" max="32767" attributes="0"/>
+                                      <Component id="botaoCriarFichaVet" max="32767" attributes="0"/>
+                                      <Component id="botaoVisualizarAdocao" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lbGenero" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                      <Component id="lbPorte" min="-2" pref="121" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="lbAdoptionStatus" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -138,13 +138,15 @@
                   <Component id="lbNascimento" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbEspecie" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lbAdoptionStatus" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="botaoListFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="botaoCriarFichaVet" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="botaoVisualizarAdocao" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace pref="415" max="32767" attributes="0"/>
+                  <EmptySpace pref="387" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -300,6 +302,18 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoVisualizarAdocaoActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbAdoptionStatus">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="4c" green="4c" red="4c" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Status da Ado&#xe7;&#xe3;o"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
