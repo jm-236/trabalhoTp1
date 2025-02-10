@@ -35,39 +35,23 @@ import java.util.Base64;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapter;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.joao.model.Animal;
-import com.joao.model.Historico;
-import com.joao.model.Termo;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Base64;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
+/**
+ * Classe responsável por manipular dados de animais em formato JSON.
+ */
 public class AnimalJsonHandler {
-        private static final String CAMINHO_ARQUIVO_ANIMAIS = "animais.json";
-        private Gson gson;
+    /**
+     * Caminho do arquivo JSON que armazena os dados dos animais.
+     */
+    private static final String CAMINHO_ARQUIVO_ANIMAIS = "animais.json";
 
+    /**
+     * Instância da classe Gson configurada com adaptadores personalizados.
+     */
+    private Gson gson;
+
+    /**
+     * Construtor padrão da classe AnimalJsonHandler.
+     */
     public AnimalJsonHandler() {
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocalDateAdapterr())
@@ -77,7 +61,12 @@ public class AnimalJsonHandler {
                 .setPrettyPrinting()
                 .create();
     }
-        
+
+    /**
+     * Carrega a lista de animais do arquivo JSON.
+     *
+     * @return Lista de animais carregada do arquivo.
+     */
     public ArrayList<Animal> carregarAnimaisDoArquivo() {
         try (Reader reader = new FileReader(CAMINHO_ARQUIVO_ANIMAIS)) {
             java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Animal>>() {}.getType();
@@ -92,14 +81,26 @@ public class AnimalJsonHandler {
         }
     }
 
+    /**
+     * Busca um animal pelo ID.
+     *
+     * @param id ID do animal a ser buscado.
+     * @return Animal encontrado ou null se não encontrado.
+     */
     public Animal buscarAnimalPeloId(String id) {
         ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
 
         return animais.stream()
                 .filter(animal -> animal.getAnimalID()
-                .equals(id)).findFirst().get();
+                        .equals(id)).findFirst().get();
     }
 
+    /**
+     * Atualiza os dados de um animal existente no arquivo JSON.
+     *
+     * @param id ID do animal a ser atualizado.
+     * @param novoAnimal Dados atualizados do animal.
+     */
     public void atualizarAnimal(String id, Animal novoAnimal) {
         ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
 
@@ -112,7 +113,11 @@ public class AnimalJsonHandler {
         this.salvarAnimaisNoArquivo(animais);
     }
 
-
+    /**
+     * Salva a lista de animais no arquivo JSON.
+     *
+     * @param listaDeAnimais Lista de animais a ser salva.
+     */
     public void salvarAnimaisNoArquivo(ArrayList<Animal> listaDeAnimais) {
         try (Writer writer = new FileWriter(CAMINHO_ARQUIVO_ANIMAIS)) {
             gson.toJson(listaDeAnimais, writer);
@@ -129,7 +134,10 @@ public class AnimalJsonHandler {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * Adaptador personalizado para serializar e desserializar objetos LocalDate.
+     */
     public class LocalDateAdapterr extends TypeAdapter<LocalDate> {
         private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -147,7 +155,10 @@ public class AnimalJsonHandler {
             return LocalDate.parse(jsonReader.nextString(), formatter);
         }
     }
-    
+
+    /**
+     * Adaptador personalizado para serializar e desserializar objetos LocalDateTime.
+     */
     public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
         private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
@@ -161,7 +172,10 @@ public class AnimalJsonHandler {
             return LocalDateTime.parse(jsonReader.nextString(), formatter);
         }
     }
-      
+
+    /**
+     * Adaptador personalizado para serializar e desserializar objetos ImageIcon.
+     */
     class ImageIconAdapter extends TypeAdapter<ImageIcon> {
         @Override
         public void write(JsonWriter out, ImageIcon icon) throws IOException {
@@ -170,10 +184,10 @@ public class AnimalJsonHandler {
                 return;
             }
 
-            // Convert ImageIcon to BufferedImage safely
+            // Converte ImageIcon para BufferedImage de forma segura
             BufferedImage bufferedImage = toBufferedImage(icon.getImage());
 
-            // Convert BufferedImage to Base64
+            // Converte BufferedImage para Base64
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", baos);
             String base64 = Base64.getEncoder().encodeToString(baos.toByteArray());
@@ -190,23 +204,28 @@ public class AnimalJsonHandler {
             return new ImageIcon(bufferedImage);
         }
 
-        // Helper method to convert Image to BufferedImage
+        /**
+         * Método auxiliar para converter Image para BufferedImage.
+         *
+         * @param img Imagem a ser convertida.
+         * @return BufferedImage convertida.
+         */
         private BufferedImage toBufferedImage(Image img) {
             if (img instanceof BufferedImage) {
                 return (BufferedImage) img;
             }
 
-            // Create a BufferedImage with the correct size and type
+            // Cria um BufferedImage com o tamanho e tipo corretos
             BufferedImage bufferedImage = new BufferedImage(
-                img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB
+                    img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB
             );
 
-            // Draw the image onto the BufferedImage
+            // Desenha a imagem no BufferedImage
             Graphics2D g2d = bufferedImage.createGraphics();
             g2d.drawImage(img, 0, 0, null);
             g2d.dispose();
 
             return bufferedImage;
         }
-    } 
+    }
 }

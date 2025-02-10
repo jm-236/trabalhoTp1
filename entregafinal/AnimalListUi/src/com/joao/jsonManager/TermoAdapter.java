@@ -5,6 +5,8 @@
 package com.joao.jsonManager;
 
 /**
+ * Adaptador personalizado para serializar e desserializar objetos Termo.
+ * Utiliza a biblioteca Gson para manipulação de JSON.
  *
  * @author joao
  */
@@ -18,6 +20,13 @@ import java.io.IOException;
 
 public class TermoAdapter extends TypeAdapter<Termo> {
 
+    /**
+     * Serializa um objeto Termo para seu formato JSON.
+     *
+     * @param out JsonWriter para escrever o JSON.
+     * @param termo Objeto Termo a ser serializado.
+     * @throws IOException Se ocorrer um erro de I/O durante a escrita.
+     */
     @Override
     public void write(JsonWriter out, Termo termo) throws IOException {
         if (termo == null) {
@@ -26,25 +35,32 @@ public class TermoAdapter extends TypeAdapter<Termo> {
         }
 
         out.beginObject();
-        
+
         // Campos booleanos
         out.name("temOutrosAnimais").value(termo.isTemOutrosAnimais());
-        
+
         // Campo condicional: outrosAnimais só aparece se temOutrosAnimais = true
         if (termo.isTemOutrosAnimais()) {
             out.name("outrosAnimais").value(termo.getOutrosAnimais());
         }
-        
+
         out.name("podeLevarAoVet").value(termo.isPodeLevarAoVet())
-           .name("ambiente").value(termo.getAmbiente())
-           .name("localDuranteViagem").value(termo.getLocalDuranteViagem())
-           .name("acaoSeFizerMudanca").value(termo.getAcaoSeFizerMudanca())
-           .name("consciencia").value(termo.isConsciencia())
-           .name("jaEntregouParaAdocao").value(termo.isJaEntregouParaAdocao());
+                .name("ambiente").value(termo.getAmbiente())
+                .name("localDuranteViagem").value(termo.getLocalDuranteViagem())
+                .name("acaoSeFizerMudanca").value(termo.getAcaoSeFizerMudanca())
+                .name("consciencia").value(termo.isConsciencia())
+                .name("jaEntregouParaAdocao").value(termo.isJaEntregouParaAdocao());
 
         out.endObject();
     }
 
+    /**
+     * Desserializa um objeto JSON para seu formato Termo.
+     *
+     * @param in JsonReader para ler o JSON.
+     * @return Objeto Termo desserializado.
+     * @throws IOException Se ocorrer um erro de I/O durante a leitura.
+     */
     @Override
     public Termo read(JsonReader in) throws IOException {
         if (in.peek() == JsonToken.NULL) {
@@ -90,4 +106,4 @@ public class TermoAdapter extends TypeAdapter<Termo> {
         in.endObject();
         return termo;
     }
-    }
+}
