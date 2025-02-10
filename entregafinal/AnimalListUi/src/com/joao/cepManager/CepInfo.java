@@ -4,16 +4,18 @@
  */
 package com.joao.cepManager;
 
-/**
- *
- * @author joao
- */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import com.google.gson.Gson; 
+import com.google.gson.Gson;
 
+/**
+ * Classe responsável por armazenar e manipular informações de CEP.
+ * Utiliza a API ViaCEP para consulta de dados.
+ *
+ * @author joao
+ */
 public class CepInfo {
     private String cep;
     private String logradouro;
@@ -22,25 +24,42 @@ public class CepInfo {
     private String uf;
     private Boolean erro;
 
+    /**
+     * Construtor padrão da classe CepInfo.
+     */
     public CepInfo() {
     }
 
-    
-    
+    /**
+     * Verifica se houve erro na consulta do CEP.
+     *
+     * @return true se houve erro, false caso contrário.
+     */
     public boolean isErro() {
         return erro != null && erro;
     }
 
+    /**
+     * Retorna uma representação em string do objeto CepInfo.
+     *
+     * @return String representando o objeto CepInfo.
+     */
     @Override
     public String toString() {
         if (isErro()) {
             return "CEP não encontrado!";
         }
-        return "Logradouro: " + (logradouro != null ? logradouro : "Não informado") + 
+        return "Logradouro: " + (logradouro != null ? logradouro : "Não informado") +
                 " Bairro: " + (bairro != null ? bairro : "Não informado") +
                 " Cidade: " + localidade + " - " + uf;
     }
 
+    /**
+     * Valida o formato de um CEP.
+     *
+     * @param cep CEP a ser validado.
+     * @return true se o CEP for válido, false caso contrário.
+     */
     public static boolean validaCep(String cep) {
         // Remover caracteres não numéricos
         cep = cep.replaceAll("\\D", "");
@@ -49,6 +68,12 @@ public class CepInfo {
         return cep.matches("\\d{8}");
     }
 
+    /**
+     * Consulta informações de um CEP utilizando a API ViaCEP.
+     *
+     * @param cep CEP a ser consultado.
+     * @return String com as informações do CEP ou mensagem de erro.
+     */
     public static String consultaCep(String cep) {
         try {
             // Validar o formato antes de consultar
@@ -88,6 +113,4 @@ public class CepInfo {
             return "Erro ao buscar o CEP!";
         }
     }
-
 }
-
