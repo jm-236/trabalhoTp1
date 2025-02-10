@@ -91,25 +91,37 @@ public class FormHome extends javax.swing.JPanel {
         
     }
     
-    public void filterAnimals(String textfilter, String tipoSelecionado) {
+    public boolean filtroAdocao(int idxAdocao, Animal animal){
+        if(idxAdocao == 0) return true;
+        if(idxAdocao == 1 && animal.getAnimalAdocao() == null) return true;
+        if(idxAdocao == 2 && !(animal.getAnimalAdocao() == null)) return true;
+        return false;
+    }
+    
+    public void filterAnimals(String textfilter, String tipoSelecionado, int adocao) {
+        if(textfilter.isEmpty() || textfilter.isBlank()){
+            for (Component comp : panelItem.getComponents()){
+                if (comp instanceof Item){
+                    if (filtroAdocao(adocao, ((Item)comp).getData())){
+                        comp.setVisible(true);
+                    }
+                    else{
+                        comp.setVisible(false);
+                    }
+                }
+            }
+        }
         if (tipoSelecionado.equals("Nome")){
             if (!textfilter.equals("")){    
                 for (Component comp : panelItem.getComponents()){
                     if (comp instanceof Item){
                         String itemName = ((Item)comp).getData().getAnimalNome();
-                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase()) && filtroAdocao(adocao, ((Item)comp).getData())){
                             comp.setVisible(true);
                         }
                         else{
                             comp.setVisible(false);
                         }
-                    }
-                }
-            }
-            else {
-                for (Component comp : panelItem.getComponents()){
-                    if (comp instanceof Item){
-                        comp.setVisible(true);
                     }
                 }
             }
@@ -119,19 +131,12 @@ public class FormHome extends javax.swing.JPanel {
                 for (Component comp : panelItem.getComponents()){
                     if (comp instanceof Item){
                         String itemName = ((Item)comp).getData().getAnimalEspecie();
-                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase()) && filtroAdocao(adocao, ((Item)comp).getData())){
                             comp.setVisible(true);
                         }
                         else{
                             comp.setVisible(false);
                         }
-                    }
-                }
-            }
-            else {
-                for (Component comp : panelItem.getComponents()){
-                    if (comp instanceof Item){
-                        comp.setVisible(true);
                     }
                 }
             }
@@ -141,19 +146,12 @@ public class FormHome extends javax.swing.JPanel {
                 for (Component comp : panelItem.getComponents()){
                     if (comp instanceof Item){
                         String itemName = ((Item)comp).getData().getAnimalRaca();
-                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase()) && filtroAdocao(adocao, ((Item)comp).getData())){
                             comp.setVisible(true);
                         }
                         else{
                             comp.setVisible(false);
                         }
-                    }
-                }
-            }
-            else {
-                for (Component comp : panelItem.getComponents()){
-                    if (comp instanceof Item){
-                        comp.setVisible(true);
                     }
                 }
             }
@@ -163,19 +161,12 @@ public class FormHome extends javax.swing.JPanel {
                 for (Component comp : panelItem.getComponents()){
                     if (comp instanceof Item){
                         String itemName = ((Item)comp).getData().getAnimalGenero();
-                        if (itemName.toLowerCase().contains(textfilter.toLowerCase())){
+                        if (itemName.toLowerCase().contains(textfilter.toLowerCase()) && filtroAdocao(adocao, ((Item)comp).getData())){
                             comp.setVisible(true);
                         }
                         else{
                             comp.setVisible(false);
                         }
-                    }
-                }
-            }
-            else {
-                for (Component comp : panelItem.getComponents()){
-                    if (comp instanceof Item){
-                        comp.setVisible(true);
                     }
                 }
             }

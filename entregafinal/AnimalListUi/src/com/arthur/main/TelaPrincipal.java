@@ -84,16 +84,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         filterTextField.getDocument().addDocumentListener(new DocumentListener(){
             @Override
             public void insertUpdate(DocumentEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet, filtroDeAdocao.getSelectedIndex()."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 String filterText = filterTextField.getText();
-                home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()));
+                home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()), filtroDeAdocao.getSelectedIndex());
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 String filterText = filterTextField.getText();
-                home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()));
+                home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()), filtroDeAdocao.getSelectedIndex());
             }
 
             @Override
@@ -192,7 +192,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TopPanel = new javax.swing.JPanel();
         botaoPerfil = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
-        botaoInicio1 = new javax.swing.JButton();
         botaoAnimal = new javax.swing.JButton();
         botaoAdocao = new javax.swing.JButton();
         botaoHistorico = new javax.swing.JButton();
@@ -205,6 +204,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        filtroDeAdocao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(177, 251, 216));
@@ -223,7 +224,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         TopPanel.setBackground(new java.awt.Color(177, 251, 216));
@@ -253,21 +254,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
         jToolBar1.setRollover(true);
         jToolBar1.setFloatable(false);
-
-        botaoInicio1.setBackground(new java.awt.Color(205, 255, 232));
-        botaoInicio1.setForeground(new java.awt.Color(64, 86, 76));
-        botaoInicio1.setText("Início");
-        botaoInicio1.setFocusable(false);
-        botaoInicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botaoInicio1.setMargin(new java.awt.Insets(4, 14, 4, 14));
-        botaoInicio1.setOpaque(true);
-        botaoInicio1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botaoInicio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoInicio1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botaoInicio1);
 
         botaoAnimal.setBackground(new java.awt.Color(205, 255, 232));
         botaoAnimal.setForeground(new java.awt.Color(64, 86, 76));
@@ -338,8 +324,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
-        jLabel2.setText("Filtro:");
+        jLabel2.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        jLabel2.setText("Filtro de Pesquisa:");
 
         filterTextField.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
         filterTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +334,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
         jLabel1.setText("Pesquisar:");
 
         jButton2.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
@@ -380,6 +366,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 19, Short.MAX_VALUE)
         );
 
+        jLabel4.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
+        jLabel4.setText("Filtro de Adoção:");
+
+        filtroDeAdocao.setFont(new java.awt.Font("Lato", 0, 16)); // NOI18N
+        filtroDeAdocao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Não Adotados", "Adotados" }));
+        filtroDeAdocao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroDeAdocaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
@@ -398,9 +395,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(filterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(filtroDePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(filtroDePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filtroDeAdocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                         .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TopPanelLayout.createSequentialGroup()
                         .addContainerGap()
@@ -412,10 +413,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(TopPanelLayout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TopPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(TopPanelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -429,7 +426,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(filterTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))))))
+                                    .addComponent(filterTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))))
+                    .addGroup(TopPanelLayout.createSequentialGroup()
+                        .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(TopPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(TopPanelLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filtroDeAdocao)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -563,18 +570,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         animalScreen.setVisible(true);
     }//GEN-LAST:event_botaoAnimalActionPerformed
 
-    private void botaoInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInicio1ActionPerformed
-        //this.dispose();
-        //TelaPrincipal mainScreen = new TelaPrincipal(funcionarioLogado);
-        //mainScreen.setVisible(true);
-    }//GEN-LAST:event_botaoInicio1ActionPerformed
-
     private void botaoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPerfilActionPerformed
         this.dispose();
         //close();
         PerfilFuncionario perfilFuncionarioScreen = new PerfilFuncionario();
         perfilFuncionarioScreen.setVisible(true);
     }//GEN-LAST:event_botaoPerfilActionPerformed
+
+    private void filtroDeAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroDeAdocaoActionPerformed
+        String filterText = filterTextField.getText();
+        home.filterAnimals(filterText, ((String)filtroDePesquisa.getSelectedItem()), filtroDeAdocao.getSelectedIndex());
+    }//GEN-LAST:event_filtroDeAdocaoActionPerformed
 
 
     public static void main(String args[]) {
@@ -591,17 +597,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdocao;
     private javax.swing.JButton botaoAnimal;
     private javax.swing.JButton botaoHistorico;
-    private javax.swing.JButton botaoInicio1;
     private javax.swing.JButton botaoPerfil;
     private javax.swing.JButton botaoSair;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JTextField filterTextField;
+    private javax.swing.JComboBox<String> filtroDeAdocao;
     private javax.swing.JComboBox<String> filtroDePesquisa;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JToolBar jToolBar1;
     private com.arthur.swing.MainPanel mainPanel;
     // End of variables declaration//GEN-END:variables
