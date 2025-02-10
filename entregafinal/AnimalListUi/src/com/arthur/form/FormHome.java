@@ -445,9 +445,9 @@ public class FormHome extends javax.swing.JPanel {
 
     private void botaoVisualizarAdocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVisualizarAdocaoActionPerformed
         // TODO add your handling code here:
-        if(!(animal == null) && !(animal.getAnimalAdocao() == null)){
+        if(!(animal == null)){
             // System.out.println(animal.getAnimalAdocao());
-            if (animal.getAnimalAdocao().adocaoNaoExiste()) {
+            if (!animal.isAdotado()) {
                 JOptionPane.showMessageDialog(null, "Animal selecionado não possui adoção.");
                 return;
             }

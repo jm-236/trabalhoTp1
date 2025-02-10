@@ -69,11 +69,6 @@ public class Adocao implements validaData {
         }
     }
     
-    public boolean adocaoNaoExiste() {
-        return getAdotante() == null && this.dataAdocao == null && 
-                this.termoResponsabilidade == null;
-    }
-    
     public LocalDate getDataAdocao() {
         return dataAdocao;
     }

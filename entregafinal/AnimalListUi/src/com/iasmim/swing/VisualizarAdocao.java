@@ -810,6 +810,12 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                 break;
             }
         }
+        
+        if (!podeLevarAoVet) {
+            JOptionPane.showMessageDialog(null, 
+                    "Para poder adotar o animal, você deve ter condições de levá-lo ao veterinário!");
+            return;
+        }
 
         String ambiente = null;
         boolean ambienteSelecionado = false;
@@ -845,6 +851,12 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                 consciencia = button.getText().equals("Sim");
                 break;
             }
+        }
+        
+        if (!consciencia) {
+            JOptionPane.showMessageDialog(null, 
+                    "Para poder adotar o animal, você deve ter consciência da responsabilidade que tem com ele!");
+            return;
         }
 
         boolean jaEntregouParaAdocao = false;

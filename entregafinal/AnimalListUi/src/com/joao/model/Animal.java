@@ -8,6 +8,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.UUID;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -72,6 +73,11 @@ public class Animal {
         } catch (DateTimeParseException ex) {
             return null;
         }
+    }
+    
+    public boolean isAdotado() {
+        Optional<Adocao> adocaoOptional = Optional.ofNullable(this.animalAdocao);
+        return adocaoOptional.isPresent() ? true : false;
     }
 
     public String getAnimalRaca() {

@@ -49,7 +49,9 @@ public class FichaAdocao extends javax.swing.JFrame {
             adotanteBox.addItem(adotante.getNome() + ", CPF: " + adotante.getCpf());
         }    
         for (Animal animal : animais){
-            animaisBox.addItem(animal.getAnimalNome() + ", id: " + animal.getAnimalID());
+            if (!animal.isAdotado()){
+                animaisBox.addItem(animal.getAnimalNome() + ", id: " + animal.getAnimalID());
+            }
         }
     }
 
@@ -631,6 +633,11 @@ public class FichaAdocao extends javax.swing.JFrame {
                 break;
             }
         }
+        if (!podeLevarAoVet) {
+            JOptionPane.showMessageDialog(null, 
+                    "Para poder adotar o animal, você deve ter condições de levá-lo ao veterinário!");
+            return;
+        }
         
         String ambiente = null;
         boolean ambienteSelecionado = false;
@@ -668,6 +675,11 @@ public class FichaAdocao extends javax.swing.JFrame {
             }
         }
         
+        if (!consciencia) {
+            JOptionPane.showMessageDialog(null, 
+                    "Para poder adotar o animal, você deve ter consciência da responsabilidade que tem com ele!");
+            return;
+        }
         
         boolean jaEntregouParaAdocao = false;
         boolean jaEntregouPreenchida = false;
