@@ -464,5 +464,53 @@
     "nomeAnimal": "Rocket ",
     "evento": "Adoção (cadastro)",
     "dataHora": "2025-02-10T02:12:47.141186116"
+  },
+  {
+    "idAnimal": "e3144950-5a80-4470-aeb6-c210c212e8ed",
+    "nomeAnimal": "Felícia",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T02:56:29.190051922"
+  },
+  {
+    "idAnimal": "e3144950-5a80-4470-aeb6-c210c212e8ed",
+    "nomeAnimal": "Felícia",
+    "evento": "Adoção (exclusão)",
+    "dataHora": "2025-02-10T03:07:30.160221791"
+  },
+  {
+    "idAnimal": "e3144950-5a80-4470-aeb6-c210c212e8ed",
+    "nomeAnimal": "Felícia",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T03:08:05.310782493"
+  },
+  {
+    "idAnimal": "38101edb-5403-464e-9bee-3e8b1d95835c",
+    "nomeAnimal": "Fulero",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T03:13:14.507876174"
+  },
+  {
+    "idAnimal": "03c518b6-95e9-490b-8039-356e19218f60",
+    "nomeAnimal": "Pulerinho",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T03:15:49.557677937"
+  },
+  {
+    "idAnimal": "80f0b79d-5000-4dbe-98e5-34cb7431fdd1",
+    "nomeAnimal": "Mel",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T03:16:35.714929025"
+  },
+  {
+    "idAnimal": "3b4a8805-833d-4e20-9863-a3cdee03cbd1",
+    "nomeAnimal": "Rocket ",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T03:17:52.404699884"
+  },
+  {
+    "idAnimal": "83c2907d-61bb-449e-baca-54c9942624b7",
+    "nomeAnimal": "Bolt",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T03:18:33.222333135"
   }
 ]

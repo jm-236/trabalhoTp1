@@ -241,6 +241,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarAdocaoButtonActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarAdocaoButton.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="adotanteBox">
           <Properties>
@@ -843,6 +846,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluirAdocaoButtonActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="excluirAdocaoButton.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="vizualizarAdotanteButton">
           <Properties>

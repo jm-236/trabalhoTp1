@@ -30,10 +30,8 @@ public class PerfilAdotante extends javax.swing.JFrame {
     }
 
     public void atualizarTabela(){
-        System.out.println("Não sei o que está acontecendo");
         ArrayList<Adocao> animaisAdotados = adotante.getAnimaisAdotados();
         int n = animaisAdotados.size();
-        System.out.println(n);
         String[] colunas = {"Data", "Nome do Animal", "Id do Animal"}; 
         Object[][] dadosTabela = new Object[n][3];
         for (int i = 0; i < n; i++) {
@@ -57,7 +55,7 @@ public class PerfilAdotante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        voltarButton = new javax.swing.JPanel();
+        sairButton = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jButton4 = new javax.swing.JButton();
@@ -78,17 +76,23 @@ public class PerfilAdotante extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         editarButton = new javax.swing.JButton();
+        salvarButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1430, 850));
 
-        voltarButton.setBackground(new java.awt.Color(177, 251, 216));
+        sairButton.setBackground(new java.awt.Color(177, 251, 216));
+        sairButton.setMinimumSize(new java.awt.Dimension(1337, 600));
+        sairButton.setPreferredSize(new java.awt.Dimension(1430, 850));
 
         jToolBar1.setBackground(new java.awt.Color(64, 86, 76));
+        jToolBar1.setEnabled(false);
         jToolBar1.add(filler1);
 
         jButton4.setBackground(new java.awt.Color(205, 255, 232));
         jButton4.setForeground(new java.awt.Color(64, 86, 76));
-        jButton4.setText("Voltar");
+        jButton4.setText("Sair");
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setMargin(new java.awt.Insets(4, 14, 4, 14));
@@ -235,6 +239,7 @@ public class PerfilAdotante extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -242,14 +247,14 @@ public class PerfilAdotante extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -266,101 +271,136 @@ public class PerfilAdotante extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout voltarButtonLayout = new javax.swing.GroupLayout(voltarButton);
-        voltarButton.setLayout(voltarButtonLayout);
-        voltarButtonLayout.setHorizontalGroup(
-            voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        salvarButton.setBackground(new java.awt.Color(21, 102, 64));
+        salvarButton.setFont(new java.awt.Font("Lato", 0, 20)); // NOI18N
+        salvarButton.setForeground(new java.awt.Color(255, 255, 255));
+        salvarButton.setText("Salvar");
+        salvarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        salvarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salvarButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        salvarButton.setVisible(false);
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
+
+        voltarButton.setBackground(new java.awt.Color(21, 102, 64));
+        voltarButton.setFont(new java.awt.Font("Lato", 0, 20)); // NOI18N
+        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
+        voltarButton.setText("Voltar");
+        voltarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        voltarButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        voltarButton.setVisible(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sairButtonLayout = new javax.swing.GroupLayout(sairButton);
+        sairButton.setLayout(sairButtonLayout);
+        sairButtonLayout.setHorizontalGroup(
+            sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(voltarButtonLayout.createSequentialGroup()
+            .addGroup(sairButtonLayout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(telefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(23, 23, 23)
                         .addComponent(cepTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(23, 23, 23)
                         .addComponent(enderecoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(66, 66, 66)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(67, 67, 67))
-            .addGroup(voltarButtonLayout.createSequentialGroup()
-                .addGap(511, 511, 511)
-                .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, voltarButtonLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(478, 478, 478))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, voltarButtonLayout.createSequentialGroup()
-                        .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(621, 621, 621)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
+            .addGroup(sairButtonLayout.createSequentialGroup()
+                .addGap(522, 522, 522)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
+            .addGroup(sairButtonLayout.createSequentialGroup()
+                .addGap(644, 644, 644)
+                .addComponent(salvarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        voltarButtonLayout.setVerticalGroup(
-            voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(voltarButtonLayout.createSequentialGroup()
+        sairButtonLayout.setVerticalGroup(
+            sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sairButtonLayout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(telefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cepTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(voltarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(enderecoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
-                    .addGroup(voltarButtonLayout.createSequentialGroup()
+                    .addGroup(sairButtonLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(80, 80, 80)
-                .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addGap(125, 125, 125)
+                .addGroup(sairButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salvarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(142, 142, 142))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(voltarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(sairButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(voltarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sairButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -391,8 +431,38 @@ public class PerfilAdotante extends javax.swing.JFrame {
     }//GEN-LAST:event_enderecoTextFieldActionPerformed
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
-        // TODO add your handling code here:
+        editarButton.setVisible(false);
+        voltarButton.setVisible(true);
+        salvarButton.setVisible(true);
+        nomeTextField.setEditable(true);
+        cpfTextField.setEditable(true);
+        telefoneTextField.setEditable(true);
+        emailTextField.setEditable(true);
+        cepTextField.setEditable(true);
+        enderecoTextField.setEditable(true);
     }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salvarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        editarButton.setVisible(true);
+        voltarButton.setVisible(false);
+        salvarButton.setVisible(false);
+        nomeTextField.setText(adotante.getNome());
+        nomeTextField.setEditable(false);
+        cpfTextField.setText(adotante.getCpf());
+        cpfTextField.setEditable(false);
+        telefoneTextField.setText(adotante.getTelefone());
+        telefoneTextField.setEditable(false);
+        emailTextField.setText(adotante.getEmail());
+        emailTextField.setEditable(false);
+        cepTextField.setText(adotante.getCep());
+        cepTextField.setEditable(false);
+        enderecoTextField.setText(adotante.getEndereco());
+        enderecoTextField.setEditable(false);
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,7 +519,9 @@ public class PerfilAdotante extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField nomeTextField;
+    private javax.swing.JPanel sairButton;
+    private javax.swing.JButton salvarButton;
     private javax.swing.JTextField telefoneTextField;
-    private javax.swing.JPanel voltarButton;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,30 +1,43 @@
 package com.joao.model;
 
 import com.joao.interfaces.validaData;
+import com.joao.jsonManager.AdotanteJsonHandler;
+import com.joao.jsonManager.AnimalJsonHandler;
+import com.joao.model.Adotante;
+import com.joao.model.Animal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Adocao implements validaData {
 
     private LocalDate dataAdocao;
     private Termo termoResponsabilidade;
-    private Adotante adotante;
-    private transient Animal animal;
+    private String cpfAdotante;
+    private String nomeAdotante;
+    private String idAnimal;
+    private String nomeAnimal;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Adocao(LocalDate dataAdocao, Termo termoResponsabilidade, Adotante adotante, Animal animal) {
         this.dataAdocao = dataAdocao;
         this.termoResponsabilidade = termoResponsabilidade;
-        this.adotante = adotante;
-        this.animal = animal;
+        cpfAdotante = adotante.getCpf();
+        nomeAdotante = adotante.getNome();
+        idAnimal = animal.getAnimalID();
+        nomeAnimal = animal.getAnimalNome();
     }
 
     public Adocao(Termo termoResponsabilidade, Adotante adotante, Animal animal) {
         this.termoResponsabilidade = termoResponsabilidade;
-        this.adotante = adotante;
-        this.animal = animal;
+        cpfAdotante = adotante.getCpf();
+        nomeAdotante = adotante.getNome();
+        idAnimal = animal.getAnimalID();
+        nomeAnimal = animal.getAnimalNome();
     }
 
     public Adocao() {
@@ -57,7 +70,7 @@ public class Adocao implements validaData {
     }
     
     public boolean adocaoNaoExiste() {
-        return this.adotante == null && this.dataAdocao == null && 
+        return getAdotante() == null && this.dataAdocao == null && 
                 this.termoResponsabilidade == null;
     }
     
@@ -82,24 +95,36 @@ public class Adocao implements validaData {
     }
 
     public Adotante getAdotante() {
-        return adotante;
+        AdotanteJsonHandler jsonHandler = new AdotanteJsonHandler();
+        List<Adotante> listaAdotante= jsonHandler.listarAdotantes();
+        Optional<Adotante> adotante = listaAdotante.stream()
+                .filter(procurado -> cpfAdotante.equals(procurado.getCpf()))
+                .findFirst();
+        return adotante.orElse(null);
     }
 
     public void setAdotante(Adotante adotante) {
-        this.adotante = adotante;
+        cpfAdotante = adotante.getCpf();
+        nomeAdotante = adotante.getNome();
     }
 
     public Animal getAnimal() {
-        return animal;
+        AnimalJsonHandler jsonHandler = new AnimalJsonHandler();
+        ArrayList<Animal> listaAnimais= jsonHandler.carregarAnimaisDoArquivo();
+        Optional<Animal> animal = listaAnimais.stream()
+                .filter(procurado -> idAnimal.equals(procurado.getAnimalID()))
+                .findFirst();
+        return animal.orElse(null);
     }
 
     public void setAnimal(Animal animal) {
-        this.animal = animal;
+        idAnimal = animal.getAnimalID();
+        nomeAnimal = animal.getAnimalNome();
     }
 
     @Override
     public String toString() {
-        return "Adocao{" + "dataAdocao=" + dataAdocao + ", termoResponsabilidade=" + termoResponsabilidade + ", adotante=" + adotante.getNome() + ", animal=" + animal.getAnimalNome() + '}';
+        return "Adocao{" + "dataAdocao=" + dataAdocao + ", termoResponsabilidade=" + termoResponsabilidade + ", adotante=" + nomeAdotante + ", animal=" + nomeAnimal + '}';
     }
     
     

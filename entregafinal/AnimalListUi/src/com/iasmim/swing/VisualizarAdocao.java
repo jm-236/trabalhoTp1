@@ -210,6 +210,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         salvarAdocaoButton.setEnabled(false);
         salvarAdocaoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salvarAdocaoButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        salvarAdocaoButton.setVisible(false);
         salvarAdocaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarAdocaoButtonActionPerformed(evt);
@@ -541,6 +542,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         excluirAdocaoButton.setEnabled(false);
         excluirAdocaoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         excluirAdocaoButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+        excluirAdocaoButton.setVisible(false);
         excluirAdocaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 excluirAdocaoButtonActionPerformed(evt);
