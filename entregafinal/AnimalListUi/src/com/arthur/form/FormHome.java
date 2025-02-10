@@ -331,7 +331,7 @@ public class FormHome extends javax.swing.JPanel {
             }
         });
 
-        lbAdoptionStatus.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lbAdoptionStatus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lbAdoptionStatus.setForeground(new java.awt.Color(76, 76, 76));
         lbAdoptionStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAdoptionStatus.setText("Status da Adoção");
@@ -396,15 +396,15 @@ public class FormHome extends javax.swing.JPanel {
                 .addComponent(lbNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbEspecie)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbAdoptionStatus)
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbAdoptionStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(botaoListFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(botaoCriarFichaVet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoVisualizarAdocao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
         botaoListFichaVet.setVisible(true);
