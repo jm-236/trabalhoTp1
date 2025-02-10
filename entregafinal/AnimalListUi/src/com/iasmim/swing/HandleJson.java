@@ -37,14 +37,31 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
+ * Classe responsável por manipular dados de animais e históricos em formato JSON.
+ * Utiliza a biblioteca Gson para serialização e desserialização de objetos.
  *
  * @author iasmimqf
  */
 public class HandleJson {
+    /**
+     * Caminho do arquivo JSON que armazena os dados dos animais.
+     */
     private static final String CAMINHO_ARQUIVO_ANIMAIS = "animais.json";
+
+    /**
+     * Caminho do arquivo JSON que armazena os dados do histórico.
+     */
     private static final String CAMINHO_ARQUIVO_HISTORICO = "historico.json";
+
+    /**
+     * Instância da classe Gson configurada com adaptadores personalizados.
+     */
     private Gson gson;
 
+    /**
+     * Construtor padrão da classe HandleJson.
+     * Configura a instância Gson com adaptadores personalizados.
+     */
     public HandleJson() {
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new HandleJson.LocalDateAdapter())
@@ -54,8 +71,12 @@ public class HandleJson {
                 .setPrettyPrinting()
                 .create();
     }
-        
-    
+
+    /**
+     * Carrega a lista de animais do arquivo JSON.
+     *
+     * @return Lista de animais carregada do arquivo.
+     */
     public ArrayList<Animal> carregarAnimaisDoArquivo() {
         try (Reader reader = new FileReader(CAMINHO_ARQUIVO_ANIMAIS)) {
             java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Animal>>() {}.getType();
@@ -69,18 +90,30 @@ public class HandleJson {
             return new ArrayList<Animal>();
         }
     }
-    
+
+    /**
+     * Busca um animal pelo ID.
+     *
+     * @param id ID do animal a ser buscado.
+     * @return Animal encontrado ou null se não encontrado.
+     */
     public Animal buscarAnimalPeloId(String id) {
         ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
-    
+
         return animais.stream()
                 .filter(animal -> animal.getAnimalID()
-                .equals(id)).findFirst().get();
+                        .equals(id)).findFirst().get();
     }
-    
+
+    /**
+     * Atualiza os dados de um animal existente no arquivo JSON.
+     *
+     * @param id ID do animal a ser atualizado.
+     * @param novoAnimal Dados atualizados do animal.
+     */
     public void atualizarAnimal(String id, Animal novoAnimal) {
         ArrayList<Animal> animais = this.carregarAnimaisDoArquivo();
-        
+
         for (Animal animal : animais) {
             if (animal.getAnimalID().equals(id)){
                 animais.set(animais.indexOf(animal), novoAnimal);
@@ -89,7 +122,13 @@ public class HandleJson {
         }
         this.salvarAnimaisNoArquivo(animais);
     }
-        
+
+    /**
+     * Salva a lista de animais no arquivo JSON.
+     *
+     * @param listaDeAnimais Lista de animais a ser salva.
+     * @return true se a operação foi bem-sucedida, false caso contrário.
+     */
     public boolean salvarAnimaisNoArquivo(ArrayList<Animal> listaDeAnimais) {
         try (Writer writer = new FileWriter(CAMINHO_ARQUIVO_ANIMAIS)) {
             gson.toJson(listaDeAnimais, writer);
@@ -109,13 +148,25 @@ public class HandleJson {
         }
         return true;
     }
-    
+
+    /**
+     * Adiciona um novo animal à lista e salva no arquivo JSON.
+     *
+     * @param animal Animal a ser adicionado.
+     * @return true se a operação foi bem-sucedida, false caso contrário.
+     * @throws IOException Se ocorrer um erro de I/O durante a operação.
+     */
     public boolean addAnimalNoArquivo(Animal animal) throws IOException {
         ArrayList<Animal> animais = carregarAnimaisDoArquivo();
         animais.add(animal);
         return salvarAnimaisNoArquivo(animais);
     }
-    
+
+    /**
+     * Carrega a lista de históricos do arquivo JSON.
+     *
+     * @return Lista de históricos carregada do arquivo.
+     */
     public ArrayList<Historico> carregarHistoricoDoArquivo() {
         try (Reader reader = new FileReader(CAMINHO_ARQUIVO_HISTORICO)) {
             java.lang.reflect.Type tipoLista = new TypeToken<ArrayList<Historico>>() {}.getType();
@@ -129,7 +180,13 @@ public class HandleJson {
             return new ArrayList<Historico>();
         }
     }
-        
+
+    /**
+     * Salva a lista de históricos no arquivo JSON.
+     *
+     * @param listaHistorico Lista de históricos a ser salva.
+     * @return true se a operação foi bem-sucedida, false caso contrário.
+     */
     public boolean salvarHistoricoNoArquivo(ArrayList<Historico> listaHistorico) {
         try (Writer writer = new FileWriter(CAMINHO_ARQUIVO_HISTORICO)) {
             gson.toJson(listaHistorico, writer);
@@ -149,13 +206,23 @@ public class HandleJson {
         }
         return true;
     }
-    
+
+    /**
+     * Adiciona um novo histórico à lista e salva no arquivo JSON.
+     *
+     * @param historico Histórico a ser adicionado.
+     * @return true se a operação foi bem-sucedida, false caso contrário.
+     * @throws IOException Se ocorrer um erro de I/O durante a operação.
+     */
     public boolean AddHistoricoNoArquivo(Historico historico) throws IOException {
         ArrayList<Historico> listaHistorico = carregarHistoricoDoArquivo();
         listaHistorico.add(historico);
         return salvarHistoricoNoArquivo(listaHistorico);
     }
-        
+
+    /**
+     * Adaptador personalizado para serializar e desserializar objetos LocalDate.
+     */
     public class LocalDateAdapter extends TypeAdapter<LocalDate> {
         private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -173,7 +240,10 @@ public class HandleJson {
             return LocalDate.parse(jsonReader.nextString(), formatter);
         }
     }
-    
+
+    /**
+     * Adaptador personalizado para serializar e desserializar objetos LocalDateTime.
+     */
     public class LocalDateTimeAdapter extends TypeAdapter<LocalDateTime> {
         private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
@@ -188,6 +258,9 @@ public class HandleJson {
         }
     }
 
+    /**
+     * Adaptador personalizado para serializar e desserializar objetos ImageIcon.
+     */
     class ImageIconAdapter extends TypeAdapter<ImageIcon> {
 
         @Override
@@ -197,10 +270,10 @@ public class HandleJson {
                 return;
             }
 
-            // Convert ImageIcon to BufferedImage safely
+            // Converte ImageIcon para BufferedImage de forma segura
             BufferedImage bufferedImage = toBufferedImage(icon.getImage());
 
-            // Convert BufferedImage to Base64
+            // Converte BufferedImage para Base64
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", baos);
             String base64 = Base64.getEncoder().encodeToString(baos.toByteArray());
@@ -217,23 +290,28 @@ public class HandleJson {
             return new ImageIcon(bufferedImage);
         }
 
-        // Helper method to convert Image to BufferedImage
+        /**
+         * Método auxiliar para converter Image para BufferedImage.
+         *
+         * @param img Imagem a ser convertida.
+         * @return BufferedImage convertida.
+         */
         private BufferedImage toBufferedImage(Image img) {
             if (img instanceof BufferedImage) {
                 return (BufferedImage) img;
             }
 
-            // Create a BufferedImage with the correct size and type
+            // Cria um BufferedImage com o tamanho e tipo corretos
             BufferedImage bufferedImage = new BufferedImage(
-                img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB
+                    img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB
             );
 
-            // Draw the image onto the BufferedImage
+            // Desenha a imagem no BufferedImage
             Graphics2D g2d = bufferedImage.createGraphics();
             g2d.drawImage(img, 0, 0, null);
             g2d.dispose();
 
             return bufferedImage;
         }
-    } 
+    }
 }
