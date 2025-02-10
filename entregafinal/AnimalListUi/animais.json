@@ -16,6 +16,11 @@
         "dataHora": "2025-02-09T02:29:59.292828817",
         "diagnosticoTratamento": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "fichaId": "e8c451fa-0dbb-4926-a636-3002ba2dccee",
+        "medicacaoContinua": "Rivotril",
+        "suplementacao": "",
+        "examesRecentes": "",
+        "cirurgia": "",
+        "alergiaMed": "",
         "tipoAtendimento": "Emergência",
         "veterinario": {
           "crmv": "000000000",

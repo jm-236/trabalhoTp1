@@ -42,7 +42,7 @@ public class PDFCreator {
     public PDFCreator(String nomepdf) {
         try {
             // Obtém o caminho para a pasta Downloads do diretório home do usuário
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("-dd-MM-yyyy-HH:mm:ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("-dd-MM-yyyy-HH-mm-ss");
             String home = System.getProperty("user.home");
             downloadsPath = home + File.separator + "Downloads" + File.separator + nomepdf + LocalDateTime.now().format(formatter) + ".pdf";
 
