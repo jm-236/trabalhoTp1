@@ -104,77 +104,42 @@ public class Item extends javax.swing.JPanel {
         setForeground(new java.awt.Color(153, 153, 153));
         setMaximumSize(new java.awt.Dimension(210, 229));
         setMinimumSize(new java.awt.Dimension(210, 229));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbAnimalName.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbAnimalName.setForeground(new java.awt.Color(76, 76, 76));
         lbAnimalName.setText("Nome");
+        add(lbAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 99, -1));
 
         lbData.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lbData.setForeground(new java.awt.Color(178, 178, 178));
         lbData.setText("Data");
+        add(lbData, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 38, 96, -1));
 
         lbIdade.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbIdade.setForeground(new java.awt.Color(76, 76, 76));
         lbIdade.setText("0");
+        add(lbIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 201, 73, -1));
 
         lbGenero.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lbGenero.setForeground(new java.awt.Color(76, 76, 76));
         lbGenero.setText("Gênero");
+        add(lbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 206, 107, -1));
 
         lbRaca.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lbRaca.setForeground(new java.awt.Color(76, 76, 76));
         lbRaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbRaca.setText("Raça");
+        add(lbRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 38, 95, -1));
 
         lbEspecie.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lbEspecie.setForeground(new java.awt.Color(76, 76, 76));
         lbEspecie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbEspecie.setText("Espécie");
+        add(lbEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 15, 85, -1));
 
         pic.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/arthur/image/pet1.jpeg"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbIdade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(pic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbData, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAnimalName, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbRaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAnimalName)
-                    .addComponent(lbEspecie))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbData)
-                    .addComponent(lbRaca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbIdade)
-                    .addComponent(lbGenero))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, 210, 134));
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
