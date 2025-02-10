@@ -127,19 +127,19 @@ public class FichaMedica {
     public String getHistoricoClinico() {
         String hist="";
         hist += " - Usa medicação contínua ? ";
-        if(medicacaoContinua.isEmpty()) hist += "Não\n";
+        if(medicacaoContinua == null || medicacaoContinua.isEmpty()) hist += "Não\n";
         else hist += "Sim, " + medicacaoContinua + "\n";
         hist += " - Usa suplementação ? ";
-        if(suplementacao.isEmpty()) hist += "Não\n";
+        if(suplementacao == null || suplementacao.isEmpty()) hist += "Não\n";
         else hist += "Sim, " + suplementacao + "\n";
         hist += " - Fez exames recentes ? ";
-        if(medicacaoContinua.isEmpty()) hist += "Não\n";
+        if(examesRecentes == null || examesRecentes.isEmpty()) hist += "Não\n";
         else hist += "Sim, " + examesRecentes + "\n";
         hist += " - Já realizou alguma cirurgia ? ";
-        if(suplementacao.isEmpty()) hist += "Não\n";
+        if(cirurgia == null || cirurgia.isEmpty()) hist += "Não\n";
         else hist += "Sim, " + cirurgia + "\n";
         hist += " - Tem alergia a algum medicamento ? ";
-        if(suplementacao.isEmpty()) hist += "Não\n";
+        if(alergiaMed == null || alergiaMed.isEmpty()) hist += "Não\n";
         else hist += "Sim, " + alergiaMed + "\n";
         
         return hist;

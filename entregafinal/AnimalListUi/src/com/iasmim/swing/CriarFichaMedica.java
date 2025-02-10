@@ -139,6 +139,7 @@ public class CriarFichaMedica extends javax.swing.JFrame {
             return false;
         }
         FichaMedica fichaVet = new FichaMedica(historicoQueixa, tipoAtendimento, (Veterinario)funcionarioLogado);
+        System.out.println(fichaVet.getVeterinario());
         if(!medicacaoContinua.equals("Não")) fichaVet.setMedicacaoContinua(medicacaoContinua);
         if(!suplementacao.equals("Não")) fichaVet.setSuplementacao(suplementacao);
         if(!exames.equals("Não")) fichaVet.setExamesRecentes(exames);
