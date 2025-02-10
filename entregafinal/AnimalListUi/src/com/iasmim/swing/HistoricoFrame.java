@@ -430,7 +430,7 @@ public class HistoricoFrame extends javax.swing.JFrame {
         jToolBar1.add(botaoSair);
 
         jComboBox1.setFont(new java.awt.Font("Lato", 0, 15)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Data (decrescente)", "Data (crescente)", "Nome (decrescente)", "Nome (crescente)", "Evento" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Data (decrescente)", "Data (crescente)", "Nome (decrescente)", "Nome (crescente)", "Evento", "Id do Animal" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -614,6 +614,10 @@ public class HistoricoFrame extends javax.swing.JFrame {
         //ordenar por tipo de evento
             case 4:
                 listaHistorico.sort(Comparator.comparing(Historico::getEvento));
+                break;
+        //ordenar por tipo de evento
+            case 5:
+                listaHistorico.sort(Comparator.comparing(Historico::getIdAnimal));
                 break;
             default:
                 listaHistorico.sort(Comparator.comparing(Historico::getDataHora).reversed());

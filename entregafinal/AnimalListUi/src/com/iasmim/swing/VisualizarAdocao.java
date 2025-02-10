@@ -166,6 +166,8 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(177, 251, 216));
+        salvarAdocaoButton.setVisible(false);
+        excluirAdocaoButton.setVisible(false);
 
         jLabel1.setBackground(new java.awt.Color(64, 86, 76));
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 32)); // NOI18N
@@ -820,8 +822,11 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                 button.setEnabled(true);
             }
             
+            salvarAdocaoButton.setVisible(true);
+            excluirAdocaoButton.setVisible(true);
             salvarAdocaoButton.setEnabled(true);
             excluirAdocaoButton.setEnabled(true);
+            excluirAdocaoButton.setVisible(true);
             dataAdocaoField.setEnabled(true);
             localDuranteViagemTextField.setEnabled(true);
             outrosAnimaisTextField.setEnabled(true);
@@ -846,6 +851,8 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                 button.setEnabled(false);
             }
             
+            salvarAdocaoButton.setVisible(false);
+            excluirAdocaoButton.setVisible(false);
             salvarAdocaoButton.setEnabled(false);
             excluirAdocaoButton.setEnabled(false);
             dataAdocaoField.setEnabled(false);
@@ -856,7 +863,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
 
     private void excluirAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAdocaoButtonActionPerformed
         // TODO add your handling code here:
-        animal.setAnimalAdocao(new Adocao());
+        animal.setAnimalAdocao(null);
         Adotante adotante = adocaoOriginal.getAdotante();
         
         ArrayList<Adocao> animaisAdotados = adotante.getAnimaisAdotados();

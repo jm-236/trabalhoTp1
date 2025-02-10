@@ -56,6 +56,9 @@
           <Color blue="d8" green="fb" red="b1" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarAdocaoButton.setVisible(false);&#xa;excluirAdocaoButton.setVisible(false);"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
