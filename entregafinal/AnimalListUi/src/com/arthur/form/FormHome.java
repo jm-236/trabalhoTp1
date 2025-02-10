@@ -455,8 +455,11 @@ public class FormHome extends javax.swing.JPanel {
             VisualizarAdocao visualizarAdocao = new VisualizarAdocao(animal, funcionarioLogado);
             visualizarAdocao.setVisible(true);
         }
-        else{
+        else if(animal == null){
             JOptionPane.showMessageDialog(null, "Selecione um animal antes de visualizar adoção.");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Este animal não foi adotado ainda.");
         }
     }//GEN-LAST:event_botaoVisualizarAdocaoActionPerformed
 

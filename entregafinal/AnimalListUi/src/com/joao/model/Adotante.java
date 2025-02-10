@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -33,7 +34,9 @@ public class Adotante extends Pessoa{
         this.id = id;
     }
     
-    
+    public void addAnimalAdotado(Adocao adocao){
+        animaisAdotados.add(adocao);
+    }
 
     public ArrayList<Adocao> getAnimaisAdotados() {
         return this.animaisAdotados;

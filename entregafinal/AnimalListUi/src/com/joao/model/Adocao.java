@@ -12,6 +12,7 @@ public class Adocao implements validaData {
     private Termo termoResponsabilidade;
     private Adotante adotante;
     private transient Animal animal;
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Adocao(LocalDate dataAdocao, Termo termoResponsabilidade, Adotante adotante, Animal animal) {
         this.dataAdocao = dataAdocao;
@@ -62,6 +63,10 @@ public class Adocao implements validaData {
     
     public LocalDate getDataAdocao() {
         return dataAdocao;
+    }
+    
+    public String getDataAdocao(boolean string) {
+        return dataAdocao.format(DATE_FORMATTER);
     }
 
     public void setDataAdocao(LocalDate dataAdocao) {

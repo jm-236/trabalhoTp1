@@ -704,12 +704,11 @@ public class FichaAdocao extends javax.swing.JFrame {
         
         System.out.println("Adoção sendo cadastrada no sistema...");
         animal.setAnimalAdocao(adocao);
-        ArrayList <Adocao> animaisAdotados = adotante.getAnimaisAdotados();
-        animaisAdotados.add(adocao);
-        adotante.setAnimaisAdotados(animaisAdotados);
+        adotante.addAnimalAdotado(adocao);
         
         handleJson.atualizarAnimal(animal.getAnimalID(), animal);
         adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
+        System.out.println(adotante.getAnimaisAdotados().size());
         Historico historico = new Historico(animal, adocao, false, false);
         try {
             handleJson.AddHistoricoNoArquivo(historico);

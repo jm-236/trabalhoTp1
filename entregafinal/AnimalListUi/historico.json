@@ -458,5 +458,11 @@
     "nomeAnimal": "Luna",
     "evento": "Adoção (alteração)",
     "dataHora": "2025-02-10T00:46:40.569407452"
+  },
+  {
+    "idAnimal": "3b4a8805-833d-4e20-9863-a3cdee03cbd1",
+    "nomeAnimal": "Rocket ",
+    "evento": "Adoção (cadastro)",
+    "dataHora": "2025-02-10T02:12:47.141186116"
   }
 ]

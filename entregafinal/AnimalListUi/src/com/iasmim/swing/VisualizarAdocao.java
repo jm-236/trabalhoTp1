@@ -37,6 +37,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
      */
     public VisualizarAdocao(Animal animal, Funcionario funcionario) {
         initComponents();
+        setLocationRelativeTo(null);
         
         this.funcionarioLogado = funcionario;
         this.animal = animal;
@@ -103,6 +104,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
 
     public VisualizarAdocao() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     
@@ -162,12 +164,11 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         naoEntregouAnimalButton = new javax.swing.JRadioButton();
         editarCheckBox = new javax.swing.JCheckBox();
         excluirAdocaoButton = new javax.swing.JButton();
+        vizualizarAdotanteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(177, 251, 216));
-        salvarAdocaoButton.setVisible(false);
-        excluirAdocaoButton.setVisible(false);
 
         jLabel1.setBackground(new java.awt.Color(64, 86, 76));
         jLabel1.setFont(new java.awt.Font("Lato Semibold", 0, 32)); // NOI18N
@@ -520,7 +521,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                     .addComponent(medLabel6)
                     .addComponent(entregouAnimalButton)
                     .addComponent(naoEntregouAnimalButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         editarCheckBox.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
@@ -546,25 +547,22 @@ public class VisualizarAdocao extends javax.swing.JFrame {
             }
         });
 
+        vizualizarAdotanteButton.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        vizualizarAdotanteButton.setForeground(new java.awt.Color(32, 61, 74));
+        vizualizarAdotanteButton.setText("<html><u>Visualizar adotante</u></html> ");
+        vizualizarAdotanteButton.setBorderPainted(false);
+        vizualizarAdotanteButton.setContentAreaFilled(false);
+        vizualizarAdotanteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vizualizarAdotanteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(dataAdocaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(animaisBox, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(adotanteBox, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(478, 478, 478)
@@ -583,6 +581,22 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(dataAdocaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(animaisBox, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(adotanteBox, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vizualizarAdotanteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,7 +614,9 @@ public class VisualizarAdocao extends javax.swing.JFrame {
                         .addComponent(adotanteBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(animaisBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(65, 65, 65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vizualizarAdotanteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -628,181 +644,33 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_botaoFecharActionPerformed
+    private void vizualizarAdotanteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vizualizarAdotanteButtonActionPerformed
+        PerfilAdotante adotanteScreen = new PerfilAdotante(adocaoOriginal.getAdotante());
+        adotanteScreen.setVisible(true);
+    }//GEN-LAST:event_vizualizarAdotanteButtonActionPerformed
 
-    private void salvarAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarAdocaoButtonActionPerformed
+    private void excluirAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAdocaoButtonActionPerformed
         // TODO add your handling code here:
-        boolean temOutrosAnimais = false;
-        String outrosAnimais = "";
-        boolean temOutrosAnimaisSelecionado = false;
-        for(AbstractButton button : Collections.list(maisAnimaisEmCasaButtongroup.getElements())){
-            if (button.isSelected()) {
-                temOutrosAnimaisSelecionado = true;
-                if (button.getText().equals("Sim")){
-                    temOutrosAnimais = true;
-                    outrosAnimais = outrosAnimaisTextField.getText();
-                    if (outrosAnimais.isEmpty()){
-                        JOptionPane.showMessageDialog(null, "Insira os outros animais.");
-                        return;
-                    }
-                }
-                else {
-                    temOutrosAnimais = false;
-                }
-                break;
-            }
-        }
-        
-        boolean podeLevarAoVet = false;
-        boolean podeLevarAoVetSelecionado = false;
-        for( AbstractButton button : Collections.list(condicoesButtonGroup.getElements())){
-            if(button.isSelected()){
-                podeLevarAoVetSelecionado = true;
-                podeLevarAoVet = button.getText().equals("Sim") ? true : false;
-                break;
-            }
-        }
-        
-        String ambiente = null;
-        boolean ambienteSelecionado = false;
-        for( AbstractButton button : Collections.list(ambienteButtonGrouṕ.getElements())){
-            if(button.isSelected()){
-                ambienteSelecionado = true;
-                ambiente = button.getText();
-                break;
-            }
-        }
-        
-        String localDuranteViagem = localDuranteViagemTextField.getText();
-        if (localDuranteViagem.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha todo o formulário!");
-            return;
-        }
-        
-        String oqueFaraSeMudar = null;
-        boolean oqueFaraPreenchido = false;
-        for( AbstractButton button : Collections.list(seMudarButtonGroup.getElements())){
-            if(button.isSelected()){
-                oqueFaraPreenchido = true;
-                oqueFaraSeMudar = button.getText();
-                break;
-            }
-        }
-        
-        boolean consciencia = false;
-        boolean conscienciaPreenchida = false;
-        for( AbstractButton button : Collections.list(conscienciaButtonGroup.getElements())){
-            if(button.isSelected()){
-                conscienciaPreenchida = true;
-                consciencia = button.getText().equals("Sim");
-                break;
-            }
-        }
-        
-        
-        boolean jaEntregouParaAdocao = false;
-        boolean jaEntregouPreenchida = false;
-        for( AbstractButton button : Collections.list(entregouPraAdocaoButtonGroup.getElements())){
-            if(button.isSelected()){
-                jaEntregouPreenchida = true;
-                jaEntregouParaAdocao = button.getText().equals("Sim");
-                break;
-            }
-            
-            
-        Termo termoResponsabilidade = new Termo(temOutrosAnimais,outrosAnimais,
-        podeLevarAoVet, ambiente, localDuranteViagem, oqueFaraSeMudar, consciencia,
-        jaEntregouParaAdocao);
-        
-        Adotante adotante = animal.getAnimalAdocao().getAdotante();
-        
-        Adocao adocao = new Adocao(termoResponsabilidade, adotante, animal);
-        
-        String dataAdocao = dataAdocaoField.getText();
-        
-        if (!adocao.validarData(dataAdocao).equals("true")){
-            JOptionPane.showMessageDialog(null, adocao.validarData(dataAdocao));
-            return;
-        }
-        
-        adocao.setDataAdocao(LocalDate.parse(dataAdocao, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        
-        System.out.println("Adoção sendo alterada no sistema...");
-        animal.setAnimalAdocao(adocao);
-        ArrayList <Adocao> animaisAdotados = adotante.getAnimaisAdotados();
+        animal.setAnimalAdocao(null);
+        Adotante adotante = adocaoOriginal.getAdotante();
+
+        ArrayList<Adocao> animaisAdotados = adotante.getAnimaisAdotados();
         animaisAdotados.remove(adocaoOriginal);
-        animaisAdotados.add(adocao);
         adotante.setAnimaisAdotados(animaisAdotados);
-        
-        handleJson.atualizarAnimal(animal.getAnimalID(), animal);
-        adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
-        System.out.println("Adoção alterada com sucesso");
-        Historico historico = new Historico(animal, adocao, true, false);
+
+        Historico historico = new Historico(animal, adocaoOriginal, false, true);
         try {
             handleJson.AddHistoricoNoArquivo(historico);
         } catch (IOException ex) {
-            System.out.println("Erro ao tentar adicionar a modificação da adoção ao histórico.");
+            System.out.println("Erro ao tentar adicionar a adoção ao histórico.");
         }
-        
-        System.out.println("Adoção alterada com sucesso!");
-        JOptionPane.showMessageDialog(null, "Adoção alterada com sucesso!");
         this.dispose();
-    }
-    }//GEN-LAST:event_salvarAdocaoButtonActionPerformed
-
-    private void adotanteBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adotanteBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adotanteBoxActionPerformed
-
-    private void dataAdocaoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAdocaoFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataAdocaoFieldActionPerformed
-
-    private void simOutrosAnimaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simOutrosAnimaisButtonActionPerformed
-        // TODO add your handling code here:
-        outrosAnimaisTextField.setEnabled(true);
-    }//GEN-LAST:event_simOutrosAnimaisButtonActionPerformed
-
-    private void naoOutrosAnimaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoOutrosAnimaisButtonActionPerformed
-        // TODO add your handling code here:
-        outrosAnimaisTextField.setEnabled(false);
-        outrosAnimaisTextField.setText("");
-    }//GEN-LAST:event_naoOutrosAnimaisButtonActionPerformed
-
-    private void simCondicoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simCondicoesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_simCondicoesActionPerformed
-
-    private void apartamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apartamentoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apartamentoButtonActionPerformed
-
-    private void quintalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quintalButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_quintalButtonActionPerformed
-
-    private void levoComigoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levoComigoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levoComigoButtonActionPerformed
-
-    private void entregoPessoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregoPessoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_entregoPessoButtonActionPerformed
-
-    private void simConscienciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simConscienciaButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_simConscienciaButtonActionPerformed
-
-    private void entregouAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregouAnimalButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_entregouAnimalButtonActionPerformed
+    }//GEN-LAST:event_excluirAdocaoButtonActionPerformed
 
     private void editarCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCheckBoxActionPerformed
         // TODO add your handling code here:
         if (editarCheckBox.isSelected()){
-         
+
             for (AbstractButton button : Collections.list(maisAnimaisEmCasaButtongroup.getElements())){
                 button.setEnabled(true);
             }
@@ -821,7 +689,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
             for (AbstractButton button : Collections.list(entregouPraAdocaoButtonGroup.getElements())){
                 button.setEnabled(true);
             }
-            
+
             salvarAdocaoButton.setVisible(true);
             excluirAdocaoButton.setVisible(true);
             salvarAdocaoButton.setEnabled(true);
@@ -850,7 +718,7 @@ public class VisualizarAdocao extends javax.swing.JFrame {
             for (AbstractButton button : Collections.list(entregouPraAdocaoButtonGroup.getElements())){
                 button.setEnabled(false);
             }
-            
+
             salvarAdocaoButton.setVisible(false);
             excluirAdocaoButton.setVisible(false);
             salvarAdocaoButton.setEnabled(false);
@@ -861,23 +729,174 @@ public class VisualizarAdocao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarCheckBoxActionPerformed
 
-    private void excluirAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAdocaoButtonActionPerformed
+    private void entregouAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregouAnimalButtonActionPerformed
         // TODO add your handling code here:
-        animal.setAnimalAdocao(null);
-        Adotante adotante = adocaoOriginal.getAdotante();
-        
-        ArrayList<Adocao> animaisAdotados = adotante.getAnimaisAdotados();
-        animaisAdotados.remove(adocaoOriginal);
-        adotante.setAnimaisAdotados(animaisAdotados);
-        
-        Historico historico = new Historico(animal, adocaoOriginal, false, true);
-        try {
-            handleJson.AddHistoricoNoArquivo(historico);
-        } catch (IOException ex) {
-            System.out.println("Erro ao tentar adicionar a adoção ao histórico.");
+    }//GEN-LAST:event_entregouAnimalButtonActionPerformed
+
+    private void simConscienciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simConscienciaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_simConscienciaButtonActionPerformed
+
+    private void entregoPessoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregoPessoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entregoPessoButtonActionPerformed
+
+    private void levoComigoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levoComigoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_levoComigoButtonActionPerformed
+
+    private void quintalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quintalButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quintalButtonActionPerformed
+
+    private void apartamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apartamentoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apartamentoButtonActionPerformed
+
+    private void simCondicoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simCondicoesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_simCondicoesActionPerformed
+
+    private void naoOutrosAnimaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoOutrosAnimaisButtonActionPerformed
+        // TODO add your handling code here:
+        outrosAnimaisTextField.setEnabled(false);
+        outrosAnimaisTextField.setText("");
+    }//GEN-LAST:event_naoOutrosAnimaisButtonActionPerformed
+
+    private void simOutrosAnimaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simOutrosAnimaisButtonActionPerformed
+        // TODO add your handling code here:
+        outrosAnimaisTextField.setEnabled(true);
+    }//GEN-LAST:event_simOutrosAnimaisButtonActionPerformed
+
+    private void dataAdocaoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAdocaoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataAdocaoFieldActionPerformed
+
+    private void adotanteBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adotanteBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adotanteBoxActionPerformed
+
+    private void salvarAdocaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarAdocaoButtonActionPerformed
+        // TODO add your handling code here:
+        boolean temOutrosAnimais = false;
+        String outrosAnimais = "";
+        boolean temOutrosAnimaisSelecionado = false;
+        for(AbstractButton button : Collections.list(maisAnimaisEmCasaButtongroup.getElements())){
+            if (button.isSelected()) {
+                temOutrosAnimaisSelecionado = true;
+                if (button.getText().equals("Sim")){
+                    temOutrosAnimais = true;
+                    outrosAnimais = outrosAnimaisTextField.getText();
+                    if (outrosAnimais.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Insira os outros animais.");
+                        return;
+                    }
+                }
+                else {
+                    temOutrosAnimais = false;
+                }
+                break;
+            }
         }
+
+        boolean podeLevarAoVet = false;
+        boolean podeLevarAoVetSelecionado = false;
+        for( AbstractButton button : Collections.list(condicoesButtonGroup.getElements())){
+            if(button.isSelected()){
+                podeLevarAoVetSelecionado = true;
+                podeLevarAoVet = button.getText().equals("Sim") ? true : false;
+                break;
+            }
+        }
+
+        String ambiente = null;
+        boolean ambienteSelecionado = false;
+        for( AbstractButton button : Collections.list(ambienteButtonGrouṕ.getElements())){
+            if(button.isSelected()){
+                ambienteSelecionado = true;
+                ambiente = button.getText();
+                break;
+            }
+        }
+
+        String localDuranteViagem = localDuranteViagemTextField.getText();
+        if (localDuranteViagem.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todo o formulário!");
+            return;
+        }
+
+        String oqueFaraSeMudar = null;
+        boolean oqueFaraPreenchido = false;
+        for( AbstractButton button : Collections.list(seMudarButtonGroup.getElements())){
+            if(button.isSelected()){
+                oqueFaraPreenchido = true;
+                oqueFaraSeMudar = button.getText();
+                break;
+            }
+        }
+
+        boolean consciencia = false;
+        boolean conscienciaPreenchida = false;
+        for( AbstractButton button : Collections.list(conscienciaButtonGroup.getElements())){
+            if(button.isSelected()){
+                conscienciaPreenchida = true;
+                consciencia = button.getText().equals("Sim");
+                break;
+            }
+        }
+
+        boolean jaEntregouParaAdocao = false;
+        boolean jaEntregouPreenchida = false;
+        for( AbstractButton button : Collections.list(entregouPraAdocaoButtonGroup.getElements())){
+            if(button.isSelected()){
+                jaEntregouPreenchida = true;
+                jaEntregouParaAdocao = button.getText().equals("Sim");
+                break;
+            }
+
+            Termo termoResponsabilidade = new Termo(temOutrosAnimais,outrosAnimais,
+                podeLevarAoVet, ambiente, localDuranteViagem, oqueFaraSeMudar, consciencia,
+                jaEntregouParaAdocao);
+
+            Adotante adotante = animal.getAnimalAdocao().getAdotante();
+
+            Adocao adocao = new Adocao(termoResponsabilidade, adotante, animal);
+
+            String dataAdocao = dataAdocaoField.getText();
+
+            if (!adocao.validarData(dataAdocao).equals("true")){
+                JOptionPane.showMessageDialog(null, adocao.validarData(dataAdocao));
+                return;
+            }
+
+            adocao.setDataAdocao(LocalDate.parse(dataAdocao, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+
+            System.out.println("Adoção sendo alterada no sistema...");
+            animal.setAnimalAdocao(adocao);
+            ArrayList <Adocao> animaisAdotados = adotante.getAnimaisAdotados();
+            animaisAdotados.remove(adocaoOriginal);
+            animaisAdotados.add(adocao);
+            adotante.setAnimaisAdotados(animaisAdotados);
+
+            handleJson.atualizarAnimal(animal.getAnimalID(), animal);
+            adotanteDAO.atualizarAdotante(adotante.getCpf(), adotante);
+            System.out.println("Adoção alterada com sucesso");
+            Historico historico = new Historico(animal, adocao, true, false);
+            try {
+                handleJson.AddHistoricoNoArquivo(historico);
+            } catch (IOException ex) {
+                System.out.println("Erro ao tentar adicionar a modificação da adoção ao histórico.");
+            }
+
+            System.out.println("Adoção alterada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Adoção alterada com sucesso!");
+            this.dispose();
+        }
+    }//GEN-LAST:event_salvarAdocaoButtonActionPerformed
+
+    private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
         this.dispose();
-    }//GEN-LAST:event_excluirAdocaoButtonActionPerformed
+    }//GEN-LAST:event_botaoFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -961,5 +980,6 @@ public class VisualizarAdocao extends javax.swing.JFrame {
     private javax.swing.JLabel simCondicoesFinancButton1;
     private javax.swing.JRadioButton simConscienciaButton;
     private javax.swing.JRadioButton simOutrosAnimaisButton;
+    private javax.swing.JButton vizualizarAdotanteButton;
     // End of variables declaration//GEN-END:variables
 }
