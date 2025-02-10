@@ -4,10 +4,14 @@
  */
 package com.iasmim.swing;
 
+import com.joao.jsonManager.AdotanteJsonHandler;
 import com.joao.model.Adocao;
 import com.joao.model.Adotante;
 import com.joao.model.Historico;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -435,7 +439,6 @@ public class PerfilAdotante extends javax.swing.JFrame {
         voltarButton.setVisible(true);
         salvarButton.setVisible(true);
         nomeTextField.setEditable(true);
-        cpfTextField.setEditable(true);
         telefoneTextField.setEditable(true);
         emailTextField.setEditable(true);
         cepTextField.setEditable(true);
@@ -443,7 +446,45 @@ public class PerfilAdotante extends javax.swing.JFrame {
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        String nome = nomeTextField.getText();
+        if (!Adotante.isNomeValido(nome)) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return;
+        } 
+        
+        String cpf = adotante.getCpf();
+        
+        String cep = cepTextField.getText();
+        
+        if (!CepInfo.validaCep(cep)) {
+            JOptionPane.showMessageDialog(null, "CEP inválido!");
+            return;
+        }
+        
+        String email = emailTextField.getText();
+        String telefone = telefoneTextField.getText();
+        String endereco = enderecoTextField.getText();
+        
+        
+        adotante.setNome(nome);
+        adotante.setCep(cep);
+        adotante.setEmail(email);
+        adotante.setTelefone(telefone);
+        adotante.setEndereco(endereco);
+        
+        
+        AdotanteJsonHandler adotanteDAO = new AdotanteJsonHandler();
+        adotanteDAO.atualizarAdotante(cpf, adotante);
+        JOptionPane.showMessageDialog(null, "Adotante atualizado com sucesso!");
+        editarButton.setVisible(true);
+        voltarButton.setVisible(false);
+        salvarButton.setVisible(false);
+        nomeTextField.setEditable(false);
+        telefoneTextField.setEditable(false);
+        emailTextField.setEditable(false);
+        cepTextField.setEditable(false);
+        enderecoTextField.setEditable(false);
     }//GEN-LAST:event_salvarButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
@@ -452,8 +493,6 @@ public class PerfilAdotante extends javax.swing.JFrame {
         salvarButton.setVisible(false);
         nomeTextField.setText(adotante.getNome());
         nomeTextField.setEditable(false);
-        cpfTextField.setText(adotante.getCpf());
-        cpfTextField.setEditable(false);
         telefoneTextField.setText(adotante.getTelefone());
         telefoneTextField.setEditable(false);
         emailTextField.setText(adotante.getEmail());

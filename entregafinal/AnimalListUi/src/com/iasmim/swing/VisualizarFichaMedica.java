@@ -9,8 +9,12 @@ import com.joao.jsonManager.FuncionarioJsonHandler;
 import com.joao.model.Animal;
 import com.joao.model.FichaMedica;
 import com.joao.model.Funcionario;
+import com.joao.model.Historico;
 import com.joao.model.Veterinario;
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,7 +97,7 @@ public class VisualizarFichaMedica extends javax.swing.JFrame {
             System.out.println("Erro ao tentar selecionar o tipo de atendimento");
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
