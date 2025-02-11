@@ -462,7 +462,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 return;
             }
             
-            String cpf = cpfField.getText();
+            String cpf = cpfField.getText().replace(".", "").replace("-", "");
             if(!Funcionario.validaCpf(cpf)){
                 JOptionPane.showMessageDialog(null, "CPF inválido!");
                 return;

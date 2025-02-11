@@ -603,5 +603,11 @@
     "nomeAnimal": "Fulero",
     "evento": "Ficha Médica (edição)",
     "dataHora": "2025-02-10T20:21:07.537302524"
+  },
+  {
+    "idAnimal": "e3144950-5a80-4470-aeb6-c210c212e8ed",
+    "nomeAnimal": "Felícia",
+    "evento": "Adoção (exclusão)",
+    "dataHora": "2025-02-10T20:27:44.952494814"
   }
 ]
