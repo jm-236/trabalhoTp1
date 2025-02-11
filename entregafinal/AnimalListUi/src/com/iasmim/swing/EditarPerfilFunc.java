@@ -393,7 +393,7 @@ public class EditarPerfilFunc extends javax.swing.JFrame {
     private void salvarMudancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarMudancasActionPerformed
         if (ConfirmarSenha()){
             String nome = nomeField.getText();
-            String cpf = cpfField.getText();
+            String cpf = cpfField.getText().replace(".", "").replace("-", "");
             String telefone = telefoneField.getText();
             String email = emailField.getText();
             if(nome.equals(funcionarioDoPerfil.getNome()) && cpf.equals(funcionarioDoPerfil.getCpf()) && telefone.equals(funcionarioDoPerfil.getTelefone()) && email.equals(funcionarioDoPerfil.getEmail())){

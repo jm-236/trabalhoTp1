@@ -220,7 +220,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        String cpf = usernameField.getText();
+        String cpf = usernameField.getText().replace(".", "").replace("-", "");
         String senha = new String(senhaField.getPassword());
 
         if (cpf.length() != 11){
