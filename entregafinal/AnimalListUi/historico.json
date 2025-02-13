@@ -609,5 +609,11 @@
     "nomeAnimal": "Duna Dois Sushi Orsi Lange Muad’Dib Atreides Usul Lisan Al Gaib",
     "evento": "Adoção (cadastro)",
     "dataHora": "2025-02-10T22:08:13.4673097"
+  },
+  {
+    "idAnimal": "67f4daae-0342-434d-bc18-1211643fab45",
+    "nomeAnimal": "Duna Dois Sushi Orsi Lange Muad’Dib Atreides Usul Lisan Al Gaib",
+    "evento": "Adoção (exclusão)",
+    "dataHora": "2025-02-11T20:54:39.624722194"
   }
 ]
