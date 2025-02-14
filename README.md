@@ -28,7 +28,7 @@ cd project_jar
 ```cmd
 java -jar AnimalListUi.jar
 ```
-5. Caso queira executar o projeto pela IDE, abra a pasta AnimalListUi, localizada no diretório entregafinal
+5. Caso queira executar o projeto pela IDE, abra a pasta AnimalListUi, localizada no diretório entregafinal e abra o projeto em sua IDE de preferência
 
 ## 🖇️ Funcionalidades
 
